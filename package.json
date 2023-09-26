@@ -17,5 +17,9 @@
   },
   "exports": {
     ".": "./index.d.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dysolix/hasagi-types.git"
   }
 }

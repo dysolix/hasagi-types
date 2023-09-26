@@ -26,5 +26,4 @@ const region = await client.request({ method: "get", url: "/riotclient/region-lo
 const version = await axios.get(`https://ddragon.leagueoflegends.com/realms/${region.webRegion}.json`).then(res => res.data.v);
 const packageObj = JSON.parse(await fs.readFile("./package.json", "utf8"));
 console.log(packageObj.version === version ? "Client version did not change." : "Client version has changed.")
-packageObj.version = version;
-await fs.writeFile("./package.json", JSON.stringify(packageObj, null, 2))
+console.log("Current client version: " + version)
