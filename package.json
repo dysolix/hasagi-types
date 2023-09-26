@@ -1,7 +1,7 @@
 {
   "name": "@hasagi/types",
-  "version": "13.19.1",
-  "description": "",
+  "version": "13.19.3",
+  "description": "This package contains the auto-generated LCU types.",
   "scripts": {
     "update": "node scripts/update-types.mjs"
   },
@@ -16,8 +16,6 @@
     "axios": "^1.5.1"
   },
   "exports": {
-    "./types": "./lcu-types.d.ts",
-    "./endpoints": "./lcu-endpoints.d.ts",
-    "./events": "./lcu-events.d.ts"
+    ".": "./index.d.ts"
   }
 }
