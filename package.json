@@ -1,0 +1,23 @@
+{
+  "name": "@hasagi/types",
+  "version": "13.19.1",
+  "description": "",
+  "scripts": {
+    "update": "node scripts/update-types.mjs"
+  },
+  "keywords": [
+    "hasagi"
+  ],
+  "author": "dysolix",
+  "license": "MIT",
+  "devDependencies": {
+    "@hasagi/cli": "^0.4.1",
+    "@hasagi/core": "^0.3.0",
+    "axios": "^1.5.1"
+  },
+  "exports": {
+    "./types": "./lcu-types.d.ts",
+    "./endpoints": "./lcu-endpoints.d.ts",
+    "./events": "./lcu-events.d.ts"
+  }
+}
