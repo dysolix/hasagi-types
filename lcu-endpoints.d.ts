@@ -1215,6 +1215,9 @@ export interface LCUEndpoints {
 	"/lol-leaver-buster/v1/notifications": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolLeaverBusterLeaverBusterNotificationResource[] }
 	},
+	"/lol-leaver-buster/v1/ranked-restriction": {
+		get: { Parameters: [], Body: never, Response: LCUTypes.LolLeaverBusterRankedRestrictionInfo }
+	},
 	"/lol-license-agreement/v1/agreement": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
@@ -1322,6 +1325,10 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby/v1/lobby/invitations/{id}": {
 		get: { Parameters: [id: string], Body: never, Response: LCUTypes.LolLobbyLobbyInvitation }
+	},
+	"/lol-lobby/v1/lobby/members/localMember/player-slots": {
+		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyQuickPlayPresetSlotDto[] }
+		put: { Parameters: [], Body: LCUTypes.LolLobbyQuickPlayPresetSlotDto[], Response: unknown }
 	},
 	"/lol-lobby/v1/parties/gamemode": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyGameModeDto }
@@ -1439,9 +1446,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-loot/v1/milestones/items": {
 		get: { Parameters: [], Body: never, Response: string[] }
-	},
-	"/lol-loot/v1/new-player-check-done": {
-		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-loot/v1/player-display-categories": {
 		get: { Parameters: [], Body: never, Response: string[] }
@@ -1691,7 +1695,7 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerMessagingPlayerMessagingNotificationResource }
 	},
 	"/lol-player-name-transition/v1/modal-state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerNameTransitionPlayerNameTransitionModalState }
+		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerNameTransitionPlayerNameTransitionModal }
 	},
 	"/lol-player-preferences/v1/player-preferences-ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -2124,6 +2128,10 @@ export interface LCUEndpoints {
 	},
 	"/lol-tft-team-planner/v1/config": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftTeamPlannerTFTTeamPlannerConfig }
+	},
+	"/lol-tft-team-planner/v1/ftue/hasViewed": {
+		get: { Parameters: [], Body: never, Response: boolean }
+		patch: { Parameters: [], Body: boolean, Response: unknown }
 	},
 	"/lol-tft-team-planner/v1/team/local": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftTeamPlannerTeamSettings }
@@ -2650,9 +2658,6 @@ export interface LCUEndpoints {
 	"/lol-gameflow/v1/battle-training/stop": {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
-	"/lol-gameflow/v1/client-received-message": {
-		post: { Parameters: [], Body: string, Response: void }
-	},
 	"/lol-gameflow/v1/early-exit": {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
@@ -2883,9 +2888,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-loot/v1/milestones/{lootMilestonesId}/claim": {
 		post: { Parameters: [lootMilestonesId: string], Body: never, Response: void }
-	},
-	"/lol-loot/v1/new-player-check-done/{newValue}": {
-		post: { Parameters: [newValue: boolean], Body: never, Response: string }
 	},
 	"/lol-loot/v1/player-loot/{lootName}/redeem": {
 		post: { Parameters: [lootName: string], Body: never, Response: LCUTypes.LolLootPlayerLootUpdate }
@@ -3274,9 +3276,6 @@ export interface LCUEndpoints {
 	"/lol-chat/v1/friend-groups/order": {
 		put: { Parameters: [], Body: LCUTypes.LolChatFriendGroupOrder, Response: unknown }
 	},
-	"/lol-lobby/v1/lobby/members/localMember/player-slots": {
-		put: { Parameters: [], Body: LCUTypes.LolLobbyQuickPlayPresetSlotDto[], Response: unknown }
-	},
 	"/lol-lobby/v1/lobby/members/localMember/position-preferences": {
 		put: { Parameters: [], Body: LCUTypes.LolLobbyLobbyPositionPreferences, Response: unknown }
 	},
@@ -3300,6 +3299,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby/v2/lobby/partyType": {
 		put: { Parameters: [], Body: string, Response: unknown }
+	},
+	"/lol-lobby/v2/tft/gamesPlayedWon": {
+		put: { Parameters: [], Body: boolean, Response: void }
 	},
 	"/lol-loot/v1/loot-odds/evaluateQuery": {
 		put: { Parameters: [], Body: LCUTypes.QueryEvaluationRequestDTO, Response: LCUTypes.LolLootQueryEvaluatedLootItem[] }

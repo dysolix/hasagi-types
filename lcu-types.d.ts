@@ -483,9 +483,7 @@ export namespace LCUTypes {
 	
 	export interface CraftLootRefTransactionDTO {
 		clientId: string
-		puuid: string
-		playerId: number
-		accountId: number
+		transactionId: string
 		recipeName: string
 		lootNameRefIds: LCUTypes.LootNameRefId[]
 		repeat: number
@@ -8377,11 +8375,24 @@ export namespace LCUTypes {
 		type: string
 	}
 	
+	export interface LolLeaverBusterRankedRestriction {
+		punishedGamesRemaining: number
+	}
+	
 	export interface LolLeaverBusterRankedRestrictionEntryDto {
 		puuid: string
 		restrictedGamesRemaining: number
 		restrictedGamesOriginal: number
 		rankedRestrictionAckNeeded: boolean
+	}
+	
+	export interface LolLeaverBusterRankedRestrictionGamesUpdate {
+		punishedGamesRemaining: number
+	}
+	
+	export interface LolLeaverBusterRankedRestrictionInfo {
+		punishedGamesRemaining: number
+		needsAck: boolean
 	}
 	
 	export interface LolLeaverBusterRestrictionInfoDto {
@@ -8670,7 +8681,7 @@ export namespace LCUTypes {
 		summonerIdsString: string
 	}
 	
-	export type LolLobbyEligibilityRestrictionCode = "MmrStandardDeviationTooLarge" | "InventoryQueuesInfoNotAvailable" | "InventoryChampsInfoNotAvailable" | "LeaguesInfoNotAvailable" | "SummonerInfoNotAvailable" | "MinorInfoNotAvailable" | "BanInfoNotAvailable" | "UnknownRestriction" | "TFTNewPlayerRestriction" | "QueueEntryNotEntitledRestriction" | "GameVersionNotSupported" | "GameVersionMissing" | "GameVersionMismatch" | "PrerequisiteQueuesNotPlayedRestriction" | "TeamSizeRestriction" | "TeamHighMMRMaxSizeRestriction" | "PlayerRankedSuspensionRestriction" | "PlayerRankSoloOnlyRestriction" | "PlayerTimePlayedRestriction" | "PlayerMinorRestriction" | "PlayerMinLevelRestriction" | "PlayerMaxLevelRestriction" | "PlayerLeaverTaintedWarningRestriction" | "PlayerLeaverQueueLockoutRestriction" | "PlayerLeaverBustedRestriction" | "PlayerInGameRestriction" | "PlayerDodgeRestriction" | "PlayerBingeRestriction" | "TeamMinSizeRestriction" | "TeamMaxSizeRestriction" | "TeamSkillRestriction" | "TeamDivisionRestriction" | "PlayerAvailableChampionRestriction" | "PlayerBannedRestriction" | "PlayerTimedRestriction" | "PlayerLevelRestriction" | "QueueUnsupported" | "QueueDisabled"
+	export type LolLobbyEligibilityRestrictionCode = "MmrStandardDeviationTooLarge" | "InventoryQueuesInfoNotAvailable" | "InventoryChampsInfoNotAvailable" | "LeaguesInfoNotAvailable" | "SummonerInfoNotAvailable" | "MinorInfoNotAvailable" | "BanInfoNotAvailable" | "UnknownRestriction" | "TFTNewPlayerRestriction" | "QueueEntryNotEntitledRestriction" | "GameVersionNotSupported" | "GameVersionMissing" | "GameVersionMismatch" | "PrerequisiteQueuesNotPlayedRestriction" | "TeamSizeRestriction" | "TeamHighMMRMaxSizeRestriction" | "PlayerRankedSuspensionRestriction" | "PlayerRankSoloOnlyRestriction" | "PlayerTimePlayedRestriction" | "PlayerMinorRestriction" | "PlayerMinLevelRestriction" | "PlayerMaxLevelRestriction" | "PlayerTimeBasedRankRestriction" | "PlayerGameBasedRankRestriction" | "PlayerLeaverTaintedWarningRestriction" | "PlayerLeaverQueueLockoutRestriction" | "PlayerLeaverBustedRestriction" | "PlayerInGameRestriction" | "PlayerDodgeRestriction" | "PlayerBingeRestriction" | "TeamMinSizeRestriction" | "TeamMaxSizeRestriction" | "TeamSkillRestriction" | "TeamDivisionRestriction" | "PlayerAvailableChampionRestriction" | "PlayerBannedRestriction" | "PlayerTimedRestriction" | "PlayerLevelRestriction" | "QueueUnsupported" | "QueueDisabled"
 	
 	export interface LolLobbyFriendAvailabilityAnalytics {
 		puuid: string
@@ -9245,6 +9256,10 @@ export namespace LCUTypes {
 		partySize: number
 	}
 	
+	export interface LolLobbyPlatformStats {
+		playerStatSummaries: LCUTypes.LolLobbyPlayerStatSummaryContainer
+	}
+	
 	export interface LolLobbyPlayerCollectionDto {
 		players: LCUTypes.LolLobbyPlayerDto[]
 	}
@@ -9258,9 +9273,21 @@ export namespace LCUTypes {
 		serverUtcMillis: number
 		parties?: LCUTypes.LolLobbyPartyMemberDto[]
 		currentParty?: LCUTypes.LolLobbyPartyDto
+		tftGamesPlayed: number
+		tftGamesWon: number
 		registration: LCUTypes.LolLobbyRegistrationCredentials
 		createdAt: number
 		version: number
+	}
+	
+	export interface LolLobbyPlayerStatSummary {
+		playerStatSummaryType: string
+		wins: number
+		gamesPlayed: number
+	}
+	
+	export interface LolLobbyPlayerStatSummaryContainer {
+		playerStatSummarySet: LCUTypes.LolLobbyPlayerStatSummary[]
 	}
 	
 	export interface LolLobbyPlayerStatus {
@@ -9393,6 +9420,11 @@ export namespace LCUTypes {
 		rank: string
 	}
 	
+	export interface LolLobbyRankedRestrictionInfo {
+		punishedGamesRemaining: number
+		needsAck: boolean
+	}
+	
 	export interface LolLobbyRankedStatsUnsignedDTO {
 		queues: LCUTypes.LolLobbyRankedPositionInfoDTO[]
 		highestPreviousSeasonEndTier: string
@@ -9462,6 +9494,21 @@ export namespace LCUTypes {
 		internalName: string
 		gameName: string
 		tagLine: string
+	}
+	
+	export interface LolLobbyTFTNPESettings {
+		data?: LCUTypes.LolLobbyTFTNPESettingsResource
+		schemaVersion: number
+	}
+	
+	export interface LolLobbyTFTNPESettingsResource {
+		gamesPlayed: number
+		gamesWon: number
+	}
+	
+	export interface LolLobbyTFTNewPlayerDto {
+		tftGamesPlayed: number
+		tftGamesWon: number
 	}
 	
 	export interface LolLobbyTeamBuilderActionV1 {
@@ -10139,10 +10186,6 @@ export namespace LCUTypes {
 		password: string
 	}
 	
-	export interface LolLootAccountIdAndSummonerId {
-		summonerId: number
-	}
-	
 	export type LolLootCelebrationType = "FULLSCREEN" | "TOAST" | "NONE"
 	
 	export interface LolLootCollectionsChampionMinimal {
@@ -10801,10 +10844,6 @@ export namespace LCUTypes {
 		maxSelectionsAllowed: number
 	}
 	
-	export interface LolLootSummoner {
-		summonerLevel: number
-	}
-	
 	export interface LolLootSvcRewardGrant {
 		id: string
 		granteeId: string
@@ -11010,6 +11049,11 @@ export namespace LCUTypes {
 		accountId: number
 	}
 	
+	export interface LolMatchHistoryAlias {
+		gameName: string
+		tagLine: string
+	}
+	
 	export interface LolMatchHistoryGAMHSMatchHistoryData {
 		metadata: LCUTypes.LolMatchHistoryGAMHSMatchHistoryMetadata
 		json: unknown
@@ -11132,6 +11176,8 @@ export namespace LCUTypes {
 		accountId: number
 		summonerId: number
 		summonerName: string
+		gameName: string
+		tagLine: string
 		currentPlatformId: string
 		currentAccountId: number
 		matchHistoryUri: string
@@ -11339,6 +11385,8 @@ export namespace LCUTypes {
 	export interface LolMatchHistoryRecentlyPlayedSummoner {
 		summonerId: number
 		summonerName: string
+		gameName: string
+		tagLine: string
 		gameId: number
 		gameCreationDate: string
 		championId: number
@@ -11348,6 +11396,8 @@ export namespace LCUTypes {
 	
 	export interface LolMatchHistorySummoner {
 		displayName: string
+		gameName: string
+		tagLine: string
 		puuid: string
 	}
 	
@@ -12951,6 +13001,22 @@ export namespace LCUTypes {
 		titleCode: string
 		bodyCode: string
 		params: string[]
+	}
+	
+	export interface LolPlayerNameTransitionPlayerNameTransitionModal {
+		modalState: LCUTypes.LolPlayerNameTransitionPlayerNameTransitionModalState
+		riotIdLaunchDate: string
+		riotIdChangeUrl: string
+		faqUrl: string
+	}
+	
+	export interface LolPlayerNameTransitionPlayerNameTransitionModalClientConfig {
+		dialogEnabled: boolean
+		dialogActivationDate: string
+		riotIdLaunchDate: string
+		riotIdChangeUrl: string
+		authenticatedRedirectEnabled: boolean
+		faqUrl: string
 	}
 	
 	export type LolPlayerNameTransitionPlayerNameTransitionModalState = "DISMISSED" | "POST_LAUNCH" | "PRE_LAUNCH" | "DISABLED"
@@ -16038,6 +16104,8 @@ export namespace LCUTypes {
 	
 	export interface LolTftLolTftPromoButton {
 		enabled: boolean
+		showTimerWhileEventActive: boolean
+		eventAssetId: string
 		eventKey: string
 		url: string
 	}
@@ -17374,7 +17442,7 @@ export namespace LCUTypes {
 	
 	export interface MassCraftLootDTO {
 		clientId: string
-		puuid: string
+		transactionId: string
 		lootItems: LCUTypes.CraftLootDTO[]
 	}
 	
@@ -18147,9 +18215,7 @@ export namespace LCUTypes {
 	
 	export interface RedeemLootTransactionDTO {
 		clientId: string
-		puuid: string
-		playerId: number
-		accountId: number
+		transactionId: string
 		lootName: string
 	}
 	
