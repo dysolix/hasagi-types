@@ -714,11 +714,8 @@ export interface LCUEndpoints {
 	"/lol-clash/v1/roster/{rosterId}/stats": {
 		get: { Parameters: [rosterId: number], Body: never, Response: LCUTypes.LolClashRosterStats }
 	},
-	"/lol-clash/v1/scouting-bypuuid/champions": {
-		get: { Parameters: [params: { "puuids": string[] }], Body: never, Response: LCUTypes.LolClashScoutingChampions[] }
-	},
 	"/lol-clash/v1/scouting/champions": {
-		get: { Parameters: [params: { "summonerIds": number[] }], Body: never, Response: LCUTypes.LolClashScoutingChampions[] }
+		get: { Parameters: [params: { "puuids": string[] }], Body: never, Response: LCUTypes.LolClashScoutingChampions[] }
 	},
 	"/lol-clash/v1/scouting/matchhistory": {
 		get: { Parameters: [params: { "summonerIds": number[] }], Body: never, Response: unknown }
@@ -777,20 +774,14 @@ export interface LCUEndpoints {
 	"/lol-client-config/v3/client-config/{name}": {
 		get: { Parameters: [name: string], Body: never, Response: unknown }
 	},
-	"/lol-collections/v1/inventories/{puuid}/champion-mastery-bypuuid": {
+	"/lol-collections/v1/inventories/{puuid}/champion-mastery": {
 		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolCollectionsCollectionsChampionMastery[] }
 	},
-	"/lol-collections/v1/inventories/{puuid}/champion-mastery-bypuuid/top": {
+	"/lol-collections/v1/inventories/{puuid}/champion-mastery/top": {
 		get: { Parameters: [puuid: string, params: { "limit": number, "sortRule"?: string }], Body: never, Response: LCUTypes.LolCollectionsCollectionsTopChampionMasteries }
 	},
 	"/lol-collections/v1/inventories/{summonerId}/backdrop": {
 		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolCollectionsCollectionsSummonerBackdrop }
-	},
-	"/lol-collections/v1/inventories/{summonerId}/champion-mastery": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolCollectionsCollectionsChampionMastery[] }
-	},
-	"/lol-collections/v1/inventories/{summonerId}/champion-mastery/top": {
-		get: { Parameters: [summonerId: number, params: { "limit": number, "sortRule"?: string }], Body: never, Response: LCUTypes.LolCollectionsCollectionsTopChampionMasteries }
 	},
 	"/lol-collections/v1/inventories/{summonerId}/spells": {
 		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolCollectionsCollectionsSummonerSpells }
@@ -808,9 +799,6 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: number }
 	},
 	"/lol-collections/v1/inventories/scouting": {
-		get: { Parameters: [params: { "summonerIds": number[] }], Body: never, Response: LCUTypes.RankedScoutingDTO[] }
-	},
-	"/lol-collections/v1/inventories/scouting-puuid": {
 		get: { Parameters: [params: { "puuids": string[] }], Body: never, Response: LCUTypes.RankedScoutingDTO[] }
 	},
 	"/lol-content-targeting/v1/filters": {
@@ -1196,6 +1184,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-kr-shutdown-law/v1/disabled-queues": {
 		get: { Parameters: [], Body: never, Response: number[] }
+	},
+	"/lol-kr-shutdown-law/v1/is-enabled": {
+		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-kr-shutdown-law/v1/notification": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolKrShutdownLawShutdownLawNotification }
@@ -1895,6 +1886,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-seasons/v1/season/product/{product}": {
 		get: { Parameters: [product: string], Body: never, Response: LCUTypes.LolSeasonsAllSeasonsProduct }
+	},
+	"/lol-seasons/v1/season/recent-final-split": {
+		get: { Parameters: [], Body: never, Response: LCUTypes.LolSeasonsAllSeasonsProduct }
 	},
 	"/lol-service-status/v1/lcu-status": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolServiceStatusServiceStatusResource }
@@ -2956,13 +2950,13 @@ export interface LCUEndpoints {
 		post: { Parameters: [key: string], Body: never, Response: void }
 	},
 	"/lol-player-name-transition/v1/dismiss": {
-		post: { Parameters: [], Body: never, Response: void }
+		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-player-name-transition/v1/open-faq": {
-		post: { Parameters: [], Body: never, Response: void }
+		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-player-name-transition/v1/open-name-change": {
-		post: { Parameters: [], Body: never, Response: void }
+		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-player-preferences/v1/player-preferences-endpoint-override": {
 		post: { Parameters: [], Body: LCUTypes.LolPlayerPreferencesPlayerPreferencesEndpoint, Response: unknown }
@@ -3300,8 +3294,8 @@ export interface LCUEndpoints {
 	"/lol-lobby/v2/lobby/partyType": {
 		put: { Parameters: [], Body: string, Response: unknown }
 	},
-	"/lol-lobby/v2/tft/gamesPlayedWon": {
-		put: { Parameters: [], Body: boolean, Response: void }
+	"/lol-lobby/v2/lobby/subteamData": {
+		put: { Parameters: [], Body: LCUTypes.LolLobbySubteamDataDto, Response: void }
 	},
 	"/lol-loot/v1/loot-odds/evaluateQuery": {
 		put: { Parameters: [], Body: LCUTypes.QueryEvaluationRequestDTO, Response: LCUTypes.LolLootQueryEvaluatedLootItem[] }
