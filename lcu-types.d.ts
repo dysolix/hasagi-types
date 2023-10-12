@@ -1500,6 +1500,11 @@ export namespace LCUTypes {
 		contentId: string
 	}
 	
+	export interface LolCatalogGameDataSkinBorder {
+		itemId: number
+		image: string
+	}
+	
 	export interface LolCatalogGameDataStatstone {
 		name: string
 		contentId: string
@@ -1998,7 +2003,6 @@ export namespace LCUTypes {
 		championPickIntent: number
 		summonerId: number
 		puuid: string
-		entitledFeatureType: string
 		nameVisibilityType: string
 		obfuscatedSummonerId: number
 		obfuscatedPuuid: string
@@ -2026,7 +2030,6 @@ export namespace LCUTypes {
 		lockedEventIndex: number
 		benchEnabled: boolean
 		benchChampions: LCUTypes.LolChampSelectBenchChampion[]
-		entitledFeatureState: LCUTypes.LolChampSelectEntitledFeatureState
 		counter: number
 		recoveryCounter: number
 		skipChampionSelect: boolean
@@ -2043,7 +2046,6 @@ export namespace LCUTypes {
 		assignedPosition: string
 		summonerId: number
 		puuid: string
-		entitledFeatureType: string
 		nameVisibilityType: string
 		obfuscatedSummonerId: number
 		obfuscatedPuuid: string
@@ -2245,11 +2247,6 @@ export namespace LCUTypes {
 		rented: boolean
 	}
 	
-	export interface LolChampSelectEntitledFeatureState {
-		additionalRerolls: number
-		unlockedSkinIds: number[]
-	}
-	
 	export interface LolChampSelectGameDataSummonerSpell {
 		id: number
 		iconPath: string
@@ -2449,6 +2446,7 @@ export namespace LCUTypes {
 	}
 	
 	export interface LolChampSelectLoginSession {
+		puuid: string
 		summonerId?: number
 	}
 	
@@ -2491,7 +2489,6 @@ export namespace LCUTypes {
 		splashVideoPath?: string
 		tilePath: string
 		unlocked: boolean
-		isUnlockedFromEntitledFeature: boolean
 		parentSkinId: number
 		colors: string[]
 		stage: number
@@ -2521,7 +2518,6 @@ export namespace LCUTypes {
 		splashVideoPath?: string
 		tilePath: string
 		unlocked: boolean
-		isUnlockedFromEntitledFeature: boolean
 		childSkins: LCUTypes.LolChampSelectSkinSelectorChildSkin[]
 		emblems: LCUTypes.LolChampSelectCollectionsChampionSkinEmblem[]
 		rarityGemPath: string
@@ -2547,6 +2543,7 @@ export namespace LCUTypes {
 		collectionCardPath: string
 		collectionDescription: string
 		tiers: LCUTypes.LolChampionsCollectionsChampionQuestSkin[]
+		productType: LCUTypes.LolChampionsQuestSkinProductType
 	}
 	
 	export interface LolChampionsCollectionsChampion {
@@ -2853,6 +2850,8 @@ export namespace LCUTypes {
 		description: string
 		iconPath: string
 	}
+	
+	export type LolChampionsQuestSkinProductType = "kTieredSkin" | "kQuestSkin"
 	
 	export interface LolChampionsSummoner {
 		summonerId: number
@@ -5152,13 +5151,13 @@ export namespace LCUTypes {
 	}
 	
 	export interface LolEndOfGameChampionMasteryGrade {
-		playerId: number
+		puuid: string
 		championId: number
 		grade: string
 	}
 	
 	export interface LolEndOfGameChampionMasteryMini {
-		playerId: number
+		puuid: string
 		championId: number
 		championLevel: number
 	}
@@ -5166,7 +5165,7 @@ export namespace LCUTypes {
 	export interface LolEndOfGameChampionMasteryUpdate {
 		id: string
 		gameId: number
-		playerId: number
+		puuid: string
 		championId: number
 		hasLeveledUp: boolean
 		level: number
@@ -8681,7 +8680,7 @@ export namespace LCUTypes {
 		summonerIdsString: string
 	}
 	
-	export type LolLobbyEligibilityRestrictionCode = "MmrStandardDeviationTooLarge" | "InventoryQueuesInfoNotAvailable" | "InventoryChampsInfoNotAvailable" | "LeaguesInfoNotAvailable" | "SummonerInfoNotAvailable" | "MinorInfoNotAvailable" | "BanInfoNotAvailable" | "UnknownRestriction" | "TFTNewPlayerRestriction" | "QueueEntryNotEntitledRestriction" | "GameVersionNotSupported" | "GameVersionMissing" | "GameVersionMismatch" | "PrerequisiteQueuesNotPlayedRestriction" | "TeamSizeRestriction" | "TeamHighMMRMaxSizeRestriction" | "PlayerRankedSuspensionRestriction" | "PlayerRankSoloOnlyRestriction" | "PlayerTimePlayedRestriction" | "PlayerMinorRestriction" | "PlayerMinLevelRestriction" | "PlayerMaxLevelRestriction" | "PlayerTimeBasedRankRestriction" | "PlayerGameBasedRankRestriction" | "PlayerLeaverTaintedWarningRestriction" | "PlayerLeaverQueueLockoutRestriction" | "PlayerLeaverBustedRestriction" | "PlayerInGameRestriction" | "PlayerDodgeRestriction" | "PlayerBingeRestriction" | "TeamMinSizeRestriction" | "TeamMaxSizeRestriction" | "TeamSkillRestriction" | "TeamDivisionRestriction" | "PlayerAvailableChampionRestriction" | "PlayerBannedRestriction" | "PlayerTimedRestriction" | "PlayerLevelRestriction" | "QueueUnsupported" | "QueueDisabled"
+	export type LolLobbyEligibilityRestrictionCode = "MmrStandardDeviationTooLarge" | "InventoryQueuesInfoNotAvailable" | "InventoryChampsInfoNotAvailable" | "LeaguesInfoNotAvailable" | "SummonerInfoNotAvailable" | "MinorInfoNotAvailable" | "BanInfoNotAvailable" | "TooManyIncompleteSubteamsRestriction" | "QPScarcePositionsNotAvailableRestriction" | "QPNonUniquePrimarySlotRestriction" | "QPInvalidChampionSelectionRestriction" | "QPInvalidPositionSelectionRestriction" | "QPInvalidNumberOfPlayerSlotsRestriction" | "QPPlayerChampionCoverageRestriction" | "QPPartyChampionCoverageRestriction" | "QPPlayerPositionCoverageRestriction" | "QPPartyPositionCoverageRestriction" | "QPPlayerScarcePositionCoverageRestriction" | "UnknownRestriction" | "TFTNewPlayerRestriction" | "QueueEntryNotEntitledRestriction" | "GameVersionNotSupported" | "GameVersionMissing" | "GameVersionMismatch" | "PrerequisiteQueuesNotPlayedRestriction" | "TeamSizeRestriction" | "TeamHighMMRMaxSizeRestriction" | "PlayerRankedSuspensionRestriction" | "PlayerRankSoloOnlyRestriction" | "PlayerTimePlayedRestriction" | "PlayerMinorRestriction" | "PlayerMinLevelRestriction" | "PlayerMaxLevelRestriction" | "PlayerTimeBasedRankRestriction" | "PlayerGameBasedRankRestriction" | "PlayerLeaverTaintedWarningRestriction" | "PlayerLeaverQueueLockoutRestriction" | "PlayerLeaverBustedRestriction" | "PlayerInGameRestriction" | "PlayerDodgeRestriction" | "PlayerBingeRestriction" | "TeamMinSizeRestriction" | "TeamMaxSizeRestriction" | "TeamSkillRestriction" | "TeamDivisionRestriction" | "PlayerAvailableChampionRestriction" | "PlayerBannedRestriction" | "PlayerTimedRestriction" | "PlayerLevelRestriction" | "QueueUnsupported" | "QueueDisabled"
 	
 	export interface LolLobbyFriendAvailabilityAnalytics {
 		puuid: string
@@ -9059,6 +9058,8 @@ export namespace LCUTypes {
 		teamId: number
 		firstPositionPreference: string
 		secondPositionPreference: string
+		subteamIndex?: number
+		intraSubteamPosition?: number
 		playerSlots: LCUTypes.LolLobbyQuickPlayPresetSlotDto[]
 		ready: boolean
 		showGhostedBanner: boolean
@@ -9218,10 +9219,9 @@ export namespace LCUTypes {
 	
 	export interface LolLobbyPartyMemberMetadataDto {
 		positionPref: string[]
-		championSelection?: number
-		skinSelection?: number
 		properties?: unknown
 		playerSlots: LCUTypes.LolLobbyQuickPlayPresetSlotDto[]
+		subteamData?: LCUTypes.LolLobbySubteamDataDto
 	}
 	
 	export type LolLobbyPartyMemberRoleEnum = "NONE" | "DECLINED" | "KICKED" | "HOLD" | "INVITED" | "MEMBER" | "LEADER"
@@ -9484,6 +9484,11 @@ export namespace LCUTypes {
 		body: string
 	}
 	
+	export interface LolLobbySubteamDataDto {
+		subteamIndex: number
+		intraSubteamPosition: number
+	}
+	
 	export interface LolLobbySummoner {
 		summonerId: number
 		summonerLevel: number
@@ -9551,7 +9556,6 @@ export namespace LCUTypes {
 		spell2Id: number
 		summonerId: number
 		puuid: string
-		entitledFeatureType: string
 		nameVisibilityType: string
 		obfuscatedSummonerId: number
 		obfuscatedPuuid: string
@@ -9610,7 +9614,6 @@ export namespace LCUTypes {
 		playerType: string
 		summonerId: number
 		puuid: string
-		entitledFeatureType: string
 		nameVisibilityType: string
 		obfuscatedSummonerId: number
 		obfuscatedPuuid: string
@@ -9636,7 +9639,6 @@ export namespace LCUTypes {
 		lockedEventIndex: number
 		benchEnabled: boolean
 		benchChampions: LCUTypes.LolLobbyTeamBuilderBenchChampion[]
-		entitledFeatureState: LCUTypes.LolLobbyTeamBuilderEntitledFeatureState
 		counter: number
 		recoveryCounter: number
 		skipChampionSelect: boolean
@@ -9707,7 +9709,6 @@ export namespace LCUTypes {
 		lockedEventsState: LCUTypes.LolLobbyTeamBuilderLockedEventsStateV1
 		battleBoostState: LCUTypes.LolLobbyTeamBuilderTeamBuilderBoostInfo
 		championBenchState: LCUTypes.LolLobbyTeamBuilderChampionBenchStateV1
-		entitledFeatureState: LCUTypes.LolLobbyTeamBuilderEntitledFeatureStateV1
 		inventoryDraft: LCUTypes.LolLobbyTeamBuilderTbdInventory
 		skipChampionSelect: boolean
 		isSpectating: boolean
@@ -9717,16 +9718,6 @@ export namespace LCUTypes {
 		phaseName: string
 		timer: number
 		counter: number
-	}
-	
-	export interface LolLobbyTeamBuilderEntitledFeatureState {
-		additionalRerolls: number
-		unlockedSkinIds: number[]
-	}
-	
-	export interface LolLobbyTeamBuilderEntitledFeatureStateV1 {
-		additionalRerolls: number
-		unlockedSkinsState: LCUTypes.LolLobbyTeamBuilderUnlockedSkinsStateV1
 	}
 	
 	export interface LolLobbyTeamBuilderGameModeSpellList {
@@ -10041,10 +10032,6 @@ export namespace LCUTypes {
 		id: number
 		cellId: number
 		state: string
-	}
-	
-	export interface LolLobbyTeamBuilderUnlockedSkinsStateV1 {
-		unlockedSkinIds: number[]
 	}
 	
 	export interface LolLobbyUserInfoToken {
@@ -13019,6 +13006,16 @@ export namespace LCUTypes {
 		faqUrl: string
 	}
 	
+	export interface LolPlayerNameTransitionPlayerNameTransitionModalSettingCategoryResource {
+		schemaVersion: number
+		data: LCUTypes.LolPlayerNameTransitionPlayerNameTransitionModalSettings
+	}
+	
+	export interface LolPlayerNameTransitionPlayerNameTransitionModalSettings {
+		mHasSeenRiotIdPreTransitionDialog: boolean
+		mHasSeenRiotIdPostTransitionDialog: boolean
+	}
+	
 	export type LolPlayerNameTransitionPlayerNameTransitionModalState = "DISMISSED" | "POST_LAUNCH" | "PRE_LAUNCH" | "DISABLED"
 	
 	export interface LolPlayerPreferencesLoginSession {
@@ -14767,7 +14764,7 @@ export namespace LCUTypes {
 	
 	export interface LolRiotMessagingServiceChampionMasteryLevelUp {
 		id: number
-		playerId: number
+		puuid: string
 		championId: number
 		hasLeveledUp: boolean
 		championLevel: number
