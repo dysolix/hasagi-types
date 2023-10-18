@@ -5517,6 +5517,7 @@ export namespace LCUTypes {
 		health: number
 		rank: number
 		isLocalPlayer: boolean
+		isInteractable: boolean
 		partnerGroupId: number
 		boardPieces: LCUTypes.LolEndOfGameTFTEndOfGamePieceViewModel[]
 		augments: LCUTypes.LolEndOfGameTFTEndOfGameItemViewModel[]

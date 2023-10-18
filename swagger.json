@@ -56868,6 +56868,9 @@
                     "isLocalPlayer": {
                         "type": "boolean"
                     },
+                    "isInteractable": {
+                        "type": "boolean"
+                    },
                     "partnerGroupId": {
                         "type": "integer",
                         "format": "uint8",
@@ -56905,6 +56908,7 @@
                     "health",
                     "rank",
                     "isLocalPlayer",
+                    "isInteractable",
                     "partnerGroupId",
                     "boardPieces",
                     "augments",
