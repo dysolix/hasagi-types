@@ -49,7 +49,7 @@ export interface LCUEndpoints {
 	"/lol-chat/v1/settings/{key}": {
 		get: { Parameters: [key: string], Body: never, Response: unknown }
 		put: { Parameters: [key: string], Body: unknown, Response: unknown }
-		delete: { Parameters: [key: string], Body: boolean, Response: unknown }
+		delete: { Parameters: [key: string, params?: { "doAsync"?: boolean }], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/voice": {
 		post: { Parameters: [], Body: never, Response: unknown }
@@ -130,7 +130,7 @@ export interface LCUEndpoints {
 	},
 	"/lol-login/v1/service-proxy-async-requests/{serviceName}/{methodName}": {
 		post: { Parameters: [serviceName: string, methodName: string], Body: number, Response: void }
-		delete: { Parameters: [serviceName: string, methodName: string], Body: number, Response: void }
+		delete: { Parameters: [serviceName: string, methodName: string, params: { "pluginId": number }], Body: never, Response: void }
 	},
 	"/lol-login/v1/session": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolLoginLoginSession }
@@ -288,14 +288,14 @@ export interface LCUEndpoints {
 	},
 	"/tracing/v1/trace/time-series-event/{eventName}": {
 		post: { Parameters: [eventName: string], Body: number, Response: void }
-		delete: { Parameters: [eventName: string], Body: number, Response: void }
+		delete: { Parameters: [eventName: string, params: { "when": number, "suffix"?: string }], Body: never, Response: void }
 	},
 	"/anti-addiction/v1/policies/{policyType}/anti-addiction-state": {
 		get: { Parameters: [policyType: LCUTypes.LolAntiAddictionPolicyType], Body: never, Response: LCUTypes.LolAntiAddictionAntiAddictionState }
 	},
 	"/{plugin}/assets/{+path}": {
 		get: { Parameters: [plugin: string, path: string, params?: { "if-none-match"?: string }], Body: never, Response: unknown }
-		head: { Parameters: [plugin: string, path: string], Body: string, Response: unknown }
+		head: { Parameters: [plugin: string, path: string, params?: { "if-none-match"?: string }], Body: never, Response: unknown }
 	},
 	"/client-config/v1/config": {
 		get: { Parameters: [params?: { "type"?: LCUTypes.ClientConfigConfigType, "app"?: string, "version"?: string, "patchline"?: string, "region"?: string, "namespace"?: string }], Body: never, Response: Record<string, unknown> }
