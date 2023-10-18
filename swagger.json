@@ -786,17 +786,16 @@
                         "schema": {
                             "type": "string"
                         }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "boolean"
-                            }
+                    },
+                    {
+                        "in": "query",
+                        "required": false,
+                        "name": "doAsync",
+                        "schema": {
+                            "type": "boolean"
                         }
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
                         "content": {
@@ -1216,6 +1215,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -1265,6 +1267,9 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -1280,6 +1285,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -1329,6 +1337,9 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -1585,6 +1596,9 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -1800,6 +1814,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -1953,21 +1970,23 @@
                         "schema": {
                             "type": "string"
                         }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "integer",
-                                "format": "uint32",
-                                "minimum": 0
-                            }
+                    },
+                    {
+                        "in": "query",
+                        "required": true,
+                        "name": "pluginId",
+                        "schema": {
+                            "type": "integer",
+                            "format": "uint32",
+                            "minimum": 0
                         }
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -2024,6 +2043,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -2097,6 +2119,9 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -2302,6 +2327,9 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -2775,6 +2803,9 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -2854,6 +2885,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -2916,6 +2950,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -2951,6 +2988,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -2966,6 +3006,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -3036,6 +3079,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -3085,6 +3131,9 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -3329,6 +3378,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -3364,6 +3416,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -3565,6 +3620,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -3602,6 +3660,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -3639,6 +3700,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -3674,6 +3738,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -3732,6 +3799,9 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -3840,6 +3910,9 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -3882,21 +3955,31 @@
                         "schema": {
                             "type": "string"
                         }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "integer",
-                                "format": "uint64",
-                                "minimum": 0
-                            }
+                    },
+                    {
+                        "in": "query",
+                        "required": true,
+                        "name": "when",
+                        "schema": {
+                            "type": "integer",
+                            "format": "uint64",
+                            "minimum": 0
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "required": false,
+                        "name": "suffix",
+                        "schema": {
+                            "type": "string"
                         }
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {}
+                        },
                         "description": "Success response"
                     }
                 }
@@ -4035,17 +4118,16 @@
                         "schema": {
                             "type": "string"
                         }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "string"
-                            }
+                    },
+                    {
+                        "in": "query",
+                        "required": false,
+                        "name": "if-none-match",
+                        "schema": {
+                            "type": "string"
                         }
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
                         "content": {
@@ -33882,8 +33964,7 @@
                     "sum",
                     "none"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "AlertDTO": {
                 "type": "object",
@@ -33990,8 +34071,7 @@
                     "Running",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "BindingCallbackEvent": {
                 "type": "object",
@@ -34313,8 +34393,7 @@
                     "Epytext",
                     "Full"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "BoostTeamSkinRentalDTO": {
                 "type": "object",
@@ -34560,8 +34639,7 @@
                     "MEDIUM",
                     "LOW"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ChampSelectLcdsGameDTO": {
                 "type": "object",
@@ -35091,8 +35169,7 @@
                     "CUP",
                     "TIER"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ClashRewardOutput": {
                 "type": "object",
@@ -35177,8 +35254,7 @@
                     "EOG",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ClashRewardType": {
                 "type": "string",
@@ -35192,8 +35268,7 @@
                     "FLAG",
                     "TROPHY"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ClashSeasonRewardResult": {
                 "type": "object",
@@ -35248,8 +35323,7 @@
                     "STARTED",
                     "UPCOMING"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ClientConfigAuthenticatedConnection": {
                 "type": "object",
@@ -35416,8 +35490,7 @@
                     "Ready",
                     "NotReady"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ClientConfigConfigStatus": {
                 "type": "object",
@@ -35445,8 +35518,7 @@
                     "player",
                     "public"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ClientConfigDataPaths": {
                 "type": "object",
@@ -35534,8 +35606,7 @@
                     "Update",
                     "Create"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ClientConfigEntitlements": {
                 "type": "object",
@@ -35626,8 +35697,7 @@
                     "Update",
                     "Create"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ClientDynamicConfig": {
                 "type": "object",
@@ -35731,8 +35801,7 @@
                     "ALREADY_MEMBER",
                     "ALREADY_IN_GAME"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "CollectionsLcdsChampionDTO": {
                 "type": "object",
@@ -36159,8 +36228,7 @@
                 "enum": [
                     "FixBrokenPermissions"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ElevationRequest": {
                 "type": "object",
@@ -36739,8 +36807,7 @@
                     "Preparing",
                     "NotAvailable"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ExternalPluginsResource": {
                 "type": "object",
@@ -36787,8 +36854,7 @@
                     "LOBBYONLY",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "GameQueuesLcdsGameQueueConfig": {
                 "type": "object",
@@ -37083,8 +37149,7 @@
                     "FRIEND",
                     "FREEAGENT"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LCDSBroadcastNotification": {
                 "type": "object",
@@ -37201,8 +37266,7 @@
                     "grant",
                     "legacy"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LCDSPlayerMessagingSimpleMessage": {
                 "type": "object",
@@ -37588,8 +37652,7 @@
                     "ON_HOLD",
                     "ACTIVE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LcdsInviteFailed": {
                 "type": "object",
@@ -37664,8 +37727,7 @@
                     "PENDING",
                     "CREATOR"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LcdsInviter": {
                 "type": "object",
@@ -38065,8 +38127,7 @@
                     "DESTROYED",
                     "KICKED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LcdsRemovedFromLobbyNotification": {
                 "type": "object",
@@ -38274,8 +38335,7 @@
                     "Warning",
                     "Okay"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolAccountVerificationAVSConfig": {
                 "type": "object",
@@ -38414,8 +38474,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolAccountVerificationPhoneNumberObfuscated": {
                 "type": "object",
@@ -38853,8 +38912,7 @@
                     "RENTED",
                     "OWNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolActiveBoostsLoginDataPacket": {
                 "type": "object",
@@ -38896,8 +38954,7 @@
                     "REWARDS_GRANT",
                     "LEGACY"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolActiveBoostsLoyaltyStatusNotification": {
                 "type": "object",
@@ -38958,8 +39015,7 @@
                     "antiAddictionShutdown",
                     "antiAddictionWarning"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolBannersBannerFlag": {
                 "type": "object",
@@ -39262,8 +39318,7 @@
                     "rank5flex",
                     "draft5"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolCareerStatsChampionQueueStatsResponse": {
                 "type": "object",
@@ -39536,8 +39591,7 @@
                     "UNKNOWN",
                     "ALL"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolCatalogBundled": {
                 "type": "object",
@@ -40421,8 +40475,7 @@
                     "RENTED",
                     "OWNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolCatalogItemChoiceDetails": {
                 "type": "object",
@@ -40950,8 +41003,7 @@
                     "CHAMPION",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChallengesChallengeSeason": {
                 "type": "object",
@@ -41128,8 +41180,7 @@
                     "Disabled",
                     "Hidden"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChallengesEndOfGameStats": {
                 "type": "object",
@@ -41331,8 +41382,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChallengesGameflowSession": {
                 "type": "object",
@@ -41455,8 +41505,7 @@
                     "TOAST",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChallengesQueue": {
                 "type": "object",
@@ -41510,8 +41559,7 @@
                     "EOGD",
                     "CHALLENGES"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChallengesUICategoryProgress": {
                 "type": "object",
@@ -42162,8 +42210,7 @@
                         "format": "int64"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampSelectChampSelectPinDropNotification": {
                 "type": "object",
@@ -42696,8 +42743,7 @@
                     "BUSY",
                     "AVAILABLE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampSelectChampSelectTimer": {
                 "type": "object",
@@ -42812,8 +42858,7 @@
                     "BUSY",
                     "AVAILABLE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampSelectChampionQuestSkinInfo": {
                 "type": "object",
@@ -43433,8 +43478,7 @@
                         "format": "int64"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampSelectLegacyChampSelectPlayerSelection": {
                 "type": "object",
@@ -43656,8 +43700,7 @@
                     "BUSY",
                     "AVAILABLE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampSelectLegacyChampionSelectPreferences": {
                 "type": "object",
@@ -43816,8 +43859,7 @@
                     "PartyDodged",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampSelectLegacyGameflowPhase": {
                 "type": "string",
@@ -43838,8 +43880,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampSelectLegacyGameflowSession": {
                 "type": "object",
@@ -43952,8 +43993,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampSelectLegacyMucJwtDto": {
                 "type": "object",
@@ -43991,8 +44031,7 @@
                         "$ref": "#/components/schemas/LolChampSelectLegacyLobbyStatus"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampSelectLegacyQueue": {
                 "type": "object",
@@ -45663,8 +45702,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampionsLoyaltyStatus": {
                 "type": "string",
@@ -45677,8 +45715,7 @@
                     "REWARDS_GRANT",
                     "LEGACY"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampionsLoyaltyStatusNotification": {
                 "type": "object",
@@ -45779,8 +45816,7 @@
                     "kTieredSkin",
                     "kQuestSkin"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChampionsSummoner": {
                 "type": "object",
@@ -45813,8 +45849,7 @@
                     "mobile",
                     "offline"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatActiveConversationResource": {
                 "type": "object",
@@ -45862,8 +45897,7 @@
                     "rsoRefresh",
                     "rsoCreate"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatBlocked": {
                 "type": "object",
@@ -45993,8 +46027,7 @@
                         "type": "string"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatChatFriendUpdate": {
                 "type": "object",
@@ -46144,8 +46177,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatChatServiceDynamicClientConfig": {
                 "type": "object",
@@ -46158,8 +46190,7 @@
                         "$ref": "#/components/schemas/LolChatChatDomainConfig"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatChatSessionState": {
                 "type": "string",
@@ -46169,8 +46200,7 @@
                     "connecting",
                     "disconnected"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatChatSettings": {
                 "type": "object",
@@ -46378,8 +46408,7 @@
                     "Ready",
                     "NotReady"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatConfigStatus": {
                 "type": "object",
@@ -46401,8 +46430,7 @@
                     "player",
                     "public"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatContentCookies": {
                 "type": "object",
@@ -46688,8 +46716,7 @@
                         "type": "boolean"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatEndOfGamePlayer": {
                 "type": "object",
@@ -47137,8 +47164,7 @@
                     "out",
                     "in"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatFriendRequestList": {
                 "type": "object",
@@ -47331,8 +47357,7 @@
                     "pending_in",
                     "pending_out"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatGameDataChampionSummary": {
                 "type": "object",
@@ -47425,8 +47450,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatGameflowSession": {
                 "type": "object",
@@ -47555,8 +47579,7 @@
                     "II",
                     "I"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatLeagueQueueType": {
                 "type": "string",
@@ -47568,8 +47591,7 @@
                     "RANKED_SOLO_5x5",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatLobbyMember": {
                 "type": "object",
@@ -47601,8 +47623,7 @@
                         "$ref": "#/components/schemas/LolChatLobbyStatus"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatLobbyStatus": {
                 "type": "object",
@@ -47750,8 +47771,7 @@
                     "groupchat",
                     "chat"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatMucJwtDto": {
                 "type": "object",
@@ -47900,8 +47920,7 @@
                         "minimum": 0
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatMultiGamePresenceUpdate": {
                 "type": "object",
@@ -47939,8 +47958,7 @@
                     "SETTINGS_MUTE",
                     "PLAYER_MUTE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatMutedPlayerInfo": {
                 "type": "object",
@@ -48262,8 +48280,7 @@
                     "LobbyAllowed",
                     "NotAllowed"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatQueueGameTypeConfig": {
                 "type": "object",
@@ -48496,8 +48513,7 @@
                     "connected",
                     "initializing"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolChatSettingsResource": {
                 "type": "object",
@@ -49098,8 +49114,7 @@
                         }
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashClashState": {
                 "type": "string",
@@ -49108,8 +49123,7 @@
                     "Enabled",
                     "Disabled"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashClashVisibility": {
                 "type": "string",
@@ -49118,8 +49132,7 @@
                     "Visible",
                     "Hidden"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashClientFailedInvite": {
                 "type": "object",
@@ -49300,8 +49313,7 @@
                     "CLASH_DISABLED",
                     "CLASH_NOT_INITIALIZED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashGameflowAvailability": {
                 "type": "object",
@@ -49377,8 +49389,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashGameflowSession": {
                 "type": "object",
@@ -49401,8 +49412,7 @@
                     "AVERAGE",
                     "LOW"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashKickRequest": {
                 "type": "object",
@@ -49467,8 +49477,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashMatchmakingDodgeData": {
                 "type": "object",
@@ -49498,8 +49507,7 @@
                     "PartyDodged",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashMatchmakingDodgeWarning": {
                 "type": "string",
@@ -49509,8 +49517,7 @@
                     "Warning",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashMatchmakingReadyCheckResource": {
                 "type": "object",
@@ -49555,8 +49562,7 @@
                     "Accepted",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashMatchmakingReadyCheckState": {
                 "type": "string",
@@ -49569,8 +49575,7 @@
                     "InProgress",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashMatchmakingSearchResource": {
                 "type": "object",
@@ -49786,8 +49791,7 @@
                     "DECLINE_SUGGESTION",
                     "SUGGESTION"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashOfferTicketRequest": {
                 "type": "object",
@@ -50086,8 +50090,7 @@
                     "PENDING_ROSTER",
                     "NO_ROSTER"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashPlayerTournamentData": {
                 "type": "object",
@@ -50171,8 +50174,7 @@
                     "LOCKED_IN",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashProfileInfo": {
                 "type": "object",
@@ -50292,8 +50294,7 @@
                     "PlatformDisabled",
                     "Available"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashQueueGameCategory": {
                 "type": "string",
@@ -50305,8 +50306,7 @@
                     "Custom",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashQueueGameTypeConfig": {
                 "type": "object",
@@ -50877,8 +50877,7 @@
                     "PENDING",
                     "DECLINED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashRosterNotifyReason": {
                 "type": "string",
@@ -50931,8 +50930,7 @@
                     "ROSTER_OFFER_TICKET",
                     "ROSTER_SET_TICKET"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashRosterPeriodAggregatedStats": {
                 "type": "object",
@@ -51340,8 +51338,7 @@
                     "ACKNOWLEDGED",
                     "UNACKNOWLEDGED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashSuggestedInvite": {
                 "type": "object",
@@ -51736,8 +51733,7 @@
                     "UPDATE_TOURNAMENT",
                     "NEW_TOURNAMENT"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashTournamentPhase": {
                 "type": "object",
@@ -51823,8 +51819,7 @@
                     "IDLE",
                     "UPCOMING"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolClashTournamentStateInfo": {
                 "type": "object",
@@ -52279,8 +52274,7 @@
                     "summoner-icon",
                     "default"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolCollectionsCollectionsSummonerSpells": {
                 "type": "object",
@@ -52735,8 +52729,7 @@
                     "RENTED",
                     "OWNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolCollectionsLcdsDynamicClientConfig": {
                 "type": "object",
@@ -52788,8 +52781,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolCollectionsNumberFormattingBehavior": {
                 "type": "object",
@@ -52982,8 +52974,7 @@
                         "format": "int32"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolCollectionsSummonerProfileUpdate": {
                 "type": "object",
@@ -53140,8 +53131,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolContentTargetingGameflowSession": {
                 "type": "object",
@@ -53246,8 +53236,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolContentTargetingMission": {
                 "type": "object",
@@ -53423,8 +53412,7 @@
                     "Custom",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolContentTargetingRankedDivision": {
                 "type": "string",
@@ -53437,8 +53425,7 @@
                     "I",
                     "NA"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolContentTargetingRankedQueue": {
                 "type": "string",
@@ -53453,8 +53440,7 @@
                     "RANKED_SOLO_5x5",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolContentTargetingRankedQueueStats": {
                 "type": "object",
@@ -56410,8 +56396,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEndOfGameGameflowSession": {
                 "type": "object",
@@ -56501,8 +56486,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEndOfGameMucJwtDto": {
                 "type": "object",
@@ -57328,8 +57312,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEsportStreamNotificationsGameflowSession": {
                 "type": "object",
@@ -58186,8 +58169,7 @@
                     "TOAST",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopCelebrationUIData": {
                 "type": "object",
@@ -58779,8 +58761,7 @@
                     "RENTED",
                     "OWNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopExternalCatalogItemCost": {
                 "type": "object",
@@ -59087,8 +59068,7 @@
                     "PENDING_SELECTION",
                     "PENDING_FULFILLMENT"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopGrantorDescription": {
                 "type": "object",
@@ -59474,8 +59454,7 @@
                     "RENTED",
                     "OWNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopInventoryResponseDTO": {
                 "type": "object",
@@ -59789,8 +59768,7 @@
                     "RENTED",
                     "OWNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopItemPrice": {
                 "type": "object",
@@ -59938,8 +59916,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopLoyaltyRewards": {
                 "type": "object",
@@ -60089,8 +60066,7 @@
                     "REWARDS_GRANT",
                     "LEGACY"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopLoyaltyStatusNotification": {
                 "type": "object",
@@ -60271,8 +60247,7 @@
                     "Chromas",
                     "Featured"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopOfferPromotionType": {
                 "type": "string",
@@ -60282,8 +60257,7 @@
                     "kFeatured",
                     "kNone"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopOfferStates": {
                 "type": "string",
@@ -60295,8 +60269,7 @@
                     "kAvailable",
                     "kOwned"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopOfferUIData": {
                 "type": "object",
@@ -60378,8 +60351,7 @@
                     "Purchased",
                     "Unowned"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopPlayerNotification": {
                 "type": "object",
@@ -60589,8 +60561,7 @@
                     "IN_PROGRESS",
                     "NOT_STARTED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopPurchaseOfferOrderStatus": {
                 "type": "object",
@@ -60924,8 +60895,7 @@
                         "type": "string"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopResponseDTO-SvcRewardGrant": {
                 "type": "object",
@@ -61007,8 +60977,7 @@
             "LolEventShopResponseMetadataDTO": {
                 "type": "object",
                 "description": "",
-                "additionalProperties": true,
-                "required": []
+                "additionalProperties": true
             },
             "LolEventShopReward": {
                 "type": "object",
@@ -61095,8 +61064,7 @@
                     "FULFILLED",
                     "PENDING"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopRewardStrategy": {
                 "type": "string",
@@ -61106,8 +61074,7 @@
                     "RANDOM",
                     "ALL"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopRewardTrack": {
                 "type": "object",
@@ -61183,8 +61150,7 @@
                     "FREE",
                     "PREMIUM"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopRewardTrackItemOption": {
                 "type": "object",
@@ -61236,8 +61202,7 @@
                     "Unlocked",
                     "Locked"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopRewardTrackItemTag": {
                 "type": "string",
@@ -61249,8 +61214,7 @@
                     "Free",
                     "Rare"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopRewardTrackProgress": {
                 "type": "object",
@@ -61441,8 +61405,7 @@
             "LolEventShopRmsWalletPayload": {
                 "type": "object",
                 "description": "",
-                "additionalProperties": true,
-                "required": []
+                "additionalProperties": true
             },
             "LolEventShopRmsXboxSubscriptionChange": {
                 "type": "object",
@@ -61503,8 +61466,7 @@
                     "FAILED",
                     "SELECTED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopSelectionRequestDTO": {
                 "type": "object",
@@ -62126,8 +62088,7 @@
                     "UNLOCKED",
                     "UNASSIGNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolEventShopTransaction": {
                 "type": "object",
@@ -62653,8 +62614,7 @@
                     "QueueUnsupported",
                     "QueueDisabled"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolFeaturedModesFeaturedModesConfig": {
                 "type": "object",
@@ -62710,8 +62670,7 @@
                     "Initializing",
                     "Available"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolFeaturedModesGameflowPhase": {
                 "type": "string",
@@ -62732,8 +62691,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolFeaturedModesGameflowSession": {
                 "type": "object",
@@ -62776,8 +62734,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolFeaturedModesMaps": {
                 "type": "object",
@@ -62916,8 +62873,7 @@
                     "PlatformDisabled",
                     "Available"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolFeaturedModesQueueGameCategory": {
                 "type": "string",
@@ -62929,8 +62885,7 @@
                     "Custom",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameClientChatBuddy": {
                 "type": "object",
@@ -63175,8 +63130,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameQueuesPlatformConfigEnabledMap": {
                 "type": "object",
@@ -63356,8 +63310,7 @@
                     "PlatformDisabled",
                     "Available"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameQueuesQueueCustomGame": {
                 "type": "object",
@@ -63407,8 +63360,7 @@
                     "LobbyAllowed",
                     "NotAllowed"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameQueuesQueueCustomGameSubcategory": {
                 "type": "object",
@@ -63482,8 +63434,7 @@
                     "Custom",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameQueuesQueueGameTypeConfig": {
                 "type": "object",
@@ -63674,8 +63625,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameSettingsgamesettingsgameclient": {
                 "type": "object",
@@ -63794,8 +63744,7 @@
                     "Initializing",
                     "Available"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameflowGameflowGameClient": {
                 "type": "object",
@@ -63928,8 +63877,7 @@
                     "PartyDodged",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameflowGameflowGameMap": {
                 "type": "object",
@@ -64033,8 +63981,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameflowGameflowProcessInfo": {
                 "type": "object",
@@ -64100,8 +64047,7 @@
                     "WatchStarted",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameflowInstallPaths": {
                 "type": "object",
@@ -64217,8 +64163,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameflowPatcherProductState": {
                 "type": "object",
@@ -64259,8 +64204,7 @@
                     "CheckingForUpdates",
                     "Idle"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameflowPlayerStatus": {
                 "type": "object",
@@ -64428,8 +64372,7 @@
                     "PlatformDisabled",
                     "Available"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameflowQueueCustomGameSpectatorPolicy": {
                 "type": "string",
@@ -64440,8 +64383,7 @@
                     "LobbyAllowed",
                     "NotAllowed"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameflowQueueGameCategory": {
                 "type": "string",
@@ -64453,8 +64395,7 @@
                     "Custom",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGameflowQueueGameTypeConfig": {
                 "type": "object",
@@ -64764,8 +64705,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolGeoinfoWhereAmIRequest": {
                 "type": "object",
@@ -64835,8 +64775,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHighlightsHighlight": {
                 "type": "object",
@@ -64948,8 +64887,7 @@
                         "type": "string"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHoneyfruitAccountDetails": {
                 "type": "object",
@@ -64986,8 +64924,7 @@
             "LolHoneyfruitGAMHSMatchHistoryData": {
                 "type": "object",
                 "description": "",
-                "additionalProperties": true,
-                "required": []
+                "additionalProperties": true
             },
             "LolHoneyfruitGAMHSMatchHistoryList": {
                 "type": "object",
@@ -65028,8 +64965,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHoneyfruitGarenaRegionLeagueAccount": {
                 "type": "object",
@@ -65086,8 +65022,7 @@
                     "dismiss_temporarily",
                     "dismiss"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHoneyfruitHoneyfruitAuthRedirectMock": {
                 "type": "object",
@@ -65144,8 +65079,7 @@
                     "ACCESS_TOKEN_EXPIRED",
                     "ALREADY_LINKED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHoneyfruitHoneyfruitLinkingNotification": {
                 "type": "object",
@@ -65197,8 +65131,7 @@
                     "snoozed",
                     "hidden"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHoneyfruitHoneyfruitLinkingStatus": {
                 "type": "object",
@@ -65230,8 +65163,7 @@
                     "not_signed_in",
                     "no_error"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHoneyfruitHoneyfruitPublisher": {
                 "type": "string",
@@ -65243,8 +65175,7 @@
                     "riot",
                     "garena"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHoneyfruitHoneyfruitRegionLocale": {
                 "type": "object",
@@ -65349,8 +65280,7 @@
             "LolHoneyfruitMatchHistoryGame": {
                 "type": "object",
                 "description": "",
-                "additionalProperties": true,
-                "required": []
+                "additionalProperties": true
             },
             "LolHoneyfruitMatchHistoryGameList": {
                 "type": "object",
@@ -65540,8 +65470,7 @@
                     "healup",
                     "auth"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHoneyfruitV1SuccessResponseDetails": {
                 "type": "object",
@@ -65861,8 +65790,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHonorV2GameflowSession": {
                 "type": "object",
@@ -66024,8 +65952,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHonorV2MutualHonor": {
                 "type": "object",
@@ -66560,8 +66487,7 @@
                         }
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolHovercardPatchlineMetadata": {
                 "type": "object",
@@ -67217,8 +67143,7 @@
                     "RENTED",
                     "OWNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolInventoryLoginSession": {
                 "type": "object",
@@ -67262,8 +67187,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolInventoryLoyaltyRewards": {
                 "type": "object",
@@ -67413,8 +67337,7 @@
                     "REWARDS_GRANT",
                     "LEGACY"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolInventoryLoyaltyStatusNotification": {
                 "type": "object",
@@ -67569,8 +67492,7 @@
             "LolInventoryRmsWalletPayload": {
                 "type": "object",
                 "description": "",
-                "additionalProperties": true,
-                "required": []
+                "additionalProperties": true
             },
             "LolInventoryRmsXboxSubscriptionChange": {
                 "type": "object",
@@ -67960,8 +67882,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolItemSetsNamecheckAuthorization": {
                 "type": "object",
@@ -68141,8 +68062,7 @@
                     "playTime",
                     "shutdown"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolKrShutdownLawQueueShutdownStatus": {
                 "type": "object",
@@ -68191,8 +68111,7 @@
                     "WARNING",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolL10nRegionLocale": {
                 "type": "object",
@@ -68273,8 +68192,7 @@
                     "INITIALIZED",
                     "UNINITIALIZED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLeagueSessionLeagueSessionTokenEnvelope": {
                 "type": "object",
@@ -68411,8 +68329,7 @@
                     "TaintedWarning",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLeaverBusterLeaverBusterPenaltyResponse": {
                 "type": "object",
@@ -68448,8 +68365,7 @@
                     "QUEUE_DELAY_TIMER",
                     "NO_PENALTY"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLeaverBusterLoginDataPacket": {
                 "type": "object",
@@ -68760,8 +68676,7 @@
                     "TermsOfUse",
                     "PrivacyNotice"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLicenseAgreementLicenseServeLocation": {
                 "type": "string",
@@ -68771,8 +68686,7 @@
                     "Local",
                     "Preparing"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLicenseAgreementPluginRegionLocaleChangedEvent": {
                 "type": "object",
@@ -68949,8 +68863,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLoadoutsGameflowSession": {
                 "type": "object",
@@ -69229,8 +69142,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLoadoutsQueue": {
                 "type": "object",
@@ -69655,8 +69567,7 @@
             "LolLobbyCollectionsRental": {
                 "type": "object",
                 "description": "",
-                "additionalProperties": true,
-                "required": []
+                "additionalProperties": true
             },
             "LolLobbyCustomEligibilityDto": {
                 "type": "object",
@@ -69895,8 +69806,7 @@
                     "QueueUnsupported",
                     "QueueDisabled"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyFriendAvailabilityAnalytics": {
                 "type": "object",
@@ -70127,8 +70037,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyGameflowSampleDto": {
                 "type": "object",
@@ -70171,8 +70080,7 @@
                     "GameVersionMissing",
                     "Unregistered"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyGameflowSession": {
                 "type": "object",
@@ -70288,8 +70196,7 @@
                     "lobby",
                     "invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyJoinPartyAnalytics": {
                 "type": "object",
@@ -70583,8 +70490,7 @@
                     "EASY",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyLobbyBotParams": {
                 "type": "object",
@@ -70891,8 +70797,7 @@
                         "type": "boolean"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyLobbyDto": {
                 "type": "object",
@@ -71188,8 +71093,7 @@
                     "Pending",
                     "Requested"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyLobbyLastQueuedLobby": {
                 "type": "object",
@@ -71341,8 +71245,7 @@
                     "AbandonedLowPriorityQueue",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyLobbyMember": {
                 "type": "object",
@@ -71590,8 +71493,7 @@
                     "Icon",
                     "Ip"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyLobbyPartyRewards": {
                 "type": "object",
@@ -71653,8 +71555,7 @@
                     "Kicked",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyLobbyStatus": {
                 "type": "object",
@@ -71787,8 +71688,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyMatchmakingDodgeState": {
                 "type": "string",
@@ -71798,8 +71698,7 @@
                     "PartyDodged",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyMucJwtDto": {
                 "type": "object",
@@ -72082,8 +71981,7 @@
                     "kPlayAgain",
                     "kLeft"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyPartyInviteAnalytics": {
                 "type": "object",
@@ -72248,8 +72146,7 @@
                     "MEMBER",
                     "LEADER"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyPartyNotificationEnvelopeDto": {
                 "type": "object",
@@ -72262,8 +72159,7 @@
                         "$ref": "#/components/schemas/LolLobbyQueueRestrictionDto"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyPartyPresenceData": {
                 "type": "object",
@@ -72549,8 +72445,7 @@
                     "Direct",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyPremadeMemberDto": {
                 "type": "object",
@@ -72826,8 +72721,7 @@
                     "PlatformDisabled",
                     "Available"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyQueueCustomGame": {
                 "type": "object",
@@ -72851,8 +72745,7 @@
                     "LobbyAllowed",
                     "NotAllowed"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyQueueGameCategory": {
                 "type": "string",
@@ -72864,8 +72757,7 @@
                     "Custom",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyQueueGameTypeConfig": {
                 "type": "object",
@@ -73241,8 +73133,7 @@
                         }
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyRegistrationStatus": {
                 "type": "object",
@@ -73788,8 +73679,7 @@
                         "format": "int64"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderChampSelectPlayerSelection": {
                 "type": "object",
@@ -74044,8 +73934,7 @@
                     "BUSY",
                     "AVAILABLE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderChampSelectTimer": {
                 "type": "object",
@@ -74113,8 +74002,7 @@
                     "BUSY",
                     "AVAILABLE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderChampionBenchChampionV1": {
                 "type": "object",
@@ -74713,8 +74601,7 @@
                     "Kicked",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderLockedEventsStateV1": {
                 "type": "object",
@@ -74772,8 +74659,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderMatchmakingDodgeData": {
                 "type": "object",
@@ -74803,8 +74689,7 @@
                     "PartyDodged",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderMatchmakingDodgeWarning": {
                 "type": "string",
@@ -74814,8 +74699,7 @@
                     "Warning",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderMatchmakingLowPriorityData": {
                 "type": "object",
@@ -74892,8 +74776,7 @@
                     "Accepted",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderMatchmakingReadyCheckState": {
                 "type": "string",
@@ -74906,8 +74789,7 @@
                     "InProgress",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderMatchmakingSearch": {
                 "type": "object",
@@ -75023,8 +74905,7 @@
                     "AbandonedLowPriorityQueue",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderMucJwtDto": {
                 "type": "object",
@@ -75225,8 +75106,7 @@
                     "PlatformDisabled",
                     "Available"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderQueueGameCategory": {
                 "type": "string",
@@ -75238,8 +75118,7 @@
                     "Custom",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLobbyTeamBuilderQueueGameTypeConfig": {
                 "type": "object",
@@ -75755,8 +75634,7 @@
                     "ENABLED",
                     "CREATING"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLoginAuthorization": {
                 "type": "object",
@@ -75789,8 +75667,7 @@
                     "Ready",
                     "NotReady"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLoginConfigStatus": {
                 "type": "object",
@@ -75812,8 +75689,7 @@
                     "player",
                     "public"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLoginCrashReportingEnvironment": {
                 "type": "object",
@@ -75916,8 +75792,7 @@
                     "INITIALIZED",
                     "UNINITIALIZED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLoginLeagueSessionTokenEnvelope": {
                 "type": "object",
@@ -75944,8 +75819,7 @@
                     "Legacy",
                     "Preparing"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLoginLoginConnectionState": {
                 "type": "object",
@@ -76083,8 +75957,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLoginLoginSessionWallet": {
                 "type": "object",
@@ -76219,8 +76092,7 @@
                     "TOAST",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootCollectionsChampionMinimal": {
                 "type": "object",
@@ -76822,8 +76694,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootGameflowSession": {
                 "type": "object",
@@ -76847,8 +76718,7 @@
                     "PENDING_SELECTION",
                     "PENDING_FULFILLMENT"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootGrantorDescription": {
                 "type": "object",
@@ -76914,8 +76784,7 @@
                     "RENTED",
                     "OWNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootItemKey": {
                 "type": "object",
@@ -76944,8 +76813,7 @@
                     "FREE",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootLoginDataPacket": {
                 "type": "object",
@@ -76997,8 +76865,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootLoginSimpleMessage": {
                 "type": "object",
@@ -77385,8 +77252,7 @@
                     "IN_PROGRESS",
                     "NOT_STARTED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootLootMilestoneRepeat": {
                 "type": "object",
@@ -77676,8 +77542,7 @@
                     "Epic",
                     "Default"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootLootRecipeGdsResource": {
                 "type": "object",
@@ -77784,8 +77649,7 @@
                     "Currency",
                     "Chest"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootMassDisenchantClientConfig": {
                 "type": "object",
@@ -78581,8 +78445,7 @@
                     "REDEEMABLE",
                     "UNKNOWN"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootRegionLocale": {
                 "type": "object",
@@ -78671,8 +78534,7 @@
                         "type": "string"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootResponseDTO-SvcRewardGrant": {
                 "type": "object",
@@ -78754,8 +78616,7 @@
             "LolLootResponseMetadataDTO": {
                 "type": "object",
                 "description": "",
-                "additionalProperties": true,
-                "required": []
+                "additionalProperties": true
             },
             "LolLootReward": {
                 "type": "object",
@@ -78826,8 +78687,7 @@
                     "FULFILLED",
                     "PENDING"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootRewardStrategy": {
                 "type": "string",
@@ -78837,8 +78697,7 @@
                     "RANDOM",
                     "ALL"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootRewardsConfig": {
                 "type": "object",
@@ -78860,8 +78719,7 @@
                     "FAILED",
                     "SELECTED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLootSelectionRequestDTO": {
                 "type": "object",
@@ -79336,8 +79194,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLoyaltyLoyaltyRewards": {
                 "type": "object",
@@ -79495,8 +79352,7 @@
                     "REWARDS_GRANT",
                     "LEGACY"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolLoyaltyLoyaltyStatusNotification": {
                 "type": "object",
@@ -79934,8 +79790,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMatchHistoryMHSummoner": {
                 "type": "object",
@@ -81485,8 +81340,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMatchmakingGameflowQueue": {
                 "type": "object",
@@ -81606,8 +81460,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMatchmakingMatchmakingDodgeData": {
                 "type": "object",
@@ -81637,8 +81490,7 @@
                     "PartyDodged",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMatchmakingMatchmakingDodgeWarning": {
                 "type": "string",
@@ -81648,8 +81500,7 @@
                     "Warning",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMatchmakingMatchmakingLowPriorityData": {
                 "type": "object",
@@ -81734,8 +81585,7 @@
                     "Accepted",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMatchmakingMatchmakingReadyCheckState": {
                 "type": "string",
@@ -81748,8 +81598,7 @@
                     "InProgress",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMatchmakingMatchmakingSearchErrorResource": {
                 "type": "object",
@@ -81852,8 +81701,7 @@
                     "AbandonedLowPriorityQueue",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMatchmakingPlayerStatus": {
                 "type": "object",
@@ -81866,8 +81714,7 @@
                         "$ref": "#/components/schemas/LolMatchmakingLobbyStatus"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMatchmakingQueue": {
                 "type": "object",
@@ -81896,8 +81743,7 @@
                     "LobbyAllowed",
                     "NotAllowed"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMissionsCollectionsChampion": {
                 "type": "object",
@@ -82057,8 +81903,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMissionsGameflowSession": {
                 "type": "object",
@@ -82081,8 +81926,7 @@
                     "PENDING_SELECTION",
                     "PENDING_FULFILLMENT"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMissionsInventoryItemWithPayload": {
                 "type": "object",
@@ -82138,8 +81982,7 @@
                     "REWARDS_GRANT",
                     "LEGACY"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMissionsLoyaltyStatusNotification": {
                 "type": "object",
@@ -82485,8 +82328,7 @@
                     "FULFILLED",
                     "PENDING"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMissionsRewardStrategy": {
                 "type": "string",
@@ -82496,8 +82338,7 @@
                     "RANDOM",
                     "ALL"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolMissionsRewardsProductConfig": {
                 "type": "object",
@@ -83487,8 +83328,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolNpeTutorialPathGameflowSession": {
                 "type": "object",
@@ -84144,8 +83984,7 @@
                     "UNLOCKED",
                     "LOCKED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolNpeTutorialPathTutorialType": {
                 "type": "string",
@@ -84154,8 +83993,7 @@
                     "REWARD",
                     "CARD"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPatchChunkingPatcherEnvironment": {
                 "type": "object",
@@ -84244,8 +84082,7 @@
                     "CheckingForUpdates",
                     "Idle"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPatchComponentStateProgress": {
                 "type": "object",
@@ -84281,8 +84118,7 @@
                     "Network",
                     "Scanning"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPatchEntitlementsTokenResource": {
                 "type": "object",
@@ -84362,8 +84198,7 @@
                     "ConnectionError",
                     "UnspecifiedError"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPatchPatchSieveCompatVersion": {
                 "type": "object",
@@ -84675,8 +84510,7 @@
                     "On",
                     "Off"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPatchStatus": {
                 "type": "object",
@@ -84847,8 +84681,7 @@
                         "format": "int64"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPerksChampSelectPlayerSelection": {
                 "type": "object",
@@ -85036,8 +84869,7 @@
                     "BUSY",
                     "AVAILABLE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPerksChampionPreferredStyle": {
                 "type": "object",
@@ -85197,8 +85029,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPerksGameflowSession": {
                 "type": "object",
@@ -85308,8 +85139,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPerksMucJwtDto": {
                 "type": "object",
@@ -86509,8 +86339,7 @@
                     "PartyDodged",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPftGameflowPhase": {
                 "type": "string",
@@ -86531,8 +86360,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPftGameflowSession": {
                 "type": "object",
@@ -86577,8 +86405,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPftPFTEndOfGamePlayer": {
                 "type": "object",
@@ -87247,8 +87074,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPlayerBehaviorNotificationSource": {
                 "type": "string",
@@ -87259,8 +87085,7 @@
                     "Login",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPlayerBehaviorPlayerBehaviorConfig": {
                 "type": "object",
@@ -87874,8 +87699,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPlayerLevelUpPlayerLevelUpEvent": {
                 "type": "object",
@@ -88224,8 +88048,7 @@
                     "PRE_LAUNCH",
                     "DISABLED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPlayerPreferencesLoginSession": {
                 "type": "object",
@@ -88265,8 +88088,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPlayerPreferencesPlayerPreferences": {
                 "type": "object",
@@ -88389,8 +88211,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPlayerReportSenderGameflowSession": {
                 "type": "object",
@@ -88457,8 +88278,7 @@
                     "Game-Agnostic",
                     "Legacy"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPlayerReportSenderSummoner": {
                 "type": "object",
@@ -88516,8 +88336,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPreEndOfGameSequenceEvent": {
                 "type": "object",
@@ -88615,8 +88434,7 @@
                     "Ready",
                     "NotReady"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPremadeVoiceConfigStatus": {
                 "type": "object",
@@ -88638,8 +88456,7 @@
                     "player",
                     "public"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPremadeVoiceDeviceResource": {
                 "type": "object",
@@ -88761,8 +88578,7 @@
                         "type": "string"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPremadeVoiceGameInputSettings": {
                 "type": "object",
@@ -88809,8 +88625,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPremadeVoiceGameflowSession": {
                 "type": "object",
@@ -88836,8 +88651,7 @@
                     "pushToTalk",
                     "voiceActivity"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPremadeVoiceKeyCombo": {
                 "type": "object",
@@ -89002,8 +88816,7 @@
                     "MEMBER",
                     "LEADER"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPremadeVoicePlayerDto": {
                 "type": "object",
@@ -89159,8 +88972,7 @@
                     "onHold",
                     "active"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPremadeVoiceSettingsResource": {
                 "type": "object",
@@ -90480,8 +90292,7 @@
                     "RENTED",
                     "OWNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPurchaseWidgetItemChoiceDetails": {
                 "type": "object",
@@ -90798,8 +90609,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPurchaseWidgetOrderNotificationResource": {
                 "type": "object",
@@ -90945,8 +90755,7 @@
                     "IN_PROGRESS",
                     "NOT_STARTED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolPurchaseWidgetPurchaseOfferOrderStatus": {
                 "type": "object",
@@ -91645,8 +91454,7 @@
                     "SECOND_WARNING",
                     "FIRST_WARNING"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRankedEosNotificationsConfig": {
                 "type": "object",
@@ -91840,8 +91648,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRankedGameflowSession": {
                 "type": "object",
@@ -92060,8 +91867,7 @@
                     "II",
                     "I"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRankedLeagueDivisionInfo": {
                 "type": "object",
@@ -92443,8 +92249,7 @@
                     "RANKED_SOLO_5x5",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRankedLeagueStanding": {
                 "type": "object",
@@ -92629,8 +92434,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRankedMiniseries": {
                 "type": "string",
@@ -92640,8 +92444,7 @@
                     "L",
                     "W"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRankedNotificationDisplayType": {
                 "type": "string",
@@ -92652,8 +92455,7 @@
                     "TOAST",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRankedParticipantTiers": {
                 "type": "object",
@@ -93208,8 +93010,7 @@
                     "GRAY",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRankedRewardNotification": {
                 "type": "object",
@@ -93398,8 +93199,7 @@
                     "ALERT",
                     "WARNING"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRankedSignedRankedStatsDTO": {
                 "type": "object",
@@ -93840,8 +93640,7 @@
                         "minimum": 0
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRegaliaChatPresence": {
                 "type": "object",
@@ -94027,8 +93826,7 @@
                     "II",
                     "I"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRegaliaLeagueQueueType": {
                 "type": "string",
@@ -94044,8 +93842,7 @@
                     "RANKED_SOLO_5x5",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRegaliaLoadout": {
                 "type": "object",
@@ -94185,8 +93982,7 @@
                     "lastSeasonHighestRank",
                     "blank"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRegaliaRegaliaCrestType": {
                 "type": "string",
@@ -94196,8 +93992,7 @@
                     "prestige",
                     "none"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRegaliaRegaliaFrontendConfig": {
                 "type": "object",
@@ -94533,8 +94328,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolReplaysGameflowSession": {
                 "type": "object",
@@ -94562,8 +94356,7 @@
                     "WatchStarted",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolReplaysInstallPaths": {
                 "type": "object",
@@ -94598,8 +94391,7 @@
                     "found",
                     "checking"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolReplaysReplayContextData": {
                 "type": "object",
@@ -94808,8 +94600,7 @@
                     "TOAST",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRewardsGrantStatus": {
                 "type": "string",
@@ -94820,8 +94611,7 @@
                     "PENDING_SELECTION",
                     "PENDING_FULFILLMENT"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRewardsGrantorDescription": {
                 "type": "object",
@@ -94922,8 +94712,7 @@
                         "type": "string"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRewardsResponseDTO-SvcRewardGrant": {
                 "type": "object",
@@ -95005,8 +94794,7 @@
             "LolRewardsResponseMetadataDTO": {
                 "type": "object",
                 "description": "",
-                "additionalProperties": true,
-                "required": []
+                "additionalProperties": true
             },
             "LolRewardsReward": {
                 "type": "object",
@@ -95077,8 +94865,7 @@
                     "FULFILLED",
                     "PENDING"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRewardsRewardStrategy": {
                 "type": "string",
@@ -95088,8 +94875,7 @@
                     "RANDOM",
                     "ALL"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRewardsRewardsConfig": {
                 "type": "object",
@@ -95111,8 +94897,7 @@
                     "FAILED",
                     "SELECTED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRewardsSelectionRequestDTO": {
                 "type": "object",
@@ -95385,8 +95170,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRiotMessagingServiceGameflowSession": {
                 "type": "object",
@@ -95543,8 +95327,7 @@
                     "Ready",
                     "NotReady"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRsoAuthConfigStatus": {
                 "type": "object",
@@ -95566,8 +95349,7 @@
                     "player",
                     "public"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRsoAuthDeviceId": {
                 "type": "object",
@@ -95685,8 +95467,7 @@
                     "trusted_device",
                     "always_trusted"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRsoAuthRSOConfigReadyState": {
                 "type": "object",
@@ -95709,8 +95490,7 @@
                         "type": "string"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolRsoAuthRSOPlayerCredentials": {
                 "type": "object",
@@ -96311,8 +96091,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSettingsPublisher": {
                 "type": "string",
@@ -96324,8 +96103,7 @@
                     "garena",
                     "riot"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSettingsRegionLocale": {
                 "type": "object",
@@ -96452,8 +96230,7 @@
                     "PlatformMaintenance",
                     "Invalid"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSimpleDialogMessagesGameflowPhase": {
                 "type": "string",
@@ -96474,8 +96251,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSimpleDialogMessagesGameflowSession": {
                 "type": "object",
@@ -96645,8 +96421,7 @@
                     "II",
                     "I"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSocialLeaderboardLeagueQueueType": {
                 "type": "string",
@@ -96661,8 +96436,7 @@
                     "RANKED_SOLO_5x5",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSocialLeaderboardLeagueTierNumValue": {
                 "type": "string",
@@ -96680,8 +96454,7 @@
                     "IRON",
                     "NONE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSocialLeaderboardRankedQueueStats": {
                 "type": "object",
@@ -98865,8 +98638,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolStoreNotification": {
                 "type": "object",
@@ -99386,8 +99158,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSuggestedPlayersHonorInteraction": {
                 "type": "object",
@@ -99571,8 +99342,7 @@
                         "$ref": "#/components/schemas/LolSuggestedPlayersSuggestedPlayersLobbyStatus"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSuggestedPlayersSuggestedPlayersQueue": {
                 "type": "object",
@@ -99605,8 +99375,7 @@
                     "OnlineFriend",
                     "PreviousPremade"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSuggestedPlayersSuggestedPlayersReportedPlayer": {
                 "type": "object",
@@ -99779,8 +99548,7 @@
                     "name_change_forbidden",
                     "no_error"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSummonerAliasDTO": {
                 "type": "object",
@@ -100032,8 +99800,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSummonerNamesetsResponse": {
                 "type": "object",
@@ -100059,8 +99826,7 @@
                     "DARKMODE",
                     "SUMMONER"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSummonerPlayerNameState": {
                 "type": "object",
@@ -100108,8 +99874,7 @@
                     "ENABLED",
                     "UNKNOWN"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSummonerProfilePrivacySetting": {
                 "type": "string",
@@ -100118,8 +99883,7 @@
                     "PUBLIC",
                     "PRIVATE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSummonerRerollDataBagForClientV1": {
                 "type": "object",
@@ -100274,8 +100038,7 @@
                         "$ref": "#/components/schemas/LolSummonerProfilePrivacySetting"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolSummonerSummonerCreateRequest": {
                 "type": "object",
@@ -100638,8 +100401,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolTftGameflowSession": {
                 "type": "object",
@@ -101460,8 +101222,7 @@
                     "RENTED",
                     "OWNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolTftPassLoginSession": {
                 "type": "object",
@@ -101505,8 +101266,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolTftPassLoyaltyRewards": {
                 "type": "object",
@@ -101656,8 +101416,7 @@
                     "REWARDS_GRANT",
                     "LEGACY"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolTftPassLoyaltyStatusNotification": {
                 "type": "object",
@@ -101983,8 +101742,7 @@
             "LolTftPassRmsWalletPayload": {
                 "type": "object",
                 "description": "",
-                "additionalProperties": true,
-                "required": []
+                "additionalProperties": true
             },
             "LolTftPassRmsXboxSubscriptionChange": {
                 "type": "object",
@@ -102671,8 +102429,7 @@
                     "Custom",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolTftSettingsResource": {
                 "type": "object",
@@ -102746,8 +102503,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolTftTeamPlannerGameflowSession": {
                 "type": "object",
@@ -103351,8 +103107,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolTftTrovesLootOddsResponse": {
                 "type": "object",
@@ -103411,8 +103166,7 @@
                     "Epic",
                     "Default"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolTftTrovesOrderNotificationResource": {
                 "type": "object",
@@ -104387,8 +104141,7 @@
                     "Lobby",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolUserExperienceGameflowSession": {
                 "type": "object",
@@ -104886,8 +104639,7 @@
                     "RENTED",
                     "OWNED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolYourshopLoginSession": {
                 "type": "object",
@@ -104931,8 +104683,7 @@
                     "SUCCEEDED",
                     "IN_PROGRESS"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolYourshopLoyaltyRewards": {
                 "type": "object",
@@ -105082,8 +104833,7 @@
                     "REWARDS_GRANT",
                     "LEGACY"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolYourshopLoyaltyStatusNotification": {
                 "type": "object",
@@ -105349,8 +105099,7 @@
                     "IN_PROGRESS",
                     "NOT_STARTED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "LolYourshopPurchaseOfferOrderStatus": {
                 "type": "object",
@@ -105500,8 +105249,7 @@
             "LolYourshopRmsWalletPayload": {
                 "type": "object",
                 "description": "",
-                "additionalProperties": true,
-                "required": []
+                "additionalProperties": true
             },
             "LolYourshopRmsXboxSubscriptionChange": {
                 "type": "object",
@@ -106640,8 +106388,7 @@
                     "int",
                     "unknown"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "MetricMetadata": {
                 "type": "object",
@@ -106822,8 +106569,7 @@
                     "medium",
                     "low"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "MetricType": {
                 "type": "string",
@@ -106835,8 +106581,7 @@
                     "percentage",
                     "unknown"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "MissionAlertDTO": {
                 "type": "object",
@@ -107340,8 +107085,7 @@
                     "CheckingForUpdates",
                     "Idle"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "PatcherComponentStateProgress": {
                 "type": "object",
@@ -107377,8 +107121,7 @@
                     "Network",
                     "Scanning"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "PatcherNotification": {
                 "type": "object",
@@ -107417,8 +107160,7 @@
                     "ConnectionError",
                     "UnspecifiedError"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "PatcherP2PStatus": {
                 "type": "object",
@@ -107854,8 +107596,7 @@
                     "PENDING",
                     "SUGGESTED"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "PendingRosterMemberDTO": {
                 "type": "object",
@@ -107924,8 +107665,7 @@
                     "FORCED_NOT_READY",
                     "NOT_READY"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "PhaseInMember": {
                 "type": "object",
@@ -107997,8 +107737,7 @@
                     "IN_PROGRESS",
                     "NOT_PICKING"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "PlayerBehaviorLcdsForcedClientShutdown": {
                 "type": "object",
@@ -108156,8 +107895,7 @@
                     "FRIEND",
                     "FREEAGENT"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "PlayerInfoDTO": {
                 "type": "object",
@@ -108646,8 +108384,7 @@
                         "minimum": 0
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "PlayerNotificationsPlayerNotificationResource": {
                 "type": "object",
@@ -108896,8 +108633,7 @@
                     "PluginsInitialized",
                     "NotReady"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "PluginMetadataResource": {
                 "type": "object",
@@ -109096,8 +108832,7 @@
                     "Update",
                     "Create"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "PluginServiceProxyResponse": {
                 "type": "object",
@@ -109141,8 +108876,7 @@
                     "sequential",
                     "dedicated"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "Position": {
                 "type": "string",
@@ -109156,8 +108890,7 @@
                     "MIDDLE",
                     "TOP"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ProcessControlProcess": {
                 "type": "object",
@@ -109449,8 +109182,7 @@
                     "Epytext",
                     "Full"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "RemotingPrivilege": {
                 "type": "string",
@@ -109461,8 +109193,7 @@
                     "User",
                     "None"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "RemotingSerializedFormat": {
                 "type": "string",
@@ -109472,8 +109203,7 @@
                     "YAML",
                     "JSON"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "ReplayMetadataV2": {
                 "type": "object",
@@ -109504,8 +109234,7 @@
                     "NOT_FOUND",
                     "OK"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "RewardDetails": {
                 "type": "object",
@@ -109670,8 +109399,7 @@
                     "Disconnected",
                     "Disconnecting"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "RiotMessagingServiceTokenType": {
                 "type": "string",
@@ -109681,8 +109409,7 @@
                     "Access",
                     "Unavailable"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "RmsMessage": {
                 "type": "object",
@@ -109730,8 +109457,7 @@
                     "MEMBER",
                     "CAPTAIN"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "RosterAggregatedStatsDTO": {
                 "type": "object",
@@ -110432,8 +110158,7 @@
                         "type": "boolean"
                     }
                 },
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "SanitizerSanitizeResponse": {
                 "type": "object",
@@ -111011,8 +110736,7 @@
                     "ACCEPTED",
                     "ACTIVE"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "TicketType": {
                 "type": "string",
@@ -111021,8 +110745,7 @@
                     "PREMIUM",
                     "BASIC"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "TierConfig": {
                 "type": "object",
@@ -111453,8 +111176,7 @@
                     "CANCELLED",
                     "DEFAULT"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "TracingCriticalFlowEventV1": {
                 "type": "object",
@@ -111529,8 +111251,7 @@
                     "kMainThread",
                     "kNone"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "TracingModuleTypeV1": {
                 "type": "string",
@@ -111543,8 +111264,7 @@
                     "kRemoteAppModule",
                     "kUnknown"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "TracingModuleV1": {
                 "type": "object",
@@ -111623,8 +111343,7 @@
                     "minor",
                     "trivial"
                 ],
-                "additionalProperties": false,
-                "required": []
+                "additionalProperties": false
             },
             "TutorialMetadata": {
                 "type": "object",
