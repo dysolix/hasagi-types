@@ -1,6 +1,6 @@
 {
   "name": "@hasagi/types",
-  "version": "13.19.1-v3",
+  "version": "13.20.1",
   "description": "This package contains the auto-generated LCU types.",
   "scripts": {
     "update": "node scripts/update-types.mjs"
