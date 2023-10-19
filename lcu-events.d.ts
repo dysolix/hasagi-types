@@ -151,6 +151,7 @@ export interface LCUWebSocketEvents {
 	"OnJsonApiEvent_lol-hovercard_v1_friend-info-by-summoner": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-inventory_v1_initial-configuration-complete": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-inventory_v1_inventory": LCUTypes.PluginResourceEvent,
+	"OnJsonApiEvent_lol-inventory_v1_notifications": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-inventory_v1_signedInventory": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-inventory_v1_wallet": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-inventory_v2_inventory": LCUTypes.PluginResourceEvent,
