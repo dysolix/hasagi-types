@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "LCU SCHEMA",
-        "description": "Auto-generated using LCU's /help endpoint. Some endpoints are not included because their /help response is missing necessary fields.",
+        "description": "\nAuto-generated using LCU's /help endpoint. Some endpoints are not included because their /help response is missing necessary fields.\nMissing endpoints:\n\n 1. AsyncDelete\n 2. AsyncResult\n 3. AsyncStatus\n 4. Cancel\n 5. Exit\n 6. LoggingGetEntries\n 7. LoggingMetrics\n 8. LoggingMetricsMetadata\n 9. LoggingStart\n 10. LoggingStop\n 11. Subscribe\n 12. Unsubscribe\n 13. WebSocketFormat\n",
         "version": "13.20.1"
     },
     "paths": {
@@ -854,28 +854,27 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "in": "query",
+                        "name": "value",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "doAsync",
+                        "schema": {
+                            "type": "boolean"
+                        },
+                        "required": false
                     }
                 ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "additionalProperties": true
-                            }
-                        }
-                    }
-                },
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": true
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3958,28 +3957,25 @@
                     },
                     {
                         "in": "query",
-                        "required": true,
                         "name": "when",
                         "schema": {
                             "type": "integer",
                             "format": "uint64",
                             "minimum": 0
-                        }
+                        },
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "suffix",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -4153,65 +4149,55 @@
                 "parameters": [
                     {
                         "in": "query",
+                        "name": "type",
                         "schema": {
                             "$ref": "#/components/schemas/ClientConfigConfigType"
                         },
-                        "name": "type"
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "app",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "version",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "patchline",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "region",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "namespace",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": {
-                                        "type": "object",
-                                        "additionalProperties": true
-                                    }
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -4235,54 +4221,47 @@
                     },
                     {
                         "in": "query",
+                        "name": "type",
                         "schema": {
                             "$ref": "#/components/schemas/ClientConfigConfigType"
                         },
-                        "name": "type"
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "app",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "version",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "patchline",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "region",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": true
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -5467,31 +5446,24 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "required": true,
                         "name": "inventoryType",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": true,
                         "name": "itemId",
                         "schema": {
                             "type": "integer",
                             "format": "int64"
-                        }
+                        },
+                        "required": true
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolCatalogCatalogPluginItemWithDetails"
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -5507,15 +5479,14 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "required": true,
                         "name": "inventoryType",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": true,
                         "name": "itemIds",
                         "schema": {
                             "type": "array",
@@ -5523,21 +5494,12 @@
                                 "type": "integer",
                                 "format": "int64"
                             }
-                        }
+                        },
+                        "required": true
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/LolCatalogItemChoiceDetails"
-                                    }
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -7916,27 +7878,27 @@
                 "tags": [
                     "Plugin lol-chat"
                 ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "additionalProperties": true
-                            }
-                        }
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "data",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "doAsync",
+                        "schema": {
+                            "type": "boolean"
+                        },
+                        "required": false
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": true
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -9164,32 +9126,25 @@
                     },
                     {
                         "in": "query",
-                        "required": true,
                         "name": "limit",
                         "schema": {
                             "type": "integer",
                             "format": "uint64",
                             "minimum": 0
-                        }
+                        },
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "sortRule",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolCollectionsCollectionsTopChampionMasteries"
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -12461,36 +12416,29 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "required": true,
                         "name": "inventoryTypes",
                         "schema": {
                             "type": "array",
                             "items": {
                                 "type": "string"
                             }
-                        }
+                        },
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "queryParams",
                         "schema": {
                             "type": "object",
                             "additionalProperties": {
                                 "type": "string"
                             }
-                        }
+                        },
+                        "required": false
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -15851,34 +15799,27 @@
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "begIndex",
                         "schema": {
                             "type": "integer",
                             "format": "uint32",
                             "minimum": 0
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "endIndex",
                         "schema": {
                             "type": "integer",
                             "format": "uint32",
                             "minimum": 0
-                        }
+                        },
+                        "required": false
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolMatchHistoryMatchHistoryList"
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -15894,34 +15835,27 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "required": false,
                         "name": "begIndex",
                         "schema": {
                             "type": "integer",
                             "format": "uint32",
                             "minimum": 0
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "endIndex",
                         "schema": {
                             "type": "integer",
                             "format": "uint32",
                             "minimum": 0
-                        }
+                        },
+                        "required": false
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolMatchHistoryMatchHistoryList"
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -15945,42 +15879,35 @@
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "begin",
                         "schema": {
                             "type": "integer",
                             "format": "uint32",
                             "minimum": 0
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "count",
                         "schema": {
                             "type": "integer",
                             "format": "uint32",
                             "minimum": 0
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "tag",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolMatchHistoryGAMHSMatchHistoryList"
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -16053,34 +15980,27 @@
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "begIndex",
                         "schema": {
                             "type": "integer",
                             "format": "uint32",
                             "minimum": 0
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "endIndex",
                         "schema": {
                             "type": "integer",
                             "format": "uint32",
                             "minimum": 0
-                        }
+                        },
+                        "required": false
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolMatchHistoryMatchHistoryList"
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -18177,31 +18097,24 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "required": true,
                         "name": "inventoryType",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": true,
                         "name": "itemId",
                         "schema": {
                             "type": "integer",
                             "format": "int64"
-                        }
+                        },
+                        "required": true
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolPurchaseWidgetPurchasableItem"
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -18602,35 +18515,26 @@
                 "parameters": [
                     {
                         "in": "query",
+                        "name": "queueType",
                         "schema": {
                             "$ref": "#/components/schemas/LolRankedLeagueQueueType"
                         },
-                        "name": "queueType"
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": true,
                         "name": "puuids",
                         "schema": {
                             "type": "array",
                             "items": {
                                 "type": "string"
                             }
-                        }
+                        },
+                        "required": true
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": {
-                                        "$ref": "#/components/schemas/LolRankedSocialLeaderboardRankedQueueStats"
-                                    }
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -18693,7 +18597,6 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "required": true,
                         "name": "summonerIds",
                         "schema": {
                             "type": "array",
@@ -18702,32 +18605,23 @@
                                 "format": "uint64",
                                 "minimum": 0
                             }
-                        }
+                        },
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": true,
                         "name": "queueTypes",
                         "schema": {
                             "type": "array",
                             "items": {
                                 "$ref": "#/components/schemas/LolRankedLeagueQueueType"
                             }
-                        }
+                        },
+                        "required": true
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/LolRankedParticipantTiers"
-                                    }
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -20456,18 +20350,17 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "required": false,
                         "name": "inventoryType",
                         "schema": {
                             "type": "array",
                             "items": {
                                 "type": "string"
                             }
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "itemId",
                         "schema": {
                             "type": "array",
@@ -20475,21 +20368,12 @@
                                 "type": "integer",
                                 "format": "int32"
                             }
-                        }
+                        },
+                        "required": false
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/LolStoreCatalogItem"
-                                    }
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -20941,41 +20825,33 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "required": true,
                         "name": "action",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "giftRecipientAccountId",
                         "schema": {
                             "type": "integer",
                             "format": "uint64",
                             "minimum": 0
-                        }
+                        },
+                        "required": false
                     },
                     {
                         "in": "query",
-                        "required": false,
                         "name": "giftMessage",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": false
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": true
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -21126,30 +21002,23 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "required": true,
                         "name": "gameName",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": true
                     },
                     {
                         "in": "query",
-                        "required": true,
                         "name": "tagLine",
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "required": true
                     }
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolSummonerAliasLookupResponse"
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -23975,6 +23844,38 @@
                                 }
                             }
                         },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/help": {
+            "get": {
+                "operationId": "Help",
+                "description": "Returns information on available functions and types",
+                "tags": [
+                    "help"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "target",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "format",
+                        "schema": {
+                            "$ref": "#/components/schemas/RemotingHelpFormat"
+                        },
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "2XX": {
                         "description": "Success response"
                     }
                 }
@@ -27098,16 +26999,24 @@
                 "tags": [
                     "Plugin lol-esport-stream-notifications"
                 ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "string"
-                            }
-                        }
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "eventType",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "matchId",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
                         "description": "Success response"
@@ -27214,16 +27123,24 @@
                 "tags": [
                     "Plugin lol-game-client-chat"
                 ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "string"
-                            }
-                        }
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "summonerName",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "message",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
                         "description": "Success response"
@@ -29312,25 +29229,54 @@
                 "tags": [
                     "Plugin lol-login"
                 ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "string"
-                            }
-                        }
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "serviceName",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "methodName",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "pluginId",
+                        "schema": {
+                            "type": "integer",
+                            "format": "uint32",
+                            "minimum": 0
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "timeoutMillis",
+                        "schema": {
+                            "type": "integer",
+                            "format": "uint64",
+                            "minimum": 0
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "payload",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -29343,25 +29289,38 @@
                 "tags": [
                     "Plugin lol-login"
                 ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "string"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolLoginLcdsResponse"
-                                }
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "destination",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "method",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "args",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": true
                             }
                         },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "2XX": {
                         "description": "Success response"
                     }
                 }
@@ -29567,29 +29526,30 @@
                         "schema": {
                             "type": "string"
                         }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolLootPlayerLootUpdate"
-                                }
+                    },
+                    {
+                        "in": "query",
+                        "name": "playerLootList",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
                             }
                         },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "repeat",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "2XX": {
                         "description": "Success response"
                     }
                 }
@@ -31813,21 +31773,29 @@
                 "tags": [
                     "memory"
                 ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "type": "integer",
-                                    "format": "uint32",
-                                    "minimum": 0
-                                }
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "processIds",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "format": "uint32",
+                                "minimum": 0
                             }
-                        }
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "context",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
                         "description": "Success response"
@@ -32122,30 +32090,28 @@
                 "tags": [
                     "performance"
                 ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "integer",
-                                "format": "int32"
-                            }
-                        }
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "sampleLength",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "sampleCount",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "required": false
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "additionalProperties": true
-                                    }
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -32173,16 +32139,42 @@
                 "tags": [
                     "riotclient"
                 ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "string"
-                            }
-                        }
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "group",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "object",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "value",
+                        "schema": {
+                            "type": "integer",
+                            "format": "uint64",
+                            "minimum": 0
+                        },
+                        "required": true
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
                         "description": "Success response"
@@ -32833,19 +32825,34 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "in": "query",
+                        "name": "when",
+                        "schema": {
+                            "type": "integer",
+                            "format": "uint64",
+                            "minimum": 0
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "value",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "unit",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
                     }
                 ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "integer",
-                                "format": "uint64",
-                                "minimum": 0
-                            }
-                        }
-                    }
-                },
                 "responses": {
                     "2XX": {
                         "description": "Success response"
@@ -111609,6 +111616,9 @@
         },
         {
             "name": "entitlements"
+        },
+        {
+            "name": "help"
         },
         {
             "name": "memory"
