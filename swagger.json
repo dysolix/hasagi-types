@@ -112043,6 +112043,30 @@
             "name": "Plugin entitlements"
         },
         {
+            "name": "Plugin Manager"
+        },
+        {
+            "name": "Plugin Manager Diagnostics"
+        },
+        {
+            "name": "Plugin Manager Info"
+        },
+        {
+            "name": "Plugin patcher"
+        },
+        {
+            "name": "Plugin payments"
+        },
+        {
+            "name": "Plugin player-notifications"
+        },
+        {
+            "name": "Plugin riot-messaging-service"
+        },
+        {
+            "name": "Plugin sanitizer"
+        },
+        {
             "name": "Plugin lol-account-verification"
         },
         {
@@ -112314,30 +112338,6 @@
         },
         {
             "name": "Plugin lol-yourshop"
-        },
-        {
-            "name": "Plugin Manager"
-        },
-        {
-            "name": "Plugin Manager Diagnostics"
-        },
-        {
-            "name": "Plugin Manager Info"
-        },
-        {
-            "name": "Plugin patcher"
-        },
-        {
-            "name": "Plugin payments"
-        },
-        {
-            "name": "Plugin player-notifications"
-        },
-        {
-            "name": "Plugin riot-messaging-service"
-        },
-        {
-            "name": "Plugin sanitizer"
         }
     ]
 }
