@@ -19,7 +19,7 @@ const types = await fs.readFile("./lcu-types.d.ts", "utf8");
 const events = await fs.readFile("./lcu-events.d.ts", "utf8");
 const swagger = await fs.readFile("./swagger.json", "utf8");
 
-if (endpoints === oldEndpoints && types === oldTypes && events === oldEvents)
+if (endpoints !== oldEndpoints || types !== oldTypes || events !== oldEvents)
     TYPESCRIPT_CHANGED = true;
 
 if (swagger !== oldSwagger)
