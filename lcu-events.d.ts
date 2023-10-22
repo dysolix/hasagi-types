@@ -67,6 +67,7 @@ export interface LCUWebSocketEvents {
 	"OnJsonApiEvent_lol-clash_v1_player": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-clash_v1_playmode-restricted": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-clash_v1_ready": LCUTypes.PluginResourceEvent,
+	"OnJsonApiEvent_lol-clash_v1_rewards": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-clash_v1_simple-state-flags": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-clash_v1_time": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-clash_v1_tournament": LCUTypes.PluginResourceEvent,
