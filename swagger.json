@@ -2,10 +2,150 @@
     "openapi": "3.0.0",
     "info": {
         "title": "LCU SCHEMA",
-        "description": "\nAuto-generated using LCU's /help endpoint. Some endpoints are not included because their /help response is missing necessary fields.\nMissing endpoints:\n\n 1. AsyncDelete\n 2. AsyncResult\n 3. AsyncStatus\n 4. Cancel\n 5. Exit\n 6. LoggingGetEntries\n 7. LoggingMetrics\n 8. LoggingMetricsMetadata\n 9. LoggingStart\n 10. LoggingStop\n 11. Subscribe\n 12. Unsubscribe\n 13. WebSocketFormat\n",
-        "version": "13.20.1"
+        "description": "\nAuto-generated using LCU's /help endpoint.\nThe following endpoints are not entirely auto-generated because their /help response is missing necessary fields:\n\n1.\tAsyncDelete\n2.\tAsyncResult\n3.\tAsyncStatus\n4.\tCancel\n5.\tExit\n6.\tHelp\n7.\tLoggingGetEntries\n8.\tLoggingMetrics\n9.\tLoggingMetricsMetadata\n10.\tLoggingStart\n11.\tLoggingStop\n12.\tSubscribe\n13.\tUnsubscribe\n14.\tWebSocketFormat\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
+        "version": "13.20.537.2283"
     },
     "paths": {
+        "/AsyncDelete": {
+            "post": {
+                "operationId": "AsyncDelete",
+                "description": "Cancels the asynchronous operation or removes its completion status.",
+                "tags": [
+                    "builtin",
+                    "async"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "integer",
+                                "format": "uint32",
+                                "minimum": 0
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/AsyncResult": {
+            "post": {
+                "operationId": "AsyncResult",
+                "description": "Retrieves the result of a completed asynchronous operation.",
+                "tags": [
+                    "builtin",
+                    "async"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "integer",
+                                "format": "uint32",
+                                "minimum": 0
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/AsyncStatus": {
+            "post": {
+                "operationId": "AsyncStatus",
+                "description": "Retrieves details on the current state of an asynchronous operation.",
+                "tags": [
+                    "builtin",
+                    "async"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "integer",
+                                "format": "uint32",
+                                "minimum": 0
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/cancel": {
+            "post": {
+                "operationId": "Cancel",
+                "description": "Attempts to cancel an asynchronous operation",
+                "tags": [
+                    "builtin",
+                    "async"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "integer",
+                                "format": "uint32",
+                                "minimum": 0
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/lol-chat/v1/blocked-players/{id}": {
             "delete": {
                 "operationId": "DeleteLolChatV1BlockedPlayersById",
@@ -2910,7 +3050,7 @@
                 "operationId": "DeleteLolRmsV1ChampionMasteryLeaveupUpdateById",
                 "description": "",
                 "tags": [
-                    "Plugin lol-rms"
+                    "Plugin lol-riot-messaging-service"
                 ],
                 "parameters": [
                     {
@@ -3444,7 +3584,7 @@
                 "operationId": "DeletePatcherV1NotificationsById",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -3476,7 +3616,7 @@
                 "operationId": "DeletePatcherV1ProductsByProductId",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -3508,7 +3648,7 @@
                 "operationId": "DeletePlayerNotificationsV1NotificationsById",
                 "description": "",
                 "tags": [
-                    "player-notifications"
+                    "Plugin player-notifications"
                 ],
                 "parameters": [
                     {
@@ -3540,7 +3680,7 @@
                 "operationId": "GetPlayerNotificationsV1NotificationsById",
                 "description": "",
                 "tags": [
-                    "player-notifications"
+                    "Plugin player-notifications"
                 ],
                 "parameters": [
                     {
@@ -3571,7 +3711,7 @@
                 "operationId": "PutPlayerNotificationsV1NotificationsById",
                 "description": "",
                 "tags": [
-                    "player-notifications"
+                    "Plugin player-notifications"
                 ],
                 "parameters": [
                     {
@@ -3614,7 +3754,7 @@
                 "operationId": "DeleteRiotMessagingServiceV1Connect",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [],
                 "responses": {
@@ -3630,7 +3770,7 @@
                 "operationId": "PostRiotMessagingServiceV1Connect",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -3654,7 +3794,7 @@
                 "operationId": "DeleteRiotMessagingServiceV1Entitlements",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [],
                 "responses": {
@@ -3670,7 +3810,7 @@
                 "operationId": "PostRiotMessagingServiceV1Entitlements",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -3694,7 +3834,7 @@
                 "operationId": "DeleteRiotMessagingServiceV1Session",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [],
                 "responses": {
@@ -3710,7 +3850,7 @@
                 "operationId": "GetRiotMessagingServiceV1Session",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [],
                 "responses": {
@@ -4014,12 +4154,35 @@
                 }
             }
         },
+        "/exit": {
+            "post": {
+                "operationId": "Exit",
+                "description": "Closes the connection.",
+                "tags": [
+                    "builtin"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/anti-addiction/v1/policies/{policyType}/anti-addiction-state": {
             "get": {
                 "operationId": "GetAntiAddictionV1PoliciesByPolicyTypeAntiAddictionState",
                 "description": "",
                 "tags": [
-                    "anti-addiction"
+                    "Plugin lol-anti-addiction"
                 ],
                 "parameters": [
                     {
@@ -4050,6 +4213,7 @@
                 "operationId": "GetByPluginAssetsByPath",
                 "description": "Download a backend asset",
                 "tags": [
+                    "Plugin Manager",
                     "Plugin Asset Serving"
                 ],
                 "parameters": [
@@ -4096,6 +4260,7 @@
                 "operationId": "HeadByPluginAssetsByPath",
                 "description": "Download the header for a backend asset",
                 "tags": [
+                    "Plugin Manager",
                     "Plugin Asset Serving"
                 ],
                 "parameters": [
@@ -4144,7 +4309,7 @@
                 "operationId": "GetClientConfigV1Config",
                 "description": "",
                 "tags": [
-                    "client-config"
+                    "Plugin client-config"
                 ],
                 "parameters": [
                     {
@@ -4208,7 +4373,7 @@
                 "operationId": "GetClientConfigV1ConfigByName",
                 "description": "",
                 "tags": [
-                    "client-config"
+                    "Plugin client-config"
                 ],
                 "parameters": [
                     {
@@ -4272,7 +4437,7 @@
                 "operationId": "GetClientConfigV1StatusByType",
                 "description": "",
                 "tags": [
-                    "client-config"
+                    "Plugin client-config"
                 ],
                 "parameters": [
                     {
@@ -4303,7 +4468,7 @@
                 "operationId": "GetClientConfigV2ConfigByName",
                 "description": "",
                 "tags": [
-                    "client-config"
+                    "Plugin client-config"
                 ],
                 "parameters": [
                     {
@@ -4335,7 +4500,7 @@
                 "operationId": "GetClientConfigV2NamespaceByNamespace",
                 "description": "",
                 "tags": [
-                    "client-config"
+                    "Plugin client-config"
                 ],
                 "parameters": [
                     {
@@ -4370,7 +4535,7 @@
                 "operationId": "GetClientConfigV2NamespaceByNamespacePlayer",
                 "description": "",
                 "tags": [
-                    "client-config"
+                    "Plugin client-config"
                 ],
                 "parameters": [
                     {
@@ -4405,7 +4570,7 @@
                 "operationId": "GetClientConfigV2NamespaceByNamespacePublic",
                 "description": "",
                 "tags": [
-                    "client-config"
+                    "Plugin client-config"
                 ],
                 "parameters": [
                     {
@@ -4440,7 +4605,7 @@
                 "operationId": "GetConfigV1Config",
                 "description": "Returns a merged object of both public and player configs",
                 "tags": [
-                    "config"
+                    "other"
                 ],
                 "parameters": [],
                 "responses": {
@@ -4521,7 +4686,7 @@
                 "operationId": "GetCrashReportingV1CrashStatus",
                 "description": "Returns whether or not the game or client have crashed",
                 "tags": [
-                    "crash-reporting"
+                    "other"
                 ],
                 "parameters": [],
                 "responses": {
@@ -4661,7 +4826,7 @@
                 "operationId": "GetEntitlementsV1Token",
                 "description": "",
                 "tags": [
-                    "entitlements"
+                    "Plugin entitlements"
                 ],
                 "parameters": [],
                 "responses": {
@@ -19105,7 +19270,7 @@
                 "operationId": "GetLolRmsV1ChampionMasteryLeaveupUpdate",
                 "description": "",
                 "tags": [
-                    "Plugin lol-rms"
+                    "Plugin lol-riot-messaging-service"
                 ],
                 "parameters": [],
                 "responses": {
@@ -22253,7 +22418,7 @@
                 "operationId": "GetLolTftV2TftBattlepass",
                 "description": "",
                 "tags": [
-                    "Plugin lol-tft"
+                    "Plugin lol-missions"
                 ],
                 "parameters": [],
                 "responses": {
@@ -22485,7 +22650,7 @@
                 "operationId": "GetPatcherV1Notifications",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [],
                 "responses": {
@@ -22508,7 +22673,7 @@
                 "operationId": "PostPatcherV1Notifications",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -22532,7 +22697,7 @@
                 "operationId": "GetPatcherV1P2pStatus",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [],
                 "responses": {
@@ -22552,7 +22717,7 @@
                 "operationId": "PatchPatcherV1P2pStatus",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -22584,7 +22749,7 @@
                 "operationId": "GetPatcherV1Products",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [],
                 "responses": {
@@ -22609,7 +22774,7 @@
                 "operationId": "GetPatcherV1ProductsByProductIdPaths",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -22643,7 +22808,7 @@
                 "operationId": "GetPatcherV1ProductsByProductIdState",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -22674,7 +22839,7 @@
                 "operationId": "GetPatcherV1ProductsByProductIdTags",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -22708,7 +22873,7 @@
                 "operationId": "GetPatcherV1Status",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [],
                 "responses": {
@@ -22812,7 +22977,7 @@
                 "operationId": "GetPlayerNotificationsV1Config",
                 "description": "",
                 "tags": [
-                    "player-notifications"
+                    "Plugin player-notifications"
                 ],
                 "parameters": [],
                 "responses": {
@@ -22832,7 +22997,7 @@
                 "operationId": "PutPlayerNotificationsV1Config",
                 "description": "",
                 "tags": [
-                    "player-notifications"
+                    "Plugin player-notifications"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -22863,7 +23028,7 @@
                 "operationId": "GetPlayerNotificationsV1Notifications",
                 "description": "",
                 "tags": [
-                    "player-notifications"
+                    "Plugin player-notifications"
                 ],
                 "parameters": [],
                 "responses": {
@@ -22886,7 +23051,7 @@
                 "operationId": "PostPlayerNotificationsV1Notifications",
                 "description": "",
                 "tags": [
-                    "player-notifications"
+                    "Plugin player-notifications"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -22917,7 +23082,8 @@
                 "operationId": "GetPluginManagerV1ExternalPluginsAvailability",
                 "description": "Get the status of the external plugin connection.",
                 "tags": [
-                    "plugin-manager"
+                    "Plugin Manager",
+                    "Plugin Manager Diagnostics"
                 ],
                 "parameters": [],
                 "responses": {
@@ -22939,7 +23105,8 @@
                 "operationId": "GetPluginManagerV1Status",
                 "description": "Get the status of the plugin manager.",
                 "tags": [
-                    "plugin-manager"
+                    "Plugin Manager",
+                    "Plugin Manager Diagnostics"
                 ],
                 "parameters": [],
                 "responses": {
@@ -22961,7 +23128,8 @@
                 "operationId": "GetPluginManagerV2Descriptions",
                 "description": "Get all plugin descriptions.",
                 "tags": [
-                    "plugin-manager"
+                    "Plugin Manager",
+                    "Plugin Manager Info"
                 ],
                 "parameters": [],
                 "responses": {
@@ -22986,7 +23154,8 @@
                 "operationId": "GetPluginManagerV2DescriptionsByPlugin",
                 "description": "Get a plugin description.",
                 "tags": [
-                    "plugin-manager"
+                    "Plugin Manager",
+                    "Plugin Manager Info"
                 ],
                 "parameters": [
                     {
@@ -23017,7 +23186,8 @@
                 "operationId": "GetPluginManagerV2Plugins",
                 "description": "Get diagnostic information for all plugins.",
                 "tags": [
-                    "plugin-manager"
+                    "Plugin Manager",
+                    "Plugin Manager Diagnostics"
                 ],
                 "parameters": [],
                 "responses": {
@@ -23042,7 +23212,8 @@
                 "operationId": "GetPluginManagerV2PluginsByPlugin",
                 "description": "Get diagnostic information for a single plugin.",
                 "tags": [
-                    "plugin-manager"
+                    "Plugin Manager",
+                    "Plugin Manager Diagnostics"
                 ],
                 "parameters": [
                     {
@@ -23073,7 +23244,8 @@
                 "operationId": "GetPluginManagerV3PluginsManifest",
                 "description": "Get the plugin manifest.",
                 "tags": [
-                    "plugin-manager"
+                    "Plugin Manager",
+                    "Plugin Manager Info"
                 ],
                 "parameters": [],
                 "responses": {
@@ -23118,7 +23290,7 @@
                 "operationId": "GetRiotMessagingServiceV1MessageByA",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [
                     {
@@ -23149,7 +23321,7 @@
                 "operationId": "GetRiotMessagingServiceV1MessageByAByB",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [
                     {
@@ -23188,7 +23360,7 @@
                 "operationId": "GetRiotMessagingServiceV1MessageByAByBByC",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [
                     {
@@ -23235,7 +23407,7 @@
                 "operationId": "GetRiotMessagingServiceV1MessageByAByBByCByD",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [
                     {
@@ -23290,7 +23462,7 @@
                 "operationId": "GetRiotMessagingServiceV1MessageByAByBByCByDByE",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [
                     {
@@ -23353,7 +23525,7 @@
                 "operationId": "GetRiotMessagingServiceV1MessageByAByBByCByDByEByF",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [
                     {
@@ -23424,7 +23596,7 @@
                 "operationId": "GetRiotMessagingServiceV1State",
                 "description": "",
                 "tags": [
-                    "riot-messaging-service"
+                    "Plugin riot-messaging-service"
                 ],
                 "parameters": [],
                 "responses": {
@@ -23561,7 +23733,7 @@
                 "operationId": "GetRiotclientRegionLocale",
                 "description": "",
                 "tags": [
-                    "riotclient"
+                    "Plugin lol-l10n"
                 ],
                 "parameters": [],
                 "responses": {
@@ -23764,7 +23936,7 @@
                 "operationId": "GetSanitizerV1Status",
                 "description": "",
                 "tags": [
-                    "sanitizer"
+                    "Plugin sanitizer"
                 ],
                 "parameters": [],
                 "responses": {
@@ -23786,7 +23958,7 @@
                 "operationId": "GetSystemV1Builds",
                 "description": "Information about the current artifacts that make up this build",
                 "tags": [
-                    "system"
+                    "other"
                 ],
                 "parameters": [],
                 "responses": {
@@ -23854,7 +24026,7 @@
                 "operationId": "Help",
                 "description": "Returns information on available functions and types",
                 "tags": [
-                    "help"
+                    "builtin"
                 ],
                 "parameters": [
                     {
@@ -23886,6 +24058,8 @@
                 "operationId": "HttpAsyncDelete",
                 "description": "Cancels the asynchronous operation or removes its completion status.",
                 "tags": [
+                    "builtin",
+                    "http",
                     "async"
                 ],
                 "parameters": [
@@ -23918,6 +24092,8 @@
                 "operationId": "HttpAsyncStatus",
                 "description": "Retrieves details on the current state of an asynchronous operation.",
                 "tags": [
+                    "builtin",
+                    "http",
                     "async"
                 ],
                 "parameters": [
@@ -23952,6 +24128,8 @@
                 "operationId": "HttpAsyncResult",
                 "description": "Retrieves the result of a completed asynchronous operation.",
                 "tags": [
+                    "builtin",
+                    "http",
                     "async"
                 ],
                 "parameters": [
@@ -23976,6 +24154,129 @@
                                 }
                             }
                         },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/LoggingGetEntries": {
+            "post": {
+                "operationId": "LoggingGetEntries",
+                "description": "Gets all buffered log entries since the last call.",
+                "tags": [
+                    "core",
+                    "logging"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LogEvent"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/LoggingMetrics": {
+            "post": {
+                "operationId": "LoggingMetrics",
+                "description": "Returns all metrics",
+                "tags": [
+                    "core",
+                    "logging"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/LoggingMetricsMetadata": {
+            "post": {
+                "operationId": "LoggingMetricsMetadata",
+                "description": "Returns metadata for all metrics",
+                "tags": [
+                    "core",
+                    "logging"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/LoggingStart": {
+            "post": {
+                "operationId": "LoggingStart",
+                "description": "Initializes the logging system.",
+                "tags": [
+                    "core",
+                    "logging"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "buffered",
+                        "schema": {
+                            "type": "boolean"
+                        },
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "severity",
+                        "schema": {
+                            "$ref": "#/components/schemas/LogSeverityLevels"
+                        },
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/LoggingStop": {
+            "post": {
+                "operationId": "LoggingStop",
+                "description": "Finalizes the logging system.",
+                "tags": [
+                    "core",
+                    "logging"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
                         "description": "Success response"
                     }
                 }
@@ -31808,7 +32109,7 @@
                 "operationId": "PostPatcherV1ProductsByProductIdDetectCorruptionRequest",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -31839,7 +32140,7 @@
                 "operationId": "PostPatcherV1ProductsByProductIdPartialRepairRequest",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -31871,7 +32172,7 @@
                 "operationId": "PostPatcherV1ProductsByProductIdSignalStartPatchingDelayed",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -31903,7 +32204,7 @@
                 "operationId": "PostPatcherV1ProductsByProductIdStartCheckingRequest",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -31935,7 +32236,7 @@
                 "operationId": "PostPatcherV1ProductsByProductIdStartPatchingRequest",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -31967,7 +32268,7 @@
                 "operationId": "PostPatcherV1ProductsByProductIdStopCheckingRequest",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -31999,7 +32300,7 @@
                 "operationId": "PostPatcherV1ProductsByProductIdStopPatchingRequest",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [
                     {
@@ -32031,7 +32332,7 @@
                 "operationId": "PostPaymentsV1PmcStartUrl",
                 "description": "",
                 "tags": [
-                    "payments"
+                    "Plugin payments"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -32137,7 +32438,8 @@
                 "operationId": "PostRiotclientAddorupdatemetric",
                 "description": "Adds or Updates a Metric",
                 "tags": [
-                    "riotclient"
+                    "core",
+                    "logging"
                 ],
                 "parameters": [
                     {
@@ -32421,7 +32723,7 @@
                 "operationId": "PostSanitizerV1ContainsSanitized",
                 "description": "",
                 "tags": [
-                    "sanitizer"
+                    "Plugin sanitizer"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -32452,7 +32754,7 @@
                 "operationId": "PostSanitizerV1Sanitize",
                 "description": "",
                 "tags": [
-                    "sanitizer"
+                    "Plugin sanitizer"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -32980,7 +33282,7 @@
                 "operationId": "PutClientConfigV1EntitlementsToken",
                 "description": "",
                 "tags": [
-                    "client-config"
+                    "Plugin client-config"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -33004,7 +33306,7 @@
                 "operationId": "PutClientConfigV1RefreshConfigStatus",
                 "description": "",
                 "tags": [
-                    "client-config"
+                    "Plugin client-config"
                 ],
                 "parameters": [],
                 "responses": {
@@ -33019,7 +33321,7 @@
                 "operationId": "PutClientConfigV2NamespaceChanges",
                 "description": "",
                 "tags": [
-                    "client-config"
+                    "Plugin client-config"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -33900,7 +34202,7 @@
                 "operationId": "PutPatcherV1Ux",
                 "description": "",
                 "tags": [
-                    "patcher"
+                    "Plugin patcher"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -33955,6 +34257,102 @@
                 },
                 "responses": {
                     "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/subscribe": {
+            "post": {
+                "operationId": "Subscribe",
+                "description": "Subscribes to a given event",
+                "tags": [
+                    "builtin"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "eventName",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "format",
+                        "schema": {
+                            "$ref": "#/components/schemas/RemotingSerializedFormat"
+                        },
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/unsubscribe": {
+            "post": {
+                "operationId": "Unsubscribe",
+                "description": "Unsubscribes from a given event",
+                "tags": [
+                    "builtin"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/WebSocketFormat": {
+            "post": {
+                "operationId": "WebSocketFormat",
+                "description": "Controls the console output format",
+                "tags": [
+                    "builtin"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RemotingSerializedFormat"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -111594,64 +111992,37 @@
     },
     "tags": [
         {
-            "name": "anti-addiction"
-        },
-        {
             "name": "async"
         },
         {
-            "name": "client-config"
-        },
-        {
-            "name": "config"
+            "name": "builtin"
         },
         {
             "name": "cookie-jar"
         },
         {
-            "name": "crash-reporting"
+            "name": "core"
         },
         {
             "name": "data-store"
         },
         {
-            "name": "entitlements"
+            "name": "http"
         },
         {
-            "name": "help"
+            "name": "logging"
         },
         {
             "name": "memory"
         },
         {
-            "name": "patcher"
-        },
-        {
-            "name": "payments"
-        },
-        {
             "name": "performance"
-        },
-        {
-            "name": "player-notifications"
-        },
-        {
-            "name": "plugin-manager"
         },
         {
             "name": "process-control"
         },
         {
-            "name": "riot-messaging-service"
-        },
-        {
             "name": "riotclient"
-        },
-        {
-            "name": "sanitizer"
-        },
-        {
-            "name": "system"
         },
         {
             "name": "telemetry"
@@ -111660,7 +112031,16 @@
             "name": "tracing"
         },
         {
+            "name": "other"
+        },
+        {
             "name": "Plugin Asset Serving"
+        },
+        {
+            "name": "Plugin client-config"
+        },
+        {
+            "name": "Plugin entitlements"
         },
         {
             "name": "Plugin lol-account-verification"
@@ -111768,6 +112148,9 @@
             "name": "Plugin lol-kr-shutdown-law"
         },
         {
+            "name": "Plugin lol-l10n"
+        },
+        {
             "name": "Plugin lol-league-session"
         },
         {
@@ -111873,7 +112256,7 @@
             "name": "Plugin lol-rewards"
         },
         {
-            "name": "Plugin lol-rms"
+            "name": "Plugin lol-riot-messaging-service"
         },
         {
             "name": "Plugin lol-rso-auth"
@@ -111931,6 +112314,30 @@
         },
         {
             "name": "Plugin lol-yourshop"
+        },
+        {
+            "name": "Plugin Manager"
+        },
+        {
+            "name": "Plugin Manager Diagnostics"
+        },
+        {
+            "name": "Plugin Manager Info"
+        },
+        {
+            "name": "Plugin patcher"
+        },
+        {
+            "name": "Plugin payments"
+        },
+        {
+            "name": "Plugin player-notifications"
+        },
+        {
+            "name": "Plugin riot-messaging-service"
+        },
+        {
+            "name": "Plugin sanitizer"
         }
     ]
 }

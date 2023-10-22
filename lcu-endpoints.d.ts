@@ -1,6 +1,18 @@
 import { LCUTypes } from "./lcu-types";
 
 export interface LCUEndpoints {
+	"/AsyncDelete": {
+		post: { Parameters: [], Body: number, Response: unknown }
+	},
+	"/AsyncResult": {
+		post: { Parameters: [], Body: number, Response: unknown }
+	},
+	"/AsyncStatus": {
+		post: { Parameters: [], Body: number, Response: unknown }
+	},
+	"/cancel": {
+		post: { Parameters: [], Body: number, Response: unknown }
+	},
 	"/lol-chat/v1/blocked-players/{id}": {
 		get: { Parameters: [id: string], Body: never, Response: LCUTypes.LolChatBlockedPlayerResource }
 		delete: { Parameters: [id: string], Body: never, Response: unknown }
@@ -289,6 +301,9 @@ export interface LCUEndpoints {
 	"/tracing/v1/trace/time-series-event/{eventName}": {
 		post: { Parameters: [eventName: string], Body: number, Response: void }
 		delete: { Parameters: [eventName: string, params: { "when": number, "suffix"?: string }], Body: never, Response: void }
+	},
+	"/exit": {
+		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/anti-addiction/v1/policies/{policyType}/anti-addiction-state": {
 		get: { Parameters: [policyType: LCUTypes.LolAntiAddictionPolicyType], Body: never, Response: LCUTypes.LolAntiAddictionAntiAddictionState }
@@ -2339,6 +2354,21 @@ export interface LCUEndpoints {
 	"/async/v1/result/{asyncToken}": {
 		get: { Parameters: [asyncToken: number], Body: never, Response: unknown }
 	},
+	"/LoggingGetEntries": {
+		post: { Parameters: [], Body: never, Response: LCUTypes.LogEvent[] }
+	},
+	"/LoggingMetrics": {
+		post: { Parameters: [], Body: never, Response: unknown }
+	},
+	"/LoggingMetricsMetadata": {
+		post: { Parameters: [], Body: never, Response: unknown }
+	},
+	"/LoggingStart": {
+		post: { Parameters: [params?: { "buffered"?: boolean, "severity"?: LCUTypes.LogSeverityLevels }], Body: never, Response: void }
+	},
+	"/LoggingStop": {
+		post: { Parameters: [], Body: never, Response: void }
+	},
 	"/lol-champ-select-legacy/v1/session/actions/{id}": {
 		patch: { Parameters: [id: number], Body: LCUTypes.LolChampSelectLegacyChampSelectAction, Response: unknown }
 	},
@@ -3368,6 +3398,15 @@ export interface LCUEndpoints {
 	},
 	"/riotclient/ux-state/ack": {
 		put: { Parameters: [], Body: number, Response: void }
+	},
+	"/subscribe": {
+		post: { Parameters: [params: { "eventName": string, "format"?: LCUTypes.RemotingSerializedFormat }], Body: never, Response: void }
+	},
+	"/unsubscribe": {
+		post: { Parameters: [], Body: string, Response: unknown }
+	},
+	"/WebSocketFormat": {
+		post: { Parameters: [], Body: LCUTypes.RemotingSerializedFormat, Response: unknown }
 	},
 }
 
