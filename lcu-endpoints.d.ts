@@ -1336,6 +1336,9 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyQuickPlayPresetSlotDto[] }
 		put: { Parameters: [], Body: LCUTypes.LolLobbyQuickPlayPresetSlotDto[], Response: unknown }
 	},
+	"/lol-lobby/v1/lobby/tft-ranked-history": {
+		get: { Parameters: [], Body: never, Response: boolean }
+	},
 	"/lol-lobby/v1/parties/gamemode": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyGameModeDto }
 	},
@@ -1892,9 +1895,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-rso-auth/v1/status/{platformId}": {
 		get: { Parameters: [platformId: string], Body: never, Response: LCUTypes.LolRsoAuthRegionStatus }
-	},
-	"/lol-seasons/v1/allSeasons/product/{product}": {
-		get: { Parameters: [product: string], Body: never, Response: LCUTypes.LolSeasonsAllSeasonsProduct[] }
 	},
 	"/lol-seasons/v1/season/LOL/current-split-seasons": {
 		get: { Parameters: [], Body: never, Response: number[] }
@@ -2985,12 +2985,6 @@ export interface LCUEndpoints {
 	"/lol-player-name-transition/v1/dismiss": {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
-	"/lol-player-name-transition/v1/open-faq": {
-		post: { Parameters: [], Body: never, Response: unknown }
-	},
-	"/lol-player-name-transition/v1/open-name-change": {
-		post: { Parameters: [], Body: never, Response: unknown }
-	},
 	"/lol-player-preferences/v1/player-preferences-endpoint-override": {
 		post: { Parameters: [], Body: LCUTypes.LolPlayerPreferencesPlayerPreferencesEndpoint, Response: unknown }
 	},
@@ -3077,6 +3071,12 @@ export interface LCUEndpoints {
 	},
 	"/lol-rso-auth/v1/device-id": {
 		post: { Parameters: [], Body: never, Response: LCUTypes.LolRsoAuthDeviceId }
+	},
+	"/lol-rso-auth/v1/external-session-config": {
+		post: { Parameters: [], Body: unknown, Response: unknown }
+	},
+	"/lol-seasons/v1/allSeasons/product/{product}": {
+		post: { Parameters: [product: string], Body: LCUTypes.LolSeasonsAllProductSeasonQuery, Response: LCUTypes.LolSeasonsAllSeasonsProduct[] }
 	},
 	"/lol-settings/v1/account/save": {
 		post: { Parameters: [], Body: never, Response: void }
@@ -3185,6 +3185,9 @@ export interface LCUEndpoints {
 	},
 	"/payments/v1/pmc-start-url": {
 		post: { Parameters: [], Body: LCUTypes.PaymentsFrontEndRequest, Response: LCUTypes.PaymentsFrontEndResult }
+	},
+	"/payments/v1/updatePaymentTelemetryState": {
+		post: { Parameters: [], Body: LCUTypes.PaymentsPaymentsTelemetryTransitions, Response: void }
 	},
 	"/performance/v1/process/{processId}": {
 		post: { Parameters: [processId: number], Body: never, Response: void }

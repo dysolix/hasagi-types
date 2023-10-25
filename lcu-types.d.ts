@@ -2796,6 +2796,7 @@ export namespace LCUTypes {
 		collectionCardPath: string
 		collectionDescription: string
 		tiers: LCUTypes.LolChampionsGameDataChampionQuestSkin[]
+		productType: LCUTypes.LolChampionsQuestSkinProductType
 	}
 	
 	export interface LolChampionsInventoryItemWithPayload {
@@ -3084,6 +3085,7 @@ export namespace LCUTypes {
 	
 	export interface LolChatEndOfGamePlayer {
 		puuid: string
+		summonerId: number
 		isLocalPlayer: boolean
 	}
 	
@@ -3310,6 +3312,7 @@ export namespace LCUTypes {
 		isCustom: boolean
 		isPracticeTool: boolean
 		isLeader: boolean
+		memberSummonerIds: number[]
 		customSpectatorPolicy: LCUTypes.LolChatQueueCustomGameSpectatorPolicy
 	}
 	
@@ -5511,6 +5514,8 @@ export namespace LCUTypes {
 	export interface LolEndOfGameTFTEndOfGamePlayerViewModel {
 		summonerId: number
 		summonerName: string
+		riotIdGameName: string
+		riotIdTagLine: string
 		iconId: number
 		puuid: string
 		ffaStanding: number
@@ -9061,6 +9066,7 @@ export namespace LCUTypes {
 		secondPositionPreference: string
 		subteamIndex?: number
 		intraSubteamPosition?: number
+		tftNPEQueueBypass?: boolean
 		playerSlots: LCUTypes.LolLobbyQuickPlayPresetSlotDto[]
 		ready: boolean
 		showGhostedBanner: boolean
@@ -9223,6 +9229,7 @@ export namespace LCUTypes {
 		properties?: unknown
 		playerSlots: LCUTypes.LolLobbyQuickPlayPresetSlotDto[]
 		subteamData?: LCUTypes.LolLobbySubteamDataDto
+		tftNPEQueueBypass?: boolean
 	}
 	
 	export type LolLobbyPartyMemberRoleEnum = "NONE" | "DECLINED" | "KICKED" | "HOLD" | "INVITED" | "MEMBER" | "LEADER"
@@ -12581,6 +12588,7 @@ export namespace LCUTypes {
 		styleId: number
 		name: string
 		slotType: string
+		iconPath: string
 	}
 	
 	export interface LolPerksUISettings {
@@ -12991,6 +12999,13 @@ export namespace LCUTypes {
 		params: string[]
 	}
 	
+	export interface LolPlayerNameTransitionAuthenticationResponse {
+		type: LCUTypes.LolPlayerNameTransitionResponseType
+		success: LCUTypes.LolPlayerNameTransitionSuccessResponseDetails
+		country: string
+		error: string
+	}
+	
 	export interface LolPlayerNameTransitionPlayerNameTransitionModal {
 		modalState: LCUTypes.LolPlayerNameTransitionPlayerNameTransitionModalState
 		riotIdLaunchDate: string
@@ -13003,7 +13018,6 @@ export namespace LCUTypes {
 		dialogActivationDate: string
 		riotIdLaunchDate: string
 		riotIdChangeUrl: string
-		authenticatedRedirectEnabled: boolean
 		faqUrl: string
 	}
 	
@@ -13017,7 +13031,25 @@ export namespace LCUTypes {
 		mHasSeenRiotIdPostTransitionDialog: boolean
 	}
 	
-	export type LolPlayerNameTransitionPlayerNameTransitionModalState = "DISMISSED" | "POST_LAUNCH" | "PRE_LAUNCH" | "DISABLED"
+	export type LolPlayerNameTransitionPlayerNameTransitionModalState = "DISMISSED" | "POST_LAUNCH" | "PRE_LAUNCH" | "DISABLED" | "FOUNDATION_NOT_READY"
+	
+	export interface LolPlayerNameTransitionRegionLocale {
+		region: string
+		locale: string
+	}
+	
+	export type LolPlayerNameTransitionResponseType = "error" | "success" | "multifactor" | "signup" | "healup" | "auth"
+	
+	export interface LolPlayerNameTransitionSuccessResponseDetails {
+		login_token: string
+		redirect_url: string
+		linked: string
+	}
+	
+	export interface LolPlayerNameTransitionV1AuthenticationRedirectInput {
+		redirect_uri: string
+		language: string
+	}
 	
 	export interface LolPlayerPreferencesLoginSession {
 		state: LCUTypes.LolPlayerPreferencesLoginSessionStates
@@ -14880,6 +14912,10 @@ export namespace LCUTypes {
 		userInfo: string
 	}
 	
+	export interface LolSeasonsAllProductSeasonQuery {
+		lastNYears: number
+	}
+	
 	export interface LolSeasonsAllSeasonsProduct {
 		seasonId: number
 		seasonStart: number
@@ -16071,9 +16107,12 @@ export namespace LCUTypes {
 		titleTranslationKey: string
 		enabled: boolean
 		url: string
+		urlFaq: string
 		startDate: string
 		endDate: string
+		seriesId: string
 		queueIds: number[]
+		defaultLandingPage: boolean
 	}
 	
 	export interface LolTftLolTftEvents {
@@ -17771,6 +17810,11 @@ export namespace LCUTypes {
 		visible: boolean
 	}
 	
+	export interface PaymentsCurrencyDTO {
+		amount: number
+		subCurrencies: Record<string, number>
+	}
+	
 	export interface PaymentsFrontEndRequest {
 		isPrepaid: boolean
 		localeId: string
@@ -17780,6 +17824,7 @@ export namespace LCUTypes {
 		rsoToken: string
 		usePmcSessions: boolean
 		game: string
+		openedFrom: string
 	}
 	
 	export interface PaymentsFrontEndResult {
@@ -17803,6 +17848,18 @@ export namespace LCUTypes {
 		playerFacingId: string
 		pmcStartUrl: string
 		createdAt: string
+	}
+	
+	export type PaymentsPaymentsTelemetryState = "PMCClosed" | "PMCComplete" | "PMCOpen" | "Idle"
+	
+	export type PaymentsPaymentsTelemetryTransitions = "PMCCompleteToIdle" | "PMCClosedToIdle" | "PMCOpenToPMCComplete" | "PMCOpenToPMCClose" | "IdleToPMCOpen"
+	
+	export interface PaymentsRiotMessagingServiceMessage {
+		resource: string
+		service: string
+		version: string
+		timestamp: number
+		payload: string
 	}
 	
 	export interface PendingOpenedTeamDTO {
@@ -18112,7 +18169,6 @@ export namespace LCUTypes {
 	export interface PluginResource {
 		fullName: string
 		shortName: string
-		version: string
 		supertype: string
 		subtype: string
 		app: string
@@ -18127,7 +18183,6 @@ export namespace LCUTypes {
 	
 	export interface PluginResourceContract {
 		fullName: string
-		version: string
 	}
 	
 	export interface PluginResourceEvent<DataType = unknown> {

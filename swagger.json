@@ -3,7 +3,7 @@
     "info": {
         "title": "LCU SCHEMA",
         "description": "\nAuto-generated using LCU's /help endpoint.\nThe following endpoints are not entirely auto-generated because their /help response is missing necessary fields:\n\n1.\tAsyncDelete\n2.\tAsyncResult\n3.\tAsyncStatus\n4.\tCancel\n5.\tExit\n6.\tHelp\n7.\tLoggingGetEntries\n8.\tLoggingMetrics\n9.\tLoggingMetricsMetadata\n10.\tLoggingStart\n11.\tLoggingStop\n12.\tSubscribe\n13.\tUnsubscribe\n14.\tWebSocketFormat\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
-        "version": "13.20.537.2283"
+        "version": "13.21.537.9010"
     },
     "paths": {
         "/AsyncDelete": {
@@ -14257,6 +14257,28 @@
                 }
             }
         },
+        "/lol-lobby/v1/lobby/tft-ranked-history": {
+            "get": {
+                "operationId": "GetLolLobbyV1LobbyTftRankedHistory",
+                "description": "",
+                "tags": [
+                    "Plugin lol-lobby"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/lol-lobby/v1/parties/gamemode": {
             "get": {
                 "operationId": "GetLolLobbyV1PartiesGamemode",
@@ -19443,40 +19465,6 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/LolRsoAuthRegionStatus"
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/lol-seasons/v1/allSeasons/product/{product}": {
-            "get": {
-                "operationId": "GetLolSeasonsV1AllSeasonsProductByProduct",
-                "description": "",
-                "tags": [
-                    "Plugin lol-seasons"
-                ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "product",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/LolSeasonsAllSeasonsProduct"
-                                    }
                                 }
                             }
                         },
@@ -30346,52 +30334,6 @@
                 }
             }
         },
-        "/lol-player-name-transition/v1/open-faq": {
-            "post": {
-                "operationId": "PostLolPlayerNameTransitionV1OpenFaq",
-                "description": "",
-                "tags": [
-                    "Plugin lol-player-name-transition"
-                ],
-                "parameters": [],
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": true
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/lol-player-name-transition/v1/open-name-change": {
-            "post": {
-                "operationId": "PostLolPlayerNameTransitionV1OpenNameChange",
-                "description": "",
-                "tags": [
-                    "Plugin lol-player-name-transition"
-                ],
-                "parameters": [],
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": true
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
         "/lol-player-preferences/v1/player-preferences-endpoint-override": {
             "post": {
                 "operationId": "PostLolPlayerPreferencesV1PlayerPreferencesEndpointOverride",
@@ -31247,6 +31189,82 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/LolRsoAuthDeviceId"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-rso-auth/v1/external-session-config": {
+            "post": {
+                "operationId": "PostLolRsoAuthV1ExternalSessionConfig",
+                "description": "",
+                "tags": [
+                    "Plugin lol-rso-auth"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": true
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-seasons/v1/allSeasons/product/{product}": {
+            "post": {
+                "operationId": "PostLolSeasonsV1AllSeasonsProductByProduct",
+                "description": "",
+                "tags": [
+                    "Plugin lol-seasons"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LolSeasonsAllProductSeasonQuery"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LolSeasonsAllSeasonsProduct"
+                                    }
                                 }
                             }
                         },
@@ -32353,6 +32371,30 @@
                                 }
                             }
                         },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/payments/v1/updatePaymentTelemetryState": {
+            "post": {
+                "operationId": "PostPaymentsV1UpdatePaymentTelemetryState",
+                "description": "",
+                "tags": [
+                    "Plugin payments"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PaymentsPaymentsTelemetryTransitions"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
                         "description": "Success response"
                     }
                 }
@@ -45982,6 +46024,9 @@
                         "items": {
                             "$ref": "#/components/schemas/LolChampionsGameDataChampionQuestSkin"
                         }
+                    },
+                    "productType": {
+                        "$ref": "#/components/schemas/LolChampionsQuestSkinProductType"
                     }
                 },
                 "additionalProperties": false,
@@ -45993,7 +46038,8 @@
                     "tilePath",
                     "collectionCardPath",
                     "collectionDescription",
-                    "tiers"
+                    "tiers",
+                    "productType"
                 ]
             },
             "LolChampionsInventoryItemWithPayload": {
@@ -47129,6 +47175,11 @@
                     "puuid": {
                         "type": "string"
                     },
+                    "summonerId": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "minimum": 0
+                    },
                     "isLocalPlayer": {
                         "type": "boolean"
                     }
@@ -47136,6 +47187,7 @@
                 "additionalProperties": false,
                 "required": [
                     "puuid",
+                    "summonerId",
                     "isLocalPlayer"
                 ]
             },
@@ -48046,6 +48098,14 @@
                     "isLeader": {
                         "type": "boolean"
                     },
+                    "memberSummonerIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "uint64",
+                            "minimum": 0
+                        }
+                    },
                     "customSpectatorPolicy": {
                         "$ref": "#/components/schemas/LolChatQueueCustomGameSpectatorPolicy"
                     }
@@ -48056,6 +48116,7 @@
                     "isCustom",
                     "isPracticeTool",
                     "isLeader",
+                    "memberSummonerIds",
                     "customSpectatorPolicy"
                 ]
             },
@@ -57231,6 +57292,12 @@
                     "summonerName": {
                         "type": "string"
                     },
+                    "riotIdGameName": {
+                        "type": "string"
+                    },
+                    "riotIdTagLine": {
+                        "type": "string"
+                    },
                     "iconId": {
                         "type": "integer",
                         "format": "int32"
@@ -57290,6 +57357,8 @@
                 "required": [
                     "summonerId",
                     "summonerName",
+                    "riotIdGameName",
+                    "riotIdTagLine",
                     "iconId",
                     "puuid",
                     "ffaStanding",
@@ -71820,6 +71889,9 @@
                         "type": "integer",
                         "format": "int8"
                     },
+                    "tftNPEQueueBypass": {
+                        "type": "boolean"
+                    },
                     "playerSlots": {
                         "type": "array",
                         "items": {
@@ -72530,6 +72602,9 @@
                     },
                     "subteamData": {
                         "$ref": "#/components/schemas/LolLobbySubteamDataDto"
+                    },
+                    "tftNPEQueueBypass": {
+                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false,
@@ -86577,6 +86652,9 @@
                     },
                     "slotType": {
                         "type": "string"
+                    },
+                    "iconPath": {
+                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
@@ -86584,7 +86662,8 @@
                     "id",
                     "styleId",
                     "name",
-                    "slotType"
+                    "slotType",
+                    "iconPath"
                 ]
             },
             "LolPerksUISettings": {
@@ -88349,6 +88428,31 @@
                     "params"
                 ]
             },
+            "LolPlayerNameTransitionAuthenticationResponse": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "type": {
+                        "$ref": "#/components/schemas/LolPlayerNameTransitionResponseType"
+                    },
+                    "success": {
+                        "$ref": "#/components/schemas/LolPlayerNameTransitionSuccessResponseDetails"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "error": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "type",
+                    "success",
+                    "country",
+                    "error"
+                ]
+            },
             "LolPlayerNameTransitionPlayerNameTransitionModal": {
                 "type": "object",
                 "description": "",
@@ -88390,9 +88494,6 @@
                     "riotIdChangeUrl": {
                         "type": "string"
                     },
-                    "authenticatedRedirectEnabled": {
-                        "type": "boolean"
-                    },
                     "faqUrl": {
                         "type": "string"
                     }
@@ -88403,7 +88504,6 @@
                     "dialogActivationDate",
                     "riotIdLaunchDate",
                     "riotIdChangeUrl",
-                    "authenticatedRedirectEnabled",
                     "faqUrl"
                 ]
             },
@@ -88450,9 +88550,78 @@
                     "DISMISSED",
                     "POST_LAUNCH",
                     "PRE_LAUNCH",
-                    "DISABLED"
+                    "DISABLED",
+                    "FOUNDATION_NOT_READY"
                 ],
                 "additionalProperties": false
+            },
+            "LolPlayerNameTransitionRegionLocale": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "region": {
+                        "type": "string"
+                    },
+                    "locale": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "region",
+                    "locale"
+                ]
+            },
+            "LolPlayerNameTransitionResponseType": {
+                "type": "string",
+                "description": "",
+                "enum": [
+                    "error",
+                    "success",
+                    "multifactor",
+                    "signup",
+                    "healup",
+                    "auth"
+                ],
+                "additionalProperties": false
+            },
+            "LolPlayerNameTransitionSuccessResponseDetails": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "login_token": {
+                        "type": "string"
+                    },
+                    "redirect_url": {
+                        "type": "string"
+                    },
+                    "linked": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "login_token",
+                    "redirect_url",
+                    "linked"
+                ]
+            },
+            "LolPlayerNameTransitionV1AuthenticationRedirectInput": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "redirect_uri": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "redirect_uri",
+                    "language"
+                ]
             },
             "LolPlayerPreferencesLoginSession": {
                 "type": "object",
@@ -95972,6 +96141,21 @@
                     "userInfo"
                 ]
             },
+            "LolSeasonsAllProductSeasonQuery": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "lastNYears": {
+                        "type": "integer",
+                        "format": "uint16",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "lastNYears"
+                ]
+            },
             "LolSeasonsAllSeasonsProduct": {
                 "type": "object",
                 "description": "",
@@ -100850,10 +101034,16 @@
                     "url": {
                         "type": "string"
                     },
+                    "urlFaq": {
+                        "type": "string"
+                    },
                     "startDate": {
                         "type": "string"
                     },
                     "endDate": {
+                        "type": "string"
+                    },
+                    "seriesId": {
                         "type": "string"
                     },
                     "queueIds": {
@@ -100862,6 +101052,9 @@
                             "type": "integer",
                             "format": "int32"
                         }
+                    },
+                    "defaultLandingPage": {
+                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false,
@@ -100869,9 +101062,12 @@
                     "titleTranslationKey",
                     "enabled",
                     "url",
+                    "urlFaq",
                     "startDate",
                     "endDate",
-                    "queueIds"
+                    "seriesId",
+                    "queueIds",
+                    "defaultLandingPage"
                 ]
             },
             "LolTftLolTftEvents": {
@@ -107689,6 +107885,28 @@
                     "visible"
                 ]
             },
+            "PaymentsCurrencyDTO": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "amount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "subCurrencies": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "amount",
+                    "subCurrencies"
+                ]
+            },
             "PaymentsFrontEndRequest": {
                 "type": "object",
                 "description": "",
@@ -107717,6 +107935,9 @@
                     },
                     "game": {
                         "type": "string"
+                    },
+                    "openedFrom": {
+                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
@@ -107728,7 +107949,8 @@
                     "gifteeMessage",
                     "rsoToken",
                     "usePmcSessions",
-                    "game"
+                    "game",
+                    "openedFrom"
                 ]
             },
             "PaymentsFrontEndResult": {
@@ -107814,6 +108036,59 @@
                     "playerFacingId",
                     "pmcStartUrl",
                     "createdAt"
+                ]
+            },
+            "PaymentsPaymentsTelemetryState": {
+                "type": "string",
+                "description": "",
+                "enum": [
+                    "PMCClosed",
+                    "PMCComplete",
+                    "PMCOpen",
+                    "Idle"
+                ],
+                "additionalProperties": false
+            },
+            "PaymentsPaymentsTelemetryTransitions": {
+                "type": "string",
+                "description": "",
+                "enum": [
+                    "PMCCompleteToIdle",
+                    "PMCClosedToIdle",
+                    "PMCOpenToPMCComplete",
+                    "PMCOpenToPMCClose",
+                    "IdleToPMCOpen"
+                ],
+                "additionalProperties": false
+            },
+            "PaymentsRiotMessagingServiceMessage": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "resource": {
+                        "type": "string"
+                    },
+                    "service": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "payload": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "resource",
+                    "service",
+                    "version",
+                    "timestamp",
+                    "payload"
                 ]
             },
             "PendingOpenedTeamDTO": {
@@ -109125,9 +109400,6 @@
                     "shortName": {
                         "type": "string"
                     },
-                    "version": {
-                        "type": "string"
-                    },
                     "supertype": {
                         "type": "string"
                     },
@@ -109176,7 +109448,6 @@
                 "required": [
                     "fullName",
                     "shortName",
-                    "version",
                     "supertype",
                     "subtype",
                     "app",
@@ -109195,15 +109466,11 @@
                 "properties": {
                     "fullName": {
                         "type": "string"
-                    },
-                    "version": {
-                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
                 "required": [
-                    "fullName",
-                    "version"
+                    "fullName"
                 ]
             },
             "PluginResourceEvent": {
