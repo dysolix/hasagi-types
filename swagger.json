@@ -3,7 +3,7 @@
     "info": {
         "title": "LCU SCHEMA",
         "description": "\nAuto-generated using LCU's /help endpoint.\nThe following endpoints are not entirely auto-generated because their /help response is missing necessary fields:\n\n1.\tAsyncDelete\n2.\tAsyncResult\n3.\tAsyncStatus\n4.\tCancel\n5.\tExit\n6.\tHelp\n7.\tLoggingGetEntries\n8.\tLoggingMetrics\n9.\tLoggingMetricsMetadata\n10.\tLoggingStart\n11.\tLoggingStop\n12.\tSubscribe\n13.\tUnsubscribe\n14.\tWebSocketFormat\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
-        "version": "13.21.537.9010"
+        "version": "13.22.541.1765"
     },
     "paths": {
         "/AsyncDelete": {
@@ -4813,6 +4813,28 @@
                                 "schema": {
                                     "type": "object",
                                     "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/deep-links/v1/settings": {
+            "get": {
+                "operationId": "GetDeepLinksV1Settings",
+                "description": "",
+                "tags": [
+                    "Plugin deep-links"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeepLinksDeepLinksSettings"
                                 }
                             }
                         },
@@ -24600,6 +24622,28 @@
                 }
             }
         },
+        "/deep-links/v1/launch-lor-link": {
+            "post": {
+                "operationId": "PostDeepLinksV1LaunchLorLink",
+                "description": "",
+                "tags": [
+                    "Plugin deep-links"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/lol-account-verification/v1/confirmActivationPin": {
             "post": {
                 "operationId": "PostLolAccountVerificationV1ConfirmActivationPin",
@@ -34849,6 +34893,14 @@
                     "summonerName": {
                         "type": "string"
                     },
+                    "summonerId": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "minimum": 0
+                    },
+                    "puuid": {
+                        "type": "string"
+                    },
                     "skinUnlockMode": {
                         "type": "string"
                     },
@@ -34878,6 +34930,8 @@
                 "additionalProperties": false,
                 "required": [
                     "summonerName",
+                    "summonerId",
+                    "puuid",
                     "skinUnlockMode",
                     "price",
                     "ipReward",
@@ -35223,6 +35277,14 @@
                     "summonerInternalName": {
                         "type": "string"
                     },
+                    "summonerId": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "minimum": 0
+                    },
+                    "puuid": {
+                        "type": "string"
+                    },
                     "championId": {
                         "type": "integer",
                         "format": "int32"
@@ -35243,6 +35305,8 @@
                 "additionalProperties": false,
                 "required": [
                     "summonerInternalName",
+                    "summonerId",
+                    "puuid",
                     "championId",
                     "selectedSkinIndex",
                     "spell1Id",
@@ -35264,6 +35328,9 @@
                         "format": "uint64",
                         "minimum": 0
                     },
+                    "puuid": {
+                        "type": "string"
+                    },
                     "pickMode": {
                         "type": "integer",
                         "format": "int32"
@@ -35278,6 +35345,7 @@
                     "summonerName",
                     "summonerInternalName",
                     "summonerId",
+                    "puuid",
                     "pickMode",
                     "pickTurn"
                 ]
@@ -35357,7 +35425,23 @@
                     "requesterInternalSummonerName": {
                         "type": "string"
                     },
+                    "requesterSummonerId": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "minimum": 0
+                    },
+                    "requesterPuuid": {
+                        "type": "string"
+                    },
                     "responderInternalSummonerName": {
+                        "type": "string"
+                    },
+                    "responderSummonerId": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "minimum": 0
+                    },
+                    "responderPuuid": {
                         "type": "string"
                     },
                     "requesterChampionId": {
@@ -35375,7 +35459,11 @@
                 "additionalProperties": false,
                 "required": [
                     "requesterInternalSummonerName",
+                    "requesterSummonerId",
+                    "requesterPuuid",
                     "responderInternalSummonerName",
+                    "responderSummonerId",
+                    "responderPuuid",
                     "requesterChampionId",
                     "responderChampionId",
                     "state"
@@ -36635,6 +36723,48 @@
                     "activeFlowEvents",
                     "events",
                     "errors"
+                ]
+            },
+            "DeepLinksClientConfigDeepLinksValue": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "launchLorEnabled": {
+                        "type": "boolean"
+                    },
+                    "launchLorUrl": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "launchLorEnabled",
+                    "launchLorUrl"
+                ]
+            },
+            "DeepLinksDeepLinksSettings": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "isSchemeReady": {
+                        "type": "boolean"
+                    },
+                    "externalClientScheme": {
+                        "type": "string"
+                    },
+                    "launchLorEnabled": {
+                        "type": "boolean"
+                    },
+                    "launchLorUrl": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "isSchemeReady",
+                    "externalClientScheme",
+                    "launchLorEnabled",
+                    "launchLorUrl"
                 ]
             },
             "DownloadUrlRequestV2": {
@@ -39757,6 +39887,7 @@
                 "description": "",
                 "enum": [
                     "other",
+                    "quickplay5",
                     "rank3flex",
                     "blind3",
                     "aram",
@@ -43321,6 +43452,9 @@
                         "items": {
                             "$ref": "#/components/schemas/LolChampSelectCollectionsChampionQuestSkin"
                         }
+                    },
+                    "productType": {
+                        "$ref": "#/components/schemas/LolChampSelectQuestSkinProductType"
                     }
                 },
                 "additionalProperties": false,
@@ -43974,6 +44108,9 @@
                         "type": "integer",
                         "format": "uint64",
                         "minimum": 0
+                    },
+                    "puuid": {
+                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
@@ -43988,7 +44125,8 @@
                     "assignedPosition",
                     "championPickIntent",
                     "playerType",
-                    "summonerId"
+                    "summonerId",
+                    "puuid"
                 ]
             },
             "LolChampSelectLegacyChampSelectSession": {
@@ -44565,7 +44703,11 @@
                 "type": "object",
                 "description": "",
                 "properties": {
-                    "summonerName": {
+                    "summonerId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "puuid": {
                         "type": "string"
                     },
                     "skinUnlockMode": {
@@ -44596,7 +44738,8 @@
                 },
                 "additionalProperties": false,
                 "required": [
-                    "summonerName",
+                    "summonerId",
+                    "puuid",
                     "skinUnlockMode",
                     "price",
                     "ipReward",
@@ -44676,6 +44819,15 @@
                     "obfuscatedPuuid",
                     "obfuscatedSummonerId"
                 ]
+            },
+            "LolChampSelectQuestSkinProductType": {
+                "type": "string",
+                "description": "",
+                "enum": [
+                    "kTieredSkin",
+                    "kQuestSkin"
+                ],
+                "additionalProperties": false
             },
             "LolChampSelectSettingsResource": {
                 "type": "object",
@@ -44898,6 +45050,9 @@
                     },
                     "groupSplash": {
                         "type": "string"
+                    },
+                    "productType": {
+                        "$ref": "#/components/schemas/LolChampSelectQuestSkinProductType"
                     }
                 },
                 "additionalProperties": false,
@@ -44926,6 +45081,9 @@
                     "summonerId": {
                         "type": "integer",
                         "format": "int64"
+                    },
+                    "puuid": {
+                        "type": "string"
                     },
                     "skinUnlockMode": {
                         "type": "string"
@@ -44956,6 +45114,7 @@
                 "additionalProperties": false,
                 "required": [
                     "summonerId",
+                    "puuid",
                     "skinUnlockMode",
                     "price",
                     "ipReward",
@@ -45011,8 +45170,7 @@
                     "tilePath",
                     "collectionCardPath",
                     "collectionDescription",
-                    "tiers",
-                    "productType"
+                    "tiers"
                 ]
             },
             "LolChampionsCollectionsChampion": {
@@ -46038,8 +46196,7 @@
                     "tilePath",
                     "collectionCardPath",
                     "collectionDescription",
-                    "tiers",
-                    "productType"
+                    "tiers"
                 ]
             },
             "LolChampionsInventoryItemWithPayload": {
@@ -75911,6 +76068,9 @@
                         "type": "integer",
                         "format": "int64"
                     },
+                    "puuid": {
+                        "type": "string"
+                    },
                     "skinUnlockMode": {
                         "type": "string"
                     },
@@ -75940,6 +76100,7 @@
                 "additionalProperties": false,
                 "required": [
                     "summonerId",
+                    "puuid",
                     "skinUnlockMode",
                     "price",
                     "ipReward",
@@ -103494,6 +103655,9 @@
                     "thumbnailTexture": {
                         "type": "string"
                     },
+                    "backgroundTexture": {
+                        "type": "string"
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -103520,6 +103684,7 @@
                     "pityThreshold",
                     "bannerTexture",
                     "thumbnailTexture",
+                    "backgroundTexture",
                     "name",
                     "description",
                     "celebrationTheme",
@@ -103933,6 +104098,9 @@
                     "thumbnailTexture": {
                         "type": "string"
                     },
+                    "backgroundTexture": {
+                        "type": "string"
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -103960,6 +104128,7 @@
                     "mythicOffer",
                     "bannerTexture",
                     "thumbnailTexture",
+                    "backgroundTexture",
                     "name",
                     "description",
                     "pityCounterId",
@@ -112305,6 +112474,9 @@
         },
         {
             "name": "Plugin client-config"
+        },
+        {
+            "name": "Plugin deep-links"
         },
         {
             "name": "Plugin entitlements"
