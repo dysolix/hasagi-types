@@ -353,6 +353,9 @@ export interface LCUEndpoints {
 	"/data-store/v1/system-settings/{+path}": {
 		get: { Parameters: [path: string], Body: never, Response: unknown }
 	},
+	"/deep-links/v1/settings": {
+		get: { Parameters: [], Body: never, Response: LCUTypes.DeepLinksDeepLinksSettings }
+	},
 	"/entitlements/v1/token": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.EntitlementsToken }
 	},
@@ -2401,6 +2404,9 @@ export interface LCUEndpoints {
 	},
 	"/telemetry/v3/slis/add-string-diagnostic": {
 		patch: { Parameters: [], Body: LCUTypes.SLIStringDiagnostic, Response: void }
+	},
+	"/deep-links/v1/launch-lor-link": {
+		post: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-account-verification/v1/confirmActivationPin": {
 		post: { Parameters: [], Body: LCUTypes.LolAccountVerificationConfirmActivationPinRequest, Response: void }
