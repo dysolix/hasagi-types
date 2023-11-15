@@ -3,7 +3,7 @@
     "info": {
         "title": "LCU SCHEMA",
         "description": "\nAuto-generated using LCU's /help endpoint.\nThe following endpoints are not entirely auto-generated because their /help response is missing necessary fields:\n\n1.\tAsyncDelete\n2.\tAsyncResult\n3.\tAsyncStatus\n4.\tCancel\n5.\tExit\n6.\tHelp\n7.\tLoggingGetEntries\n8.\tLoggingMetrics\n9.\tLoggingMetricsMetadata\n10.\tLoggingStart\n11.\tLoggingStop\n12.\tSubscribe\n13.\tUnsubscribe\n14.\tWebSocketFormat\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
-        "version": "13.22.541.1765"
+        "version": "13.22.542.1674"
     },
     "paths": {
         "/AsyncDelete": {
@@ -111,7 +111,7 @@
                 }
             }
         },
-        "/cancel": {
+        "/Cancel": {
             "post": {
                 "operationId": "Cancel",
                 "description": "Attempts to cancel an asynchronous operation",
@@ -1015,6 +1015,14 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -1354,9 +1362,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -1406,9 +1411,6 @@
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -1424,9 +1426,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -1476,9 +1475,6 @@
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -1735,9 +1731,6 @@
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -1953,9 +1946,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -2123,9 +2113,6 @@
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -2182,9 +2169,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -2258,9 +2242,6 @@
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -2466,9 +2447,6 @@
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -2942,9 +2920,6 @@
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3024,9 +2999,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3089,9 +3061,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3127,9 +3096,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3145,9 +3111,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3218,9 +3181,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3270,9 +3230,6 @@
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3517,9 +3474,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3555,9 +3509,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3571,9 +3522,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3759,9 +3707,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3799,9 +3744,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3839,9 +3781,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3877,9 +3816,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -3938,9 +3874,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -4049,9 +3982,6 @@
                 ],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -4154,7 +4084,7 @@
                 }
             }
         },
-        "/exit": {
+        "/Exit": {
             "post": {
                 "operationId": "Exit",
                 "description": "Closes the connection.",
@@ -4363,6 +4293,17 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "object",
+                                        "additionalProperties": true
+                                    }
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -4427,6 +4368,14 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -5651,6 +5600,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolCatalogCatalogPluginItemWithDetails"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -5687,6 +5643,16 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LolCatalogItemChoiceDetails"
+                                    }
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -8086,6 +8052,14 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -9332,6 +9306,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolCollectionsCollectionsTopChampionMasteries"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -11622,9 +11603,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -12626,6 +12604,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -14950,9 +14935,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -15514,9 +15496,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -16029,6 +16008,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolMatchHistoryMatchHistoryList"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -16065,6 +16051,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolMatchHistoryMatchHistoryList"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -16117,6 +16110,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolMatchHistoryGAMHSMatchHistoryList"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -16210,6 +16210,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolMatchHistoryMatchHistoryList"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -18324,6 +18331,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolPurchaseWidgetPurchasableItem"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -18744,6 +18758,16 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "$ref": "#/components/schemas/LolRankedSocialLeaderboardRankedQueueStats"
+                                    }
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -18831,6 +18855,16 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LolRankedParticipantTiers"
+                                    }
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -20549,6 +20583,16 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LolStoreCatalogItem"
+                                    }
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -21027,6 +21071,14 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -21194,6 +21246,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolSummonerAliasLookupResponse"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -22283,9 +22342,6 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
-                        "content": {
-                            "application/json": {}
-                        },
                         "description": "Success response"
                     }
                 }
@@ -24031,8 +24087,8 @@
                 }
             }
         },
-        "/help": {
-            "get": {
+        "/Help": {
+            "post": {
                 "operationId": "Help",
                 "description": "Returns information on available functions and types",
                 "tags": [
@@ -24058,6 +24114,14 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -29610,6 +29674,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -29654,6 +29725,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolLoginLcdsResponse"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -29883,6 +29961,13 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolLootPlayerLootUpdate"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -32499,6 +32584,17 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": true
+                                    }
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -34348,7 +34444,7 @@
                 }
             }
         },
-        "/subscribe": {
+        "/Subscribe": {
             "post": {
                 "operationId": "Subscribe",
                 "description": "Subscribes to a given event",
@@ -34375,12 +34471,20 @@
                 ],
                 "responses": {
                     "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
             }
         },
-        "/unsubscribe": {
+        "/Unsubscribe": {
             "post": {
                 "operationId": "Unsubscribe",
                 "description": "Unsubscribes from a given event",
