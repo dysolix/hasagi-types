@@ -3,7 +3,7 @@
     "info": {
         "title": "LCU SCHEMA",
         "description": "\nAuto-generated using LCU's /help endpoint.\nThe following endpoints are not entirely auto-generated because their /help response is missing necessary fields:\n\n1.\tAsyncDelete\n2.\tAsyncResult\n3.\tAsyncStatus\n4.\tCancel\n5.\tExit\n6.\tHelp\n7.\tLoggingGetEntries\n8.\tLoggingMetrics\n9.\tLoggingMetricsMetadata\n10.\tLoggingStart\n11.\tLoggingStop\n12.\tSubscribe\n13.\tUnsubscribe\n14.\tWebSocketFormat\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
-        "version": "13.22.542.1674"
+        "version": "13.23.544.5896"
     },
     "paths": {
         "/AsyncDelete": {
@@ -621,77 +621,6 @@
                 }
             }
         },
-        "/lol-chat/v1/friend-requests/{id}": {
-            "delete": {
-                "operationId": "DeleteLolChatV1FriendRequestsById",
-                "description": "",
-                "tags": [
-                    "Plugin lol-chat"
-                ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": true
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            },
-            "put": {
-                "operationId": "PutLolChatV1FriendRequestsById",
-                "description": "",
-                "tags": [
-                    "Plugin lol-chat"
-                ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/LolChatFriendRequestResource"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": true
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
         "/lol-chat/v1/friends/{id}": {
             "delete": {
                 "operationId": "DeleteLolChatV1FriendsById",
@@ -1013,6 +942,77 @@
                         "required": false
                     }
                 ],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-chat/v2/friend-requests/{id}": {
+            "delete": {
+                "operationId": "DeleteLolChatV2FriendRequestsById",
+                "description": "",
+                "tags": [
+                    "Plugin lol-chat"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            },
+            "put": {
+                "operationId": "PutLolChatV2FriendRequestsById",
+                "description": "",
+                "tags": [
+                    "Plugin lol-chat"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LolChatFriendRequestResource"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "2XX": {
                         "content": {
@@ -6026,56 +6026,6 @@
                 }
             }
         },
-        "/lol-challenges/v1/titles/all": {
-            "get": {
-                "operationId": "GetLolChallengesV1TitlesAll",
-                "description": "",
-                "tags": [
-                    "Plugin lol-challenges"
-                ],
-                "parameters": [],
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": {
-                                        "$ref": "#/components/schemas/LolChallengesUITitle"
-                                    }
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/lol-challenges/v1/titles/local-player": {
-            "get": {
-                "operationId": "GetLolChallengesV1TitlesLocalPlayer",
-                "description": "",
-                "tags": [
-                    "Plugin lol-challenges"
-                ],
-                "parameters": [],
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/LolChallengesUITitle"
-                                    }
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
         "/lol-challenges/v1/updated-challenges/{gameId}/{puuid}": {
             "get": {
                 "operationId": "GetLolChallengesV1UpdatedChallengesByGameIdByPuuid",
@@ -6111,6 +6061,56 @@
                                     "type": "object",
                                     "additionalProperties": {
                                         "$ref": "#/components/schemas/LolChallengesUIChallenge"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-challenges/v2/titles/all": {
+            "get": {
+                "operationId": "GetLolChallengesV2TitlesAll",
+                "description": "",
+                "tags": [
+                    "Plugin lol-challenges"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "$ref": "#/components/schemas/LolChallengesUITitle"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-challenges/v2/titles/local-player": {
+            "get": {
+                "operationId": "GetLolChallengesV2TitlesLocalPlayer",
+                "description": "",
+                "tags": [
+                    "Plugin lol-challenges"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LolChallengesUITitle"
                                     }
                                 }
                             }
@@ -7850,61 +7850,6 @@
                 }
             }
         },
-        "/lol-chat/v1/friend-requests": {
-            "get": {
-                "operationId": "GetLolChatV1FriendRequests",
-                "description": "",
-                "tags": [
-                    "Plugin lol-chat"
-                ],
-                "parameters": [],
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/LolChatFriendRequestResource"
-                                    }
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            },
-            "post": {
-                "operationId": "PostLolChatV1FriendRequests",
-                "description": "",
-                "tags": [
-                    "Plugin lol-chat"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/LolChatFriendRequestResource"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": true
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
         "/lol-chat/v1/friends": {
             "get": {
                 "operationId": "GetLolChatV1Friends",
@@ -7973,6 +7918,28 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/LolChatUserResource"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-chat/v1/proxy-mode-enabled": {
+            "get": {
+                "operationId": "GetLolChatV1ProxyModeEnabled",
+                "description": "",
+                "tags": [
+                    "Plugin lol-chat"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
                                 }
                             }
                         },
@@ -8050,6 +8017,61 @@
                         "required": false
                     }
                 ],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-chat/v2/friend-requests": {
+            "get": {
+                "operationId": "GetLolChatV2FriendRequests",
+                "description": "",
+                "tags": [
+                    "Plugin lol-chat"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LolChatFriendRequestResource"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "PostLolChatV2FriendRequests",
+                "description": "",
+                "tags": [
+                    "Plugin lol-chat"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LolChatFriendRequestResource"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "2XX": {
                         "content": {
@@ -20517,6 +20539,31 @@
                 }
             }
         },
+        "/lol-store/v1/alias-change-notifications": {
+            "get": {
+                "operationId": "GetLolStoreV1AliasChangeNotifications",
+                "description": "",
+                "tags": [
+                    "Plugin lol-store"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LolStoreAliasChangeNotificationResource"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/lol-store/v1/{pageType}": {
             "get": {
                 "operationId": "GetLolStoreV1ByPageType",
@@ -21596,6 +21643,50 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/LolSummonerProfilePrivacyEnabledState"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-summoner/v1/riot-alias-free-eligibility": {
+            "get": {
+                "operationId": "GetLolSummonerV1RiotAliasFreeEligibility",
+                "description": "",
+                "tags": [
+                    "Plugin lol-summoner"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-summoner/v1/riot-alias-purchase-eligibility": {
+            "get": {
+                "operationId": "GetLolSummonerV1RiotAliasPurchaseEligibility",
+                "description": "",
+                "tags": [
+                    "Plugin lol-summoner"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
                                 }
                             }
                         },
@@ -41779,6 +41870,39 @@
                     "quantity"
                 ]
             },
+            "LolChallengesChallengeTitleData": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "challengeId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "challengeName": {
+                        "type": "string"
+                    },
+                    "challengeDescription": {
+                        "type": "string"
+                    },
+                    "level": {
+                        "type": "string"
+                    },
+                    "levelToIconPath": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "challengeId",
+                    "challengeName",
+                    "challengeDescription",
+                    "level",
+                    "levelToIconPath"
+                ]
+            },
             "LolChallengesChallengesPlayerPreferences": {
                 "type": "object",
                 "description": "",
@@ -42000,12 +42124,36 @@
                     "itemId": {
                         "type": "integer",
                         "format": "int32"
+                    },
+                    "titleAcquisitionType": {
+                        "type": "string"
+                    },
+                    "isPermanentTitle": {
+                        "type": "boolean"
+                    },
+                    "titleAcquisitionName": {
+                        "type": "string"
+                    },
+                    "titleRequirementDescription": {
+                        "type": "string"
+                    },
+                    "iconPath": {
+                        "type": "string"
+                    },
+                    "backgroundImagePath": {
+                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
                 "required": [
                     "name",
-                    "itemId"
+                    "itemId",
+                    "titleAcquisitionType",
+                    "isPermanentTitle",
+                    "titleAcquisitionName",
+                    "titleRequirementDescription",
+                    "iconPath",
+                    "backgroundImagePath"
                 ]
             },
             "LolChallengesGameDataChallengesData": {
@@ -42629,26 +42777,28 @@
                     "name": {
                         "type": "string"
                     },
-                    "challengeId": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "challengeName": {
-                        "type": "string"
-                    },
-                    "challengeDescription": {
-                        "type": "string"
-                    },
-                    "level": {
-                        "type": "string"
-                    },
-                    "levelToIconPath": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
-                    },
                     "purchaseDate": {
+                        "type": "string"
+                    },
+                    "titleAcquisitionType": {
+                        "type": "string"
+                    },
+                    "titleAcquisitionName": {
+                        "type": "string"
+                    },
+                    "titleRequirementDescription": {
+                        "type": "string"
+                    },
+                    "isPermanentTitle": {
+                        "type": "boolean"
+                    },
+                    "challengeTitleData": {
+                        "$ref": "#/components/schemas/LolChallengesChallengeTitleData"
+                    },
+                    "iconPath": {
+                        "type": "string"
+                    },
+                    "backgroundImagePath": {
                         "type": "string"
                     }
                 },
@@ -42657,12 +42807,8 @@
                     "itemId",
                     "contentId",
                     "name",
-                    "challengeId",
-                    "challengeName",
-                    "challengeDescription",
-                    "level",
-                    "levelToIconPath",
-                    "purchaseDate"
+                    "purchaseDate",
+                    "titleAcquisitionType"
                 ]
             },
             "LolChallengesUserResource": {
@@ -47051,6 +47197,12 @@
                     },
                     "unnamed": {
                         "type": "boolean"
+                    },
+                    "gameName": {
+                        "type": "string"
+                    },
+                    "tagLine": {
+                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
@@ -47060,7 +47212,9 @@
                     "displayName",
                     "summonerLevel",
                     "puuid",
-                    "unnamed"
+                    "unnamed",
+                    "gameName",
+                    "tagLine"
                 ]
             },
             "LolChatChatWindowSettings": {
@@ -47805,10 +47959,10 @@
                     "name": {
                         "type": "string"
                     },
-                    "game_name": {
+                    "gameName": {
                         "type": "string"
                     },
-                    "game_tag": {
+                    "tagLine": {
                         "type": "string"
                     },
                     "subscription": {
@@ -47828,8 +47982,8 @@
                 "required": [
                     "pid",
                     "name",
-                    "game_name",
-                    "game_tag",
+                    "gameName",
+                    "tagLine",
                     "subscription",
                     "note",
                     "puuid",
@@ -47846,10 +48000,10 @@
                     "name": {
                         "type": "string"
                     },
-                    "game_name": {
+                    "gameName": {
                         "type": "string"
                     },
-                    "game_tag": {
+                    "tagLine": {
                         "type": "string"
                     },
                     "note": {
@@ -47866,8 +48020,8 @@
                 "required": [
                     "pid",
                     "name",
-                    "game_name",
-                    "game_tag",
+                    "gameName",
+                    "tagLine",
                     "note",
                     "puuid",
                     "region"
@@ -47927,7 +48081,7 @@
                     "gameName": {
                         "type": "string"
                     },
-                    "gameTag": {
+                    "tagLine": {
                         "type": "string"
                     },
                     "note": {
@@ -47946,7 +48100,7 @@
                     "pid",
                     "puuid",
                     "gameName",
-                    "gameTag",
+                    "tagLine",
                     "note",
                     "direction"
                 ]
@@ -48969,6 +49123,19 @@
                 "additionalProperties": false,
                 "required": [
                     "products"
+                ]
+            },
+            "LolChatPuuidBody": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "puuid": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "puuid"
                 ]
             },
             "LolChatQueue": {
@@ -55845,6 +56012,13 @@
                     "rollOffer": {
                         "type": "string"
                     },
+                    "cost": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalRollsInfo": {
+                        "$ref": "#/components/schemas/LolDropsTotalRollsInfoDTO"
+                    },
                     "pityInfo": {
                         "$ref": "#/components/schemas/LolDropsCapDropsDropTablePityInfo"
                     }
@@ -55858,6 +56032,8 @@
                     "endDate",
                     "currencyId",
                     "rollOffer",
+                    "cost",
+                    "totalRollsInfo",
                     "pityInfo"
                 ]
             },
@@ -55924,6 +56100,24 @@
                 "required": [
                     "dropTableId",
                     "count"
+                ]
+            },
+            "LolDropsTotalRollsInfoDTO": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "totalRollsCounterId": {
+                        "type": "string"
+                    },
+                    "maxTotalRolls": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "totalRollsCounterId",
+                    "maxTotalRolls"
                 ]
             },
             "LolEmailVerificationAccessToken": {
@@ -66612,13 +66806,19 @@
                         "type": "integer",
                         "format": "uint64",
                         "minimum": 0
+                    },
+                    "summonerId": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "minimum": 0
                     }
                 },
                 "additionalProperties": false,
                 "required": [
                     "puuid",
                     "displayName",
-                    "gameId"
+                    "gameId",
+                    "summonerId"
                 ]
             },
             "LolHonorV2HonorRecipient": {
@@ -66656,12 +66856,18 @@
                     },
                     "displayName": {
                         "type": "string"
+                    },
+                    "summonerId": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "minimum": 0
                     }
                 },
                 "additionalProperties": false,
                 "required": [
                     "puuid",
-                    "displayName"
+                    "displayName",
+                    "summonerId"
                 ]
             },
             "LolHonorV2LoginSession": {
@@ -67318,6 +67524,12 @@
                     },
                     "puuid": {
                         "type": "string"
+                    },
+                    "gameName": {
+                        "type": "string"
+                    },
+                    "tagLine": {
+                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
@@ -67326,7 +67538,9 @@
                     "displayName",
                     "accountId",
                     "summonerLevel",
-                    "puuid"
+                    "puuid",
+                    "gameName",
+                    "tagLine"
                 ]
             },
             "LolHovercardSummonerIdAndIcon": {
@@ -78324,6 +78538,9 @@
                         "items": {
                             "$ref": "#/components/schemas/LolLootLootOutputGdsResource"
                         }
+                    },
+                    "singleOpen": {
+                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false,
@@ -78337,7 +78554,8 @@
                     "loopVideoPath",
                     "outroVideoPath",
                     "hasVisibleLootOdds",
-                    "outputs"
+                    "outputs",
+                    "singleOpen"
                 ]
             },
             "LolLootLootTableGdsResource": {
@@ -79149,6 +79367,9 @@
                     "metadata": {
                         "$ref": "#/components/schemas/LolLootRecipeMetadata"
                     },
+                    "singleOpen": {
+                        "type": "boolean"
+                    },
                     "lootMilestoneIds": {
                         "type": "array",
                         "items": {
@@ -79172,6 +79393,7 @@
                     "slots",
                     "outputs",
                     "metadata",
+                    "singleOpen",
                     "lootMilestoneIds"
                 ]
             },
@@ -96457,6 +96679,11 @@
                 "type": "object",
                 "description": "",
                 "properties": {
+                    "year": {
+                        "type": "integer",
+                        "format": "uint16",
+                        "minimum": 0
+                    },
                     "locKey": {
                         "type": "string"
                     },
@@ -96474,6 +96701,7 @@
                 },
                 "additionalProperties": false,
                 "required": [
+                    "year",
                     "locKey",
                     "publicName",
                     "currentSplit",
@@ -98846,6 +99074,50 @@
                     "expiry"
                 ]
             },
+            "LolStoreAliasChangeNotificationResource": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "minimum": 0
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "$ref": "#/components/schemas/LolStoreAliasDetail"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "type",
+                    "details"
+                ]
+            },
+            "LolStoreAliasDetail": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "field": {
+                        "type": "string"
+                    },
+                    "old_value": {
+                        "type": "string"
+                    },
+                    "new_value": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "field",
+                    "old_value",
+                    "new_value"
+                ]
+            },
             "LolStoreAllSummonerData": {
                 "type": "object",
                 "description": "",
@@ -101019,12 +101291,16 @@
                     "profileIconId": {
                         "type": "integer",
                         "format": "int32"
+                    },
+                    "puuid": {
+                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
                 "required": [
                     "summonerId",
-                    "profileIconId"
+                    "profileIconId",
+                    "puuid"
                 ]
             },
             "LolSummonerSummonerIdAndName": {
@@ -103657,6 +103933,13 @@
                     "rollOffer": {
                         "type": "string"
                     },
+                    "cost": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalRollsInfo": {
+                        "$ref": "#/components/schemas/LolTftTrovesTotalRollsInfoDTO"
+                    },
                     "pityInfo": {
                         "$ref": "#/components/schemas/LolTftTrovesDropsDropTablePityInfo"
                     }
@@ -103670,6 +103953,8 @@
                     "endDate",
                     "currencyId",
                     "rollOffer",
+                    "cost",
+                    "totalRollsInfo",
                     "pityInfo"
                 ]
             },
@@ -103768,6 +104053,9 @@
                     "description": {
                         "type": "string"
                     },
+                    "isCollectorBounty": {
+                        "type": "boolean"
+                    },
                     "celebrationTheme": {
                         "$ref": "#/components/schemas/LolTftTrovesTrovesCelebrationThemeData"
                     },
@@ -103791,6 +104079,7 @@
                     "backgroundTexture",
                     "name",
                     "description",
+                    "isCollectorBounty",
                     "celebrationTheme",
                     "rootTable",
                     "chaseTable"
@@ -104109,6 +104398,24 @@
                     "payload"
                 ]
             },
+            "LolTftTrovesTotalRollsInfoDTO": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "totalRollsCounterId": {
+                        "type": "string"
+                    },
+                    "maxTotalRolls": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "totalRollsCounterId",
+                    "maxTotalRolls"
+                ]
+            },
             "LolTftTrovesTrovePurchaseResponse": {
                 "type": "object",
                 "description": "",
@@ -104214,6 +104521,19 @@
                     "pityCounterId": {
                         "type": "string"
                     },
+                    "isCollectorBounty": {
+                        "type": "boolean"
+                    },
+                    "maxTotalRolls": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
+                    "pullCost": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
                     "celebrationTheme": {
                         "$ref": "#/components/schemas/LolTftTrovesTrovesCelebrationThemeData"
                     },
@@ -104236,6 +104556,9 @@
                     "name",
                     "description",
                     "pityCounterId",
+                    "isCollectorBounty",
+                    "maxTotalRolls",
+                    "pullCost",
                     "celebrationTheme",
                     "status"
                 ]
@@ -106612,6 +106935,9 @@
                     },
                     "metadata": {
                         "$ref": "#/components/schemas/LootLcdsRecipeMetadata"
+                    },
+                    "singleOpen": {
+                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false,
@@ -106622,7 +106948,8 @@
                     "crafterName",
                     "slots",
                     "outputs",
-                    "metadata"
+                    "metadata",
+                    "singleOpen"
                 ]
             },
             "LootLcdsRecipeListClientDTO": {

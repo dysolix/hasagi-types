@@ -40,10 +40,6 @@ export interface LCUEndpoints {
 		put: { Parameters: [id: number], Body: LCUTypes.LolChatGroupResource, Response: unknown }
 		delete: { Parameters: [id: number], Body: never, Response: unknown }
 	},
-	"/lol-chat/v1/friend-requests/{id}": {
-		put: { Parameters: [id: string], Body: LCUTypes.LolChatFriendRequestResource, Response: unknown }
-		delete: { Parameters: [id: string], Body: never, Response: unknown }
-	},
 	"/lol-chat/v1/friends/{id}": {
 		get: { Parameters: [id: string], Body: never, Response: LCUTypes.LolChatFriendResource }
 		put: { Parameters: [id: string], Body: LCUTypes.LolChatFriendResource, Response: unknown }
@@ -62,6 +58,10 @@ export interface LCUEndpoints {
 		get: { Parameters: [key: string], Body: never, Response: unknown }
 		put: { Parameters: [key: string, params: { "value": unknown, "doAsync"?: boolean }], Body: never, Response: unknown }
 		delete: { Parameters: [key: string, params?: { "doAsync"?: boolean }], Body: never, Response: unknown }
+	},
+	"/lol-chat/v2/friend-requests/{id}": {
+		put: { Parameters: [id: string], Body: LCUTypes.LolChatFriendRequestResource, Response: unknown }
+		delete: { Parameters: [id: string], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/voice": {
 		post: { Parameters: [], Body: never, Response: unknown }
@@ -462,14 +462,14 @@ export interface LCUEndpoints {
 	"/lol-challenges/v1/summary-players-data/players": {
 		get: { Parameters: [params: { "puuids": string[] }], Body: never, Response: Record<string, LCUTypes.LolChallengesUIPlayerSummary> }
 	},
-	"/lol-challenges/v1/titles/all": {
-		get: { Parameters: [], Body: never, Response: Record<string, LCUTypes.LolChallengesUITitle> }
-	},
-	"/lol-challenges/v1/titles/local-player": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChallengesUITitle[] }
-	},
 	"/lol-challenges/v1/updated-challenges/{gameId}/{puuid}": {
 		get: { Parameters: [gameId: number, puuid: string], Body: never, Response: Record<string, LCUTypes.LolChallengesUIChallenge> }
+	},
+	"/lol-challenges/v2/titles/all": {
+		get: { Parameters: [], Body: never, Response: Record<string, LCUTypes.LolChallengesUITitle> }
+	},
+	"/lol-challenges/v2/titles/local-player": {
+		get: { Parameters: [], Body: never, Response: LCUTypes.LolChallengesUITitle[] }
 	},
 	"/lol-champ-select-legacy/v1/bannable-champion-ids": {
 		get: { Parameters: [], Body: never, Response: number[] }
@@ -642,10 +642,6 @@ export interface LCUEndpoints {
 	"/lol-chat/v1/friend-groups/{id}/friends": {
 		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolChatFriendResource[] }
 	},
-	"/lol-chat/v1/friend-requests": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatFriendRequestResource[] }
-		post: { Parameters: [], Body: LCUTypes.LolChatFriendRequestResource, Response: unknown }
-	},
 	"/lol-chat/v1/friends": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatFriendResource[] }
 	},
@@ -653,12 +649,19 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatUserResource }
 		put: { Parameters: [], Body: LCUTypes.LolChatUserResource, Response: LCUTypes.LolChatUserResource }
 	},
+	"/lol-chat/v1/proxy-mode-enabled": {
+		get: { Parameters: [], Body: never, Response: boolean }
+	},
 	"/lol-chat/v1/resources": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatProductMetadataMap }
 	},
 	"/lol-chat/v1/settings": {
 		get: { Parameters: [], Body: never, Response: unknown }
 		put: { Parameters: [params: { "data": unknown, "doAsync"?: boolean }], Body: never, Response: unknown }
+	},
+	"/lol-chat/v2/friend-requests": {
+		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatFriendRequestResource[] }
+		post: { Parameters: [], Body: LCUTypes.LolChatFriendRequestResource, Response: unknown }
 	},
 	"/lol-clash/v1/all-tournaments": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.TournamentDTO[] }
@@ -1981,6 +1984,9 @@ export interface LCUEndpoints {
 	"/lol-statstones/v2/player-summary-self": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolStatstonesChampionStatstoneSummary[] }
 	},
+	"/lol-store/v1/alias-change-notifications": {
+		get: { Parameters: [], Body: never, Response: LCUTypes.LolStoreAliasChangeNotificationResource[] }
+	},
 	"/lol-store/v1/{pageType}": {
 		get: { Parameters: [pageType: string], Body: never, Response: unknown }
 	},
@@ -2085,6 +2091,12 @@ export interface LCUEndpoints {
 	},
 	"/lol-summoner/v1/profile-privacy-enabled": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolSummonerProfilePrivacyEnabledState }
+	},
+	"/lol-summoner/v1/riot-alias-free-eligibility": {
+		get: { Parameters: [], Body: never, Response: boolean }
+	},
+	"/lol-summoner/v1/riot-alias-purchase-eligibility": {
+		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-summoner/v1/status": {
 		get: { Parameters: [], Body: never, Response: LCUTypes.LolSummonerStatus }
