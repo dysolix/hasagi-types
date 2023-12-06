@@ -2,8 +2,8 @@
     "openapi": "3.0.0",
     "info": {
         "title": "LCU SCHEMA",
-        "description": "\nAuto-generated using LCU's /help endpoint.\nThe following endpoints are not entirely auto-generated because their /help response is missing necessary fields:\n\n1.\tAsyncDelete\n2.\tAsyncResult\n3.\tAsyncStatus\n4.\tCancel\n5.\tExit\n6.\tHelp\n7.\tLoggingGetEntries\n8.\tLoggingMetrics\n9.\tLoggingMetricsMetadata\n10.\tLoggingStart\n11.\tLoggingStop\n12.\tSubscribe\n13.\tUnsubscribe\n14.\tWebSocketFormat\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
-        "version": "13.23.544.5896"
+        "description": "\nAuto-generated using LCU's /help endpoint.\nThe following endpoints are not entirely auto-generated because their /help response is missing necessary fields:\n\n1.\tAsyncDelete\n2.\tAsyncResult\n3.\tAsyncStatus\n4.\tCancel\n5.\tExit\n6.\tGetRiotclientRegionLocale\n7.\tHelp\n8.\tLoggingGetEntries\n9.\tLoggingMetrics\n10.\tLoggingMetricsMetadata\n11.\tLoggingStart\n12.\tLoggingStop\n13.\tSubscribe\n14.\tUnsubscribe\n15.\tWebSocketFormat\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
+        "version": "13.24.546.6062"
     },
     "paths": {
         "/AsyncDelete": {
@@ -9908,7 +9908,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/LolDropsCapDropsPityCountDTO"
+                                    "$ref": "#/components/schemas/LolDropsCapDropTableCounterDTO"
                                 }
                             }
                         },
@@ -9941,7 +9941,41 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/LolDropsCapDropsPityCountDTO"
+                                        "$ref": "#/components/schemas/LolDropsCapDropTableCounterDTO"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-drops/v1/players/{playerId}/total-rolls-counts": {
+            "get": {
+                "operationId": "GetLolDropsV1PlayersByPlayerIdTotalRollsCounts",
+                "description": "",
+                "tags": [
+                    "Plugin lol-drops"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "playerId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LolDropsCapDropTableCounterDTO"
                                     }
                                 }
                             }
@@ -20469,7 +20503,8 @@
                                     "type": "array",
                                     "items": {
                                         "type": "integer",
-                                        "format": "int32"
+                                        "format": "uint32",
+                                        "minimum": 0
                                     }
                                 }
                             }
@@ -23890,7 +23925,7 @@
                 "operationId": "GetRiotclientRegionLocale",
                 "description": "",
                 "tags": [
-                    "Plugin lol-l10n"
+                    "riotclient"
                 ],
                 "parameters": [],
                 "responses": {
@@ -37850,6 +37885,9 @@
                         "type": "integer",
                         "format": "uint64",
                         "minimum": 0
+                    },
+                    "packetCopMetadata": {
+                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
@@ -37862,7 +37900,8 @@
                     "observerServerIp",
                     "observerServerPort",
                     "observerEncryptionKey",
-                    "summonerId"
+                    "summonerId",
+                    "packetCopMetadata"
                 ]
             },
             "GameflowLcdsReconnectInfoDto": {
@@ -40979,13 +41018,16 @@
                     "contentId"
                 ]
             },
-            "LolCatalogGameDataSkinBorder": {
+            "LolCatalogGameDataSkinAugment": {
                 "type": "object",
                 "description": "",
                 "properties": {
                     "itemId": {
                         "type": "integer",
                         "format": "int32"
+                    },
+                    "capType": {
+                        "type": "string"
                     },
                     "image": {
                         "type": "string"
@@ -40994,6 +41036,7 @@
                 "additionalProperties": false,
                 "required": [
                     "itemId",
+                    "capType",
                     "image"
                 ]
             },
@@ -55966,13 +56009,33 @@
                     "maxPlayers"
                 ]
             },
+            "LolDropsCapDropTableCounterDTO": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "dropTableId": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "dropTableId",
+                    "count"
+                ]
+            },
             "LolDropsCapDropsDropTablePityInfo": {
                 "type": "object",
                 "description": "",
                 "properties": {
                     "pityLimit": {
                         "type": "integer",
-                        "format": "int32"
+                        "format": "uint8",
+                        "minimum": 0
                     },
                     "chaseContentIds": {
                         "type": "array",
@@ -56014,7 +56077,8 @@
                     },
                     "cost": {
                         "type": "integer",
-                        "format": "int32"
+                        "format": "uint16",
+                        "minimum": 0
                     },
                     "totalRollsInfo": {
                         "$ref": "#/components/schemas/LolDropsTotalRollsInfoDTO"
@@ -56084,24 +56148,6 @@
                     "children"
                 ]
             },
-            "LolDropsCapDropsPityCountDTO": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "dropTableId": {
-                        "type": "string"
-                    },
-                    "count": {
-                        "type": "integer",
-                        "format": "int32"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "dropTableId",
-                    "count"
-                ]
-            },
             "LolDropsTotalRollsInfoDTO": {
                 "type": "object",
                 "description": "",
@@ -56111,7 +56157,8 @@
                     },
                     "maxTotalRolls": {
                         "type": "integer",
-                        "format": "int32"
+                        "format": "uint8",
+                        "minimum": 0
                     }
                 },
                 "additionalProperties": false,
@@ -103887,6 +103934,24 @@
                     "deltas"
                 ]
             },
+            "LolTftTrovesDropCounterDTO": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "dropTableId": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "dropTableId",
+                    "count"
+                ]
+            },
             "LolTftTrovesDropsDropTablePityInfo": {
                 "type": "object",
                 "description": "",
@@ -103996,22 +104061,29 @@
                     "children"
                 ]
             },
-            "LolTftTrovesDropsPityCountDTO": {
+            "LolTftTrovesEntitlementNotificationResource": {
                 "type": "object",
                 "description": "",
                 "properties": {
-                    "dropTableId": {
+                    "itemId": {
                         "type": "string"
                     },
-                    "count": {
-                        "type": "integer",
-                        "format": "int32"
+                    "itemTypeId": {
+                        "type": "string"
+                    },
+                    "entitlementTypeId": {
+                        "type": "string"
+                    },
+                    "resourceOperation": {
+                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
                 "required": [
-                    "dropTableId",
-                    "count"
+                    "itemId",
+                    "itemTypeId",
+                    "entitlementTypeId",
+                    "resourceOperation"
                 ]
             },
             "LolTftTrovesGameDataTrovesBanner": {
@@ -104047,6 +104119,9 @@
                     "backgroundTexture": {
                         "type": "string"
                     },
+                    "platformTexture": {
+                        "type": "string"
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -104077,6 +104152,7 @@
                     "bannerTexture",
                     "thumbnailTexture",
                     "backgroundTexture",
+                    "platformTexture",
                     "name",
                     "description",
                     "isCollectorBounty",
@@ -104512,6 +104588,9 @@
                     "backgroundTexture": {
                         "type": "string"
                     },
+                    "platformTexture": {
+                        "type": "string"
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -104553,6 +104632,7 @@
                     "bannerTexture",
                     "thumbnailTexture",
                     "backgroundTexture",
+                    "platformTexture",
                     "name",
                     "description",
                     "pityCounterId",
@@ -105045,6 +105125,14 @@
                     },
                     "hasPullError": {
                         "type": "boolean"
+                    },
+                    "totalRollsCount": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
+                    "isCollectorBountyMaxRollsMet": {
+                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false,
@@ -105053,7 +105141,9 @@
                     "availableContents",
                     "pityCount",
                     "dropTableId",
-                    "hasPullError"
+                    "hasPullError",
+                    "totalRollsCount",
+                    "isCollectorBountyMaxRollsMet"
                 ]
             },
             "LolTftTrovesVerboseLootOddsResponse": {
@@ -107838,7 +107928,30 @@
                     "npeRewardPack": {
                         "$ref": "#/components/schemas/NpeRewardPackMetadata"
                     },
+                    "missionType": {
+                        "type": "string"
+                    },
                     "level": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "weekNum": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "xpReward": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "chain": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "order": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "chainSize": {
                         "type": "integer",
                         "format": "int32"
                     }
@@ -107847,7 +107960,13 @@
                 "required": [
                     "tutorial",
                     "npeRewardPack",
-                    "level"
+                    "missionType",
+                    "level",
+                    "weekNum",
+                    "xpReward",
+                    "chain",
+                    "order",
+                    "chainSize"
                 ]
             },
             "MissionProgressDTO": {
@@ -113040,9 +113159,6 @@
         },
         {
             "name": "Plugin lol-kr-shutdown-law"
-        },
-        {
-            "name": "Plugin lol-l10n"
         },
         {
             "name": "Plugin lol-league-session"

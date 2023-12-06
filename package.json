@@ -11,7 +11,7 @@
   "author": "dysolix",
   "license": "MIT",
   "devDependencies": {
-    "@hasagi/cli": "^0.8.0",
+    "@hasagi/cli": "^0.8.7",
     "@hasagi/core": "^0.3.6",
     "axios": "^1.5.1"
   },
@@ -21,5 +21,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/dysolix/hasagi-types.git"
+  },
+  "dependencies": {
+    "@hasagi/schema": "^0.5.2"
   }
 }
