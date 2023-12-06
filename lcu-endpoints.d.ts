@@ -1,4 +1,4 @@
-import { LCUTypes } from "./lcu-types";
+import * as LCUTypes from "./lcu-types";
 
 export interface LCUEndpoints {
 	"/AsyncDelete": {
@@ -14,44 +14,44 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: number, Response: unknown }
 	},
 	"/lol-chat/v1/blocked-players/{id}": {
-		get: { Parameters: [id: string], Body: never, Response: LCUTypes.LolChatBlockedPlayerResource }
+		get: { Parameters: [id: string], Body: never, Response: LolChatBlockedPlayerResource }
 		delete: { Parameters: [id: string], Body: never, Response: unknown }
 	},
 	"/lol-chat/v1/conversations/active": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatActiveConversationResource }
-		put: { Parameters: [], Body: LCUTypes.LolChatActiveConversationResource, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolChatActiveConversationResource }
+		put: { Parameters: [], Body: LolChatActiveConversationResource, Response: unknown }
 		delete: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-chat/v1/conversations/{id}": {
-		get: { Parameters: [id: string], Body: never, Response: LCUTypes.LolChatConversationResource }
-		put: { Parameters: [id: string], Body: LCUTypes.LolChatConversationResource, Response: LCUTypes.LolChatConversationResource }
+		get: { Parameters: [id: string], Body: never, Response: LolChatConversationResource }
+		put: { Parameters: [id: string], Body: LolChatConversationResource, Response: LolChatConversationResource }
 		delete: { Parameters: [id: string], Body: never, Response: unknown }
 	},
 	"/lol-chat/v1/conversations/{id}/messages": {
-		get: { Parameters: [id: string], Body: never, Response: LCUTypes.LolChatConversationMessageResource[] }
-		post: { Parameters: [id: string], Body: LCUTypes.LolChatConversationMessageResource, Response: LCUTypes.LolChatConversationMessageResource }
+		get: { Parameters: [id: string], Body: never, Response: LolChatConversationMessageResource[] }
+		post: { Parameters: [id: string], Body: LolChatConversationMessageResource, Response: LolChatConversationMessageResource }
 		delete: { Parameters: [id: string], Body: never, Response: unknown }
 	},
 	"/lol-chat/v1/errors/{id}": {
 		delete: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/lol-chat/v1/friend-groups/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolChatGroupResource }
-		put: { Parameters: [id: number], Body: LCUTypes.LolChatGroupResource, Response: unknown }
+		get: { Parameters: [id: number], Body: never, Response: LolChatGroupResource }
+		put: { Parameters: [id: number], Body: LolChatGroupResource, Response: unknown }
 		delete: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/lol-chat/v1/friends/{id}": {
-		get: { Parameters: [id: string], Body: never, Response: LCUTypes.LolChatFriendResource }
-		put: { Parameters: [id: string], Body: LCUTypes.LolChatFriendResource, Response: unknown }
+		get: { Parameters: [id: string], Body: never, Response: LolChatFriendResource }
+		put: { Parameters: [id: string], Body: LolChatFriendResource, Response: unknown }
 		delete: { Parameters: [id: string], Body: never, Response: unknown }
 	},
 	"/lol-chat/v1/player-mutes": {
-		get: { Parameters: [], Body: never, Response: Record<string, LCUTypes.LolChatPlayerMuteStatus> }
-		post: { Parameters: [], Body: LCUTypes.LolChatPlayerMuteUpdate, Response: unknown }
+		get: { Parameters: [], Body: never, Response: Record<string, LolChatPlayerMuteStatus> }
+		post: { Parameters: [], Body: LolChatPlayerMuteUpdate, Response: unknown }
 		delete: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-chat/v1/session": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatSessionResource }
+		get: { Parameters: [], Body: never, Response: LolChatSessionResource }
 		delete: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-chat/v1/settings/{key}": {
@@ -60,7 +60,7 @@ export interface LCUEndpoints {
 		delete: { Parameters: [key: string, params?: { "doAsync"?: boolean }], Body: never, Response: unknown }
 	},
 	"/lol-chat/v2/friend-requests/{id}": {
-		put: { Parameters: [id: string], Body: LCUTypes.LolChatFriendRequestResource, Response: unknown }
+		put: { Parameters: [id: string], Body: LolChatFriendRequestResource, Response: unknown }
 		delete: { Parameters: [id: string], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/voice": {
@@ -102,9 +102,9 @@ export interface LCUEndpoints {
 		delete: { Parameters: [key: number], Body: never, Response: void }
 	},
 	"/lol-highlights/v1/highlights/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolHighlightsHighlight }
-		put: { Parameters: [id: number], Body: LCUTypes.LolHighlightsHighlight, Response: LCUTypes.LolHighlightsHighlight }
-		delete: { Parameters: [id: number], Body: never, Response: LCUTypes.LolHighlightsHighlight }
+		get: { Parameters: [id: number], Body: never, Response: LolHighlightsHighlight }
+		put: { Parameters: [id: number], Body: LolHighlightsHighlight, Response: LolHighlightsHighlight }
+		delete: { Parameters: [id: number], Body: never, Response: LolHighlightsHighlight }
 	},
 	"/lol-honeyfruit/v1/account-claim/migration": {
 		get: { Parameters: [], Body: never, Response: string }
@@ -112,12 +112,12 @@ export interface LCUEndpoints {
 		delete: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-leaver-buster/v1/notifications/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolLeaverBusterLeaverBusterNotificationResource }
+		get: { Parameters: [id: number], Body: never, Response: LolLeaverBusterLeaverBusterNotificationResource }
 		delete: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/lol-loadouts/v4/loadouts/{id}": {
-		put: { Parameters: [id: string], Body: LCUTypes.LolLoadoutsUpdateLoadoutDTO, Response: LCUTypes.LolLoadoutsScopedLoadout }
-		patch: { Parameters: [id: string], Body: LCUTypes.LolLoadoutsUpdateLoadoutDTO, Response: LCUTypes.LolLoadoutsScopedLoadout }
+		put: { Parameters: [id: string], Body: LolLoadoutsUpdateLoadoutDTO, Response: LolLoadoutsScopedLoadout }
+		patch: { Parameters: [id: string], Body: LolLoadoutsUpdateLoadoutDTO, Response: LolLoadoutsScopedLoadout }
 		delete: { Parameters: [id: string], Body: never, Response: void }
 	},
 	"/lol-lobby/v1/clash": {
@@ -125,12 +125,12 @@ export interface LCUEndpoints {
 		delete: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}": {
-		post: { Parameters: [summonerInternalName: string], Body: LCUTypes.LolLobbyLobbyBotParams, Response: unknown }
+		post: { Parameters: [summonerInternalName: string], Body: LolLobbyLobbyBotParams, Response: unknown }
 		delete: { Parameters: [summonerInternalName: string], Body: never, Response: unknown }
 	},
 	"/lol-lobby/v2/lobby": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyLobbyDto }
-		post: { Parameters: [], Body: LCUTypes.LolLobbyLobbyChangeGameDto, Response: LCUTypes.LolLobbyLobbyDto }
+		get: { Parameters: [], Body: never, Response: LolLobbyLobbyDto }
+		post: { Parameters: [], Body: LolLobbyLobbyChangeGameDto, Response: LolLobbyLobbyDto }
 		delete: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-lobby/v2/lobby/matchmaking/search": {
@@ -145,8 +145,8 @@ export interface LCUEndpoints {
 		delete: { Parameters: [serviceName: string, methodName: string, params: { "pluginId": number }], Body: never, Response: void }
 	},
 	"/lol-login/v1/session": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLoginLoginSession }
-		post: { Parameters: [], Body: LCUTypes.LolLoginUsernameAndPassword, Response: LCUTypes.LolLoginLoginSession }
+		get: { Parameters: [], Body: never, Response: LolLoginLoginSession }
+		post: { Parameters: [], Body: LolLoginUsernameAndPassword, Response: LolLoginLoginSession }
 		delete: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-login/v1/shutdown-locks/{lockName}": {
@@ -160,34 +160,34 @@ export interface LCUEndpoints {
 		delete: { Parameters: [lootId: string], Body: never, Response: unknown }
 	},
 	"/lol-matchmaking/v1/search": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolMatchmakingMatchmakingSearchResource }
+		get: { Parameters: [], Body: never, Response: LolMatchmakingMatchmakingSearchResource }
 		post: { Parameters: [], Body: never, Response: unknown }
-		put: { Parameters: [], Body: LCUTypes.LolMatchmakingMatchmakingSearchResource, Response: unknown }
+		put: { Parameters: [], Body: LolMatchmakingMatchmakingSearchResource, Response: unknown }
 		delete: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-patch/v1/notifications/{id}": {
 		delete: { Parameters: [id: string], Body: never, Response: void }
 	},
 	"/lol-perks/v1/pages": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPerksPerkPageResource[] }
-		post: { Parameters: [], Body: LCUTypes.LolPerksPerkPageResource, Response: LCUTypes.LolPerksPerkPageResource }
+		get: { Parameters: [], Body: never, Response: LolPerksPerkPageResource[] }
+		post: { Parameters: [], Body: LolPerksPerkPageResource, Response: LolPerksPerkPageResource }
 		delete: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-perks/v1/pages/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolPerksPerkPageResource }
-		put: { Parameters: [id: number], Body: LCUTypes.LolPerksPerkPageResource, Response: LCUTypes.LolPerksPerkPageResource }
+		get: { Parameters: [id: number], Body: never, Response: LolPerksPerkPageResource }
+		put: { Parameters: [id: number], Body: LolPerksPerkPageResource, Response: LolPerksPerkPageResource }
 		delete: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/lol-perks/v1/pages/{id}/auto-modified-selections": {
 		delete: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/lol-player-behavior/v1/code-of-conduct-notification": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerBehaviorCodeOfConductNotification }
+		get: { Parameters: [], Body: never, Response: LolPlayerBehaviorCodeOfConductNotification }
 		delete: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-player-behavior/v1/reporter-feedback/{id}": {
-		get: { Parameters: [id: string], Body: never, Response: LCUTypes.LolPlayerBehaviorReporterFeedback }
-		delete: { Parameters: [id: string], Body: never, Response: LCUTypes.LolPlayerBehaviorReporterFeedback }
+		get: { Parameters: [id: string], Body: never, Response: LolPlayerBehaviorReporterFeedback }
+		delete: { Parameters: [id: string], Body: never, Response: LolPlayerBehaviorReporterFeedback }
 	},
 	"/lol-player-messaging/v1/celebration/notification/{id}/acknowledge": {
 		delete: { Parameters: [id: number], Body: never, Response: unknown }
@@ -203,7 +203,7 @@ export interface LCUEndpoints {
 		delete: { Parameters: [sequenceEventName: string], Body: never, Response: void }
 	},
 	"/lol-premade-voice/v1/mic-test": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPremadeVoiceAudioPropertiesResource }
+		get: { Parameters: [], Body: never, Response: LolPremadeVoiceAudioPropertiesResource }
 		post: { Parameters: [], Body: never, Response: unknown }
 		delete: { Parameters: [], Body: never, Response: unknown }
 	},
@@ -215,14 +215,14 @@ export interface LCUEndpoints {
 		delete: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/lol-rso-auth/v1/authorization": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRsoAuthAuthorization }
+		get: { Parameters: [], Body: never, Response: LolRsoAuthAuthorization }
 		delete: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-rso-auth/v1/session": {
 		delete: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-rso-auth/v2/config": {
-		post: { Parameters: [], Body: LCUTypes.LolRsoAuthPublicClientConfig, Response: void }
+		post: { Parameters: [], Body: LolRsoAuthPublicClientConfig, Response: void }
 		delete: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-simple-dialog-messages/v1/messages/{messageId}": {
@@ -251,7 +251,7 @@ export interface LCUEndpoints {
 		delete: { Parameters: [index: number], Body: never, Response: unknown }
 	},
 	"/lol-tft-team-planner/v1/team/dirty": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftTeamPlannerTeamPlan }
+		get: { Parameters: [], Body: never, Response: LolTftTeamPlannerTeamPlan }
 		delete: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-tft-troves/v1/roll-rewards": {
@@ -265,8 +265,8 @@ export interface LCUEndpoints {
 		delete: { Parameters: [product_id: string], Body: never, Response: unknown }
 	},
 	"/player-notifications/v1/notifications/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.PlayerNotificationsPlayerNotificationResource }
-		put: { Parameters: [id: number], Body: unknown, Response: LCUTypes.PlayerNotificationsPlayerNotificationResource }
+		get: { Parameters: [id: number], Body: never, Response: PlayerNotificationsPlayerNotificationResource }
+		put: { Parameters: [id: number], Body: unknown, Response: PlayerNotificationsPlayerNotificationResource }
 		delete: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/riot-messaging-service/v1/connect": {
@@ -274,11 +274,11 @@ export interface LCUEndpoints {
 		delete: { Parameters: [], Body: never, Response: void }
 	},
 	"/riot-messaging-service/v1/entitlements": {
-		post: { Parameters: [], Body: LCUTypes.RiotMessagingServiceEntitlementsToken, Response: void }
+		post: { Parameters: [], Body: RiotMessagingServiceEntitlementsToken, Response: void }
 		delete: { Parameters: [], Body: never, Response: void }
 	},
 	"/riot-messaging-service/v1/session": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.RiotMessagingServiceSession }
+		get: { Parameters: [], Body: never, Response: RiotMessagingServiceSession }
 		delete: { Parameters: [], Body: never, Response: void }
 	},
 	"/riotclient/affinity": {
@@ -306,20 +306,20 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/anti-addiction/v1/policies/{policyType}/anti-addiction-state": {
-		get: { Parameters: [policyType: LCUTypes.LolAntiAddictionPolicyType], Body: never, Response: LCUTypes.LolAntiAddictionAntiAddictionState }
+		get: { Parameters: [policyType: LolAntiAddictionPolicyType], Body: never, Response: LolAntiAddictionAntiAddictionState }
 	},
 	"/{plugin}/assets/{+path}": {
 		get: { Parameters: [plugin: string, path: string, params?: { "if-none-match"?: string }], Body: never, Response: unknown }
 		head: { Parameters: [plugin: string, path: string, params?: { "if-none-match"?: string }], Body: never, Response: unknown }
 	},
 	"/client-config/v1/config": {
-		get: { Parameters: [params: { "type": LCUTypes.ClientConfigConfigType, "app"?: string, "version"?: string, "patchline"?: string, "region"?: string, "namespace"?: string }], Body: never, Response: Record<string, unknown> }
+		get: { Parameters: [params: { "type": ClientConfigConfigType, "app"?: string, "version"?: string, "patchline"?: string, "region"?: string, "namespace"?: string }], Body: never, Response: Record<string, unknown> }
 	},
 	"/client-config/v1/config/{name}": {
-		get: { Parameters: [name: string, params: { "type": LCUTypes.ClientConfigConfigType, "app"?: string, "version"?: string, "patchline"?: string, "region"?: string }], Body: never, Response: unknown }
+		get: { Parameters: [name: string, params: { "type": ClientConfigConfigType, "app"?: string, "version"?: string, "patchline"?: string, "region"?: string }], Body: never, Response: unknown }
 	},
 	"/client-config/v1/status/{type}": {
-		get: { Parameters: [type: LCUTypes.ClientConfigConfigType], Body: never, Response: LCUTypes.ClientConfigConfigStatus }
+		get: { Parameters: [type: ClientConfigConfigType], Body: never, Response: ClientConfigConfigStatus }
 	},
 	"/client-config/v2/config/{name}": {
 		get: { Parameters: [name: string], Body: never, Response: unknown }
@@ -337,8 +337,8 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/cookie-jar/v1/cookies": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.cookie[] }
-		post: { Parameters: [], Body: LCUTypes.cookie[], Response: unknown }
+		get: { Parameters: [], Body: never, Response: cookie[] }
+		post: { Parameters: [], Body: cookie[], Response: unknown }
 	},
 	"/crash-reporting/v1/crash-status": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -354,59 +354,59 @@ export interface LCUEndpoints {
 		get: { Parameters: [path: string], Body: never, Response: unknown }
 	},
 	"/deep-links/v1/settings": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.DeepLinksDeepLinksSettings }
+		get: { Parameters: [], Body: never, Response: DeepLinksDeepLinksSettings }
 	},
 	"/entitlements/v1/token": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.EntitlementsToken }
+		get: { Parameters: [], Body: never, Response: EntitlementsToken }
 	},
 	"/lol-account-verification/v1/is-verified": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolAccountVerificationIsVerifiedResponse }
+		get: { Parameters: [], Body: never, Response: LolAccountVerificationIsVerifiedResponse }
 	},
 	"/lol-account-verification/v1/phone-number": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolAccountVerificationPhoneNumberResponse }
+		get: { Parameters: [], Body: never, Response: LolAccountVerificationPhoneNumberResponse }
 	},
 	"/lol-active-boosts/v1/active-boosts": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolActiveBoostsActiveBoosts }
+		get: { Parameters: [], Body: never, Response: LolActiveBoostsActiveBoosts }
 	},
 	"/lol-anti-addiction/v1/anti-addiction-token": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolAntiAddictionAntiAddictionToken }
+		get: { Parameters: [], Body: never, Response: LolAntiAddictionAntiAddictionToken }
 	},
 	"/lol-banners/v1/current-summoner/flags": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolBannersBannerFlag[] }
+		get: { Parameters: [], Body: never, Response: LolBannersBannerFlag[] }
 	},
 	"/lol-banners/v1/current-summoner/flags/equipped": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolBannersBannerFlag }
-		put: { Parameters: [], Body: LCUTypes.LolBannersBannerFlag, Response: LCUTypes.LolBannersBannerFlag }
+		get: { Parameters: [], Body: never, Response: LolBannersBannerFlag }
+		put: { Parameters: [], Body: LolBannersBannerFlag, Response: LolBannersBannerFlag }
 	},
 	"/lol-banners/v1/current-summoner/frames/equipped": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolBannersBannerFrame }
+		get: { Parameters: [], Body: never, Response: LolBannersBannerFrame }
 	},
 	"/lol-banners/v1/players/{puuid}/flags/equipped": {
-		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolBannersBannerFlag }
+		get: { Parameters: [puuid: string], Body: never, Response: LolBannersBannerFlag }
 	},
 	"/lol-career-stats/v1/champion-averages/{championId}/{position}/{tier}/{queue}": {
-		get: { Parameters: [championId: number, position: LCUTypes.LolCareerStatsSummonersRiftPosition, tier: string, queue: LCUTypes.LolCareerStatsCareerStatsQueueType], Body: never, Response: LCUTypes.LolCareerStatsChampionQueueStatsResponse }
+		get: { Parameters: [championId: number, position: LolCareerStatsSummonersRiftPosition, tier: string, queue: LolCareerStatsCareerStatsQueueType], Body: never, Response: LolCareerStatsChampionQueueStatsResponse }
 	},
 	"/lol-career-stats/v1/champion-averages/season/{season}/{championId}/{position}/{tier}/{queue}": {
-		get: { Parameters: [season: number, championId: number, position: LCUTypes.LolCareerStatsSummonersRiftPosition, tier: string, queue: LCUTypes.LolCareerStatsCareerStatsQueueType], Body: never, Response: LCUTypes.LolCareerStatsChampionQueueStatsResponse }
+		get: { Parameters: [season: number, championId: number, position: LolCareerStatsSummonersRiftPosition, tier: string, queue: LolCareerStatsCareerStatsQueueType], Body: never, Response: LolCareerStatsChampionQueueStatsResponse }
 	},
 	"/lol-career-stats/v1/champion-experts/{championId}/{position}": {
-		get: { Parameters: [championId: number, position: LCUTypes.LolCareerStatsSummonersRiftPosition], Body: never, Response: LCUTypes.LolCareerStatsExpertPlayer[] }
+		get: { Parameters: [championId: number, position: LolCareerStatsSummonersRiftPosition], Body: never, Response: LolCareerStatsExpertPlayer[] }
 	},
 	"/lol-career-stats/v1/champion-experts/season/{season}/{championId}/{position}": {
-		get: { Parameters: [season: number, championId: number, position: LCUTypes.LolCareerStatsSummonersRiftPosition], Body: never, Response: LCUTypes.LolCareerStatsExpertPlayer[] }
+		get: { Parameters: [season: number, championId: number, position: LolCareerStatsSummonersRiftPosition], Body: never, Response: LolCareerStatsExpertPlayer[] }
 	},
 	"/lol-career-stats/v1/position-averages/{position}/{tier}/{queue}": {
-		get: { Parameters: [position: LCUTypes.LolCareerStatsSummonersRiftPosition, tier: string, queue: LCUTypes.LolCareerStatsCareerStatsQueueType], Body: never, Response: LCUTypes.LolCareerStatsChampionQueueStatsResponse }
+		get: { Parameters: [position: LolCareerStatsSummonersRiftPosition, tier: string, queue: LolCareerStatsCareerStatsQueueType], Body: never, Response: LolCareerStatsChampionQueueStatsResponse }
 	},
 	"/lol-career-stats/v1/position-averages/season/{season}/{position}/{tier}/{queue}": {
-		get: { Parameters: [season: number, position: LCUTypes.LolCareerStatsSummonersRiftPosition, tier: string, queue: LCUTypes.LolCareerStatsCareerStatsQueueType], Body: never, Response: LCUTypes.LolCareerStatsChampionQueueStatsResponse }
+		get: { Parameters: [season: number, position: LolCareerStatsSummonersRiftPosition, tier: string, queue: LolCareerStatsCareerStatsQueueType], Body: never, Response: LolCareerStatsChampionQueueStatsResponse }
 	},
 	"/lol-career-stats/v1/position-experts/{position}": {
-		get: { Parameters: [position: LCUTypes.LolCareerStatsSummonersRiftPosition], Body: never, Response: LCUTypes.LolCareerStatsExpertPlayer[] }
+		get: { Parameters: [position: LolCareerStatsSummonersRiftPosition], Body: never, Response: LolCareerStatsExpertPlayer[] }
 	},
 	"/lol-career-stats/v1/position-experts/season/{season}/{position}": {
-		get: { Parameters: [season: number, position: LCUTypes.LolCareerStatsSummonersRiftPosition], Body: never, Response: LCUTypes.LolCareerStatsExpertPlayer[] }
+		get: { Parameters: [season: number, position: LolCareerStatsSummonersRiftPosition], Body: never, Response: LolCareerStatsExpertPlayer[] }
 	},
 	"/lol-career-stats/v1/summoner-games/{puuid}": {
 		get: { Parameters: [puuid: string], Body: never, Response: unknown }
@@ -415,61 +415,61 @@ export interface LCUEndpoints {
 		get: { Parameters: [puuid: string, season: number], Body: never, Response: unknown }
 	},
 	"/lol-career-stats/v1/summoner-stats/{puuid}/{season}/{queue}/{position}": {
-		get: { Parameters: [puuid: string, season: number, queue: LCUTypes.LolCareerStatsCareerStatsQueueType, position: LCUTypes.LolCareerStatsSummonersRiftPosition, params?: { "championId"?: number }], Body: never, Response: unknown }
+		get: { Parameters: [puuid: string, season: number, queue: LolCareerStatsCareerStatsQueueType, position: LolCareerStatsSummonersRiftPosition, params?: { "championId"?: number }], Body: never, Response: unknown }
 	},
 	"/lol-catalog/v1/item-details": {
-		get: { Parameters: [params: { "inventoryType": string, "itemId": number }], Body: never, Response: LCUTypes.LolCatalogCatalogPluginItemWithDetails }
+		get: { Parameters: [params: { "inventoryType": string, "itemId": number }], Body: never, Response: LolCatalogCatalogPluginItemWithDetails }
 	},
 	"/lol-catalog/v1/items": {
-		get: { Parameters: [params: { "inventoryType": string, "itemIds": number[] }], Body: never, Response: LCUTypes.LolCatalogItemChoiceDetails[] }
+		get: { Parameters: [params: { "inventoryType": string, "itemIds": number[] }], Body: never, Response: LolCatalogItemChoiceDetails[] }
 	},
 	"/lol-catalog/v1/items/{inventoryType}": {
-		get: { Parameters: [inventoryType: string], Body: never, Response: LCUTypes.LolCatalogCatalogPluginItem[] }
+		get: { Parameters: [inventoryType: string], Body: never, Response: LolCatalogCatalogPluginItem[] }
 	},
 	"/lol-catalog/v1/items-list-details/skip-cache": {
-		get: { Parameters: [params: { "catalogItemsKeys": LCUTypes.LolCatalogItemKey[] }], Body: never, Response: LCUTypes.LolCatalogCatalogPluginItemWithDetails[] }
+		get: { Parameters: [params: { "catalogItemsKeys": LolCatalogItemKey[] }], Body: never, Response: LolCatalogCatalogPluginItemWithDetails[] }
 	},
 	"/lol-challenges/v1/available-queue-ids": {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-challenges/v1/challenges/category-data": {
-		get: { Parameters: [], Body: never, Response: Record<string, LCUTypes.LolChallengesUIChallenge> }
+		get: { Parameters: [], Body: never, Response: Record<string, LolChallengesUIChallenge> }
 	},
 	"/lol-challenges/v1/challenges/local-player": {
-		get: { Parameters: [], Body: never, Response: Record<string, LCUTypes.LolChallengesUIChallenge> }
+		get: { Parameters: [], Body: never, Response: Record<string, LolChallengesUIChallenge> }
 	},
 	"/lol-challenges/v1/client-state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChallengesClientState }
+		get: { Parameters: [], Body: never, Response: LolChallengesClientState }
 	},
 	"/lol-challenges/v1/level-points": {
 		get: { Parameters: [], Body: never, Response: Record<string, number> }
 	},
 	"/lol-challenges/v1/my-updated-challenges/{gameId}": {
-		get: { Parameters: [gameId: number], Body: never, Response: Record<string, LCUTypes.LolChallengesUIChallenge> }
+		get: { Parameters: [gameId: number], Body: never, Response: Record<string, LolChallengesUIChallenge> }
 	},
 	"/lol-challenges/v1/penalty": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChallengesUIChallengePenalty }
+		get: { Parameters: [], Body: never, Response: LolChallengesUIChallengePenalty }
 	},
 	"/lol-challenges/v1/seasons": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChallengesChallengeSeason[] }
+		get: { Parameters: [], Body: never, Response: LolChallengesChallengeSeason[] }
 	},
 	"/lol-challenges/v1/summary-player-data/local-player": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChallengesUIPlayerSummary }
+		get: { Parameters: [], Body: never, Response: LolChallengesUIPlayerSummary }
 	},
 	"/lol-challenges/v1/summary-player-data/player/{puuid}": {
-		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolChallengesUIPlayerSummary }
+		get: { Parameters: [puuid: string], Body: never, Response: LolChallengesUIPlayerSummary }
 	},
 	"/lol-challenges/v1/summary-players-data/players": {
-		get: { Parameters: [params: { "puuids": string[] }], Body: never, Response: Record<string, LCUTypes.LolChallengesUIPlayerSummary> }
+		get: { Parameters: [params: { "puuids": string[] }], Body: never, Response: Record<string, LolChallengesUIPlayerSummary> }
 	},
 	"/lol-challenges/v1/updated-challenges/{gameId}/{puuid}": {
-		get: { Parameters: [gameId: number, puuid: string], Body: never, Response: Record<string, LCUTypes.LolChallengesUIChallenge> }
+		get: { Parameters: [gameId: number, puuid: string], Body: never, Response: Record<string, LolChallengesUIChallenge> }
 	},
 	"/lol-challenges/v2/titles/all": {
-		get: { Parameters: [], Body: never, Response: Record<string, LCUTypes.LolChallengesUITitle> }
+		get: { Parameters: [], Body: never, Response: Record<string, LolChallengesUITitle> }
 	},
 	"/lol-challenges/v2/titles/local-player": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChallengesUITitle[] }
+		get: { Parameters: [], Body: never, Response: LolChallengesUITitle[] }
 	},
 	"/lol-champ-select-legacy/v1/bannable-champion-ids": {
 		get: { Parameters: [], Body: never, Response: number[] }
@@ -490,26 +490,26 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-champ-select-legacy/v1/session": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectLegacyChampSelectSession }
+		get: { Parameters: [], Body: never, Response: LolChampSelectLegacyChampSelectSession }
 	},
 	"/lol-champ-select-legacy/v1/session/my-selection": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectLegacyChampSelectPlayerSelection }
-		patch: { Parameters: [], Body: LCUTypes.LolChampSelectLegacyChampSelectMySelection, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolChampSelectLegacyChampSelectPlayerSelection }
+		patch: { Parameters: [], Body: LolChampSelectLegacyChampSelectMySelection, Response: unknown }
 	},
 	"/lol-champ-select-legacy/v1/session/timer": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectLegacyChampSelectTimer }
+		get: { Parameters: [], Body: never, Response: LolChampSelectLegacyChampSelectTimer }
 	},
 	"/lol-champ-select-legacy/v1/session/trades": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectLegacyChampSelectTradeContract[] }
+		get: { Parameters: [], Body: never, Response: LolChampSelectLegacyChampSelectTradeContract[] }
 	},
 	"/lol-champ-select-legacy/v1/session/trades/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolChampSelectLegacyChampSelectTradeContract }
+		get: { Parameters: [id: number], Body: never, Response: LolChampSelectLegacyChampSelectTradeContract }
 	},
 	"/lol-champ-select-legacy/v1/team-boost": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectLegacyTeamBoost }
+		get: { Parameters: [], Body: never, Response: LolChampSelectLegacyTeamBoost }
 	},
 	"/lol-champ-select/v1/all-grid-champions": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectChampGridChampion[] }
+		get: { Parameters: [], Body: never, Response: LolChampSelectChampGridChampion[] }
 	},
 	"/lol-champ-select/v1/bannable-champion-ids": {
 		get: { Parameters: [], Body: never, Response: number[] }
@@ -521,16 +521,16 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-champ-select/v1/grid-champions/{championId}": {
-		get: { Parameters: [championId: number], Body: never, Response: LCUTypes.LolChampSelectChampGridChampion }
+		get: { Parameters: [championId: number], Body: never, Response: LolChampSelectChampGridChampion }
 	},
 	"/lol-champ-select/v1/muted-players": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectMutedPlayerInfo[] }
+		get: { Parameters: [], Body: never, Response: LolChampSelectMutedPlayerInfo[] }
 	},
 	"/lol-champ-select/v1/ongoing-swap": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectChampSelectSwapNotification }
+		get: { Parameters: [], Body: never, Response: LolChampSelectChampSelectSwapNotification }
 	},
 	"/lol-champ-select/v1/ongoing-trade": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectChampSelectTradeNotification }
+		get: { Parameters: [], Body: never, Response: LolChampSelectChampSelectTradeNotification }
 	},
 	"/lol-champ-select/v1/pickable-champion-ids": {
 		get: { Parameters: [], Body: never, Response: number[] }
@@ -539,138 +539,138 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-champ-select/v1/pin-drop-notification": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectChampSelectPinDropNotification }
+		get: { Parameters: [], Body: never, Response: LolChampSelectChampSelectPinDropNotification }
 	},
 	"/lol-champ-select/v1/session": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectChampSelectSession }
+		get: { Parameters: [], Body: never, Response: LolChampSelectChampSelectSession }
 	},
 	"/lol-champ-select/v1/session/my-selection": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectChampSelectPlayerSelection }
-		patch: { Parameters: [], Body: LCUTypes.LolChampSelectChampSelectMySelection, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolChampSelectChampSelectPlayerSelection }
+		patch: { Parameters: [], Body: LolChampSelectChampSelectMySelection, Response: unknown }
 	},
 	"/lol-champ-select/v1/session/swaps": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectChampSelectSwapContract[] }
+		get: { Parameters: [], Body: never, Response: LolChampSelectChampSelectSwapContract[] }
 	},
 	"/lol-champ-select/v1/session/swaps/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolChampSelectChampSelectSwapContract }
+		get: { Parameters: [id: number], Body: never, Response: LolChampSelectChampSelectSwapContract }
 	},
 	"/lol-champ-select/v1/session/timer": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectChampSelectTimer }
+		get: { Parameters: [], Body: never, Response: LolChampSelectChampSelectTimer }
 	},
 	"/lol-champ-select/v1/session/trades": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectChampSelectTradeContract[] }
+		get: { Parameters: [], Body: never, Response: LolChampSelectChampSelectTradeContract[] }
 	},
 	"/lol-champ-select/v1/session/trades/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolChampSelectChampSelectTradeContract }
+		get: { Parameters: [id: number], Body: never, Response: LolChampSelectChampSelectTradeContract }
 	},
 	"/lol-champ-select/v1/sfx-notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectSfxNotification[] }
+		get: { Parameters: [], Body: never, Response: LolChampSelectSfxNotification[] }
 	},
 	"/lol-champ-select/v1/skin-carousel-skins": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectSkinSelectorSkin[] }
+		get: { Parameters: [], Body: never, Response: LolChampSelectSkinSelectorSkin[] }
 	},
 	"/lol-champ-select/v1/skin-selector-info": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectSkinSelectorInfo }
+		get: { Parameters: [], Body: never, Response: LolChampSelectSkinSelectorInfo }
 	},
 	"/lol-champ-select/v1/summoners/{slotId}": {
-		get: { Parameters: [slotId: number], Body: never, Response: LCUTypes.LolChampSelectChampSelectSummoner }
+		get: { Parameters: [slotId: number], Body: never, Response: LolChampSelectChampSelectSummoner }
 	},
 	"/lol-champ-select/v1/team-boost": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampSelectTeamBoost }
+		get: { Parameters: [], Body: never, Response: LolChampSelectTeamBoost }
 	},
 	"/lol-champions/v1/inventories/{summonerId}/champions": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolChampionsCollectionsChampion[] }
+		get: { Parameters: [summonerId: number], Body: never, Response: LolChampionsCollectionsChampion[] }
 	},
 	"/lol-champions/v1/inventories/{summonerId}/champions/{championId}": {
-		get: { Parameters: [summonerId: number, championId: number], Body: never, Response: LCUTypes.LolChampionsCollectionsChampion }
+		get: { Parameters: [summonerId: number, championId: number], Body: never, Response: LolChampionsCollectionsChampion }
 	},
 	"/lol-champions/v1/inventories/{summonerId}/champions/{championId}/skins": {
-		get: { Parameters: [summonerId: number, championId: number], Body: never, Response: LCUTypes.LolChampionsCollectionsChampionSkin[] }
+		get: { Parameters: [summonerId: number, championId: number], Body: never, Response: LolChampionsCollectionsChampionSkin[] }
 	},
 	"/lol-champions/v1/inventories/{summonerId}/champions/{championId}/skins/{championSkinId}": {
-		get: { Parameters: [summonerId: number, championId: number, championSkinId: number], Body: never, Response: LCUTypes.LolChampionsCollectionsChampionSkin }
+		get: { Parameters: [summonerId: number, championId: number, championSkinId: number], Body: never, Response: LolChampionsCollectionsChampionSkin }
 	},
 	"/lol-champions/v1/inventories/{summonerId}/champions/{championId}/skins/{skinId}/chromas": {
-		get: { Parameters: [summonerId: number, championId: number, skinId: number], Body: never, Response: LCUTypes.LolChampionsCollectionsChampionChroma[] }
+		get: { Parameters: [summonerId: number, championId: number, skinId: number], Body: never, Response: LolChampionsCollectionsChampionChroma[] }
 	},
 	"/lol-champions/v1/inventories/{summonerId}/champions-minimal": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolChampionsCollectionsChampionMinimal[] }
+		get: { Parameters: [summonerId: number], Body: never, Response: LolChampionsCollectionsChampionMinimal[] }
 	},
 	"/lol-champions/v1/inventories/{summonerId}/champions-playable-count": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolChampionsCollectionsChampionPlayableCounts }
+		get: { Parameters: [summonerId: number], Body: never, Response: LolChampionsCollectionsChampionPlayableCounts }
 	},
 	"/lol-champions/v1/inventories/{summonerId}/skins-minimal": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolChampionsCollectionsChampionSkinMinimal[] }
+		get: { Parameters: [summonerId: number], Body: never, Response: LolChampionsCollectionsChampionSkinMinimal[] }
 	},
 	"/lol-champions/v1/owned-champions-minimal": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChampionsCollectionsChampionMinimal[] }
+		get: { Parameters: [], Body: never, Response: LolChampionsCollectionsChampionMinimal[] }
 	},
 	"/lol-chat/v1/blocked-players": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatBlockedPlayerResource[] }
-		post: { Parameters: [], Body: LCUTypes.LolChatBlockedPlayerResource, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolChatBlockedPlayerResource[] }
+		post: { Parameters: [], Body: LolChatBlockedPlayerResource, Response: unknown }
 	},
 	"/lol-chat/v1/config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatChatServiceDynamicClientConfig }
+		get: { Parameters: [], Body: never, Response: LolChatChatServiceDynamicClientConfig }
 	},
 	"/lol-chat/v1/conversations": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatConversationResource[] }
-		post: { Parameters: [], Body: LCUTypes.LolChatConversationResource, Response: LCUTypes.LolChatConversationResource }
+		get: { Parameters: [], Body: never, Response: LolChatConversationResource[] }
+		post: { Parameters: [], Body: LolChatConversationResource, Response: LolChatConversationResource }
 	},
 	"/lol-chat/v1/conversations/{id}/participants": {
-		get: { Parameters: [id: string], Body: never, Response: LCUTypes.LolChatUserResource[] }
-		post: { Parameters: [id: string], Body: LCUTypes.LolChatUserResource, Response: unknown }
+		get: { Parameters: [id: string], Body: never, Response: LolChatUserResource[] }
+		post: { Parameters: [id: string], Body: LolChatUserResource, Response: unknown }
 	},
 	"/lol-chat/v1/conversations/{id}/participants/{pid}": {
-		get: { Parameters: [id: string, pid: string], Body: never, Response: LCUTypes.LolChatUserResource }
+		get: { Parameters: [id: string, pid: string], Body: never, Response: LolChatUserResource }
 	},
 	"/lol-chat/v1/conversations/notify": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-chat/v1/errors": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatErrorResource[] }
+		get: { Parameters: [], Body: never, Response: LolChatErrorResource[] }
 	},
 	"/lol-chat/v1/friend-counts": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatFriendCountsResource }
+		get: { Parameters: [], Body: never, Response: LolChatFriendCountsResource }
 	},
 	"/lol-chat/v1/friend-exists/{summonerId}": {
 		get: { Parameters: [summonerId: number], Body: never, Response: boolean }
 	},
 	"/lol-chat/v1/friend-groups": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatGroupResource[] }
-		post: { Parameters: [], Body: LCUTypes.LolChatGroupResource, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolChatGroupResource[] }
+		post: { Parameters: [], Body: LolChatGroupResource, Response: unknown }
 	},
 	"/lol-chat/v1/friend-groups/{id}/friends": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolChatFriendResource[] }
+		get: { Parameters: [id: number], Body: never, Response: LolChatFriendResource[] }
 	},
 	"/lol-chat/v1/friends": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatFriendResource[] }
+		get: { Parameters: [], Body: never, Response: LolChatFriendResource[] }
 	},
 	"/lol-chat/v1/me": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatUserResource }
-		put: { Parameters: [], Body: LCUTypes.LolChatUserResource, Response: LCUTypes.LolChatUserResource }
+		get: { Parameters: [], Body: never, Response: LolChatUserResource }
+		put: { Parameters: [], Body: LolChatUserResource, Response: LolChatUserResource }
 	},
 	"/lol-chat/v1/proxy-mode-enabled": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-chat/v1/resources": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatProductMetadataMap }
+		get: { Parameters: [], Body: never, Response: LolChatProductMetadataMap }
 	},
 	"/lol-chat/v1/settings": {
 		get: { Parameters: [], Body: never, Response: unknown }
 		put: { Parameters: [params: { "data": unknown, "doAsync"?: boolean }], Body: never, Response: unknown }
 	},
 	"/lol-chat/v2/friend-requests": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolChatFriendRequestResource[] }
-		post: { Parameters: [], Body: LCUTypes.LolChatFriendRequestResource, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolChatFriendRequestResource[] }
+		post: { Parameters: [], Body: LolChatFriendRequestResource, Response: unknown }
 	},
 	"/lol-clash/v1/all-tournaments": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.TournamentDTO[] }
+		get: { Parameters: [], Body: never, Response: TournamentDTO[] }
 	},
 	"/lol-clash/v1/awaiting-resent-eog": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-clash/v1/bracket/{bracketId}": {
-		get: { Parameters: [bracketId: number], Body: never, Response: LCUTypes.LolClashBracket }
+		get: { Parameters: [bracketId: number], Body: never, Response: LolClashBracket }
 	},
 	"/lol-clash/v1/checkin-allowed": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -679,22 +679,22 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-clash/v1/disabled-config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashClashDisabledConfig }
+		get: { Parameters: [], Body: never, Response: LolClashClashDisabledConfig }
 	},
 	"/lol-clash/v1/enabled": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-clash/v1/eog-player-update": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashEogPlayerUpdateDTO }
+		get: { Parameters: [], Body: never, Response: LolClashEogPlayerUpdateDTO }
 	},
 	"/lol-clash/v1/event/{uuid}": {
-		get: { Parameters: [uuid: string], Body: never, Response: LCUTypes.ClashEventData }
+		get: { Parameters: [uuid: string], Body: never, Response: ClashEventData }
 	},
 	"/lol-clash/v1/game-end": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashTournamentGameEnd }
+		get: { Parameters: [], Body: never, Response: LolClashTournamentGameEnd }
 	},
 	"/lol-clash/v1/historyandwinners": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashTournamentHistoryAndWinners }
+		get: { Parameters: [], Body: never, Response: LolClashTournamentHistoryAndWinners }
 	},
 	"/lol-clash/v1/iconconfig": {
 		get: { Parameters: [], Body: never, Response: unknown }
@@ -703,22 +703,22 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: string[] }
 	},
 	"/lol-clash/v1/lft/team/requests": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PendingOpenedTeamDTO[] }
+		get: { Parameters: [], Body: never, Response: PendingOpenedTeamDTO[] }
 	},
 	"/lol-clash/v1/notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashPlayerNotificationData }
+		get: { Parameters: [], Body: never, Response: LolClashPlayerNotificationData }
 	},
 	"/lol-clash/v1/ping": {
 		get: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/player": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashPlayerData }
+		get: { Parameters: [], Body: never, Response: LolClashPlayerData }
 	},
 	"/lol-clash/v1/player/chat-rosters": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashPlayerChatRoster[] }
+		get: { Parameters: [], Body: never, Response: LolClashPlayerChatRoster[] }
 	},
 	"/lol-clash/v1/player/history": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashRosterStats[] }
+		get: { Parameters: [], Body: never, Response: LolClashRosterStats[] }
 	},
 	"/lol-clash/v1/playmode-restricted": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -727,61 +727,61 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-clash/v1/rewards": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashPlayerRewards }
+		get: { Parameters: [], Body: never, Response: LolClashPlayerRewards }
 	},
 	"/lol-clash/v1/roster/{rosterId}": {
-		get: { Parameters: [rosterId: string], Body: never, Response: LCUTypes.LolClashRoster }
+		get: { Parameters: [rosterId: string], Body: never, Response: LolClashRoster }
 	},
 	"/lol-clash/v1/roster/{rosterId}/stats": {
-		get: { Parameters: [rosterId: number], Body: never, Response: LCUTypes.LolClashRosterStats }
+		get: { Parameters: [rosterId: number], Body: never, Response: LolClashRosterStats }
 	},
 	"/lol-clash/v1/scouting/champions": {
-		get: { Parameters: [params: { "puuids": string[] }], Body: never, Response: LCUTypes.LolClashScoutingChampions[] }
+		get: { Parameters: [params: { "puuids": string[] }], Body: never, Response: LolClashScoutingChampions[] }
 	},
 	"/lol-clash/v1/scouting/matchhistory": {
 		get: { Parameters: [params: { "summonerIds": number[] }], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/season-rewards/{seasonId}": {
-		get: { Parameters: [seasonId: number], Body: never, Response: LCUTypes.ClashSeasonRewardResult }
+		get: { Parameters: [seasonId: number], Body: never, Response: ClashSeasonRewardResult }
 	},
 	"/lol-clash/v1/simple-state-flags": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashSimpleStateFlag[] }
+		get: { Parameters: [], Body: never, Response: LolClashSimpleStateFlag[] }
 	},
 	"/lol-clash/v1/thirdparty/team-data": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashThirdPartyApiRoster }
+		get: { Parameters: [], Body: never, Response: LolClashThirdPartyApiRoster }
 	},
 	"/lol-clash/v1/time": {
 		get: { Parameters: [], Body: never, Response: number }
 	},
 	"/lol-clash/v1/tournament/{tournamentId}": {
-		get: { Parameters: [tournamentId: number], Body: never, Response: LCUTypes.LolClashTournament }
+		get: { Parameters: [tournamentId: number], Body: never, Response: LolClashTournament }
 	},
 	"/lol-clash/v1/tournament/{tournamentId}/get-player-tiers": {
-		get: { Parameters: [tournamentId: number, params: { "summonerIds": number[] }], Body: never, Response: LCUTypes.PlayerTierDTO[] }
+		get: { Parameters: [tournamentId: number, params: { "summonerIds": number[] }], Body: never, Response: PlayerTierDTO[] }
 	},
 	"/lol-clash/v1/tournament/{tournamentId}/player": {
-		get: { Parameters: [tournamentId: number], Body: never, Response: LCUTypes.LolClashPlayerTournamentData }
+		get: { Parameters: [tournamentId: number], Body: never, Response: LolClashPlayerTournamentData }
 	},
 	"/lol-clash/v1/tournament/{tournamentId}/player-honor-restricted": {
 		get: { Parameters: [tournamentId: number], Body: never, Response: boolean }
 	},
 	"/lol-clash/v1/tournament/{tournamentId}/stateInfo": {
-		get: { Parameters: [tournamentId: number], Body: never, Response: LCUTypes.LolClashTournamentStateInfo }
+		get: { Parameters: [tournamentId: number], Body: never, Response: LolClashTournamentStateInfo }
 	},
 	"/lol-clash/v1/tournament/{tournamentId}/winners": {
-		get: { Parameters: [tournamentId: number], Body: never, Response: LCUTypes.LolClashTournamentWinnerHistory }
+		get: { Parameters: [tournamentId: number], Body: never, Response: LolClashTournamentWinnerHistory }
 	},
 	"/lol-clash/v1/tournament/cancelled": {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-clash/v1/tournament/get-all-player-tiers": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PlayerTierDTO[] }
+		get: { Parameters: [], Body: never, Response: PlayerTierDTO[] }
 	},
 	"/lol-clash/v1/tournament-state-info": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashTournamentStateInfo[] }
+		get: { Parameters: [], Body: never, Response: LolClashTournamentStateInfo[] }
 	},
 	"/lol-clash/v1/tournament-summary": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashTournamentSummary[] }
+		get: { Parameters: [], Body: never, Response: LolClashTournamentSummary[] }
 	},
 	"/lol-clash/v1/visible": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -790,159 +790,162 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-clash/v2/playmode-restricted": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolClashPlaymodeRestrictedInfo }
+		get: { Parameters: [], Body: never, Response: LolClashPlaymodeRestrictedInfo }
 	},
 	"/lol-client-config/v3/client-config/{name}": {
 		get: { Parameters: [name: string], Body: never, Response: unknown }
 	},
 	"/lol-collections/v1/inventories/{puuid}/champion-mastery": {
-		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolCollectionsCollectionsChampionMastery[] }
+		get: { Parameters: [puuid: string], Body: never, Response: LolCollectionsCollectionsChampionMastery[] }
 	},
 	"/lol-collections/v1/inventories/{puuid}/champion-mastery/top": {
-		get: { Parameters: [puuid: string, params: { "limit": number, "sortRule"?: string }], Body: never, Response: LCUTypes.LolCollectionsCollectionsTopChampionMasteries }
+		get: { Parameters: [puuid: string, params: { "limit": number, "sortRule"?: string }], Body: never, Response: LolCollectionsCollectionsTopChampionMasteries }
 	},
 	"/lol-collections/v1/inventories/{summonerId}/backdrop": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolCollectionsCollectionsSummonerBackdrop }
+		get: { Parameters: [summonerId: number], Body: never, Response: LolCollectionsCollectionsSummonerBackdrop }
 	},
 	"/lol-collections/v1/inventories/{summonerId}/spells": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolCollectionsCollectionsSummonerSpells }
+		get: { Parameters: [summonerId: number], Body: never, Response: LolCollectionsCollectionsSummonerSpells }
 	},
 	"/lol-collections/v1/inventories/{summonerId}/ward-skins": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolCollectionsCollectionsWardSkin[] }
+		get: { Parameters: [summonerId: number], Body: never, Response: LolCollectionsCollectionsWardSkin[] }
 	},
 	"/lol-collections/v1/inventories/{summonerId}/ward-skins/{wardSkinId}": {
-		get: { Parameters: [summonerId: number, wardSkinId: number], Body: never, Response: LCUTypes.LolCollectionsCollectionsWardSkin }
+		get: { Parameters: [summonerId: number, wardSkinId: number], Body: never, Response: LolCollectionsCollectionsWardSkin }
 	},
 	"/lol-collections/v1/inventories/chest-eligibility": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolCollectionsCollectionsChestEligibility }
+		get: { Parameters: [], Body: never, Response: LolCollectionsCollectionsChestEligibility }
 	},
 	"/lol-collections/v1/inventories/local-player/champion-mastery-score": {
 		get: { Parameters: [], Body: never, Response: number }
 	},
 	"/lol-collections/v1/inventories/scouting": {
-		get: { Parameters: [params: { "puuids": string[] }], Body: never, Response: LCUTypes.RankedScoutingDTO[] }
+		get: { Parameters: [params: { "puuids": string[] }], Body: never, Response: RankedScoutingDTO[] }
 	},
 	"/lol-content-targeting/v1/filters": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolContentTargetingContentTargetingFilterResponse }
+		get: { Parameters: [], Body: never, Response: LolContentTargetingContentTargetingFilterResponse }
 	},
 	"/lol-content-targeting/v1/locale": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolContentTargetingContentTargetingLocaleResponse }
+		get: { Parameters: [], Body: never, Response: LolContentTargetingContentTargetingLocaleResponse }
 	},
 	"/lol-content-targeting/v1/protected_filters": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolContentTargetingContentTargetingFilterResponse }
+		get: { Parameters: [], Body: never, Response: LolContentTargetingContentTargetingFilterResponse }
 	},
 	"/lol-cosmetics/v1/inventories/{setName}/companions": {
-		get: { Parameters: [setName: string], Body: never, Response: LCUTypes.LolCosmeticsCompanionsGroupedViewModel }
+		get: { Parameters: [setName: string], Body: never, Response: LolCosmeticsCompanionsGroupedViewModel }
 	},
 	"/lol-cosmetics/v1/inventories/{setName}/damage-skins": {
-		get: { Parameters: [setName: string], Body: never, Response: LCUTypes.LolCosmeticsTFTDamageSkinGroupedViewModel }
+		get: { Parameters: [setName: string], Body: never, Response: LolCosmeticsTFTDamageSkinGroupedViewModel }
 	},
 	"/lol-cosmetics/v1/inventories/{setName}/map-skins": {
-		get: { Parameters: [setName: string], Body: never, Response: LCUTypes.LolCosmeticsTFTMapSkinGroupedViewModel }
+		get: { Parameters: [setName: string], Body: never, Response: LolCosmeticsTFTMapSkinGroupedViewModel }
 	},
 	"/lol-cosmetics/v1/inventories/{setName}/playbooks": {
-		get: { Parameters: [setName: string], Body: never, Response: LCUTypes.LolCosmeticsTFTPlaybookGroupedViewModel }
+		get: { Parameters: [setName: string], Body: never, Response: LolCosmeticsTFTPlaybookGroupedViewModel }
 	},
 	"/lol-drops/v1/drop-tables": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolDropsCapDropsDropTableWithPityDTO[] }
+		get: { Parameters: [], Body: never, Response: LolDropsCapDropsDropTableWithPityDTO[] }
 	},
 	"/lol-drops/v1/drop-tables/{dropTableId}": {
-		get: { Parameters: [dropTableId: string], Body: never, Response: LCUTypes.LolDropsCapDropsDropTableWithPityDTO }
+		get: { Parameters: [dropTableId: string], Body: never, Response: LolDropsCapDropsDropTableWithPityDTO }
 	},
 	"/lol-drops/v1/drop-tables/{dropTableId}/odds-list": {
-		get: { Parameters: [dropTableId: string], Body: never, Response: LCUTypes.LolDropsCapDropsOddsListEntryDTO[] }
+		get: { Parameters: [dropTableId: string], Body: never, Response: LolDropsCapDropsOddsListEntryDTO[] }
 	},
 	"/lol-drops/v1/drop-tables/{dropTableId}/odds-tree": {
-		get: { Parameters: [dropTableId: string], Body: never, Response: LCUTypes.LolDropsCapDropsOddsTreeNodeDTO }
+		get: { Parameters: [dropTableId: string], Body: never, Response: LolDropsCapDropsOddsTreeNodeDTO }
 	},
 	"/lol-drops/v1/drop-tables/{dropTableId}/players/{playerId}/pity-count": {
-		get: { Parameters: [dropTableId: string, playerId: string], Body: never, Response: LCUTypes.LolDropsCapDropsPityCountDTO }
+		get: { Parameters: [dropTableId: string, playerId: string], Body: never, Response: LolDropsCapDropTableCounterDTO }
 	},
 	"/lol-drops/v1/players/{playerId}/pity-counts": {
-		get: { Parameters: [playerId: string], Body: never, Response: LCUTypes.LolDropsCapDropsPityCountDTO[] }
+		get: { Parameters: [playerId: string], Body: never, Response: LolDropsCapDropTableCounterDTO[] }
+	},
+	"/lol-drops/v1/players/{playerId}/total-rolls-counts": {
+		get: { Parameters: [playerId: string], Body: never, Response: LolDropsCapDropTableCounterDTO[] }
 	},
 	"/lol-drops/v1/ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-email-verification/v1/email": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEmailVerificationEmailVerificationSession }
-		put: { Parameters: [], Body: LCUTypes.LolEmailVerificationEmailUpdate, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolEmailVerificationEmailVerificationSession }
+		put: { Parameters: [], Body: LolEmailVerificationEmailUpdate, Response: unknown }
 	},
 	"/lol-end-of-game/v1/champion-mastery-updates": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEndOfGameChampionMasteryUpdate }
+		get: { Parameters: [], Body: never, Response: LolEndOfGameChampionMasteryUpdate }
 	},
 	"/lol-end-of-game/v1/eog-stats-block": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEndOfGameEndOfGameStats }
+		get: { Parameters: [], Body: never, Response: LolEndOfGameEndOfGameStats }
 	},
 	"/lol-end-of-game/v1/gameclient-eog-stats-block": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEndOfGameGameClientEndOfGameStats }
-		post: { Parameters: [], Body: LCUTypes.LolEndOfGameGameClientEndOfGameStats, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolEndOfGameGameClientEndOfGameStats }
+		post: { Parameters: [], Body: LolEndOfGameGameClientEndOfGameStats, Response: unknown }
 	},
 	"/lol-end-of-game/v1/tft-eog-stats": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEndOfGameTFTEndOfGameViewModel }
+		get: { Parameters: [], Body: never, Response: LolEndOfGameTFTEndOfGameViewModel }
 	},
 	"/lol-esport-stream-notifications/v1/live-streams": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEsportStreamNotificationsESportsLiveStreams }
+		get: { Parameters: [], Body: never, Response: LolEsportStreamNotificationsESportsLiveStreams }
 	},
 	"/lol-esport-stream-notifications/v1/stream-url": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-event-shop/v1/categories-offers": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopCategoryOffersUIData[] }
+		get: { Parameters: [], Body: never, Response: LolEventShopCategoryOffersUIData[] }
 	},
 	"/lol-event-shop/v1/event-details-data": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopEventDetailsUIData }
+		get: { Parameters: [], Body: never, Response: LolEventShopEventDetailsUIData }
 	},
 	"/lol-event-shop/v1/failure-loading-reward-track": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopEventShopError }
+		get: { Parameters: [], Body: never, Response: LolEventShopEventShopError }
 	},
 	"/lol-event-shop/v1/failure-loading-token-shop": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopEventShopError }
+		get: { Parameters: [], Body: never, Response: LolEventShopEventShopError }
 	},
 	"/lol-event-shop/v1/info": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopEventShopInfoUIData }
+		get: { Parameters: [], Body: never, Response: LolEventShopEventShopInfoUIData }
 	},
 	"/lol-event-shop/v1/is-grace-period": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-event-shop/v1/navigation-button-data": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopNavigationButtonUIData }
+		get: { Parameters: [], Body: never, Response: LolEventShopNavigationButtonUIData }
 	},
 	"/lol-event-shop/v1/pass-background-data": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopEventBackgroundUIData }
+		get: { Parameters: [], Body: never, Response: LolEventShopEventBackgroundUIData }
 	},
 	"/lol-event-shop/v1/pass-bundles": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopBundleOfferUIData[] }
+		get: { Parameters: [], Body: never, Response: LolEventShopBundleOfferUIData[] }
 	},
 	"/lol-event-shop/v1/progress-info-data": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopProgressInfoUIData }
+		get: { Parameters: [], Body: never, Response: LolEventShopProgressInfoUIData }
 	},
 	"/lol-event-shop/v1/reward-track-bonus-items": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopRewardTrackItem[] }
+		get: { Parameters: [], Body: never, Response: LolEventShopRewardTrackItem[] }
 	},
 	"/lol-event-shop/v1/reward-track-bonus-progress": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopRewardTrackProgress }
+		get: { Parameters: [], Body: never, Response: LolEventShopRewardTrackProgress }
 	},
 	"/lol-event-shop/v1/reward-track-items": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopRewardTrackItem[] }
+		get: { Parameters: [], Body: never, Response: LolEventShopRewardTrackItem[] }
 	},
 	"/lol-event-shop/v1/reward-track-progress": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopRewardTrackProgress }
+		get: { Parameters: [], Body: never, Response: LolEventShopRewardTrackProgress }
 	},
 	"/lol-event-shop/v1/reward-track-xp": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopRewardTrackXP }
+		get: { Parameters: [], Body: never, Response: LolEventShopRewardTrackXP }
 	},
 	"/lol-event-shop/v1/token-balance": {
 		get: { Parameters: [], Body: never, Response: number }
 	},
 	"/lol-event-shop/v1/token-shop-data": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopTokenShopUIData }
+		get: { Parameters: [], Body: never, Response: LolEventShopTokenShopUIData }
 	},
 	"/lol-event-shop/v1/token-upsell": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopTokenUpsell[] }
+		get: { Parameters: [], Body: never, Response: LolEventShopTokenUpsell[] }
 	},
 	"/lol-event-shop/v1/unclaimed-rewards": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolEventShopUnclaimedRewardsUIData }
+		get: { Parameters: [], Body: never, Response: LolEventShopUnclaimedRewardsUIData }
 	},
 	"/lol-game-client-chat/v1/buddies": {
 		get: { Parameters: [], Body: never, Response: string[] }
@@ -954,7 +957,7 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-game-client-chat/v2/buddies": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolGameClientChatBuddy[] }
+		get: { Parameters: [], Body: never, Response: LolGameClientChatBuddy[] }
 	},
 	"/lol-game-client-chat/v2/ignored-players": {
 		get: { Parameters: [], Body: never, Response: number[] }
@@ -963,25 +966,25 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-game-queues/v1/custom": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolGameQueuesQueueCustomGame }
+		get: { Parameters: [], Body: never, Response: LolGameQueuesQueueCustomGame }
 	},
 	"/lol-game-queues/v1/custom-non-default": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolGameQueuesQueueCustomGame }
+		get: { Parameters: [], Body: never, Response: LolGameQueuesQueueCustomGame }
 	},
 	"/lol-game-queues/v1/game-type-config/{gameTypeConfigId}": {
-		get: { Parameters: [gameTypeConfigId: number], Body: never, Response: LCUTypes.LolGameQueuesQueueGameTypeConfig }
+		get: { Parameters: [gameTypeConfigId: number], Body: never, Response: LolGameQueuesQueueGameTypeConfig }
 	},
 	"/lol-game-queues/v1/game-type-config/{gameTypeConfigId}/map/{mapId}": {
-		get: { Parameters: [gameTypeConfigId: number, mapId: number], Body: never, Response: LCUTypes.LolGameQueuesQueueGameTypeConfig }
+		get: { Parameters: [gameTypeConfigId: number, mapId: number], Body: never, Response: LolGameQueuesQueueGameTypeConfig }
 	},
 	"/lol-game-queues/v1/queues": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolGameQueuesQueue[] }
+		get: { Parameters: [], Body: never, Response: LolGameQueuesQueue[] }
 	},
 	"/lol-game-queues/v1/queues/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolGameQueuesQueue }
+		get: { Parameters: [id: number], Body: never, Response: LolGameQueuesQueue }
 	},
 	"/lol-game-queues/v1/queues/type/{queueType}": {
-		get: { Parameters: [queueType: string], Body: never, Response: LCUTypes.LolGameQueuesQueue }
+		get: { Parameters: [queueType: string], Body: never, Response: LolGameQueuesQueue }
 	},
 	"/lol-game-settings/v1/didreset": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -1007,7 +1010,7 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-gameflow/v1/availability": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolGameflowGameflowAvailability }
+		get: { Parameters: [], Body: never, Response: LolGameflowGameflowAvailability }
 	},
 	"/lol-gameflow/v1/basic-tutorial": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -1026,27 +1029,27 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: string[], Response: void }
 	},
 	"/lol-gameflow/v1/gameflow-metadata/player-status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolGameflowPlayerStatus }
-		post: { Parameters: [], Body: LCUTypes.LolGameflowPlayerStatus, Response: void }
+		get: { Parameters: [], Body: never, Response: LolGameflowPlayerStatus }
+		post: { Parameters: [], Body: LolGameflowPlayerStatus, Response: void }
 	},
 	"/lol-gameflow/v1/gameflow-metadata/registration-status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolGameflowRegistrationStatus }
-		post: { Parameters: [], Body: LCUTypes.LolGameflowRegistrationStatus, Response: void }
+		get: { Parameters: [], Body: never, Response: LolGameflowRegistrationStatus }
+		post: { Parameters: [], Body: LolGameflowRegistrationStatus, Response: void }
 	},
 	"/lol-gameflow/v1/gameflow-phase": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolGameflowGameflowPhase }
+		get: { Parameters: [], Body: never, Response: LolGameflowGameflowPhase }
 	},
 	"/lol-gameflow/v1/session": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolGameflowGameflowSession }
+		get: { Parameters: [], Body: never, Response: LolGameflowGameflowSession }
 	},
 	"/lol-gameflow/v1/session/per-position-summoner-spells/disallowed": {
-		get: { Parameters: [], Body: never, Response: Record<string, LCUTypes.LolGameflowGameModeSpellList> }
+		get: { Parameters: [], Body: never, Response: Record<string, LolGameflowGameModeSpellList> }
 	},
 	"/lol-gameflow/v1/session/per-position-summoner-spells/disallowed/as-string": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-gameflow/v1/session/per-position-summoner-spells/required": {
-		get: { Parameters: [], Body: never, Response: Record<string, LCUTypes.LolGameflowGameModeSpellList> }
+		get: { Parameters: [], Body: never, Response: Record<string, LolGameflowGameModeSpellList> }
 	},
 	"/lol-gameflow/v1/session/per-position-summoner-spells/required/as-string": {
 		get: { Parameters: [], Body: never, Response: string }
@@ -1058,20 +1061,20 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-gameflow/v1/watch": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolGameflowGameflowWatchPhase }
+		get: { Parameters: [], Body: never, Response: LolGameflowGameflowWatchPhase }
 	},
 	"/lol-geoinfo/v1/getlocation": {
-		get: { Parameters: [params: { "ip_address": string }], Body: never, Response: LCUTypes.LolGeoinfoGeoInfo }
+		get: { Parameters: [params: { "ip_address": string }], Body: never, Response: LolGeoinfoGeoInfo }
 	},
 	"/lol-geoinfo/v1/whereami": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolGeoinfoGeoInfoResponse }
+		get: { Parameters: [], Body: never, Response: LolGeoinfoGeoInfoResponse }
 	},
 	"/lol-highlights/v1/config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHighlightsHighlightsConfig }
+		get: { Parameters: [], Body: never, Response: LolHighlightsHighlightsConfig }
 	},
 	"/lol-highlights/v1/highlights": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHighlightsHighlight[] }
-		post: { Parameters: [], Body: never, Response: LCUTypes.LolHighlightsHighlight[] }
+		get: { Parameters: [], Body: never, Response: LolHighlightsHighlight[] }
+		post: { Parameters: [], Body: never, Response: LolHighlightsHighlight[] }
 	},
 	"/lol-highlights/v1/highlights-folder-path": {
 		get: { Parameters: [], Body: never, Response: string }
@@ -1080,7 +1083,7 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-honeyfruit/v1/account-claim/account-status/{puuid}": {
-		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolHoneyfruitAccountClaimStatus }
+		get: { Parameters: [puuid: string], Body: never, Response: LolHoneyfruitAccountClaimStatus }
 	},
 	"/lol-honeyfruit/v1/account-claim/auto-dismiss": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -1090,50 +1093,50 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-honeyfruit/v1/vng-publisher-settings": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHoneyfruitHoneyfruitVNGPublisherSettings }
+		get: { Parameters: [], Body: never, Response: LolHoneyfruitHoneyfruitVNGPublisherSettings }
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-honor-v2/v1/ballot": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHonorV2Ballot }
+		get: { Parameters: [], Body: never, Response: LolHonorV2Ballot }
 	},
 	"/lol-honor-v2/v1/config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHonorV2HonorConfig }
+		get: { Parameters: [], Body: never, Response: LolHonorV2HonorConfig }
 	},
 	"/lol-honor-v2/v1/late-recognition": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHonorV2Honor[] }
+		get: { Parameters: [], Body: never, Response: LolHonorV2Honor[] }
 	},
 	"/lol-honor-v2/v1/latest-eligible-game": {
 		get: { Parameters: [], Body: never, Response: number }
 	},
 	"/lol-honor-v2/v1/level-change": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHonorV2VendedHonorChange }
+		get: { Parameters: [], Body: never, Response: LolHonorV2VendedHonorChange }
 	},
 	"/lol-honor-v2/v1/mutual-honor": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHonorV2MutualHonor }
+		get: { Parameters: [], Body: never, Response: LolHonorV2MutualHonor }
 	},
 	"/lol-honor-v2/v1/profile": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHonorV2ProfileInfo }
+		get: { Parameters: [], Body: never, Response: LolHonorV2ProfileInfo }
 	},
 	"/lol-honor-v2/v1/recognition": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHonorV2Honor[] }
+		get: { Parameters: [], Body: never, Response: LolHonorV2Honor[] }
 	},
 	"/lol-honor-v2/v1/recognition-history": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHonorV2HonorInteraction[] }
+		get: { Parameters: [], Body: never, Response: LolHonorV2HonorInteraction[] }
 	},
 	"/lol-honor-v2/v1/reward-granted": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHonorV2VendedReward }
+		get: { Parameters: [], Body: never, Response: LolHonorV2VendedReward }
 	},
 	"/lol-honor-v2/v1/team-choices": {
 		get: { Parameters: [], Body: never, Response: string[] }
 	},
 	"/lol-honor-v2/v1/vote-completion": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolHonorV2VoteCompletion }
+		get: { Parameters: [], Body: never, Response: LolHonorV2VoteCompletion }
 	},
 	"/lol-hovercard/v1/friend-info/{puuid}": {
-		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolHovercardHovercardUserInfo }
+		get: { Parameters: [puuid: string], Body: never, Response: LolHovercardHovercardUserInfo }
 	},
 	"/lol-hovercard/v1/friend-info-by-summoner/{summonerId}": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolHovercardHovercardUserInfo }
+		get: { Parameters: [summonerId: number], Body: never, Response: LolHovercardHovercardUserInfo }
 	},
 	"/lol-inventory/v1/champSelectInventory": {
 		get: { Parameters: [], Body: never, Response: string }
@@ -1142,25 +1145,25 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-inventory/v1/inventory": {
-		get: { Parameters: [params: { "inventoryTypes": string[] }], Body: never, Response: LCUTypes.LolInventoryInventoryItemWithPayload[] }
+		get: { Parameters: [params: { "inventoryTypes": string[] }], Body: never, Response: LolInventoryInventoryItemWithPayload[] }
 	},
 	"/lol-inventory/v1/inventory/emotes": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolInventoryInventoryItemWithPayload[] }
+		get: { Parameters: [], Body: never, Response: LolInventoryInventoryItemWithPayload[] }
 	},
 	"/lol-inventory/v1/inventoryWithF2P": {
-		get: { Parameters: [params: { "inventoryTypes": string[] }], Body: never, Response: LCUTypes.LolInventoryInventoryItemWithPayload[] }
+		get: { Parameters: [params: { "inventoryTypes": string[] }], Body: never, Response: LolInventoryInventoryItemWithPayload[] }
 	},
 	"/lol-inventory/v1/notifications/{inventoryType}": {
-		get: { Parameters: [inventoryType: string], Body: never, Response: LCUTypes.LolInventoryInventoryNotification[] }
+		get: { Parameters: [inventoryType: string], Body: never, Response: LolInventoryInventoryNotification[] }
 	},
 	"/lol-inventory/v1/players/{puuid}/inventory": {
-		get: { Parameters: [puuid: string, params: { "inventoryTypes": string[] }], Body: never, Response: LCUTypes.LolInventoryInventoryItemWithPayload[] }
+		get: { Parameters: [puuid: string, params: { "inventoryTypes": string[] }], Body: never, Response: LolInventoryInventoryItemWithPayload[] }
 	},
 	"/lol-inventory/v1/signedInventory": {
 		get: { Parameters: [params: { "inventoryTypes": string[] }], Body: never, Response: Record<string, string> }
 	},
 	"/lol-inventory/v1/signedInventoryCache": {
-		get: { Parameters: [], Body: never, Response: Record<string, LCUTypes.LolInventoryInventoryCacheEntry> }
+		get: { Parameters: [], Body: never, Response: Record<string, LolInventoryInventoryCacheEntry> }
 	},
 	"/lol-inventory/v1/signedInventory/simple": {
 		get: { Parameters: [params: { "inventoryTypes": string[], "queryParams"?: Record<string, string> }], Body: never, Response: string }
@@ -1181,27 +1184,27 @@ export interface LCUEndpoints {
 		get: { Parameters: [currencyType: string], Body: never, Response: Record<string, number> }
 	},
 	"/lol-inventory/v1/xbox-subscription-status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolInventoryXboxSubscriptionStatus }
+		get: { Parameters: [], Body: never, Response: LolInventoryXboxSubscriptionStatus }
 	},
 	"/lol-inventory/v2/inventory/{inventoryType}": {
-		get: { Parameters: [inventoryType: string], Body: never, Response: LCUTypes.LolInventoryInventoryItemWithPayload[] }
+		get: { Parameters: [inventoryType: string], Body: never, Response: LolInventoryInventoryItemWithPayload[] }
 	},
 	"/lol-item-sets/v1/item-sets/{summonerId}/sets": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolItemSetsItemSets }
-		post: { Parameters: [summonerId: number], Body: LCUTypes.LolItemSetsItemSet, Response: void }
-		put: { Parameters: [summonerId: number], Body: LCUTypes.LolItemSetsItemSets, Response: void }
+		get: { Parameters: [summonerId: number], Body: never, Response: LolItemSetsItemSets }
+		post: { Parameters: [summonerId: number], Body: LolItemSetsItemSet, Response: void }
+		put: { Parameters: [summonerId: number], Body: LolItemSetsItemSets, Response: void }
 	},
 	"/lol-kickout/v1/notification": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolKickoutKickoutMessage }
+		get: { Parameters: [], Body: never, Response: LolKickoutKickoutMessage }
 	},
 	"/lol-kr-playtime-reminder/v1/message": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-kr-playtime-reminder/v1/playtime": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolKrPlaytimeReminderPlaytimeReminder }
+		get: { Parameters: [], Body: never, Response: LolKrPlaytimeReminderPlaytimeReminder }
 	},
 	"/lol-kr-shutdown-law/v1/custom-status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolKrShutdownLawQueueShutdownStatus }
+		get: { Parameters: [], Body: never, Response: LolKrShutdownLawQueueShutdownStatus }
 	},
 	"/lol-kr-shutdown-law/v1/disabled-queues": {
 		get: { Parameters: [], Body: never, Response: number[] }
@@ -1210,52 +1213,52 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-kr-shutdown-law/v1/notification": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolKrShutdownLawShutdownLawNotification }
+		get: { Parameters: [], Body: never, Response: LolKrShutdownLawShutdownLawNotification }
 	},
 	"/lol-kr-shutdown-law/v1/queue-status/{queue_id}": {
-		get: { Parameters: [queue_id: number], Body: never, Response: LCUTypes.LolKrShutdownLawQueueShutdownStatus }
+		get: { Parameters: [queue_id: number], Body: never, Response: LolKrShutdownLawQueueShutdownStatus }
 	},
 	"/lol-kr-shutdown-law/v1/rating-screen": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolKrShutdownLawRatingScreenInfo }
+		get: { Parameters: [], Body: never, Response: LolKrShutdownLawRatingScreenInfo }
 	},
 	"/lol-kr-shutdown-law/v1/status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolKrShutdownLawAllQueueShutdownStatus }
+		get: { Parameters: [], Body: never, Response: LolKrShutdownLawAllQueueShutdownStatus }
 	},
 	"/lol-league-session/v1/league-session-token": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-leaver-buster/v1/notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLeaverBusterLeaverBusterNotificationResource[] }
+		get: { Parameters: [], Body: never, Response: LolLeaverBusterLeaverBusterNotificationResource[] }
 	},
 	"/lol-leaver-buster/v1/ranked-restriction": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLeaverBusterRankedRestrictionInfo }
+		get: { Parameters: [], Body: never, Response: LolLeaverBusterRankedRestrictionInfo }
 	},
 	"/lol-license-agreement/v1/agreement": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-license-agreement/v1/agreements": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLicenseAgreementLicenseAgreement[] }
+		get: { Parameters: [], Body: never, Response: LolLicenseAgreementLicenseAgreement[] }
 	},
 	"/lol-license-agreement/v1/all-agreements": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLicenseAgreementLicenseAgreement[] }
+		get: { Parameters: [], Body: never, Response: LolLicenseAgreementLicenseAgreement[] }
 	},
 	"/lol-license-agreement/v1/privacy-policy": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-license-agreement/v1/serve-location": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLicenseAgreementLicenseServeLocation }
+		get: { Parameters: [], Body: never, Response: LolLicenseAgreementLicenseServeLocation }
 	},
 	"/lol-loadouts/v1/loadouts-ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-loadouts/v4/loadouts/{loadoutId}": {
-		get: { Parameters: [loadoutId: string], Body: never, Response: LCUTypes.LolLoadoutsScopedLoadout }
+		get: { Parameters: [loadoutId: string], Body: never, Response: LolLoadoutsScopedLoadout }
 	},
 	"/lol-loadouts/v4/loadouts/scope/account": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLoadoutsScopedLoadout[] }
+		get: { Parameters: [], Body: never, Response: LolLoadoutsScopedLoadout[] }
 	},
 	"/lol-loadouts/v4/loadouts/scope/{scope}/{scopeItemId}": {
-		get: { Parameters: [scope: string, scopeItemId: number], Body: never, Response: LCUTypes.LolLoadoutsScopedLoadout[] }
+		get: { Parameters: [scope: string, scopeItemId: number], Body: never, Response: LolLoadoutsScopedLoadout[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/bannable-champion-ids": {
 		get: { Parameters: [], Body: never, Response: number[] }
@@ -1279,83 +1282,83 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/preferences": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyTeamBuilderChampionSelectPreferences }
+		get: { Parameters: [], Body: never, Response: LolLobbyTeamBuilderChampionSelectPreferences }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/sending-loadouts-gcos-enabled": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyTeamBuilderChampSelectSession }
+		get: { Parameters: [], Body: never, Response: LolLobbyTeamBuilderChampSelectSession }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/my-selection": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyTeamBuilderChampSelectPlayerSelection }
-		patch: { Parameters: [], Body: LCUTypes.LolLobbyTeamBuilderChampSelectMySelection, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolLobbyTeamBuilderChampSelectPlayerSelection }
+		patch: { Parameters: [], Body: LolLobbyTeamBuilderChampSelectMySelection, Response: unknown }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/obfuscated-summoner-ids": {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/swaps": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract[] }
+		get: { Parameters: [], Body: never, Response: LolLobbyTeamBuilderChampSelectSwapContract[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/swaps/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
+		get: { Parameters: [id: number], Body: never, Response: LolLobbyTeamBuilderChampSelectSwapContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/timer": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyTeamBuilderChampSelectTimer }
+		get: { Parameters: [], Body: never, Response: LolLobbyTeamBuilderChampSelectTimer }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/trades": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyTeamBuilderChampSelectTradeContract[] }
+		get: { Parameters: [], Body: never, Response: LolLobbyTeamBuilderChampSelectTradeContract[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/trades/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolLobbyTeamBuilderChampSelectTradeContract }
+		get: { Parameters: [id: number], Body: never, Response: LolLobbyTeamBuilderChampSelectTradeContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/team-boost": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyTeamBuilderTeamBoost }
+		get: { Parameters: [], Body: never, Response: LolLobbyTeamBuilderTeamBoost }
 	},
 	"/lol-lobby-team-builder/v1/matchmaking": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyTeamBuilderMatchmakingSearchResource }
+		get: { Parameters: [], Body: never, Response: LolLobbyTeamBuilderMatchmakingSearchResource }
 	},
 	"/lol-lobby/v1/autofill-displayed": {
 		get: { Parameters: [], Body: never, Response: boolean }
 		put: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-lobby/v1/custom-games": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyLobbyCustomGame[] }
+		get: { Parameters: [], Body: never, Response: LolLobbyLobbyCustomGame[] }
 	},
 	"/lol-lobby/v1/custom-games/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolLobbyLobbyCustomGame }
+		get: { Parameters: [id: number], Body: never, Response: LolLobbyLobbyCustomGame }
 	},
 	"/lol-lobby/v1/lobby/availability": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyQueueAvailability }
+		get: { Parameters: [], Body: never, Response: LolLobbyQueueAvailability }
 	},
 	"/lol-lobby/v1/lobby/countdown": {
 		get: { Parameters: [], Body: never, Response: number }
 	},
 	"/lol-lobby/v1/lobby/invitations": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyLobbyInvitation[] }
-		post: { Parameters: [], Body: LCUTypes.LolLobbyLobbyInvitation, Response: LCUTypes.LolLobbyLobbyInvitation }
+		get: { Parameters: [], Body: never, Response: LolLobbyLobbyInvitation[] }
+		post: { Parameters: [], Body: LolLobbyLobbyInvitation, Response: LolLobbyLobbyInvitation }
 	},
 	"/lol-lobby/v1/lobby/invitations/{id}": {
-		get: { Parameters: [id: string], Body: never, Response: LCUTypes.LolLobbyLobbyInvitation }
+		get: { Parameters: [id: string], Body: never, Response: LolLobbyLobbyInvitation }
 	},
 	"/lol-lobby/v1/lobby/members/localMember/player-slots": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyQuickPlayPresetSlotDto[] }
-		put: { Parameters: [], Body: LCUTypes.LolLobbyQuickPlayPresetSlotDto[], Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolLobbyQuickPlayPresetSlotDto[] }
+		put: { Parameters: [], Body: LolLobbyQuickPlayPresetSlotDto[], Response: unknown }
 	},
 	"/lol-lobby/v1/lobby/tft-ranked-history": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-lobby/v1/parties/gamemode": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyGameModeDto }
+		get: { Parameters: [], Body: never, Response: LolLobbyGameModeDto }
 	},
 	"/lol-lobby/v1/parties/player": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyPlayerDto }
+		get: { Parameters: [], Body: never, Response: LolLobbyPlayerDto }
 	},
 	"/lol-lobby/v1/party-rewards": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyLobbyPartyRewards }
+		get: { Parameters: [], Body: never, Response: LolLobbyLobbyPartyRewards }
 	},
 	"/lol-lobby/v2/comms/members": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyPremadePartyDto }
+		get: { Parameters: [], Body: never, Response: LolLobbyPremadePartyDto }
 	},
 	"/lol-lobby/v2/comms/token": {
 		get: { Parameters: [], Body: never, Response: string }
@@ -1367,43 +1370,43 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-lobby/v2/lobby/custom/available-bots": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyLobbyBotChampion[] }
+		get: { Parameters: [], Body: never, Response: LolLobbyLobbyBotChampion[] }
 	},
 	"/lol-lobby/v2/lobby/custom/bots-enabled": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-lobby/v2/lobby/invitations": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyLobbyInvitationDto[] }
-		post: { Parameters: [], Body: LCUTypes.LolLobbyLobbyInvitationDto[], Response: LCUTypes.LolLobbyLobbyInvitationDto[] }
+		get: { Parameters: [], Body: never, Response: LolLobbyLobbyInvitationDto[] }
+		post: { Parameters: [], Body: LolLobbyLobbyInvitationDto[], Response: LolLobbyLobbyInvitationDto[] }
 	},
 	"/lol-lobby/v2/lobby/matchmaking/search-state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyLobbyMatchmakingSearchResource }
+		get: { Parameters: [], Body: never, Response: LolLobbyLobbyMatchmakingSearchResource }
 	},
 	"/lol-lobby/v2/lobby/members": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyLobbyParticipantDto[] }
+		get: { Parameters: [], Body: never, Response: LolLobbyLobbyParticipantDto[] }
 	},
 	"/lol-lobby/v2/notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyLobbyNotification[] }
-		post: { Parameters: [], Body: LCUTypes.LolLobbyLobbyNotification, Response: void }
+		get: { Parameters: [], Body: never, Response: LolLobbyLobbyNotification[] }
+		post: { Parameters: [], Body: LolLobbyLobbyNotification, Response: void }
 	},
 	"/lol-lobby/v2/party-active": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-lobby/v2/party/eog-status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyPartyStatusDto }
+		get: { Parameters: [], Body: never, Response: LolLobbyPartyStatusDto }
 	},
 	"/lol-lobby/v2/received-invitations": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyReceivedInvitationDto[] }
+		get: { Parameters: [], Body: never, Response: LolLobbyReceivedInvitationDto[] }
 	},
 	"/lol-lobby/v2/registration-status": {
 		get: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-login/v1/account-state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLoginAccountStateResource }
+		get: { Parameters: [], Body: never, Response: LolLoginAccountStateResource }
 		post: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-login/v1/login-connection-state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLoginLoginConnectionState }
+		get: { Parameters: [], Body: never, Response: LolLoginLoginConnectionState }
 	},
 	"/lol-login/v1/login-data-packet": {
 		get: { Parameters: [], Body: never, Response: unknown }
@@ -1412,16 +1415,16 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-login/v1/login-platform-credentials": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLoginPlatformGeneratedCredentials }
+		get: { Parameters: [], Body: never, Response: LolLoginPlatformGeneratedCredentials }
 	},
 	"/lol-login/v1/login-queue-state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLoginLoginQueue }
+		get: { Parameters: [], Body: never, Response: LolLoginLoginQueue }
 	},
 	"/lol-login/v1/wallet": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLoginLoginSessionWallet }
+		get: { Parameters: [], Body: never, Response: LolLoginLoginSessionWallet }
 	},
 	"/lol-login/v2/league-session-init-token": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLoginLeagueSessionTokenEnvelope }
+		get: { Parameters: [], Body: never, Response: LolLoginLeagueSessionTokenEnvelope }
 	},
 	"/lol-loot/v1/currency-configuration": {
 		get: { Parameters: [], Body: never, Response: void }
@@ -1430,34 +1433,34 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-loot/v1/loot-grants": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLootLootGrantNotification[] }
+		get: { Parameters: [], Body: never, Response: LolLootLootGrantNotification[] }
 	},
 	"/lol-loot/v1/loot-items": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLootLootItem[] }
+		get: { Parameters: [], Body: never, Response: LolLootLootItem[] }
 	},
 	"/lol-loot/v1/loot-odds/{recipeName}": {
-		get: { Parameters: [recipeName: string], Body: never, Response: LCUTypes.LolLootVerboseLootOddsResponse }
+		get: { Parameters: [recipeName: string], Body: never, Response: LolLootVerboseLootOddsResponse }
 	},
 	"/lol-loot/v1/mass-disenchant/configuration": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLootMassDisenchantClientConfig }
+		get: { Parameters: [], Body: never, Response: LolLootMassDisenchantClientConfig }
 	},
 	"/lol-loot/v1/mass-disenchant-recipes": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LootLcdsRecipeClientDTO[] }
+		get: { Parameters: [], Body: never, Response: LootLcdsRecipeClientDTO[] }
 	},
 	"/lol-loot/v1/milestones": {
-		get: { Parameters: [params: { "minimizeResponse": boolean }], Body: never, Response: LCUTypes.LolLootLootMilestones[] }
+		get: { Parameters: [params: { "minimizeResponse": boolean }], Body: never, Response: LolLootLootMilestones[] }
 	},
 	"/lol-loot/v1/milestones/{lootMilestonesId}": {
-		get: { Parameters: [lootMilestonesId: string], Body: never, Response: LCUTypes.LolLootLootMilestones }
+		get: { Parameters: [lootMilestonesId: string], Body: never, Response: LolLootLootMilestones }
 	},
 	"/lol-loot/v1/milestones/{lootMilestonesId}/claimProgress": {
-		get: { Parameters: [lootMilestonesId: string], Body: never, Response: LCUTypes.LolLootLootMilestonesClaimResponse }
+		get: { Parameters: [lootMilestonesId: string], Body: never, Response: LolLootLootMilestonesClaimResponse }
 	},
 	"/lol-loot/v1/milestones/{lootMilestonesId}/counter": {
-		get: { Parameters: [lootMilestonesId: string], Body: never, Response: LCUTypes.LolLootLootMilestonesCounter }
+		get: { Parameters: [lootMilestonesId: string], Body: never, Response: LolLootLootMilestonesCounter }
 	},
 	"/lol-loot/v1/milestones/counters": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLootLootMilestonesCounter[] }
+		get: { Parameters: [], Body: never, Response: LolLootLootMilestonesCounter[] }
 	},
 	"/lol-loot/v1/milestones/items": {
 		get: { Parameters: [], Body: never, Response: string[] }
@@ -1466,20 +1469,20 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: string[] }
 	},
 	"/lol-loot/v1/player-loot": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLootPlayerLoot[] }
+		get: { Parameters: [], Body: never, Response: LolLootPlayerLoot[] }
 	},
 	"/lol-loot/v1/player-loot/{lootId}": {
-		get: { Parameters: [lootId: string], Body: never, Response: LCUTypes.LolLootPlayerLoot }
+		get: { Parameters: [lootId: string], Body: never, Response: LolLootPlayerLoot }
 	},
 	"/lol-loot/v1/player-loot/{lootId}/context-menu": {
-		get: { Parameters: [lootId: string], Body: never, Response: LCUTypes.LolLootContextMenu[] }
-		post: { Parameters: [lootId: string], Body: never, Response: LCUTypes.LolLootContextMenu[] }
+		get: { Parameters: [lootId: string], Body: never, Response: LolLootContextMenu[] }
+		post: { Parameters: [lootId: string], Body: never, Response: LolLootContextMenu[] }
 	},
 	"/lol-loot/v1/player-loot-map": {
-		get: { Parameters: [], Body: never, Response: Record<string, LCUTypes.LolLootPlayerLoot> }
+		get: { Parameters: [], Body: never, Response: Record<string, LolLootPlayerLoot> }
 	},
 	"/lol-loot/v1/player-loot-notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLootPlayerLootNotification[] }
+		get: { Parameters: [], Body: never, Response: LolLootPlayerLootNotification[] }
 	},
 	"/lol-loot/v1/ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -1488,29 +1491,29 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-loot/v1/recipes/initial-item/{lootId}": {
-		get: { Parameters: [lootId: string], Body: never, Response: LCUTypes.LolLootRecipeWithMilestones[] }
-		post: { Parameters: [lootId: string], Body: never, Response: LCUTypes.LolLootRecipeWithMilestones[] }
+		get: { Parameters: [lootId: string], Body: never, Response: LolLootRecipeWithMilestones[] }
+		post: { Parameters: [lootId: string], Body: never, Response: LolLootRecipeWithMilestones[] }
 	},
 	"/lol-loot/v2/player-loot-map": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLootPlayerLootMap }
+		get: { Parameters: [], Body: never, Response: LolLootPlayerLootMap }
 	},
 	"/lol-loyalty/v1/status-notification": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolLoyaltyLoyaltyStatusNotification }
+		get: { Parameters: [], Body: never, Response: LolLoyaltyLoyaltyStatusNotification }
 	},
 	"/lol-maps/v1/map/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolMapsMaps }
+		get: { Parameters: [id: number], Body: never, Response: LolMapsMaps }
 	},
 	"/lol-maps/v1/maps": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolMapsMaps[] }
+		get: { Parameters: [], Body: never, Response: LolMapsMaps[] }
 	},
 	"/lol-maps/v2/map/{id}/{gameMode}": {
-		get: { Parameters: [id: number, gameMode: string], Body: never, Response: LCUTypes.LolMapsMaps }
+		get: { Parameters: [id: number, gameMode: string], Body: never, Response: LolMapsMaps }
 	},
 	"/lol-maps/v2/map/{id}/{gameMode}/{gameMutator}": {
-		get: { Parameters: [id: number, gameMode: string, gameMutator: string], Body: never, Response: LCUTypes.LolMapsMaps }
+		get: { Parameters: [id: number, gameMode: string, gameMutator: string], Body: never, Response: LolMapsMaps }
 	},
 	"/lol-maps/v2/maps": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolMapsMaps[] }
+		get: { Parameters: [], Body: never, Response: LolMapsMaps[] }
 	},
 	"/lol-marketing-preferences/v1/partition/{partitionKey}": {
 		get: { Parameters: [partitionKey: string], Body: never, Response: Record<string, string> }
@@ -1520,108 +1523,108 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-match-history/v1/delta": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolMatchHistoryMatchHistoryPlayerDelta }
+		get: { Parameters: [], Body: never, Response: LolMatchHistoryMatchHistoryPlayerDelta }
 	},
 	"/lol-match-history/v1/game-timelines/{gameId}": {
-		get: { Parameters: [gameId: number], Body: never, Response: LCUTypes.LolMatchHistoryMatchHistoryTimelineFrames }
+		get: { Parameters: [gameId: number], Body: never, Response: LolMatchHistoryMatchHistoryTimelineFrames }
 	},
 	"/lol-match-history/v1/games/{gameId}": {
-		get: { Parameters: [gameId: number], Body: never, Response: LCUTypes.LolMatchHistoryMatchHistoryGame }
+		get: { Parameters: [gameId: number], Body: never, Response: LolMatchHistoryMatchHistoryGame }
 	},
 	"/lol-match-history/v1/products/lol/{puuid}/matches": {
-		get: { Parameters: [puuid: string, params?: { "begIndex"?: number, "endIndex"?: number }], Body: never, Response: LCUTypes.LolMatchHistoryMatchHistoryList }
+		get: { Parameters: [puuid: string, params?: { "begIndex"?: number, "endIndex"?: number }], Body: never, Response: LolMatchHistoryMatchHistoryList }
 	},
 	"/lol-match-history/v1/products/lol/current-summoner/matches": {
-		get: { Parameters: [params?: { "begIndex"?: number, "endIndex"?: number }], Body: never, Response: LCUTypes.LolMatchHistoryMatchHistoryList }
+		get: { Parameters: [params?: { "begIndex"?: number, "endIndex"?: number }], Body: never, Response: LolMatchHistoryMatchHistoryList }
 	},
 	"/lol-match-history/v1/products/tft/{puuid}/matches": {
-		get: { Parameters: [puuid: string, params?: { "begin"?: number, "count"?: number, "tag"?: string }], Body: never, Response: LCUTypes.LolMatchHistoryGAMHSMatchHistoryList }
+		get: { Parameters: [puuid: string, params?: { "begin"?: number, "count"?: number, "tag"?: string }], Body: never, Response: LolMatchHistoryGAMHSMatchHistoryList }
 	},
 	"/lol-match-history/v1/recently-played-summoners": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolMatchHistoryRecentlyPlayedSummoner[] }
+		get: { Parameters: [], Body: never, Response: LolMatchHistoryRecentlyPlayedSummoner[] }
 	},
 	"/lol-match-history/v1/web-url": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-match-history/v3/matchlist/account/{accountId}": {
-		get: { Parameters: [accountId: number, params?: { "begIndex"?: number, "endIndex"?: number }], Body: never, Response: LCUTypes.LolMatchHistoryMatchHistoryList }
+		get: { Parameters: [accountId: number, params?: { "begIndex"?: number, "endIndex"?: number }], Body: never, Response: LolMatchHistoryMatchHistoryList }
 	},
 	"/lol-matchmaking/v1/ready-check": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolMatchmakingMatchmakingReadyCheckResource }
+		get: { Parameters: [], Body: never, Response: LolMatchmakingMatchmakingReadyCheckResource }
 	},
 	"/lol-matchmaking/v1/search/errors": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolMatchmakingMatchmakingSearchErrorResource[] }
+		get: { Parameters: [], Body: never, Response: LolMatchmakingMatchmakingSearchErrorResource[] }
 	},
 	"/lol-matchmaking/v1/search/errors/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolMatchmakingMatchmakingSearchErrorResource }
+		get: { Parameters: [id: number], Body: never, Response: LolMatchmakingMatchmakingSearchErrorResource }
 	},
 	"/lol-missions/v1/data": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PlayerMissionEligibilityData }
+		get: { Parameters: [], Body: never, Response: PlayerMissionEligibilityData }
 	},
 	"/lol-missions/v1/missions": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PlayerMissionDTO[] }
+		get: { Parameters: [], Body: never, Response: PlayerMissionDTO[] }
 	},
 	"/lol-missions/v1/series": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.SeriesDTO[] }
+		get: { Parameters: [], Body: never, Response: SeriesDTO[] }
 	},
 	"/lol-npe-rewards/v1/challenges/progress": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolNpeRewardsChallengesProgress }
+		get: { Parameters: [], Body: never, Response: LolNpeRewardsChallengesProgress }
 	},
 	"/lol-npe-rewards/v1/level-rewards": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolNpeRewardsRewardSeries }
+		get: { Parameters: [], Body: never, Response: LolNpeRewardsRewardSeries }
 	},
 	"/lol-npe-rewards/v1/level-rewards/state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolNpeRewardsRewardSeriesState }
+		get: { Parameters: [], Body: never, Response: LolNpeRewardsRewardSeriesState }
 	},
 	"/lol-npe-rewards/v1/login-rewards": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolNpeRewardsRewardSeries }
+		get: { Parameters: [], Body: never, Response: LolNpeRewardsRewardSeries }
 	},
 	"/lol-npe-rewards/v1/login-rewards/state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolNpeRewardsRewardSeriesState }
+		get: { Parameters: [], Body: never, Response: LolNpeRewardsRewardSeriesState }
 	},
 	"/lol-npe-tutorial-path/v1/rewards/champ": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolNpeTutorialPathCollectionsChampion }
+		get: { Parameters: [], Body: never, Response: LolNpeTutorialPathCollectionsChampion }
 	},
 	"/lol-npe-tutorial-path/v1/settings": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolNpeTutorialPathAccountSettingsTutorial }
-		put: { Parameters: [], Body: LCUTypes.LolNpeTutorialPathAccountSettingsTutorial, Response: void }
+		get: { Parameters: [], Body: never, Response: LolNpeTutorialPathAccountSettingsTutorial }
+		put: { Parameters: [], Body: LolNpeTutorialPathAccountSettingsTutorial, Response: void }
 	},
 	"/lol-npe-tutorial-path/v1/tutorials": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolNpeTutorialPathTutorial[] }
+		get: { Parameters: [], Body: never, Response: LolNpeTutorialPathTutorial[] }
 	},
 	"/lol-patch/v1/checking-enabled": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-patch/v1/environment": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPatchChunkingPatcherEnvironment }
+		get: { Parameters: [], Body: never, Response: LolPatchChunkingPatcherEnvironment }
 	},
 	"/lol-patch/v1/game-version": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-patch/v1/notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPatchNotification[] }
+		get: { Parameters: [], Body: never, Response: LolPatchNotification[] }
 	},
 	"/lol-patch/v1/products/league_of_legends/install-location": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPatchInstallPaths }
+		get: { Parameters: [], Body: never, Response: LolPatchInstallPaths }
 	},
 	"/lol-patch/v1/products/league_of_legends/state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPatchProductState }
+		get: { Parameters: [], Body: never, Response: LolPatchProductState }
 	},
 	"/lol-patch/v1/products/league_of_legends/supported-game-releases": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPatchSupportedGameReleases }
+		get: { Parameters: [], Body: never, Response: LolPatchSupportedGameReleases }
 	},
 	"/lol-patch/v1/status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPatchStatus }
+		get: { Parameters: [], Body: never, Response: LolPatchStatus }
 	},
 	"/lol-perks/v1/currentpage": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPerksPerkPageResource }
+		get: { Parameters: [], Body: never, Response: LolPerksPerkPageResource }
 		put: { Parameters: [], Body: number, Response: unknown }
 	},
 	"/lol-perks/v1/inventory": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPerksPlayerInventory }
+		get: { Parameters: [], Body: never, Response: LolPerksPlayerInventory }
 	},
 	"/lol-perks/v1/perks": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPerksPerkUIPerk[] }
+		get: { Parameters: [], Body: never, Response: LolPerksPerkUIPerk[] }
 	},
 	"/lol-perks/v1/perks/disabled": {
 		get: { Parameters: [], Body: never, Response: number[] }
@@ -1633,7 +1636,7 @@ export interface LCUEndpoints {
 		get: { Parameters: [championId: number, position: string], Body: never, Response: string }
 	},
 	"/lol-perks/v1/recommended-pages/champion/{championId}/position/{position}/map/{mapId}": {
-		get: { Parameters: [championId: number, position: string, mapId: number], Body: never, Response: LCUTypes.LolPerksPerkUIRecommendedPage[] }
+		get: { Parameters: [championId: number, position: string, mapId: number], Body: never, Response: LolPerksPerkUIRecommendedPage[] }
 	},
 	"/lol-perks/v1/recommended-pages-position/champion/{championId}": {
 		get: { Parameters: [championId: number], Body: never, Response: string }
@@ -1643,19 +1646,19 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-perks/v1/settings": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPerksUISettings }
-		put: { Parameters: [], Body: LCUTypes.LolPerksUISettings, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolPerksUISettings }
+		put: { Parameters: [], Body: LolPerksUISettings, Response: unknown }
 	},
 	"/lol-perks/v1/show-auto-modified-pages-notification": {
 		get: { Parameters: [], Body: never, Response: boolean }
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-perks/v1/styles": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPerksPerkUIStyle[] }
+		get: { Parameters: [], Body: never, Response: LolPerksPerkUIStyle[] }
 	},
 	"/lol-pft/v2/survey": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPftPFTSurvey }
-		post: { Parameters: [], Body: LCUTypes.LolPftPFTSurvey, Response: void }
+		get: { Parameters: [], Body: never, Response: LolPftPFTSurvey }
+		post: { Parameters: [], Body: LolPftPFTSurvey, Response: void }
 	},
 	"/lol-platform-config/v1/initial-configuration-complete": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -1670,47 +1673,47 @@ export interface LCUEndpoints {
 		get: { Parameters: [ns: string, key: string], Body: never, Response: unknown }
 	},
 	"/lol-player-behavior/v1/ban": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerBehaviorBanNotification }
+		get: { Parameters: [], Body: never, Response: LolPlayerBehaviorBanNotification }
 	},
 	"/lol-player-behavior/v1/chat-restriction": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerBehaviorRestrictionNotification }
+		get: { Parameters: [], Body: never, Response: LolPlayerBehaviorRestrictionNotification }
 	},
 	"/lol-player-behavior/v1/config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerBehaviorPlayerBehaviorConfig }
+		get: { Parameters: [], Body: never, Response: LolPlayerBehaviorPlayerBehaviorConfig }
 	},
 	"/lol-player-behavior/v1/ranked-restriction": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerBehaviorRestrictionNotification }
+		get: { Parameters: [], Body: never, Response: LolPlayerBehaviorRestrictionNotification }
 	},
 	"/lol-player-behavior/v1/reform-card": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerBehaviorReformCard }
+		get: { Parameters: [], Body: never, Response: LolPlayerBehaviorReformCard }
 	},
 	"/lol-player-behavior/v1/reporter-feedback": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerBehaviorReporterFeedback[] }
+		get: { Parameters: [], Body: never, Response: LolPlayerBehaviorReporterFeedback[] }
 	},
 	"/lol-player-behavior/v2/reform-card": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerBehaviorReformCardV2 }
+		get: { Parameters: [], Body: never, Response: LolPlayerBehaviorReformCardV2 }
 	},
 	"/lol-player-behavior/v2/reporter-feedback": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerBehaviorReporterFeedbackMessage[] }
+		get: { Parameters: [], Body: never, Response: LolPlayerBehaviorReporterFeedbackMessage[] }
 	},
 	"/lol-player-behavior/v3/reform-cards": {
 		get: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-player-level-up/v1/level-up": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerLevelUpPlayerLevelUpEvent }
+		get: { Parameters: [], Body: never, Response: LolPlayerLevelUpPlayerLevelUpEvent }
 	},
 	"/lol-player-level-up/v1/level-up-notifications/{pluginName}": {
-		get: { Parameters: [pluginName: string], Body: never, Response: LCUTypes.LolPlayerLevelUpPlayerLevelUpEventAck }
-		post: { Parameters: [pluginName: string], Body: LCUTypes.LolPlayerLevelUpPlayerLevelUpEventAck, Response: void }
+		get: { Parameters: [pluginName: string], Body: never, Response: LolPlayerLevelUpPlayerLevelUpEventAck }
+		post: { Parameters: [pluginName: string], Body: LolPlayerLevelUpPlayerLevelUpEventAck, Response: void }
 	},
 	"/lol-player-messaging/v1/celebration/notification": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerMessagingDynamicCelebrationMessagingNotificationResource }
+		get: { Parameters: [], Body: never, Response: LolPlayerMessagingDynamicCelebrationMessagingNotificationResource }
 	},
 	"/lol-player-messaging/v1/notification": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerMessagingPlayerMessagingNotificationResource }
+		get: { Parameters: [], Body: never, Response: LolPlayerMessagingPlayerMessagingNotificationResource }
 	},
 	"/lol-player-name-transition/v1/modal-state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerNameTransitionPlayerNameTransitionModal }
+		get: { Parameters: [], Body: never, Response: LolPlayerNameTransitionPlayerNameTransitionModal }
 	},
 	"/lol-player-preferences/v1/player-preferences-ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -1719,39 +1722,39 @@ export interface LCUEndpoints {
 		get: { Parameters: [type: string], Body: never, Response: unknown }
 	},
 	"/lol-player-report-sender/v1/in-game-reports": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPlayerReportSenderPlayerReport[] }
-		post: { Parameters: [], Body: LCUTypes.LolPlayerReportSenderPlayerReport, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolPlayerReportSenderPlayerReport[] }
+		post: { Parameters: [], Body: LolPlayerReportSenderPlayerReport, Response: unknown }
 	},
 	"/lol-pre-end-of-game/v1/currentSequenceEvent": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPreEndOfGameSequenceEvent }
+		get: { Parameters: [], Body: never, Response: LolPreEndOfGameSequenceEvent }
 	},
 	"/lol-premade-voice/v1/availability": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPremadeVoiceVoiceAvailability }
+		get: { Parameters: [], Body: never, Response: LolPremadeVoiceVoiceAvailability }
 	},
 	"/lol-premade-voice/v1/capturedevices": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPremadeVoiceDeviceResource[] }
+		get: { Parameters: [], Body: never, Response: LolPremadeVoiceDeviceResource[] }
 		put: { Parameters: [], Body: string, Response: void }
 	},
 	"/lol-premade-voice/v1/first-experience": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPremadeVoiceFirstExperience }
+		get: { Parameters: [], Body: never, Response: LolPremadeVoiceFirstExperience }
 	},
 	"/lol-premade-voice/v1/participant-records": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPremadeVoicePremadeVoiceParticipantDto[] }
+		get: { Parameters: [], Body: never, Response: LolPremadeVoicePremadeVoiceParticipantDto[] }
 	},
 	"/lol-premade-voice/v1/participants": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPremadeVoicePremadeVoiceParticipantDto[] }
+		get: { Parameters: [], Body: never, Response: LolPremadeVoicePremadeVoiceParticipantDto[] }
 	},
 	"/lol-premade-voice/v1/settings": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPremadeVoiceSettingsResource }
+		get: { Parameters: [], Body: never, Response: LolPremadeVoiceSettingsResource }
 	},
 	"/lol-progression/v1/groups/{groupId}/configuration": {
-		get: { Parameters: [groupId: string], Body: never, Response: LCUTypes.LolProgressionGroup }
+		get: { Parameters: [groupId: string], Body: never, Response: LolProgressionGroup }
 	},
 	"/lol-progression/v1/groups/{groupId}/instanceData": {
-		get: { Parameters: [groupId: string], Body: never, Response: LCUTypes.LolProgressionEntityInstance }
+		get: { Parameters: [groupId: string], Body: never, Response: LolProgressionEntityInstance }
 	},
 	"/lol-progression/v1/groups/configuration": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolProgressionGroup[] }
+		get: { Parameters: [], Body: never, Response: LolProgressionGroup[] }
 	},
 	"/lol-progression/v1/ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -1760,113 +1763,113 @@ export interface LCUEndpoints {
 		get: { Parameters: [region: string], Body: never, Response: string[] }
 	},
 	"/lol-publishing-content/v1/listeners/client-data": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPublishingContentClientData }
+		get: { Parameters: [], Body: never, Response: LolPublishingContentClientData }
 	},
 	"/lol-publishing-content/v1/listeners/pubhub-config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPublishingContentPubHubConfig }
+		get: { Parameters: [], Body: never, Response: LolPublishingContentPubHubConfig }
 	},
 	"/lol-publishing-content/v1/ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-publishing-content/v1/settings": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPublishingContentPublishingSettings }
+		get: { Parameters: [], Body: never, Response: LolPublishingContentPublishingSettings }
 	},
 	"/lol-publishing-content/v1/tft-hub-cards": {
 		get: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-purchase-widget/v1/configuration": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPurchaseWidgetPurchaseWidgetConfig }
+		get: { Parameters: [], Body: never, Response: LolPurchaseWidgetPurchaseWidgetConfig }
 	},
 	"/lol-purchase-widget/v1/order-notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPurchaseWidgetOrderNotificationResource[] }
+		get: { Parameters: [], Body: never, Response: LolPurchaseWidgetOrderNotificationResource[] }
 	},
 	"/lol-purchase-widget/v1/purchasable-item": {
-		get: { Parameters: [params: { "inventoryType": string, "itemId": number }], Body: never, Response: LCUTypes.LolPurchaseWidgetPurchasableItem }
+		get: { Parameters: [params: { "inventoryType": string, "itemId": number }], Body: never, Response: LolPurchaseWidgetPurchasableItem }
 	},
 	"/lol-purchase-widget/v3/base-skin-line-data/{offerId}": {
-		get: { Parameters: [offerId: string], Body: never, Response: LCUTypes.LolPurchaseWidgetBaseSkinLineDto }
+		get: { Parameters: [offerId: string], Body: never, Response: LolPurchaseWidgetBaseSkinLineDto }
 	},
 	"/lol-purchase-widget/v3/purchase-offer-order-statuses": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolPurchaseWidgetPurchaseOfferOrderStatuses }
+		get: { Parameters: [], Body: never, Response: LolPurchaseWidgetPurchaseOfferOrderStatuses }
 	},
 	"/lol-ranked/v1/apex-leagues/{queueType}/{tier}": {
-		get: { Parameters: [queueType: LCUTypes.LolRankedLeagueQueueType, tier: string], Body: never, Response: LCUTypes.LolRankedLeagueLadderInfo }
+		get: { Parameters: [queueType: LolRankedLeagueQueueType, tier: string], Body: never, Response: LolRankedLeagueLadderInfo }
 	},
 	"/lol-ranked/v1/challenger-ladders-enabled": {
 		get: { Parameters: [], Body: never, Response: string[] }
 	},
 	"/lol-ranked/v1/current-lp-change-notification": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRankedLcuLeagueNotification }
+		get: { Parameters: [], Body: never, Response: LolRankedLcuLeagueNotification }
 	},
 	"/lol-ranked/v1/current-ranked-stats": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRankedRankedStats }
+		get: { Parameters: [], Body: never, Response: LolRankedRankedStats }
 	},
 	"/lol-ranked/v1/eligibleTiers/queueType/{queueType}": {
-		get: { Parameters: [queueType: LCUTypes.LolRankedLeagueQueueType], Body: never, Response: string[] }
+		get: { Parameters: [queueType: LolRankedLeagueQueueType], Body: never, Response: string[] }
 	},
 	"/lol-ranked/v1/eos-notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRankedEosNotificationResource[] }
+		get: { Parameters: [], Body: never, Response: LolRankedEosNotificationResource[] }
 	},
 	"/lol-ranked/v1/eos-rewards": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRankedEosRewardsConfig }
+		get: { Parameters: [], Body: never, Response: LolRankedEosRewardsConfig }
 	},
 	"/lol-ranked/v1/league-ladders/{puuid}": {
-		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolRankedLeagueLadderInfo[] }
+		get: { Parameters: [puuid: string], Body: never, Response: LolRankedLeagueLadderInfo[] }
 	},
 	"/lol-ranked/v1/notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRankedLcuLeagueNotification[] }
+		get: { Parameters: [], Body: never, Response: LolRankedLcuLeagueNotification[] }
 	},
 	"/lol-ranked/v1/ranked-stats/{puuid}": {
-		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolRankedRankedStats }
+		get: { Parameters: [puuid: string], Body: never, Response: LolRankedRankedStats }
 	},
 	"/lol-ranked/v1/rated-ladder/{queueType}": {
-		get: { Parameters: [queueType: LCUTypes.LolRankedLeagueQueueType], Body: never, Response: LCUTypes.LolRankedRatedLadderInfo }
+		get: { Parameters: [queueType: LolRankedLeagueQueueType], Body: never, Response: LolRankedRatedLadderInfo }
 	},
 	"/lol-ranked/v1/signed-ranked-stats": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRankedSignedRankedStatsDTO }
+		get: { Parameters: [], Body: never, Response: LolRankedSignedRankedStatsDTO }
 	},
 	"/lol-ranked/v1/social-leaderboard-ranked-queue-stats-for-puuids": {
-		get: { Parameters: [params: { "queueType": LCUTypes.LolRankedLeagueQueueType, "puuids": string[] }], Body: never, Response: Record<string, LCUTypes.LolRankedSocialLeaderboardRankedQueueStats> }
+		get: { Parameters: [params: { "queueType": LolRankedLeagueQueueType, "puuids": string[] }], Body: never, Response: Record<string, LolRankedSocialLeaderboardRankedQueueStats> }
 	},
 	"/lol-ranked/v1/splits-config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRankedRewardsInfo }
+		get: { Parameters: [], Body: never, Response: LolRankedRewardsInfo }
 	},
 	"/lol-ranked/v1/top-rated-ladders-enabled": {
 		get: { Parameters: [], Body: never, Response: string[] }
 	},
 	"/lol-ranked/v2/tiers": {
-		get: { Parameters: [params: { "summonerIds": number[], "queueTypes": LCUTypes.LolRankedLeagueQueueType[] }], Body: never, Response: LCUTypes.LolRankedParticipantTiers[] }
+		get: { Parameters: [params: { "summonerIds": number[], "queueTypes": LolRankedLeagueQueueType[] }], Body: never, Response: LolRankedParticipantTiers[] }
 	},
 	"/lol-regalia/v2/config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRegaliaRegaliaFrontendConfig }
+		get: { Parameters: [], Body: never, Response: LolRegaliaRegaliaFrontendConfig }
 	},
 	"/lol-regalia/v2/current-summoner/regalia": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRegaliaRegaliaWithPreferences }
-		put: { Parameters: [], Body: LCUTypes.LolRegaliaRegaliaPreferences, Response: LCUTypes.LolRegaliaRegaliaWithPreferences }
+		get: { Parameters: [], Body: never, Response: LolRegaliaRegaliaWithPreferences }
+		put: { Parameters: [], Body: LolRegaliaRegaliaPreferences, Response: LolRegaliaRegaliaWithPreferences }
 	},
 	"/lol-regalia/v2/summoners/{summonerId}/queues/{queue}/positions/{position}/regalia": {
-		get: { Parameters: [summonerId: number, queue: string, position: string], Body: never, Response: LCUTypes.LolRegaliaRegalia }
+		get: { Parameters: [summonerId: number, queue: string, position: string], Body: never, Response: LolRegaliaRegalia }
 	},
 	"/lol-regalia/v2/summoners/{summonerId}/queues/{queue}/regalia": {
-		get: { Parameters: [summonerId: number, queue: string], Body: never, Response: LCUTypes.LolRegaliaRegalia }
+		get: { Parameters: [summonerId: number, queue: string], Body: never, Response: LolRegaliaRegalia }
 	},
 	"/lol-regalia/v2/summoners/{summonerId}/regalia": {
-		get: { Parameters: [summonerId: number, params: { "hovercard": boolean }], Body: never, Response: LCUTypes.LolRegaliaRegalia }
+		get: { Parameters: [summonerId: number, params: { "hovercard": boolean }], Body: never, Response: LolRegaliaRegalia }
 	},
 	"/lol-regalia/v2/summoners/{summonerId}/regalia/async": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolRegaliaRegaliaAsync }
+		get: { Parameters: [summonerId: number], Body: never, Response: LolRegaliaRegaliaAsync }
 	},
 	"/lol-regalia/v3/inventory/{inventoryType}": {
-		get: { Parameters: [inventoryType: string], Body: never, Response: Record<string, LCUTypes.LolRegaliaRegaliaInventoryItem> }
+		get: { Parameters: [inventoryType: string], Body: never, Response: Record<string, LolRegaliaRegaliaInventoryItem> }
 	},
 	"/lol-regalia/v3/summoners/{summonerId}/regalia": {
-		get: { Parameters: [summonerId: number], Body: never, Response: LCUTypes.LolRegaliaRegalia }
+		get: { Parameters: [summonerId: number], Body: never, Response: LolRegaliaRegalia }
 	},
 	"/lol-replays/v1/configuration": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolReplaysReplaysConfiguration }
+		get: { Parameters: [], Body: never, Response: LolReplaysReplaysConfiguration }
 	},
 	"/lol-replays/v1/metadata/{gameId}": {
-		get: { Parameters: [gameId: number], Body: never, Response: LCUTypes.LolReplaysReplayMetadata }
+		get: { Parameters: [gameId: number], Body: never, Response: LolReplaysReplayMetadata }
 	},
 	"/lol-replays/v1/rofls/path": {
 		get: { Parameters: [], Body: never, Response: string }
@@ -1875,102 +1878,102 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-rewards/v1/grants": {
-		get: { Parameters: [params?: { "status"?: LCUTypes.LolRewardsGrantStatus }], Body: never, Response: LCUTypes.LolRewardsRewardGrant[] }
+		get: { Parameters: [params?: { "status"?: LolRewardsGrantStatus }], Body: never, Response: LolRewardsRewardGrant[] }
 	},
 	"/lol-rewards/v1/groups": {
-		get: { Parameters: [params?: { "types"?: string[] }], Body: never, Response: LCUTypes.LolRewardsSvcRewardGroup[] }
+		get: { Parameters: [params?: { "types"?: string[] }], Body: never, Response: LolRewardsSvcRewardGroup[] }
 	},
 	"/lol-rms/v1/champion-mastery-leaveup-update": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRiotMessagingServiceChampionMasteryLevelUp[] }
+		get: { Parameters: [], Body: never, Response: LolRiotMessagingServiceChampionMasteryLevelUp[] }
 	},
 	"/lol-rso-auth/configuration/v3/ready-state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRsoAuthRSOConfigReadyState }
+		get: { Parameters: [], Body: never, Response: LolRsoAuthRSOConfigReadyState }
 	},
 	"/lol-rso-auth/v1/authorization/access-token": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRsoAuthAccessToken }
+		get: { Parameters: [], Body: never, Response: LolRsoAuthAccessToken }
 	},
 	"/lol-rso-auth/v1/authorization/error": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRsoAuthAuthError }
+		get: { Parameters: [], Body: never, Response: LolRsoAuthAuthError }
 	},
 	"/lol-rso-auth/v1/authorization/id-token": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRsoAuthIdToken }
+		get: { Parameters: [], Body: never, Response: LolRsoAuthIdToken }
 	},
 	"/lol-rso-auth/v1/authorization/userinfo": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolRsoAuthUserInfo }
-		post: { Parameters: [], Body: never, Response: LCUTypes.LolRsoAuthUserInfo }
+		get: { Parameters: [], Body: never, Response: LolRsoAuthUserInfo }
+		post: { Parameters: [], Body: never, Response: LolRsoAuthUserInfo }
 	},
 	"/lol-rso-auth/v1/status/{platformId}": {
-		get: { Parameters: [platformId: string], Body: never, Response: LCUTypes.LolRsoAuthRegionStatus }
+		get: { Parameters: [platformId: string], Body: never, Response: LolRsoAuthRegionStatus }
 	},
 	"/lol-seasons/v1/season/LOL/current-split-seasons": {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-seasons/v1/season/product/{product}": {
-		get: { Parameters: [product: string], Body: never, Response: LCUTypes.LolSeasonsAllSeasonsProduct }
+		get: { Parameters: [product: string], Body: never, Response: LolSeasonsAllSeasonsProduct }
 	},
 	"/lol-seasons/v1/season/recent-final-split": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSeasonsAllSeasonsProduct }
+		get: { Parameters: [], Body: never, Response: LolSeasonsAllSeasonsProduct }
 	},
 	"/lol-service-status/v1/lcu-status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolServiceStatusServiceStatusResource }
+		get: { Parameters: [], Body: never, Response: LolServiceStatusServiceStatusResource }
 	},
 	"/lol-service-status/v1/ticker-messages": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolServiceStatusTickerMessage[] }
+		get: { Parameters: [], Body: never, Response: LolServiceStatusTickerMessage[] }
 	},
 	"/lol-settings/v1/account/{category}": {
 		get: { Parameters: [category: string], Body: never, Response: unknown }
-		put: { Parameters: [category: string], Body: LCUTypes.LolSettingsSettingCategory, Response: unknown }
-		patch: { Parameters: [category: string], Body: LCUTypes.LolSettingsSettingCategory, Response: unknown }
+		put: { Parameters: [category: string], Body: LolSettingsSettingCategory, Response: unknown }
+		patch: { Parameters: [category: string], Body: LolSettingsSettingCategory, Response: unknown }
 	},
 	"/lol-settings/v1/account/didreset": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-settings/v1/local/{category}": {
 		get: { Parameters: [category: string], Body: never, Response: unknown }
-		patch: { Parameters: [category: string], Body: LCUTypes.LolSettingsSettingCategory, Response: unknown }
+		patch: { Parameters: [category: string], Body: LolSettingsSettingCategory, Response: unknown }
 	},
 	"/lol-settings/v2/account/{ppType}/{category}": {
 		get: { Parameters: [ppType: string, category: string], Body: never, Response: unknown }
-		put: { Parameters: [ppType: string, category: string], Body: LCUTypes.LolSettingsSettingCategory, Response: unknown }
-		patch: { Parameters: [ppType: string, category: string], Body: LCUTypes.LolSettingsSettingCategory, Response: unknown }
+		put: { Parameters: [ppType: string, category: string], Body: LolSettingsSettingCategory, Response: unknown }
+		patch: { Parameters: [ppType: string, category: string], Body: LolSettingsSettingCategory, Response: unknown }
 	},
 	"/lol-settings/v2/config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSettingsSettingsConfig }
+		get: { Parameters: [], Body: never, Response: LolSettingsSettingsConfig }
 	},
 	"/lol-settings/v2/didreset/{ppType}": {
 		get: { Parameters: [ppType: string], Body: never, Response: boolean }
 	},
 	"/lol-settings/v2/local/{category}": {
 		get: { Parameters: [category: string], Body: never, Response: unknown }
-		patch: { Parameters: [category: string], Body: LCUTypes.LolSettingsSettingCategory, Response: unknown }
+		patch: { Parameters: [category: string], Body: LolSettingsSettingCategory, Response: unknown }
 	},
 	"/lol-settings/v2/ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-shutdown/v1/notification": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolShutdownShutdownNotification }
+		get: { Parameters: [], Body: never, Response: LolShutdownShutdownNotification }
 	},
 	"/lol-simple-dialog-messages/v1/messages": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSimpleDialogMessagesMessage[] }
-		post: { Parameters: [], Body: LCUTypes.LolSimpleDialogMessagesLocalMessageRequest, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolSimpleDialogMessagesMessage[] }
+		post: { Parameters: [], Body: LolSimpleDialogMessagesLocalMessageRequest, Response: unknown }
 	},
 	"/lol-social-leaderboard/v1/leaderboard-next-update-time": {
-		get: { Parameters: [params?: { "queueType"?: LCUTypes.LolSocialLeaderboardLeagueQueueType }], Body: never, Response: number }
+		get: { Parameters: [params?: { "queueType"?: LolSocialLeaderboardLeagueQueueType }], Body: never, Response: number }
 	},
 	"/lol-social-leaderboard/v1/social-leaderboard-data": {
-		get: { Parameters: [params?: { "queueType"?: LCUTypes.LolSocialLeaderboardLeagueQueueType }], Body: never, Response: LCUTypes.LolSocialLeaderboardSocialLeaderboardData }
+		get: { Parameters: [params?: { "queueType"?: LolSocialLeaderboardLeagueQueueType }], Body: never, Response: LolSocialLeaderboardSocialLeaderboardData }
 	},
 	"/lol-spectator/v1/spectate": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSpectatorSpectateGameInfo }
+		get: { Parameters: [], Body: never, Response: LolSpectatorSpectateGameInfo }
 	},
 	"/lol-statstones/v1/eog-notifications/{gameId}": {
-		get: { Parameters: [gameId: number], Body: never, Response: LCUTypes.LolStatstonesEogNotificationEnvelope }
+		get: { Parameters: [gameId: number], Body: never, Response: LolStatstonesEogNotificationEnvelope }
 	},
 	"/lol-statstones/v1/featured-champion-statstones/{championItemId}": {
-		get: { Parameters: [championItemId: number], Body: never, Response: LCUTypes.LolStatstonesStatstone[] }
+		get: { Parameters: [championItemId: number], Body: never, Response: LolStatstonesStatstone[] }
 	},
 	"/lol-statstones/v1/profile-summary/{puuid}": {
-		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolStatstonesProfileStatstoneSummary[] }
+		get: { Parameters: [puuid: string], Body: never, Response: LolStatstonesProfileStatstoneSummary[] }
 	},
 	"/lol-statstones/v1/statstone/{contentId}/owned": {
 		get: { Parameters: [contentId: string], Body: never, Response: boolean }
@@ -1979,80 +1982,80 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: number[] }
 	},
 	"/lol-statstones/v2/player-statstones-self/{championItemId}": {
-		get: { Parameters: [championItemId: number], Body: never, Response: LCUTypes.LolStatstonesStatstoneSet[] }
+		get: { Parameters: [championItemId: number], Body: never, Response: LolStatstonesStatstoneSet[] }
 	},
 	"/lol-statstones/v2/player-summary-self": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolStatstonesChampionStatstoneSummary[] }
+		get: { Parameters: [], Body: never, Response: LolStatstonesChampionStatstoneSummary[] }
 	},
 	"/lol-store/v1/alias-change-notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolStoreAliasChangeNotificationResource[] }
+		get: { Parameters: [], Body: never, Response: LolStoreAliasChangeNotificationResource[] }
 	},
 	"/lol-store/v1/{pageType}": {
 		get: { Parameters: [pageType: string], Body: never, Response: unknown }
 	},
 	"/lol-store/v1/catalog": {
-		get: { Parameters: [params?: { "inventoryType"?: string[], "itemId"?: number[] }], Body: never, Response: LCUTypes.LolStoreCatalogItem[] }
+		get: { Parameters: [params?: { "inventoryType"?: string[], "itemId"?: number[] }], Body: never, Response: LolStoreCatalogItem[] }
 	},
 	"/lol-store/v1/catalogByInstanceIds": {
-		get: { Parameters: [params: { "instanceIds": string[] }], Body: never, Response: LCUTypes.LolStoreCatalogItem[] }
+		get: { Parameters: [params: { "instanceIds": string[] }], Body: never, Response: LolStoreCatalogItem[] }
 	},
 	"/lol-store/v1/catalog/{inventoryType}": {
-		get: { Parameters: [inventoryType: string, params: { "itemIds": number[] }], Body: never, Response: LCUTypes.LolStoreCatalogItem[] }
+		get: { Parameters: [inventoryType: string, params: { "itemIds": number[] }], Body: never, Response: LolStoreCatalogItem[] }
 	},
 	"/lol-store/v1/catalog/items/skip-cache": {
-		get: { Parameters: [params: { "catalogItemKeys": LCUTypes.LolStoreItemKey[] }], Body: never, Response: LCUTypes.LolStoreCatalogItem[] }
+		get: { Parameters: [params: { "catalogItemKeys": LolStoreItemKey[] }], Body: never, Response: LolStoreCatalogItem[] }
 	},
 	"/lol-store/v1/catalog/sales": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolStoreItemSale[] }
+		get: { Parameters: [], Body: never, Response: LolStoreItemSale[] }
 	},
 	"/lol-store/v1/getStoreUrl": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-store/v1/giftablefriends": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolStoreGiftingFriend[] }
+		get: { Parameters: [], Body: never, Response: LolStoreGiftingFriend[] }
 	},
 	"/lol-store/v1/itemKeysFromInstanceIds": {
-		get: { Parameters: [params: { "instanceIds": string[] }], Body: never, Response: Record<string, LCUTypes.LolStoreItemKey> }
+		get: { Parameters: [params: { "instanceIds": string[] }], Body: never, Response: Record<string, LolStoreItemKey> }
 	},
 	"/lol-store/v1/itemKeysFromOfferIds": {
-		get: { Parameters: [params: { "offerIds": string[] }], Body: never, Response: Record<string, LCUTypes.LolStoreItemKey> }
+		get: { Parameters: [params: { "offerIds": string[] }], Body: never, Response: Record<string, LolStoreItemKey> }
 	},
 	"/lol-store/v1/lastPage": {
 		get: { Parameters: [], Body: never, Response: string }
 		post: { Parameters: [], Body: string, Response: void }
 	},
 	"/lol-store/v1/offers": {
-		get: { Parameters: [params?: { "inventoryTypeUUIDs"?: string[] }], Body: never, Response: LCUTypes.LolStoreCapOffer[] }
+		get: { Parameters: [params?: { "inventoryTypeUUIDs"?: string[] }], Body: never, Response: LolStoreCapOffer[] }
 	},
 	"/lol-store/v1/offers/{offerId}": {
-		get: { Parameters: [offerId: string], Body: never, Response: LCUTypes.LolStoreCapOffer }
+		get: { Parameters: [offerId: string], Body: never, Response: LolStoreCapOffer }
 	},
 	"/lol-store/v1/order-notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolStoreOrderNotificationResource[] }
+		get: { Parameters: [], Body: never, Response: LolStoreOrderNotificationResource[] }
 	},
 	"/lol-store/v1/order-notifications/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolStoreOrderNotificationResource }
+		get: { Parameters: [id: number], Body: never, Response: LolStoreOrderNotificationResource }
 	},
 	"/lol-store/v1/paymentDetails": {
 		get: { Parameters: [params: { "action": string, "giftRecipientAccountId"?: number, "giftMessage"?: string }], Body: never, Response: unknown }
 	},
 	"/lol-store/v1/skins/{skinId}": {
-		get: { Parameters: [skinId: number], Body: never, Response: LCUTypes.LolStoreCatalogItem }
+		get: { Parameters: [skinId: number], Body: never, Response: LolStoreCatalogItem }
 	},
 	"/lol-store/v1/status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolStoreStoreStatus }
+		get: { Parameters: [], Body: never, Response: LolStoreStoreStatus }
 	},
 	"/lol-store/v1/store-ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-store/v2/offers": {
-		get: { Parameters: [params?: { "typeId"?: string }], Body: never, Response: LCUTypes.LolStoreCapOffer[] }
+		get: { Parameters: [params?: { "typeId"?: string }], Body: never, Response: LolStoreCapOffer[] }
 	},
 	"/lol-suggested-players/v1/suggested-players": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSuggestedPlayersSuggestedPlayersSuggestedPlayer[] }
+		get: { Parameters: [], Body: never, Response: LolSuggestedPlayersSuggestedPlayersSuggestedPlayer[] }
 	},
 	"/lol-summoner/v1/alias/lookup": {
-		get: { Parameters: [params: { "gameName": string, "tagLine": string }], Body: never, Response: LCUTypes.LolSummonerAliasLookupResponse }
+		get: { Parameters: [params: { "gameName": string, "tagLine": string }], Body: never, Response: LolSummonerAliasLookupResponse }
 	},
 	"/lol-summoner/v1/check-name-availability/{name}": {
 		get: { Parameters: [name: string], Body: never, Response: boolean }
@@ -2061,36 +2064,36 @@ export interface LCUEndpoints {
 		get: { Parameters: [name: string], Body: never, Response: boolean }
 	},
 	"/lol-summoner/v1/current-summoner": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSummonerSummoner }
+		get: { Parameters: [], Body: never, Response: LolSummonerSummoner }
 	},
 	"/lol-summoner/v1/current-summoner/account-and-summoner-ids": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSummonerAccountIdAndSummonerId }
+		get: { Parameters: [], Body: never, Response: LolSummonerAccountIdAndSummonerId }
 	},
 	"/lol-summoner/v1/current-summoner/autofill": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSummonerAutoFillQueueDto[] }
+		get: { Parameters: [], Body: never, Response: LolSummonerAutoFillQueueDto[] }
 	},
 	"/lol-summoner/v1/current-summoner/jwt": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-summoner/v1/current-summoner/profile-privacy": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSummonerProfilePrivacy }
-		put: { Parameters: [], Body: LCUTypes.LolSummonerProfilePrivacySetting, Response: unknown }
+		get: { Parameters: [], Body: never, Response: LolSummonerProfilePrivacy }
+		put: { Parameters: [], Body: LolSummonerProfilePrivacySetting, Response: unknown }
 	},
 	"/lol-summoner/v1/current-summoner/rerollPoints": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSummonerSummonerRerollPoints }
+		get: { Parameters: [], Body: never, Response: LolSummonerSummonerRerollPoints }
 	},
 	"/lol-summoner/v1/current-summoner/summoner-profile": {
 		get: { Parameters: [], Body: never, Response: unknown }
-		post: { Parameters: [], Body: LCUTypes.LolSummonerSummonerProfileUpdate, Response: unknown }
+		post: { Parameters: [], Body: LolSummonerSummonerProfileUpdate, Response: unknown }
 	},
 	"/lol-summoner/v1/player-alias-state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSummonerPlayerNameState }
+		get: { Parameters: [], Body: never, Response: LolSummonerPlayerNameState }
 	},
 	"/lol-summoner/v1/player-name-mode": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSummonerPlayerNameMode }
+		get: { Parameters: [], Body: never, Response: LolSummonerPlayerNameMode }
 	},
 	"/lol-summoner/v1/profile-privacy-enabled": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSummonerProfilePrivacyEnabledState }
+		get: { Parameters: [], Body: never, Response: LolSummonerProfilePrivacyEnabledState }
 	},
 	"/lol-summoner/v1/riot-alias-free-eligibility": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -2099,7 +2102,7 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-summoner/v1/status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolSummonerStatus }
+		get: { Parameters: [], Body: never, Response: LolSummonerStatus }
 	},
 	"/lol-summoner/v1/summoner-profile": {
 		get: { Parameters: [params: { "puuid": string }], Body: never, Response: unknown }
@@ -2108,100 +2111,100 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-summoner/v1/summoners": {
-		get: { Parameters: [params: { "name": string }], Body: never, Response: LCUTypes.LolSummonerSummoner }
-		post: { Parameters: [], Body: LCUTypes.LolSummonerSummonerRequestedName, Response: LCUTypes.LolSummonerSummoner }
+		get: { Parameters: [params: { "name": string }], Body: never, Response: LolSummonerSummoner }
+		post: { Parameters: [], Body: LolSummonerSummonerRequestedName, Response: LolSummonerSummoner }
 	},
 	"/lol-summoner/v1/summoners/{id}": {
-		get: { Parameters: [id: number], Body: never, Response: LCUTypes.LolSummonerSummoner }
+		get: { Parameters: [id: number], Body: never, Response: LolSummonerSummoner }
 	},
 	"/lol-summoner/v1/summoners-by-puuid-cached/{puuid}": {
-		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolSummonerSummoner }
+		get: { Parameters: [puuid: string], Body: never, Response: LolSummonerSummoner }
 	},
 	"/lol-summoner/v2/summoner-icons": {
-		get: { Parameters: [params: { "ids": number[] }], Body: never, Response: LCUTypes.LolSummonerSummonerIdAndIcon[] }
+		get: { Parameters: [params: { "ids": number[] }], Body: never, Response: LolSummonerSummonerIdAndIcon[] }
 	},
 	"/lol-summoner/v2/summoner-names": {
-		get: { Parameters: [params: { "ids": number[] }], Body: never, Response: LCUTypes.LolSummonerSummonerIdAndName[] }
+		get: { Parameters: [params: { "ids": number[] }], Body: never, Response: LolSummonerSummonerIdAndName[] }
 	},
 	"/lol-summoner/v2/summoners": {
-		get: { Parameters: [params?: { "ids"?: number[] }], Body: never, Response: LCUTypes.LolSummonerSummoner[] }
+		get: { Parameters: [params?: { "ids"?: number[] }], Body: never, Response: LolSummonerSummoner[] }
 	},
 	"/lol-summoner/v2/summoners/puuid/{puuid}": {
-		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolSummonerSummoner }
+		get: { Parameters: [puuid: string], Body: never, Response: LolSummonerSummoner }
 	},
 	"/lol-tastes/v1/ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-tastes/v1/skins-model": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTastesDataModelResponse }
+		get: { Parameters: [], Body: never, Response: LolTastesDataModelResponse }
 	},
 	"/lol-tastes/v1/tft-overview-model": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTastesDataModelResponse }
+		get: { Parameters: [], Body: never, Response: LolTastesDataModelResponse }
 	},
 	"/lol-tft-pass/v1/battle-pass": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftPassTftPaidBattlepass }
+		get: { Parameters: [], Body: never, Response: LolTftPassTftPaidBattlepass }
 	},
 	"/lol-tft-pass/v1/enabled": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-tft-pass/v1/event-pass": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftPassTftPaidBattlepass }
+		get: { Parameters: [], Body: never, Response: LolTftPassTftPaidBattlepass }
 	},
 	"/lol-tft-pass/v1/reward-notification": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftPassTFTPassRewardNotification }
+		get: { Parameters: [], Body: never, Response: LolTftPassTFTPassRewardNotification }
 	},
 	"/lol-tft-team-planner/v1/config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftTeamPlannerTFTTeamPlannerConfig }
+		get: { Parameters: [], Body: never, Response: LolTftTeamPlannerTFTTeamPlannerConfig }
 	},
 	"/lol-tft-team-planner/v1/ftue/hasViewed": {
 		get: { Parameters: [], Body: never, Response: boolean }
 		patch: { Parameters: [], Body: boolean, Response: unknown }
 	},
 	"/lol-tft-team-planner/v1/team/local": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftTeamPlannerTeamSettings }
+		get: { Parameters: [], Body: never, Response: LolTftTeamPlannerTeamSettings }
 	},
 	"/lol-tft-team-planner/v1/team/reminders": {
 		get: { Parameters: [], Body: never, Response: boolean }
 		patch: { Parameters: [], Body: boolean, Response: unknown }
 	},
 	"/lol-tft-troves/v1/banners": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftTrovesTrovesBanner[] }
+		get: { Parameters: [], Body: never, Response: LolTftTrovesTrovesBanner[] }
 	},
 	"/lol-tft-troves/v1/config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftTrovesTroves }
+		get: { Parameters: [], Body: never, Response: LolTftTrovesTroves }
 	},
 	"/lol-tft-troves/v1/loot-odds/{dropTableId}": {
-		get: { Parameters: [dropTableId: string], Body: never, Response: LCUTypes.LolTftTrovesVerboseLootOddsResponse }
+		get: { Parameters: [dropTableId: string], Body: never, Response: LolTftTrovesVerboseLootOddsResponse }
 	},
 	"/lol-tft-troves/v1/status-notifications": {
 		get: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-tft/v1/tft/battlePassHub": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftLolTftBattlePassHub }
+		get: { Parameters: [], Body: never, Response: LolTftLolTftBattlePassHub }
 	},
 	"/lol-tft/v1/tft/directToHub": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-tft/v1/tft/events": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftLolTftEvents }
+		get: { Parameters: [], Body: never, Response: LolTftLolTftEvents }
 	},
 	"/lol-tft/v1/tft/homeHub": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftLolTftHomeHub }
+		get: { Parameters: [], Body: never, Response: LolTftLolTftHomeHub }
 	},
 	"/lol-tft/v1/tft/newsHub": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftLolTftNewsHub }
+		get: { Parameters: [], Body: never, Response: LolTftLolTftNewsHub }
 	},
 	"/lol-tft/v1/tft/promoButtons": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTftLolTftPromoButtons }
+		get: { Parameters: [], Body: never, Response: LolTftLolTftPromoButtons }
 	},
 	"/lol-tft/v2/tft/battlepass": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolMissionsTftPaidBattlepass }
+		get: { Parameters: [], Body: never, Response: LolMissionsTftPaidBattlepass }
 	},
 	"/lol-trophies/v1/current-summoner/trophies/profile": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolTrophiesTrophyProfileData }
+		get: { Parameters: [], Body: never, Response: LolTrophiesTrophyProfileData }
 	},
 	"/lol-trophies/v1/players/{puuid}/trophies/profile": {
-		get: { Parameters: [puuid: string], Body: never, Response: LCUTypes.LolTrophiesTrophyProfileData }
+		get: { Parameters: [puuid: string], Body: never, Response: LolTrophiesTrophyProfileData }
 	},
 	"/lol-yourshop/v1/has-permissions": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -2210,13 +2213,13 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-yourshop/v1/offers": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolYourshopUIOffer[] }
+		get: { Parameters: [], Body: never, Response: LolYourshopUIOffer[] }
 	},
 	"/lol-yourshop/v1/ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-yourshop/v1/status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolYourshopUIStatus }
+		get: { Parameters: [], Body: never, Response: LolYourshopUIStatus }
 	},
 	"/lol-yourshop/v1/themed": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -2225,12 +2228,12 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/patcher/v1/notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PatcherNotification[] }
-		post: { Parameters: [], Body: LCUTypes.PatcherNotificationId, Response: void }
+		get: { Parameters: [], Body: never, Response: PatcherNotification[] }
+		post: { Parameters: [], Body: PatcherNotificationId, Response: void }
 	},
 	"/patcher/v1/p2p/status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PatcherP2PStatus }
-		patch: { Parameters: [], Body: LCUTypes.PatcherP2PStatusUpdate, Response: unknown }
+		get: { Parameters: [], Body: never, Response: PatcherP2PStatus }
+		patch: { Parameters: [], Body: PatcherP2PStatusUpdate, Response: unknown }
 	},
 	"/patcher/v1/products": {
 		get: { Parameters: [], Body: never, Response: string[] }
@@ -2239,13 +2242,13 @@ export interface LCUEndpoints {
 		get: { Parameters: [product_id: string], Body: never, Response: Record<string, string> }
 	},
 	"/patcher/v1/products/{product-id}/state": {
-		get: { Parameters: [product_id: string], Body: never, Response: LCUTypes.PatcherProductState }
+		get: { Parameters: [product_id: string], Body: never, Response: PatcherProductState }
 	},
 	"/patcher/v1/products/{product-id}/tags": {
 		get: { Parameters: [product_id: string], Body: never, Response: Record<string, string> }
 	},
 	"/patcher/v1/status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PatcherStatus }
+		get: { Parameters: [], Body: never, Response: PatcherStatus }
 	},
 	"/performance/v1/memory": {
 		get: { Parameters: [], Body: never, Response: unknown }
@@ -2257,57 +2260,57 @@ export interface LCUEndpoints {
 		get: { Parameters: [params?: { "full"?: number }], Body: never, Response: unknown }
 	},
 	"/player-notifications/v1/config": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PlayerNotificationsPlayerNotificationConfigResource }
-		put: { Parameters: [], Body: LCUTypes.PlayerNotificationsPlayerNotificationConfigResource, Response: LCUTypes.PlayerNotificationsPlayerNotificationConfigResource }
+		get: { Parameters: [], Body: never, Response: PlayerNotificationsPlayerNotificationConfigResource }
+		put: { Parameters: [], Body: PlayerNotificationsPlayerNotificationConfigResource, Response: PlayerNotificationsPlayerNotificationConfigResource }
 	},
 	"/player-notifications/v1/notifications": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PlayerNotificationsPlayerNotificationResource[] }
-		post: { Parameters: [], Body: LCUTypes.PlayerNotificationsPlayerNotificationResource, Response: LCUTypes.PlayerNotificationsPlayerNotificationResource }
+		get: { Parameters: [], Body: never, Response: PlayerNotificationsPlayerNotificationResource[] }
+		post: { Parameters: [], Body: PlayerNotificationsPlayerNotificationResource, Response: PlayerNotificationsPlayerNotificationResource }
 	},
 	"/plugin-manager/v1/external-plugins/availability": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.ExternalPluginsResource }
+		get: { Parameters: [], Body: never, Response: ExternalPluginsResource }
 	},
 	"/plugin-manager/v1/status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PluginManagerResource }
+		get: { Parameters: [], Body: never, Response: PluginManagerResource }
 	},
 	"/plugin-manager/v2/descriptions": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PluginDescriptionResource[] }
+		get: { Parameters: [], Body: never, Response: PluginDescriptionResource[] }
 	},
 	"/plugin-manager/v2/descriptions/{plugin}": {
-		get: { Parameters: [plugin: string], Body: never, Response: LCUTypes.PluginDescriptionResource }
+		get: { Parameters: [plugin: string], Body: never, Response: PluginDescriptionResource }
 	},
 	"/plugin-manager/v2/plugins": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.PluginResource[] }
+		get: { Parameters: [], Body: never, Response: PluginResource[] }
 	},
 	"/plugin-manager/v2/plugins/{plugin}": {
-		get: { Parameters: [plugin: string], Body: never, Response: LCUTypes.PluginResource }
+		get: { Parameters: [plugin: string], Body: never, Response: PluginResource }
 	},
 	"/plugin-manager/v3/plugins-manifest": {
 		get: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/process-control/v1/process": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.ProcessControlProcess }
+		get: { Parameters: [], Body: never, Response: ProcessControlProcess }
 	},
 	"/riot-messaging-service/v1/message/{a}": {
-		get: { Parameters: [a: string], Body: never, Response: LCUTypes.RmsMessage }
+		get: { Parameters: [a: string], Body: never, Response: RmsMessage }
 	},
 	"/riot-messaging-service/v1/message/{a}/{b}": {
-		get: { Parameters: [a: string, b: string], Body: never, Response: LCUTypes.RmsMessage }
+		get: { Parameters: [a: string, b: string], Body: never, Response: RmsMessage }
 	},
 	"/riot-messaging-service/v1/message/{a}/{b}/{c}": {
-		get: { Parameters: [a: string, b: string, c: string], Body: never, Response: LCUTypes.RmsMessage }
+		get: { Parameters: [a: string, b: string, c: string], Body: never, Response: RmsMessage }
 	},
 	"/riot-messaging-service/v1/message/{a}/{b}/{c}/{d}": {
-		get: { Parameters: [a: string, b: string, c: string, d: string], Body: never, Response: LCUTypes.RmsMessage }
+		get: { Parameters: [a: string, b: string, c: string, d: string], Body: never, Response: RmsMessage }
 	},
 	"/riot-messaging-service/v1/message/{a}/{b}/{c}/{d}/{e}": {
-		get: { Parameters: [a: string, b: string, c: string, d: string, e: string], Body: never, Response: LCUTypes.RmsMessage }
+		get: { Parameters: [a: string, b: string, c: string, d: string, e: string], Body: never, Response: RmsMessage }
 	},
 	"/riot-messaging-service/v1/message/{a}/{b}/{c}/{d}/{e}/{f}": {
-		get: { Parameters: [a: string, b: string, c: string, d: string, e: string, f: string], Body: never, Response: LCUTypes.RmsMessage }
+		get: { Parameters: [a: string, b: string, c: string, d: string, e: string, f: string], Body: never, Response: RmsMessage }
 	},
 	"/riot-messaging-service/v1/state": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.RiotMessagingServiceState }
+		get: { Parameters: [], Body: never, Response: RiotMessagingServiceState }
 	},
 	"/riotclient/app-name": {
 		get: { Parameters: [], Body: never, Response: string }
@@ -2325,10 +2328,10 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/riotclient/region-locale": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.LolL10nRegionLocale }
+		get: { Parameters: [], Body: never, Response: LolL10nRegionLocale }
 	},
 	"/riotclient/system-info/v1/basic-info": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.basicSystemInfo }
+		get: { Parameters: [], Body: never, Response: basicSystemInfo }
 	},
 	"/riotclient/trace": {
 		get: { Parameters: [], Body: never, Response: unknown }
@@ -2340,18 +2343,18 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: string }
 	},
 	"/riotclient/v1/crash-reporting/environment": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.CrashReportingEnvironment }
-		put: { Parameters: [], Body: LCUTypes.CrashReportingEnvironment, Response: void }
+		get: { Parameters: [], Body: never, Response: CrashReportingEnvironment }
+		put: { Parameters: [], Body: CrashReportingEnvironment, Response: void }
 	},
 	"/riotclient/zoom-scale": {
 		get: { Parameters: [], Body: never, Response: number }
 		post: { Parameters: [], Body: number, Response: void }
 	},
 	"/sanitizer/v1/status": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.SanitizerSanitizerStatus }
+		get: { Parameters: [], Body: never, Response: SanitizerSanitizerStatus }
 	},
 	"/system/v1/builds": {
-		get: { Parameters: [], Body: never, Response: LCUTypes.BuildInfo }
+		get: { Parameters: [], Body: never, Response: BuildInfo }
 	},
 	"/telemetry/v1/application-start-time": {
 		get: { Parameters: [], Body: never, Response: number }
@@ -2360,7 +2363,7 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/Help": {
-		post: { Parameters: [params?: { "target"?: string, "format"?: LCUTypes.RemotingHelpFormat }], Body: never, Response: unknown }
+		post: { Parameters: [params?: { "target"?: string, "format"?: RemotingHelpFormat }], Body: never, Response: unknown }
 	},
 	"/async/v1/status/{asyncToken}": {
 		get: { Parameters: [asyncToken: number], Body: never, Response: unknown }
@@ -2370,7 +2373,7 @@ export interface LCUEndpoints {
 		get: { Parameters: [asyncToken: number], Body: never, Response: unknown }
 	},
 	"/LoggingGetEntries": {
-		post: { Parameters: [], Body: never, Response: LCUTypes.LogEvent[] }
+		post: { Parameters: [], Body: never, Response: LogEvent[] }
 	},
 	"/LoggingMetrics": {
 		post: { Parameters: [], Body: never, Response: unknown }
@@ -2379,22 +2382,22 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/LoggingStart": {
-		post: { Parameters: [params?: { "buffered"?: boolean, "severity"?: LCUTypes.LogSeverityLevels }], Body: never, Response: void }
+		post: { Parameters: [params?: { "buffered"?: boolean, "severity"?: LogSeverityLevels }], Body: never, Response: void }
 	},
 	"/LoggingStop": {
 		post: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-champ-select-legacy/v1/session/actions/{id}": {
-		patch: { Parameters: [id: number], Body: LCUTypes.LolChampSelectLegacyChampSelectAction, Response: unknown }
+		patch: { Parameters: [id: number], Body: LolChampSelectLegacyChampSelectAction, Response: unknown }
 	},
 	"/lol-champ-select/v1/session/actions/{id}": {
-		patch: { Parameters: [id: number], Body: LCUTypes.LolChampSelectChampSelectAction, Response: unknown }
+		patch: { Parameters: [id: number], Body: LolChampSelectChampSelectAction, Response: unknown }
 	},
 	"/lol-cosmetics/v1/recent/{type}": {
 		patch: { Parameters: [type: string], Body: string[], Response: unknown }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/actions/{id}": {
-		patch: { Parameters: [id: number], Body: LCUTypes.LolLobbyTeamBuilderChampSelectAction, Response: unknown }
+		patch: { Parameters: [id: number], Body: LolLobbyTeamBuilderChampSelectAction, Response: unknown }
 	},
 	"/lol-npe-tutorial-path/v1/tutorials/init": {
 		patch: { Parameters: [], Body: never, Response: void }
@@ -2403,46 +2406,46 @@ export interface LCUEndpoints {
 		patch: { Parameters: [grantId: string], Body: never, Response: void }
 	},
 	"/telemetry/v3/slis/add-bool-diagnostic": {
-		patch: { Parameters: [], Body: LCUTypes.SLIBoolDiagnostic, Response: void }
+		patch: { Parameters: [], Body: SLIBoolDiagnostic, Response: void }
 	},
 	"/telemetry/v3/slis/add-double-diagnostic": {
-		patch: { Parameters: [], Body: LCUTypes.SLIDoubleDiagnostic, Response: void }
+		patch: { Parameters: [], Body: SLIDoubleDiagnostic, Response: void }
 	},
 	"/telemetry/v3/slis/add-int-diagnostic": {
-		patch: { Parameters: [], Body: LCUTypes.SLIIntDiagnostic, Response: void }
+		patch: { Parameters: [], Body: SLIIntDiagnostic, Response: void }
 	},
 	"/telemetry/v3/slis/add-label": {
-		patch: { Parameters: [], Body: LCUTypes.SLILabel, Response: void }
+		patch: { Parameters: [], Body: SLILabel, Response: void }
 	},
 	"/telemetry/v3/slis/add-string-diagnostic": {
-		patch: { Parameters: [], Body: LCUTypes.SLIStringDiagnostic, Response: void }
+		patch: { Parameters: [], Body: SLIStringDiagnostic, Response: void }
 	},
 	"/deep-links/v1/launch-lor-link": {
 		post: { Parameters: [], Body: never, Response: string }
 	},
 	"/lol-account-verification/v1/confirmActivationPin": {
-		post: { Parameters: [], Body: LCUTypes.LolAccountVerificationConfirmActivationPinRequest, Response: void }
+		post: { Parameters: [], Body: LolAccountVerificationConfirmActivationPinRequest, Response: void }
 	},
 	"/lol-account-verification/v1/confirmDeactivationPin": {
-		post: { Parameters: [], Body: LCUTypes.LolAccountVerificationConfirmDeactivationPinRequest, Response: void }
+		post: { Parameters: [], Body: LolAccountVerificationConfirmDeactivationPinRequest, Response: void }
 	},
 	"/lol-account-verification/v1/sendActivationPin": {
-		post: { Parameters: [], Body: LCUTypes.LolAccountVerificationSendActivationPinRequest, Response: void }
+		post: { Parameters: [], Body: LolAccountVerificationSendActivationPinRequest, Response: void }
 	},
 	"/lol-account-verification/v1/sendDeactivationPin": {
 		post: { Parameters: [], Body: void, Response: void }
 	},
 	"/lol-career-stats/v1/champion-stats-percentiles": {
-		post: { Parameters: [], Body: LCUTypes.LolCareerStatsStatsQueryRequest[], Response: LCUTypes.LolCareerStatsStatisticsPercentilesResponse[] }
+		post: { Parameters: [], Body: LolCareerStatsStatsQueryRequest[], Response: LolCareerStatsStatisticsPercentilesResponse[] }
 	},
 	"/lol-career-stats/v1/position-stats-percentiles": {
-		post: { Parameters: [], Body: LCUTypes.LolCareerStatsPositionStatsQueryRequest[], Response: LCUTypes.LolCareerStatsStatisticsPercentilesResponse[] }
+		post: { Parameters: [], Body: LolCareerStatsPositionStatsQueryRequest[], Response: LolCareerStatsStatisticsPercentilesResponse[] }
 	},
 	"/lol-challenges/v1/ack-challenge-update/{id}": {
 		post: { Parameters: [id: number], Body: never, Response: void }
 	},
 	"/lol-challenges/v1/update-player-preferences": {
-		post: { Parameters: [], Body: LCUTypes.LolChallengesChallengesPlayerPreferences, Response: void }
+		post: { Parameters: [], Body: LolChallengesChallengesPlayerPreferences, Response: void }
 	},
 	"/lol-champ-select-legacy/v1/battle-training/launch": {
 		post: { Parameters: [], Body: never, Response: unknown }
@@ -2463,7 +2466,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/lol-champ-select-legacy/v1/session/trades/{id}/request": {
-		post: { Parameters: [id: number], Body: never, Response: LCUTypes.LolChampSelectLegacyChampSelectTradeContract }
+		post: { Parameters: [id: number], Body: never, Response: LolChampSelectLegacyChampSelectTradeContract }
 	},
 	"/lol-champ-select/v1/battle-training/launch": {
 		post: { Parameters: [], Body: never, Response: unknown }
@@ -2499,7 +2502,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/lol-champ-select/v1/session/swaps/{id}/request": {
-		post: { Parameters: [id: number], Body: never, Response: LCUTypes.LolChampSelectChampSelectSwapContract }
+		post: { Parameters: [id: number], Body: never, Response: LolChampSelectChampSelectSwapContract }
 	},
 	"/lol-champ-select/v1/session/trades/{id}/accept": {
 		post: { Parameters: [id: number], Body: never, Response: unknown }
@@ -2511,7 +2514,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/lol-champ-select/v1/session/trades/{id}/request": {
-		post: { Parameters: [id: number], Body: never, Response: LCUTypes.LolChampSelectChampSelectTradeContract }
+		post: { Parameters: [id: number], Body: never, Response: LolChampSelectChampSelectTradeContract }
 	},
 	"/lol-champ-select/v1/team-boost/purchase": {
 		post: { Parameters: [], Body: never, Response: unknown }
@@ -2520,7 +2523,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [championId: number, position: string], Body: never, Response: unknown }
 	},
 	"/lol-champ-select/v1/toggle-player-muted": {
-		post: { Parameters: [], Body: LCUTypes.LolChampSelectMutedPlayerInfo, Response: unknown }
+		post: { Parameters: [], Body: LolChampSelectMutedPlayerInfo, Response: unknown }
 	},
 	"/lol-chat/v1/conversations/{id}/closed": {
 		post: { Parameters: [id: string], Body: never, Response: unknown }
@@ -2530,28 +2533,28 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: boolean, Response: unknown }
 	},
 	"/lol-chat/v1/session/rso": {
-		post: { Parameters: [], Body: LCUTypes.LolChatAuthResourceRsoAccessToken, Response: LCUTypes.LolChatSessionResource }
+		post: { Parameters: [], Body: LolChatAuthResourceRsoAccessToken, Response: LolChatSessionResource }
 	},
 	"/lol-chat/v1/system-mutes": {
-		post: { Parameters: [], Body: LCUTypes.LolChatPlayerMuteUpdate, Response: unknown }
+		post: { Parameters: [], Body: LolChatPlayerMuteUpdate, Response: unknown }
 	},
 	"/lol-clash/v1/eog-player-update/acknowledge": {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/events": {
-		post: { Parameters: [], Body: string[], Response: Record<string, LCUTypes.ClashEventData> }
+		post: { Parameters: [], Body: string[], Response: Record<string, ClashEventData> }
 	},
 	"/lol-clash/v1/game-end/acknowledge": {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/lft/player": {
-		post: { Parameters: [], Body: LCUTypes.LolClashLftState, Response: unknown }
+		post: { Parameters: [], Body: LolClashLftState, Response: unknown }
 	},
 	"/lol-clash/v1/lft/player/find": {
-		post: { Parameters: [], Body: LCUTypes.LolClashFindPlayers, Response: LCUTypes.PlayerFinderDTO[] }
+		post: { Parameters: [], Body: LolClashFindPlayers, Response: PlayerFinderDTO[] }
 	},
 	"/lol-clash/v1/lft/team": {
-		post: { Parameters: [], Body: LCUTypes.LolClashTeamOpenState, Response: unknown }
+		post: { Parameters: [], Body: LolClashTeamOpenState, Response: unknown }
 	},
 	"/lol-clash/v1/lft/team/{rosterId}/request": {
 		post: { Parameters: [rosterId: string], Body: never, Response: unknown }
@@ -2560,7 +2563,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: number, Response: unknown }
 	},
 	"/lol-clash/v1/lft/team/find": {
-		post: { Parameters: [], Body: LCUTypes.LolClashFindTeams, Response: LCUTypes.OpenedTeamDTO[] }
+		post: { Parameters: [], Body: LolClashFindTeams, Response: OpenedTeamDTO[] }
 	},
 	"/lol-clash/v1/notifications/acknowledge": {
 		post: { Parameters: [], Body: never, Response: unknown }
@@ -2575,16 +2578,16 @@ export interface LCUEndpoints {
 		post: { Parameters: [rosterId: string], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/change-all-details": {
-		post: { Parameters: [rosterId: string], Body: LCUTypes.LolClashRosterDetails, Response: unknown }
+		post: { Parameters: [rosterId: string], Body: LolClashRosterDetails, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/change-icon": {
-		post: { Parameters: [rosterId: string], Body: LCUTypes.LolClashChangeIconRequest, Response: unknown }
+		post: { Parameters: [rosterId: string], Body: LolClashChangeIconRequest, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/change-name": {
-		post: { Parameters: [rosterId: string], Body: LCUTypes.LolClashChangeNameRequest, Response: unknown }
+		post: { Parameters: [rosterId: string], Body: LolClashChangeNameRequest, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/change-short-name": {
-		post: { Parameters: [rosterId: string], Body: LCUTypes.LolClashChangeNameRequest, Response: unknown }
+		post: { Parameters: [rosterId: string], Body: LolClashChangeNameRequest, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/decline": {
 		post: { Parameters: [rosterId: string], Body: never, Response: unknown }
@@ -2593,10 +2596,10 @@ export interface LCUEndpoints {
 		post: { Parameters: [rosterId: string], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/invite": {
-		post: { Parameters: [rosterId: string], Body: number[], Response: LCUTypes.LolClashClientFailedInvite[] }
+		post: { Parameters: [rosterId: string], Body: number[], Response: LolClashClientFailedInvite[] }
 	},
 	"/lol-clash/v1/roster/{rosterId}/kick": {
-		post: { Parameters: [rosterId: string], Body: LCUTypes.LolClashKickRequest, Response: unknown }
+		post: { Parameters: [rosterId: string], Body: LolClashKickRequest, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/leave": {
 		post: { Parameters: [rosterId: string], Body: never, Response: unknown }
@@ -2605,10 +2608,10 @@ export interface LCUEndpoints {
 		post: { Parameters: [rosterId: string], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/set-position": {
-		post: { Parameters: [rosterId: string], Body: LCUTypes.LolClashSetPositionRequest, Response: unknown }
+		post: { Parameters: [rosterId: string], Body: LolClashSetPositionRequest, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/set-ticket": {
-		post: { Parameters: [rosterId: string], Body: LCUTypes.LolClashSetTicketRequest, Response: unknown }
+		post: { Parameters: [rosterId: string], Body: LolClashSetTicketRequest, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/suggest": {
 		post: { Parameters: [rosterId: string], Body: number[], Response: unknown }
@@ -2629,7 +2632,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [rosterId: string, summonerId: number], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/ticket-offer/{summonerId}/offer": {
-		post: { Parameters: [rosterId: string, summonerId: number], Body: LCUTypes.LolClashOfferTicketRequest, Response: unknown }
+		post: { Parameters: [rosterId: string, summonerId: number], Body: LolClashOfferTicketRequest, Response: unknown }
 	},
 	"/lol-clash/v1/roster/{rosterId}/ticket-offer/{summonerId}/revoke": {
 		post: { Parameters: [rosterId: string, summonerId: number], Body: never, Response: unknown }
@@ -2653,7 +2656,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [id: string], Body: never, Response: unknown }
 	},
 	"/lol-clash/v1/tournament/{tournamentId}/create-roster": {
-		post: { Parameters: [tournamentId: number], Body: LCUTypes.LolClashRosterDetails, Response: unknown }
+		post: { Parameters: [tournamentId: number], Body: LolClashRosterDetails, Response: unknown }
 	},
 	"/lol-clash/v1/update-logos": {
 		post: { Parameters: [], Body: never, Response: unknown }
@@ -2674,16 +2677,16 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-event-shop/v1/purchase-item": {
-		post: { Parameters: [], Body: LCUTypes.LolEventShopItemOrderDTO, Response: LCUTypes.LolEventShopPurchaseOrderResponseDTO }
+		post: { Parameters: [], Body: LolEventShopItemOrderDTO, Response: LolEventShopPurchaseOrderResponseDTO }
 	},
 	"/lol-event-shop/v1/purchase-offer": {
-		post: { Parameters: [], Body: LCUTypes.LolEventShopPurchaseOfferRequest, Response: LCUTypes.LolEventShopPurchaseOfferResponseV3 }
+		post: { Parameters: [], Body: LolEventShopPurchaseOfferRequest, Response: LolEventShopPurchaseOfferResponseV3 }
 	},
 	"/lol-game-client-chat/v1/instant-messages": {
 		post: { Parameters: [params: { "summonerName": string, "message": string }], Body: never, Response: void }
 	},
 	"/lol-game-client-chat/v2/instant-messages": {
-		post: { Parameters: [], Body: LCUTypes.LolGameClientChatMessageToPlayer, Response: void }
+		post: { Parameters: [], Body: LolGameClientChatMessageToPlayer, Response: void }
 	},
 	"/lol-game-settings/v1/reload-post-game": {
 		post: { Parameters: [], Body: never, Response: void }
@@ -2716,13 +2719,13 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: number, Response: void }
 	},
 	"/lol-gameflow/v1/session/dodge": {
-		post: { Parameters: [], Body: LCUTypes.LolGameflowGameflowGameDodge, Response: void }
+		post: { Parameters: [], Body: LolGameflowGameflowGameDodge, Response: void }
 	},
 	"/lol-gameflow/v1/session/event": {
 		post: { Parameters: [], Body: string, Response: void }
 	},
 	"/lol-gameflow/v1/session/game-configuration": {
-		post: { Parameters: [], Body: LCUTypes.LolGameflowQueue, Response: void }
+		post: { Parameters: [], Body: LolGameflowQueue, Response: void }
 	},
 	"/lol-gameflow/v1/session/request-enter-gameflow": {
 		post: { Parameters: [], Body: string, Response: boolean }
@@ -2749,7 +2752,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: string[], Response: unknown }
 	},
 	"/lol-gameflow/v2/spectate/launch": {
-		post: { Parameters: [], Body: LCUTypes.LolGameflowSpectateGameInfoResource, Response: unknown }
+		post: { Parameters: [], Body: LolGameflowSpectateGameInfoResource, Response: unknown }
 	},
 	"/lol-highlights/v1/file-browser/{highlightId}": {
 		post: { Parameters: [highlightId: number], Body: never, Response: unknown }
@@ -2758,7 +2761,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-honor-v2/v1/honor-player": {
-		post: { Parameters: [], Body: LCUTypes.LolHonorV2ApiHonorPlayerServerRequest, Response: string }
+		post: { Parameters: [], Body: LolHonorV2ApiHonorPlayerServerRequest, Response: string }
 	},
 	"/lol-honor-v2/v1/late-recognition/ack": {
 		post: { Parameters: [], Body: never, Response: void }
@@ -2776,7 +2779,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: number, Response: void }
 	},
 	"/lol-item-sets/v1/item-sets/validate": {
-		post: { Parameters: [], Body: LCUTypes.LolItemSetsValidateItemSetNameInput, Response: LCUTypes.LolItemSetsValidateItemSetNameResponse }
+		post: { Parameters: [], Body: LolItemSetsValidateItemSetNameInput, Response: LolItemSetsValidateItemSetNameResponse }
 	},
 	"/lol-kr-shutdown-law/v1/rating-screen/acknowledge": {
 		post: { Parameters: [], Body: never, Response: void }
@@ -2788,7 +2791,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [id: string], Body: never, Response: unknown }
 	},
 	"/lol-loadouts/v4/loadouts": {
-		post: { Parameters: [], Body: LCUTypes.LolLoadoutsCreateLoadoutDTO, Response: LCUTypes.LolLoadoutsScopedLoadout }
+		post: { Parameters: [], Body: LolLoadoutsCreateLoadoutDTO, Response: LolLoadoutsScopedLoadout }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/retrieve-latest-game-dto": {
 		post: { Parameters: [], Body: never, Response: unknown }
@@ -2812,7 +2815,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/swaps/{id}/request": {
-		post: { Parameters: [id: number], Body: never, Response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
+		post: { Parameters: [id: number], Body: never, Response: LolLobbyTeamBuilderChampSelectSwapContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/trades/{id}/accept": {
 		post: { Parameters: [id: number], Body: never, Response: unknown }
@@ -2824,7 +2827,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [id: number], Body: never, Response: unknown }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/trades/{id}/request": {
-		post: { Parameters: [id: number], Body: never, Response: LCUTypes.LolLobbyTeamBuilderChampSelectTradeContract }
+		post: { Parameters: [id: number], Body: never, Response: LolLobbyTeamBuilderChampSelectTradeContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/simple-inventory": {
 		post: { Parameters: [], Body: never, Response: void }
@@ -2839,19 +2842,19 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-lobby/v1/custom-games/{id}/join": {
-		post: { Parameters: [id: number], Body: LCUTypes.LolLobbyLobbyCustomJoinParameters, Response: unknown }
+		post: { Parameters: [id: number], Body: LolLobbyLobbyCustomJoinParameters, Response: unknown }
 	},
 	"/lol-lobby/v1/custom-games/refresh": {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-lobby/v1/lobby/custom/bots": {
-		post: { Parameters: [], Body: LCUTypes.LolLobbyLobbyBotParams, Response: unknown }
+		post: { Parameters: [], Body: LolLobbyLobbyBotParams, Response: unknown }
 	},
 	"/lol-lobby/v1/lobby/custom/cancel-champ-select": {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-lobby/v1/lobby/custom/start-champ-select": {
-		post: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyLobbyCustomChampSelectStartResponse }
+		post: { Parameters: [], Body: never, Response: LolLobbyLobbyCustomChampSelectStartResponse }
 	},
 	"/lol-lobby/v1/lobby/custom/switch-teams": {
 		post: { Parameters: [], Body: string, Response: unknown }
@@ -2863,13 +2866,13 @@ export interface LCUEndpoints {
 		post: { Parameters: [id: string], Body: never, Response: unknown }
 	},
 	"/lol-lobby/v2/eligibility/party": {
-		post: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyEligibility[] }
+		post: { Parameters: [], Body: never, Response: LolLobbyEligibility[] }
 	},
 	"/lol-lobby/v2/eligibility/self": {
-		post: { Parameters: [], Body: never, Response: LCUTypes.LolLobbyEligibility[] }
+		post: { Parameters: [], Body: never, Response: LolLobbyEligibility[] }
 	},
 	"/lol-lobby/v2/eog-invitations": {
-		post: { Parameters: [], Body: LCUTypes.LolLobbyLobbyInvitationDto[], Response: LCUTypes.LolLobbyLobbyInvitationDto[] }
+		post: { Parameters: [], Body: LolLobbyLobbyInvitationDto[], Response: LolLobbyLobbyInvitationDto[] }
 	},
 	"/lol-lobby/v2/lobby/members/{summonerId}/grant-invite": {
 		post: { Parameters: [summonerId: number], Body: never, Response: number }
@@ -2887,13 +2890,13 @@ export interface LCUEndpoints {
 		post: { Parameters: [team: string], Body: never, Response: void }
 	},
 	"/lol-lobby/v2/matchmaking/quick-search": {
-		post: { Parameters: [], Body: LCUTypes.LolLobbyLobbyChangeGameDto, Response: unknown }
+		post: { Parameters: [], Body: LolLobbyLobbyChangeGameDto, Response: unknown }
 	},
 	"/lol-lobby/v2/parties/overrides/EnabledForTeamBuilderQueues": {
 		post: { Parameters: [], Body: boolean, Response: void }
 	},
 	"/lol-lobby/v2/party/{partyId}/join": {
-		post: { Parameters: [partyId: string], Body: LCUTypes.LolLobbyCustomJoinOptionsDto, Response: unknown }
+		post: { Parameters: [partyId: string], Body: LolLobbyCustomJoinOptionsDto, Response: unknown }
 	},
 	"/lol-lobby/v2/play-again": {
 		post: { Parameters: [], Body: never, Response: unknown }
@@ -2914,46 +2917,46 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-login/v1/leagueSessionStatus": {
-		post: { Parameters: [], Body: LCUTypes.LolLoginLeagueSessionStatus, Response: void }
+		post: { Parameters: [], Body: LolLoginLeagueSessionStatus, Response: void }
 	},
 	"/lol-login/v1/service-proxy-uuid-requests": {
 		post: { Parameters: [params: { "serviceName": string, "methodName": string, "pluginId": number, "timeoutMillis": number, "payload": string }], Body: never, Response: string }
 	},
 	"/lol-login/v1/session/invoke": {
-		post: { Parameters: [params: { "destination": string, "method": string, "args": unknown[] }], Body: never, Response: LCUTypes.LolLoginLcdsResponse }
+		post: { Parameters: [params: { "destination": string, "method": string, "args": unknown[] }], Body: never, Response: LolLoginLcdsResponse }
 	},
 	"/lol-login/v1/summoner-session": {
-		post: { Parameters: [], Body: LCUTypes.LolLoginSummonerSessionResource, Response: unknown }
+		post: { Parameters: [], Body: LolLoginSummonerSessionResource, Response: unknown }
 	},
 	"/lol-login/v1/summoner-session-failed": {
 		post: { Parameters: [], Body: number, Response: unknown }
 	},
 	"/lol-loot/v1/craft/mass": {
-		post: { Parameters: [], Body: LCUTypes.CraftLootDTO[], Response: LCUTypes.LolLootPlayerLootUpdate }
+		post: { Parameters: [], Body: CraftLootDTO[], Response: LolLootPlayerLootUpdate }
 	},
 	"/lol-loot/v1/milestones/{lootMilestonesId}/claim": {
 		post: { Parameters: [lootMilestonesId: string], Body: never, Response: void }
 	},
 	"/lol-loot/v1/player-loot/{lootName}/redeem": {
-		post: { Parameters: [lootName: string], Body: never, Response: LCUTypes.LolLootPlayerLootUpdate }
+		post: { Parameters: [lootName: string], Body: never, Response: LolLootPlayerLootUpdate }
 	},
 	"/lol-loot/v1/player-loot-notifications/{id}/acknowledge": {
 		post: { Parameters: [id: string], Body: never, Response: string }
 	},
 	"/lol-loot/v1/recipes/{recipeName}/craft": {
-		post: { Parameters: [recipeName: string, params: { "playerLootList": string[], "repeat"?: number }], Body: never, Response: LCUTypes.LolLootPlayerLootUpdate }
+		post: { Parameters: [recipeName: string, params: { "playerLootList": string[], "repeat"?: number }], Body: never, Response: LolLootPlayerLootUpdate }
 	},
 	"/lol-loot/v1/refresh": {
 		post: { Parameters: [], Body: boolean, Response: string }
 	},
 	"/lol-loyalty/v1/updateLoyaltyInventory": {
-		post: { Parameters: [], Body: LCUTypes.LolLoyaltyLoyaltyRewards, Response: void }
+		post: { Parameters: [], Body: LolLoyaltyLoyaltyRewards, Response: void }
 	},
 	"/lol-maps/v1/map": {
-		post: { Parameters: [], Body: LCUTypes.LolMapsMaps, Response: void }
+		post: { Parameters: [], Body: LolMapsMaps, Response: void }
 	},
 	"/lol-match-history/v1/acs-endpoint-override": {
-		post: { Parameters: [], Body: LCUTypes.LolMatchHistoryAcsEndPoint, Response: unknown }
+		post: { Parameters: [], Body: LolMatchHistoryAcsEndPoint, Response: unknown }
 	},
 	"/lol-matchmaking/v1/ready-check/accept": {
 		post: { Parameters: [], Body: never, Response: unknown }
@@ -2986,16 +2989,16 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: boolean, Response: void }
 	},
 	"/lol-perks/v1/quick-play-selections/champion/{championId}/slot/{slotId}": {
-		post: { Parameters: [championId: number, slotId: number], Body: LCUTypes.LolPerksPerkPageResource, Response: unknown }
+		post: { Parameters: [championId: number, slotId: number], Body: LolPerksPerkPageResource, Response: unknown }
 	},
 	"/lol-perks/v1/recommended-pages-position/champion/{championId}/position/{position}": {
 		post: { Parameters: [championId: number, position: string], Body: never, Response: unknown }
 	},
 	"/lol-perks/v1/update-page-order": {
-		post: { Parameters: [], Body: LCUTypes.LolPerksUpdatePageOrderRequest, Response: unknown }
+		post: { Parameters: [], Body: LolPerksUpdatePageOrderRequest, Response: unknown }
 	},
 	"/lol-pft/v2/events": {
-		post: { Parameters: [], Body: LCUTypes.LolPftPFTEvent, Response: unknown }
+		post: { Parameters: [], Body: LolPftPFTEvent, Response: unknown }
 	},
 	"/lol-player-behavior/v2/reporter-feedback/{key}": {
 		post: { Parameters: [key: string], Body: never, Response: void }
@@ -3004,16 +3007,16 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: never, Response: unknown }
 	},
 	"/lol-player-preferences/v1/player-preferences-endpoint-override": {
-		post: { Parameters: [], Body: LCUTypes.LolPlayerPreferencesPlayerPreferencesEndpoint, Response: unknown }
+		post: { Parameters: [], Body: LolPlayerPreferencesPlayerPreferencesEndpoint, Response: unknown }
 	},
 	"/lol-player-report-sender/v1/champ-select-reports": {
-		post: { Parameters: [], Body: LCUTypes.LolPlayerReportSenderPlayerReport, Response: unknown }
+		post: { Parameters: [], Body: LolPlayerReportSenderPlayerReport, Response: unknown }
 	},
 	"/lol-player-report-sender/v1/end-of-game-reports": {
-		post: { Parameters: [], Body: LCUTypes.LolPlayerReportSenderPlayerReport, Response: unknown }
+		post: { Parameters: [], Body: LolPlayerReportSenderPlayerReport, Response: unknown }
 	},
 	"/lol-player-report-sender/v1/match-history-reports": {
-		post: { Parameters: [], Body: LCUTypes.LolPlayerReportSenderPlayerReport, Response: unknown }
+		post: { Parameters: [], Body: LolPlayerReportSenderPlayerReport, Response: unknown }
 	},
 	"/lol-pre-end-of-game/v1/complete/{sequenceEventName}": {
 		post: { Parameters: [sequenceEventName: string], Body: never, Response: void }
@@ -3040,16 +3043,16 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-purchase-widget/v1/purchasable-items/{inventoryType}": {
-		post: { Parameters: [inventoryType: string], Body: number[], Response: LCUTypes.LolPurchaseWidgetItemChoices }
+		post: { Parameters: [inventoryType: string], Body: number[], Response: LolPurchaseWidgetItemChoices }
 	},
 	"/lol-purchase-widget/v2/purchaseItems": {
-		post: { Parameters: [], Body: LCUTypes.LolPurchaseWidgetPurchaseRequest, Response: unknown }
+		post: { Parameters: [], Body: LolPurchaseWidgetPurchaseRequest, Response: unknown }
 	},
 	"/lol-purchase-widget/v3/purchaseOffer": {
-		post: { Parameters: [], Body: LCUTypes.LolPurchaseWidgetPurchaseOfferRequestV3, Response: LCUTypes.LolPurchaseWidgetPurchaseOfferResponseV3 }
+		post: { Parameters: [], Body: LolPurchaseWidgetPurchaseOfferRequestV3, Response: LolPurchaseWidgetPurchaseOfferResponseV3 }
 	},
 	"/lol-purchase-widget/v3/validateOffer": {
-		post: { Parameters: [], Body: LCUTypes.LolPurchaseWidgetValidateOfferRequestV3, Response: LCUTypes.LolPurchaseWidgetValidateOfferResponseV3 }
+		post: { Parameters: [], Body: LolPurchaseWidgetValidateOfferRequestV3, Response: LolPurchaseWidgetValidateOfferResponseV3 }
 	},
 	"/lol-ranked/v1/eos-notifications/{id}/acknowledge": {
 		post: { Parameters: [id: string], Body: never, Response: unknown }
@@ -3061,40 +3064,40 @@ export interface LCUEndpoints {
 		post: { Parameters: [gameId: number, gameVersion: string, gameType: string, queueId: number], Body: never, Response: void }
 	},
 	"/lol-replays/v1/rofls/{gameId}/download": {
-		post: { Parameters: [gameId: number], Body: LCUTypes.LolReplaysReplayContextData, Response: void }
+		post: { Parameters: [gameId: number], Body: LolReplaysReplayContextData, Response: void }
 	},
 	"/lol-replays/v1/rofls/{gameId}/download/graceful": {
-		post: { Parameters: [gameId: number], Body: LCUTypes.LolReplaysReplayContextData, Response: void }
+		post: { Parameters: [gameId: number], Body: LolReplaysReplayContextData, Response: void }
 	},
 	"/lol-replays/v1/rofls/{gameId}/watch": {
-		post: { Parameters: [gameId: number], Body: LCUTypes.LolReplaysReplayContextData, Response: void }
+		post: { Parameters: [gameId: number], Body: LolReplaysReplayContextData, Response: void }
 	},
 	"/lol-replays/v1/rofls/scan": {
 		post: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-replays/v2/metadata/{gameId}/create": {
-		post: { Parameters: [gameId: number], Body: LCUTypes.LolReplaysReplayCreateMetadata, Response: void }
+		post: { Parameters: [gameId: number], Body: LolReplaysReplayCreateMetadata, Response: void }
 	},
 	"/lol-rewards/v1/grants/{grantId}/select": {
-		post: { Parameters: [grantId: string], Body: LCUTypes.LolRewardsSelectionRequestDTO, Response: LCUTypes.LolRewardsRewardGrant }
+		post: { Parameters: [grantId: string], Body: LolRewardsSelectionRequestDTO, Response: LolRewardsRewardGrant }
 	},
 	"/lol-rewards/v1/select-bulk": {
-		post: { Parameters: [], Body: LCUTypes.LolRewardsSelectionRequestDTO[], Response: Record<string, LCUTypes.LolRewardsSelectGrantStatusResponse> }
+		post: { Parameters: [], Body: LolRewardsSelectionRequestDTO[], Response: Record<string, LolRewardsSelectGrantStatusResponse> }
 	},
 	"/lol-rso-auth/v1/authorization/gas": {
-		post: { Parameters: [], Body: LCUTypes.LolRsoAuthRSOPlayerCredentials, Response: LCUTypes.LolRsoAuthAuthorization }
+		post: { Parameters: [], Body: LolRsoAuthRSOPlayerCredentials, Response: LolRsoAuthAuthorization }
 	},
 	"/lol-rso-auth/v1/authorization/refresh": {
-		post: { Parameters: [], Body: never, Response: LCUTypes.LolRsoAuthAuthorization }
+		post: { Parameters: [], Body: never, Response: LolRsoAuthAuthorization }
 	},
 	"/lol-rso-auth/v1/device-id": {
-		post: { Parameters: [], Body: never, Response: LCUTypes.LolRsoAuthDeviceId }
+		post: { Parameters: [], Body: never, Response: LolRsoAuthDeviceId }
 	},
 	"/lol-rso-auth/v1/external-session-config": {
 		post: { Parameters: [], Body: unknown, Response: unknown }
 	},
 	"/lol-seasons/v1/allSeasons/product/{product}": {
-		post: { Parameters: [product: string], Body: LCUTypes.LolSeasonsAllProductSeasonQuery, Response: LCUTypes.LolSeasonsAllSeasonsProduct[] }
+		post: { Parameters: [product: string], Body: LolSeasonsAllProductSeasonQuery, Response: LolSeasonsAllSeasonsProduct[] }
 	},
 	"/lol-settings/v1/account/save": {
 		post: { Parameters: [], Body: never, Response: void }
@@ -3103,52 +3106,52 @@ export interface LCUEndpoints {
 		post: { Parameters: [ppType: string], Body: never, Response: void }
 	},
 	"/lol-spectator/v1/buddy/spectate": {
-		post: { Parameters: [], Body: string[], Response: LCUTypes.LolSpectatorSummonerOrTeamAvailabilty }
+		post: { Parameters: [], Body: string[], Response: LolSpectatorSummonerOrTeamAvailabilty }
 	},
 	"/lol-spectator/v1/spectate/launch": {
-		post: { Parameters: [], Body: LCUTypes.LolSpectatorSpectateGameInfo, Response: unknown }
+		post: { Parameters: [], Body: LolSpectatorSpectateGameInfo, Response: unknown }
 	},
 	"/lol-spectator/v2/buddy/spectate": {
-		post: { Parameters: [], Body: number[], Response: LCUTypes.LolSpectatorSummonerIdAvailability }
+		post: { Parameters: [], Body: number[], Response: LolSpectatorSummonerIdAvailability }
 	},
 	"/lol-statstones/v1/featured-champion-statstones/{championItemId}/{statstoneId}": {
-		post: { Parameters: [championItemId: number, statstoneId: string], Body: LCUTypes.LolStatstonesStatstoneFeaturedRequest, Response: unknown }
+		post: { Parameters: [championItemId: number, statstoneId: string], Body: LolStatstonesStatstoneFeaturedRequest, Response: unknown }
 	},
 	"/lol-store/v1/notifications/acknowledge": {
 		post: { Parameters: [], Body: string, Response: unknown }
 	},
 	"/lol-store/v3/purchase": {
-		post: { Parameters: [], Body: LCUTypes.LolStoreItemOrderDTO[], Response: LCUTypes.LolStorePurchaseOrderResponseDTO }
+		post: { Parameters: [], Body: LolStoreItemOrderDTO[], Response: LolStorePurchaseOrderResponseDTO }
 	},
 	"/lol-suggested-players/v1/reported-player": {
-		post: { Parameters: [], Body: LCUTypes.LolSuggestedPlayersSuggestedPlayersReportedPlayer, Response: void }
+		post: { Parameters: [], Body: LolSuggestedPlayersSuggestedPlayersReportedPlayer, Response: void }
 	},
 	"/lol-suggested-players/v1/victorious-comrade": {
-		post: { Parameters: [], Body: LCUTypes.LolSuggestedPlayersSuggestedPlayersVictoriousComrade, Response: void }
+		post: { Parameters: [], Body: LolSuggestedPlayersSuggestedPlayersVictoriousComrade, Response: void }
 	},
 	"/lol-summoner/v1/current-summoner/name": {
-		post: { Parameters: [], Body: string, Response: LCUTypes.LolSummonerSummoner }
+		post: { Parameters: [], Body: string, Response: LolSummonerSummoner }
 	},
 	"/lol-summoner/v1/save-alias": {
-		post: { Parameters: [], Body: LCUTypes.LolSummonerAlias, Response: LCUTypes.LolSummonerAliasAvailability }
+		post: { Parameters: [], Body: LolSummonerAlias, Response: LolSummonerAliasAvailability }
 	},
 	"/lol-summoner/v1/summoner-aliases-by-ids": {
-		post: { Parameters: [], Body: number[], Response: Record<string, LCUTypes.LolSummonerAlias> }
+		post: { Parameters: [], Body: number[], Response: Record<string, LolSummonerAlias> }
 	},
 	"/lol-summoner/v1/summoner-aliases-by-puuids": {
-		post: { Parameters: [], Body: string[], Response: Record<string, LCUTypes.LolSummonerAlias> }
+		post: { Parameters: [], Body: string[], Response: Record<string, LolSummonerAlias> }
 	},
 	"/lol-summoner/v1/summoners/aliases": {
-		post: { Parameters: [], Body: LCUTypes.LolSummonerAlias[], Response: LCUTypes.LolSummonerSummoner[] }
+		post: { Parameters: [], Body: LolSummonerAlias[], Response: LolSummonerSummoner[] }
 	},
 	"/lol-summoner/v1/validate-alias": {
-		post: { Parameters: [], Body: LCUTypes.LolSummonerAlias, Response: LCUTypes.LolSummonerAliasAvailability }
+		post: { Parameters: [], Body: LolSummonerAlias, Response: LolSummonerAliasAvailability }
 	},
 	"/lol-summoner/v2/summoners/names": {
-		post: { Parameters: [], Body: string[], Response: LCUTypes.LolSummonerSummoner[] }
+		post: { Parameters: [], Body: string[], Response: LolSummonerSummoner[] }
 	},
 	"/lol-summoner/v2/summoners/puuid": {
-		post: { Parameters: [], Body: string[], Response: LCUTypes.LolSummonerSummoner[] }
+		post: { Parameters: [], Body: string[], Response: LolSummonerSummoner[] }
 	},
 	"/lol-tft-pass/v1/pass/{id}": {
 		post: { Parameters: [id: string], Body: never, Response: void }
@@ -3157,22 +3160,22 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-tft-troves/v1/purchase": {
-		post: { Parameters: [], Body: LCUTypes.LolTftTrovesTrovesPurchaseRequest, Response: LCUTypes.LolTftTrovesCapOrdersResponseDTO }
+		post: { Parameters: [], Body: LolTftTrovesTrovesPurchaseRequest, Response: LolTftTrovesCapOrdersResponseDTO }
 	},
 	"/lol-tft-troves/v1/roll": {
-		post: { Parameters: [], Body: LCUTypes.LolTftTrovesTrovesRollRequest, Response: LCUTypes.LolTftTrovesCapOrdersResponseDTO }
+		post: { Parameters: [], Body: LolTftTrovesTrovesRollRequest, Response: LolTftTrovesCapOrdersResponseDTO }
 	},
 	"/lol-tft/v1/tft/homeHub/redirect": {
 		post: { Parameters: [], Body: never, Response: void }
 	},
 	"/lol-yourshop/v1/offers/{id}/purchase": {
-		post: { Parameters: [id: string], Body: never, Response: LCUTypes.LolYourshopPurchaseResponse }
+		post: { Parameters: [id: string], Body: never, Response: LolYourshopPurchaseResponse }
 	},
 	"/lol-yourshop/v1/offers/{id}/reveal": {
-		post: { Parameters: [id: string], Body: never, Response: LCUTypes.LolYourshopUIOffer[] }
+		post: { Parameters: [id: string], Body: never, Response: LolYourshopUIOffer[] }
 	},
 	"/lol-yourshop/v1/permissions": {
-		post: { Parameters: [], Body: LCUTypes.LolYourshopPlayerPermissions, Response: LCUTypes.LolYourshopPlayerPermissions }
+		post: { Parameters: [], Body: LolYourshopPlayerPermissions, Response: LolYourshopPlayerPermissions }
 	},
 	"/memory/v1/notify-fe-processes-ready": {
 		post: { Parameters: [], Body: never, Response: void }
@@ -3181,7 +3184,7 @@ export interface LCUEndpoints {
 		post: { Parameters: [params: { "processIds": number[], "context": string }], Body: never, Response: void }
 	},
 	"/patcher/v1/products/{product-id}/detect-corruption-request": {
-		post: { Parameters: [product_id: string], Body: never, Response: LCUTypes.PatcherProductState }
+		post: { Parameters: [product_id: string], Body: never, Response: PatcherProductState }
 	},
 	"/patcher/v1/products/{product-id}/partial-repair-request": {
 		post: { Parameters: [product_id: string], Body: never, Response: unknown }
@@ -3202,10 +3205,10 @@ export interface LCUEndpoints {
 		post: { Parameters: [product_id: string], Body: never, Response: unknown }
 	},
 	"/payments/v1/pmc-start-url": {
-		post: { Parameters: [], Body: LCUTypes.PaymentsFrontEndRequest, Response: LCUTypes.PaymentsFrontEndResult }
+		post: { Parameters: [], Body: PaymentsFrontEndRequest, Response: PaymentsFrontEndResult }
 	},
 	"/payments/v1/updatePaymentTelemetryState": {
-		post: { Parameters: [], Body: LCUTypes.PaymentsPaymentsTelemetryTransitions, Response: void }
+		post: { Parameters: [], Body: PaymentsPaymentsTelemetryTransitions, Response: void }
 	},
 	"/performance/v1/process/{processId}": {
 		post: { Parameters: [processId: number], Body: never, Response: void }
@@ -3256,13 +3259,13 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: string, Response: void }
 	},
 	"/riotclient/v1/elevation-requests": {
-		post: { Parameters: [], Body: LCUTypes.ElevationRequest, Response: void }
+		post: { Parameters: [], Body: ElevationRequest, Response: void }
 	},
 	"/sanitizer/v1/containsSanitized": {
-		post: { Parameters: [], Body: LCUTypes.SanitizerContainsSanitizedRequest, Response: LCUTypes.SanitizerContainsSanitizedResponse }
+		post: { Parameters: [], Body: SanitizerContainsSanitizedRequest, Response: SanitizerContainsSanitizedResponse }
 	},
 	"/sanitizer/v1/sanitize": {
-		post: { Parameters: [], Body: LCUTypes.SanitizerSanitizeRequest, Response: LCUTypes.SanitizerSanitizeResponse }
+		post: { Parameters: [], Body: SanitizerSanitizeRequest, Response: SanitizerSanitizeResponse }
 	},
 	"/telemetry/v1/common-data/{key}": {
 		post: { Parameters: [key: string], Body: string, Response: void }
@@ -3280,31 +3283,31 @@ export interface LCUEndpoints {
 		post: { Parameters: [eventType: string, onceTag: string], Body: Record<string, string>, Response: void }
 	},
 	"/telemetry/v3/slis/counts": {
-		post: { Parameters: [], Body: LCUTypes.SLICount, Response: void }
+		post: { Parameters: [], Body: SLICount, Response: void }
 	},
 	"/telemetry/v3/uptime-tracking/notify-failure": {
-		post: { Parameters: [], Body: LCUTypes.NotifyFailureRequest, Response: void }
+		post: { Parameters: [], Body: NotifyFailureRequest, Response: void }
 	},
 	"/telemetry/v3/uptime-tracking/notify-success": {
-		post: { Parameters: [], Body: LCUTypes.NotifySuccessRequest, Response: void }
+		post: { Parameters: [], Body: NotifySuccessRequest, Response: void }
 	},
 	"/tracing/v1/trace/critical-flow": {
-		post: { Parameters: [], Body: LCUTypes.TracingCriticalFlowEventV1, Response: void }
+		post: { Parameters: [], Body: TracingCriticalFlowEventV1, Response: void }
 	},
 	"/tracing/v1/trace/event": {
-		post: { Parameters: [], Body: LCUTypes.TracingEventV1, Response: void }
+		post: { Parameters: [], Body: TracingEventV1, Response: void }
 	},
 	"/tracing/v1/trace/module": {
-		post: { Parameters: [], Body: LCUTypes.TracingModuleV1, Response: void }
+		post: { Parameters: [], Body: TracingModuleV1, Response: void }
 	},
 	"/tracing/v1/trace/non-timing-event/{eventName}": {
 		post: { Parameters: [eventName: string, params: { "when": number, "value": string, "unit": string }], Body: never, Response: void }
 	},
 	"/tracing/v1/trace/phase/begin": {
-		post: { Parameters: [], Body: LCUTypes.TracingPhaseBeginV1, Response: void }
+		post: { Parameters: [], Body: TracingPhaseBeginV1, Response: void }
 	},
 	"/tracing/v1/trace/phase/end": {
-		post: { Parameters: [], Body: LCUTypes.TracingPhaseEndV1, Response: void }
+		post: { Parameters: [], Body: TracingPhaseEndV1, Response: void }
 	},
 	"/tracing/v1/trace/step-event": {
 		post: { Parameters: [], Body: string, Response: void }
@@ -3313,19 +3316,19 @@ export interface LCUEndpoints {
 		post: { Parameters: [eventName: string, markerName: string], Body: number, Response: void }
 	},
 	"/client-config/v1/entitlements-token": {
-		put: { Parameters: [], Body: LCUTypes.ClientConfigEntitlementsUpdate, Response: void }
+		put: { Parameters: [], Body: ClientConfigEntitlementsUpdate, Response: void }
 	},
 	"/client-config/v1/refresh-config-status": {
 		put: { Parameters: [], Body: never, Response: void }
 	},
 	"/client-config/v2/namespace-changes": {
-		put: { Parameters: [], Body: LCUTypes.ClientConfigConfigNamespaceUpdate, Response: void }
+		put: { Parameters: [], Body: ClientConfigConfigNamespaceUpdate, Response: void }
 	},
 	"/lol-chat/v1/friend-groups/order": {
-		put: { Parameters: [], Body: LCUTypes.LolChatFriendGroupOrder, Response: unknown }
+		put: { Parameters: [], Body: LolChatFriendGroupOrder, Response: unknown }
 	},
 	"/lol-lobby/v1/lobby/members/localMember/position-preferences": {
-		put: { Parameters: [], Body: LCUTypes.LolLobbyLobbyPositionPreferences, Response: unknown }
+		put: { Parameters: [], Body: LolLobbyLobbyPositionPreferences, Response: unknown }
 	},
 	"/lol-lobby/v1/parties/active": {
 		put: { Parameters: [], Body: number, Response: void }
@@ -3334,7 +3337,7 @@ export interface LCUEndpoints {
 		put: { Parameters: [partyId: string, puuid: string], Body: string, Response: void }
 	},
 	"/lol-lobby/v1/parties/metadata": {
-		put: { Parameters: [], Body: LCUTypes.LolLobbyPartyMemberMetadataDto, Response: void }
+		put: { Parameters: [], Body: LolLobbyPartyMemberMetadataDto, Response: void }
 	},
 	"/lol-lobby/v1/parties/queue": {
 		put: { Parameters: [], Body: number, Response: void }
@@ -3343,25 +3346,25 @@ export interface LCUEndpoints {
 		put: { Parameters: [], Body: number, Response: void }
 	},
 	"/lol-lobby/v2/lobby/members/localMember/position-preferences": {
-		put: { Parameters: [], Body: LCUTypes.LolLobbyLobbyPositionPreferences, Response: unknown }
+		put: { Parameters: [], Body: LolLobbyLobbyPositionPreferences, Response: unknown }
 	},
 	"/lol-lobby/v2/lobby/partyType": {
 		put: { Parameters: [], Body: string, Response: unknown }
 	},
 	"/lol-lobby/v2/lobby/subteamData": {
-		put: { Parameters: [], Body: LCUTypes.LolLobbySubteamDataDto, Response: void }
+		put: { Parameters: [], Body: LolLobbySubteamDataDto, Response: void }
 	},
 	"/lol-loot/v1/loot-odds/evaluateQuery": {
-		put: { Parameters: [], Body: LCUTypes.QueryEvaluationRequestDTO, Response: LCUTypes.LolLootQueryEvaluatedLootItem[] }
+		put: { Parameters: [], Body: QueryEvaluationRequestDTO, Response: LolLootQueryEvaluatedLootItem[] }
 	},
 	"/lol-missions/v1/player": {
-		put: { Parameters: [], Body: LCUTypes.IdsDTO, Response: void }
+		put: { Parameters: [], Body: IdsDTO, Response: void }
 	},
 	"/lol-missions/v1/player/{missionId}": {
-		put: { Parameters: [missionId: string], Body: LCUTypes.LolMissionsRewardGroupsSelection, Response: void }
+		put: { Parameters: [missionId: string], Body: LolMissionsRewardGroupsSelection, Response: void }
 	},
 	"/lol-missions/v2/player/opt": {
-		put: { Parameters: [], Body: LCUTypes.LolMissionsSeriesOpt, Response: void }
+		put: { Parameters: [], Body: LolMissionsSeriesOpt, Response: void }
 	},
 	"/lol-npe-tutorial-path/v1/tutorials/{tutorialId}/view": {
 		put: { Parameters: [tutorialId: string], Body: never, Response: void }
@@ -3370,10 +3373,10 @@ export interface LCUEndpoints {
 		put: { Parameters: [], Body: string, Response: void }
 	},
 	"/lol-patch/v1/ux": {
-		put: { Parameters: [], Body: LCUTypes.LolPatchUxResource, Response: void }
+		put: { Parameters: [], Body: LolPatchUxResource, Response: void }
 	},
 	"/lol-perks/v1/pages/validate": {
-		put: { Parameters: [], Body: LCUTypes.LolPerksValidatePageNameData, Response: LCUTypes.LolPerksValidateItemSetNameResponse }
+		put: { Parameters: [], Body: LolPerksValidatePageNameData, Response: LolPerksValidateItemSetNameResponse }
 	},
 	"/lol-perks/v1/perks/ack-gameplay-updated": {
 		put: { Parameters: [], Body: number[], Response: unknown }
@@ -3382,7 +3385,7 @@ export interface LCUEndpoints {
 		put: { Parameters: [id: string], Body: never, Response: void }
 	},
 	"/lol-player-preferences/v1/preference": {
-		put: { Parameters: [], Body: LCUTypes.LolPlayerPreferencesPlayerPreferences, Response: unknown }
+		put: { Parameters: [], Body: LolPlayerPreferencesPlayerPreferences, Response: unknown }
 	},
 	"/lol-premade-voice/v1/participants/{puuid}/mute": {
 		put: { Parameters: [puuid: string], Body: number, Response: void }
@@ -3394,7 +3397,7 @@ export interface LCUEndpoints {
 		put: { Parameters: [], Body: number, Response: void }
 	},
 	"/lol-premade-voice/v1/self/inputMode": {
-		put: { Parameters: [], Body: LCUTypes.LolPremadeVoiceInputMode, Response: void }
+		put: { Parameters: [], Body: LolPremadeVoiceInputMode, Response: void }
 	},
 	"/lol-premade-voice/v1/self/micLevel": {
 		put: { Parameters: [], Body: number, Response: void }
@@ -3403,7 +3406,7 @@ export interface LCUEndpoints {
 		put: { Parameters: [], Body: number, Response: void }
 	},
 	"/lol-summoner/v1/current-summoner/icon": {
-		put: { Parameters: [], Body: LCUTypes.LolSummonerSummonerIcon, Response: LCUTypes.LolSummonerSummoner }
+		put: { Parameters: [], Body: LolSummonerSummonerIcon, Response: LolSummonerSummoner }
 	},
 	"/lol-tft-team-planner/v1/team": {
 		put: { Parameters: [], Body: never, Response: unknown }
@@ -3412,7 +3415,7 @@ export interface LCUEndpoints {
 		put: { Parameters: [], Body: number, Response: unknown }
 	},
 	"/patcher/v1/ux": {
-		put: { Parameters: [], Body: LCUTypes.PatcherUxResource, Response: void }
+		put: { Parameters: [], Body: PatcherUxResource, Response: void }
 	},
 	"/riotclient/ux-load-complete": {
 		put: { Parameters: [], Body: never, Response: void }
@@ -3421,13 +3424,13 @@ export interface LCUEndpoints {
 		put: { Parameters: [], Body: number, Response: void }
 	},
 	"/Subscribe": {
-		post: { Parameters: [params: { "eventName": string, "format"?: LCUTypes.RemotingSerializedFormat }], Body: never, Response: unknown }
+		post: { Parameters: [params: { "eventName": string, "format"?: RemotingSerializedFormat }], Body: never, Response: unknown }
 	},
 	"/Unsubscribe": {
 		post: { Parameters: [], Body: string, Response: unknown }
 	},
 	"/WebSocketFormat": {
-		post: { Parameters: [], Body: LCUTypes.RemotingSerializedFormat, Response: unknown }
+		post: { Parameters: [], Body: RemotingSerializedFormat, Response: unknown }
 	},
 }
 
