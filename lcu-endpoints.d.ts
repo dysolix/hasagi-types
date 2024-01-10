@@ -795,6 +795,9 @@ export interface LCUEndpoints {
 	"/lol-client-config/v3/client-config/{name}": {
 		get: { Parameters: [name: string], Body: never, Response: unknown }
 	},
+	"/lol-client-config/v3/client-config/operational/{name}": {
+		get: { Parameters: [name: string], Body: never, Response: unknown }
+	},
 	"/lol-collections/v1/inventories/{puuid}/champion-mastery": {
 		get: { Parameters: [puuid: string], Body: never, Response: LolCollectionsCollectionsChampionMastery[] }
 	},
@@ -1966,6 +1969,13 @@ export interface LCUEndpoints {
 	"/lol-spectator/v1/spectate": {
 		get: { Parameters: [], Body: never, Response: LolSpectatorSpectateGameInfo }
 	},
+	"/lol-spectator/v1/spectate/config": {
+		get: { Parameters: [], Body: never, Response: LolSpectatorSpectatorConfig }
+	},
+	"/lol-spectator/v3/buddy/spectate": {
+		get: { Parameters: [], Body: never, Response: LolSpectatorSpectateResource }
+		post: { Parameters: [], Body: string[], Response: void }
+	},
 	"/lol-statstones/v1/eog-notifications/{gameId}": {
 		get: { Parameters: [gameId: number], Body: never, Response: LolStatstonesEogNotificationEnvelope }
 	},
@@ -2197,6 +2207,9 @@ export interface LCUEndpoints {
 	"/lol-tft/v1/tft/promoButtons": {
 		get: { Parameters: [], Body: never, Response: LolTftLolTftPromoButtons }
 	},
+	"/lol-tft/v1/tft/tencentEventhubConfigs": {
+		get: { Parameters: [], Body: never, Response: LolTftLolTftTencentEventHubConfigs }
+	},
 	"/lol-tft/v2/tft/battlepass": {
 		get: { Parameters: [], Body: never, Response: LolMissionsTftPaidBattlepass }
 	},
@@ -2404,6 +2417,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-rewards/v1/grants/{grantId}/view": {
 		patch: { Parameters: [grantId: string], Body: never, Response: void }
+	},
+	"/lol-rewards/v1/grants/view": {
+		patch: { Parameters: [], Body: string[], Response: void }
 	},
 	"/telemetry/v3/slis/add-bool-diagnostic": {
 		patch: { Parameters: [], Body: SLIBoolDiagnostic, Response: void }
@@ -2987,9 +3003,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-patch/v1/products/league_of_legends/stop-patching-request": {
 		post: { Parameters: [], Body: boolean, Response: void }
-	},
-	"/lol-perks/v1/quick-play-selections/champion/{championId}/slot/{slotId}": {
-		post: { Parameters: [championId: number, slotId: number], Body: LolPerksPerkPageResource, Response: unknown }
 	},
 	"/lol-perks/v1/recommended-pages-position/champion/{championId}/position/{position}": {
 		post: { Parameters: [championId: number, position: string], Body: never, Response: unknown }
