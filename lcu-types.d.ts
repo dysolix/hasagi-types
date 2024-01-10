@@ -664,15 +664,6 @@ export interface ElevationRequest {
 	action: ElevationAction
 }
 
-export interface EndOfGameLcdsClientReportV1 {
-	/** @format uint64 */
-	offenderSummonerId: number
-	/** @format uint64 */
-	gameId: number
-	offenses: string
-	comments: string
-}
-
 export interface EndOfGameLcdsEndOfGameStats {
 	difficulty: string
 	/** @format uint64 */
@@ -1181,6 +1172,7 @@ export interface LcdsPracticeGameConfig {
 	gameMutators: string[]
 	region: string
 	gameVersion: string
+	spectatorDelayEnabled: boolean
 }
 
 export interface LcdsPracticeGameSearchResult {
@@ -6601,6 +6593,7 @@ export interface LolEndOfGameTFTEndOfGamePlayerViewModel {
 	companion: LolEndOfGameTFTEndOfGameCompanionViewModel
 	playbook: LolEndOfGameTFTEndOfGamePlaybookViewModel
 	customAugmentContainer: LolEndOfGameTFTEndOfGameCustomAugmentContainerViewModel
+	setCoreName: string
 }
 
 export interface LolEndOfGameTFTEndOfGameTraitViewModel {
@@ -7702,6 +7695,11 @@ export interface LolEventShopRequestDTO_vector_SelectionRequestDTO {
 	metadata: LolEventShopRequestMetadataDTO
 }
 
+export interface LolEventShopRequestDTO_vector_string {
+	data: string[]
+	metadata: LolEventShopRequestMetadataDTO
+}
+
 export interface LolEventShopRequestMetadataDTO {
 	transactionId?: string
 }
@@ -8310,6 +8308,20 @@ export interface LolGameQueuesLoginSession {
 
 export type LolGameQueuesLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
 
+export interface LolGameQueuesOperationalQueueConfig {
+	/** @format int32 */
+	queueId: number
+	queueState: boolean
+	mutators: string
+	isVisibleInClient: boolean
+	isSpectatable: boolean
+}
+
+export interface LolGameQueuesOperationalSpectatorConfig {
+	isEnabled: boolean
+	isUsingOperationalConfig: boolean
+}
+
 export interface LolGameQueuesPlatformConfigEnabledMap {
 	/** @format int32 */
 	gameMapId: number
@@ -8345,6 +8357,7 @@ export interface LolGameQueuesQueue {
 	areFreeChampionsAllowed: boolean
 	isTeamBuilderManaged: boolean
 	queueAvailability: LolGameQueuesQueueAvailability
+	isVisible: boolean
 	queueRewards: LolGameQueuesQueueReward
 	spectatorEnabled: boolean
 	/** @format uint32 */
@@ -9058,7 +9071,6 @@ export interface LolHonorV2HonorConfig {
 	Enabled: boolean
 	/** @format int32 */
 	SecondsToVote: number
-	RecallRewardEnabled: boolean
 	HonorVisibilityEnabled: boolean
 	HonorSuggestionsEnabled: boolean
 	honorEndpointsV2Enabled: boolean
@@ -10368,6 +10380,7 @@ export interface LolLobbyLobby {
 	requiredPositionCoverageMet: boolean
 	allowablePremadeSizes: number[]
 	queueAvailability: LolLobbyQueueAvailability
+	spectatorDelayEnabled: boolean
 }
 
 export interface LolLobbyLobbyBotChampion {
@@ -12630,6 +12643,11 @@ export interface LolLootRequestDTO_SelectionRequestDTO {
 
 export interface LolLootRequestDTO_vector_SelectionRequestDTO {
 	data: LolLootSelectionRequestDTO[]
+	metadata: LolLootRequestMetadataDTO
+}
+
+export interface LolLootRequestDTO_vector_string {
+	data: string[]
 	metadata: LolLootRequestMetadataDTO
 }
 
@@ -15420,8 +15438,6 @@ export interface LolPlayerReportSenderPlayerReport {
 	comment: string
 }
 
-export type LolPlayerReportSenderReportRecipientMode = "Combined" | "Game-Agnostic" | "Legacy"
-
 export interface LolPlayerReportSenderSummoner {
 	/** @format uint64 */
 	summonerId: number
@@ -16704,6 +16720,10 @@ export interface LolRankedRankedStats {
 	highestPreviousSeasonAchievedTier: string
 	highestPreviousSeasonAchievedDivision: LolRankedLeagueDivision
 	splitsProgress: Record<string, number>
+	/** @format int32 */
+	currentSeasonSplitPoints: number
+	/** @format int32 */
+	previousSeasonSplitPoints: number
 	seasons: Record<string, LolRankedSeasonDTO>
 }
 
@@ -16715,6 +16735,10 @@ export interface LolRankedRankedStatsDTO {
 	highestPreviousSeasonAchievedTier: string
 	highestPreviousSeasonAchievedRank: string
 	splitsProgress: Record<string, number>
+	/** @format int32 */
+	currentSeasonSplitPoints: number
+	/** @format int32 */
+	previousSeasonSplitPoints: number
 	seasons: Record<string, LolRankedSeasonDTO>
 }
 
@@ -16824,6 +16848,10 @@ export interface LolRankedSignedRankedStatsDTO {
 	highestPreviousSeasonAchievedTier: string
 	highestPreviousSeasonAchievedRank: string
 	splitsProgress: Record<string, number>
+	/** @format int32 */
+	currentSeasonSplitPoints: number
+	/** @format int32 */
+	previousSeasonSplitPoints: number
 	seasons: Record<string, LolRankedSeasonDTO>
 	jwt: string
 }
@@ -17249,6 +17277,11 @@ export interface LolRewardsRequestDTO_SelectionRequestDTO {
 
 export interface LolRewardsRequestDTO_vector_SelectionRequestDTO {
 	data: LolRewardsSelectionRequestDTO[]
+	metadata: LolRewardsRequestMetadataDTO
+}
+
+export interface LolRewardsRequestDTO_vector_string {
+	data: string[]
 	metadata: LolRewardsRequestMetadataDTO
 }
 
@@ -17788,6 +17821,12 @@ export interface LolSocialLeaderboardSummoner {
 	profileIconId: number
 }
 
+export interface LolSpectatorQueue {
+	isSpectatable: boolean
+	/** @format uint32 */
+	id: number
+}
+
 export interface LolSpectatorSpectateAvailabilityResponseDto {
 	availableForWatching: string[]
 }
@@ -17796,11 +17835,31 @@ export interface LolSpectatorSpectateAvailabilityResponseDtoV2 {
 	availableForWatching: number[]
 }
 
+export interface LolSpectatorSpectateAvailabilityResponseDtoV3 {
+	availableForWatching: string[]
+}
+
 export interface LolSpectatorSpectateGameInfo {
 	dropInSpectateGameId: string
 	gameQueueType: string
 	allowObserveMode: string
 	puuid: string
+}
+
+export interface LolSpectatorSpectateResource {
+	availableForWatching: string[]
+}
+
+export interface LolSpectatorSpectatorConfig {
+	isEnabled: boolean
+	isSpectatorDelayConfigurable: boolean
+	isBracketSpectatingEnabled: boolean
+	spectatableQueues: number[]
+}
+
+export interface LolSpectatorSpectatorDynamicConfiguration {
+	isEnabled: boolean
+	isSpectatorDelayConfigurable: boolean
 }
 
 export interface LolSpectatorSummonerIdAvailability {
@@ -18935,6 +18994,15 @@ export interface LolTftLolTftPromoButtons {
 	promoButtons: LolTftLolTftPromoButton[]
 }
 
+export interface LolTftLolTftTencentEventHubConfig {
+	troveAssetId: string
+	troveURL: string
+}
+
+export interface LolTftLolTftTencentEventHubConfigs {
+	tencentEventhubConfigs: LolTftLolTftTencentEventHubConfig[]
+}
+
 export interface LolTftPassAccessTokenResource {
 	token: string
 	scopes: string[]
@@ -19593,6 +19661,7 @@ export interface LolTftTrovesGameDataTrovesBanner {
 	thumbnailTexture: string
 	backgroundTexture: string
 	platformTexture: string
+	eventHubBannerTexture: string
 	name: string
 	description: string
 	isCollectorBounty: boolean
@@ -19725,6 +19794,7 @@ export interface LolTftTrovesTrovesBanner {
 	thumbnailTexture: string
 	backgroundTexture: string
 	platformTexture: string
+	eventHubBannerTexture: string
 	name: string
 	description: string
 	pityCounterId: string
@@ -21230,9 +21300,8 @@ export interface PlayerTierDTO {
 
 export interface PluginDescriptionResource {
 	name: string
-	version: string
 	riotMeta: PluginMetadataResource
-	pluginDependencies: Record<string, string>
+	pluginDependencies: string[]
 }
 
 export interface PluginLcdsEvent {
