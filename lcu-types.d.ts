@@ -4108,8 +4108,8 @@ export interface LolChatRankedStats {
 	highestRankedEntry?: LolChatRankedQueueStats
 	/** @format int32 */
 	rankedRegaliaLevel: number
-	highestPreviousSeasonAchievedTier: string
-	highestPreviousSeasonAchievedDivision: LolChatLeagueDivision
+	highestPreviousSeasonEndTier: string
+	highestPreviousSeasonEndDivision: LolChatLeagueDivision
 }
 
 export interface LolChatRsoAuthorization {
@@ -9697,11 +9697,6 @@ export interface LolItemSetsValidateItemSetNameResponse {
 
 export interface LolKickoutKickoutMessage {
 	message: string
-}
-
-export interface LolKrPlaytimeReminderPlaytimeReminder {
-	/** @format uint32 */
-	hours: number
 }
 
 export interface LolKrShutdownLawAllQueueShutdownStatus {
@@ -16491,8 +16486,8 @@ export interface LolRankedLeagueLadderEntryDTO {
 	provisionalGamesRemaining: number
 	/** @format int32 */
 	previousDayLeaguePosition: number
-	previousSeasonAchievedTier: string
-	previousSeasonAchievedRank: string
+	previousSeasonEndTier: string
+	previousSeasonEndRank: string
 	earnedRegaliaRewardIds: string[]
 }
 
@@ -16579,8 +16574,8 @@ export interface LolRankedLeagueStanding {
 	/** @format int32 */
 	provisionalGamesRemaining: number
 	isProvisional: boolean
-	previousSeasonAchievedTier: string
-	previousSeasonAchievedDivision: LolRankedLeagueDivision
+	previousSeasonEndTier: string
+	previousSeasonEndDivision: LolRankedLeagueDivision
 	earnedRegaliaRewardIds: string[]
 	/** @format int32 */
 	rankedRegaliaLevel: number
@@ -16652,8 +16647,6 @@ export interface LolRankedRankedQueueStats {
 	highestDivision: LolRankedLeagueDivision
 	previousSeasonEndTier: string
 	previousSeasonEndDivision: LolRankedLeagueDivision
-	previousSeasonAchievedTier: string
-	previousSeasonAchievedDivision: LolRankedLeagueDivision
 	warnings?: LolRankedRankedQueueWarnings
 }
 
@@ -16679,8 +16672,6 @@ export interface LolRankedRankedQueueStatsDTO {
 	highestRank: string
 	previousSeasonEndTier: string
 	previousSeasonEndRank: string
-	previousSeasonAchievedTier: string
-	previousSeasonAchievedRank: string
 	warnings?: LolRankedRankedQueueWarningsDTO
 }
 
@@ -16717,8 +16708,6 @@ export interface LolRankedRankedStats {
 	highestCurrentSeasonReachedTierSR: string
 	highestPreviousSeasonEndTier: string
 	highestPreviousSeasonEndDivision: LolRankedLeagueDivision
-	highestPreviousSeasonAchievedTier: string
-	highestPreviousSeasonAchievedDivision: LolRankedLeagueDivision
 	splitsProgress: Record<string, number>
 	/** @format int32 */
 	currentSeasonSplitPoints: number
@@ -16732,8 +16721,6 @@ export interface LolRankedRankedStatsDTO {
 	earnedRegaliaRewardIds: string[]
 	highestPreviousSeasonEndTier: string
 	highestPreviousSeasonEndRank: string
-	highestPreviousSeasonAchievedTier: string
-	highestPreviousSeasonAchievedRank: string
 	splitsProgress: Record<string, number>
 	/** @format int32 */
 	currentSeasonSplitPoints: number
@@ -16845,8 +16832,6 @@ export interface LolRankedSignedRankedStatsDTO {
 	earnedRegaliaRewardIds: string[]
 	highestPreviousSeasonEndTier: string
 	highestPreviousSeasonEndRank: string
-	highestPreviousSeasonAchievedTier: string
-	highestPreviousSeasonAchievedRank: string
 	splitsProgress: Record<string, number>
 	/** @format int32 */
 	currentSeasonSplitPoints: number
@@ -16963,12 +16948,12 @@ export interface LolRankedSummoner {
 }
 
 export interface LolRankedVictoriousSkin {
-	splitPointsByHighestAchievedTier: Record<string, number>
+	splitPointsByHighestSeasonEndTier: Record<string, number>
 	itemInstanceId: string
 }
 
 export interface LolRankedVictoriousSkinDTO {
-	splitPointsByHighestAchievedTier: Record<string, number>
+	splitPointsByHighestSeasonEndTier: Record<string, number>
 	itemInstanceId: string
 }
 
@@ -17053,7 +17038,7 @@ export interface LolRegaliaRankedStats {
 	highestRankedEntry?: LolRegaliaRankedQueueStats
 	/** @format int32 */
 	rankedRegaliaLevel: number
-	highestPreviousSeasonAchievedTier: string
+	highestPreviousSeasonEndTier: string
 }
 
 export interface LolRegaliaRegalia {
@@ -18929,6 +18914,367 @@ export interface LolTftDataModelResponse {
 	modelData: unknown
 }
 
+export interface LolTftEventCollectionsChampion {
+	/** @format int32 */
+	id: number
+	freeToPlay: boolean
+	ownership: LolTftEventCollectionsOwnership
+	skins: LolTftEventCollectionsChampionSkin[]
+}
+
+export interface LolTftEventCollectionsChampionSkin {
+	/** @format int32 */
+	championId: number
+	/** @format int32 */
+	id: number
+	ownership: LolTftEventCollectionsOwnership
+}
+
+export interface LolTftEventCollectionsOwnership {
+	loyaltyReward: boolean
+	xboxGPReward: boolean
+	owned: boolean
+	rental: LolTftEventCollectionsRental
+}
+
+export interface LolTftEventCollectionsRental {
+	rented: boolean
+}
+
+export interface LolTftEventCollectionsSummoner {
+	/** @format int32 */
+	summonerLevel: number
+}
+
+export interface LolTftEventCollectionsSummonerIcons {
+	icons: number[]
+}
+
+export interface LolTftEventCollectionsWardSkin {
+	/** @format int64 */
+	id: number
+	ownership: LolTftEventCollectionsOwnership
+}
+
+export interface LolTftEventDataModelResponse {
+	/** @format int64 */
+	responseCode: number
+	modelData: unknown
+}
+
+export interface LolTftEventGameflowGameData {
+	/** @format uint64 */
+	gameId: number
+	queue: LolTftEventQueue
+}
+
+export type LolTftEventGameflowPhase = "TerminatedInError" | "EndOfGame" | "PreEndOfGame" | "WaitingForStats" | "Reconnect" | "InProgress" | "FailedToLaunch" | "GameStart" | "ChampSelect" | "ReadyCheck" | "CheckedIntoTournament" | "Matchmaking" | "Lobby" | "None"
+
+export interface LolTftEventGameflowSession {
+	phase: LolTftEventGameflowPhase
+}
+
+export type LolTftEventGrantStatus = "FULFILLED" | "PENDING_SELECTION" | "PENDING_FULFILLMENT"
+
+export interface LolTftEventInventoryItemWithPayload {
+	/** @format int32 */
+	itemId: number
+}
+
+export interface LolTftEventLoginSession {
+	/** @format uint64 */
+	accountId: number
+	/** @format uint64 */
+	summonerId: number
+	puuid: string
+	platformId: string
+}
+
+export interface LolTftEventLolTftBattlePassHub {
+	battlePassXPBoosted: boolean
+}
+
+export interface LolTftEventLolTftEvent {
+	titleTranslationKey: string
+	enabled: boolean
+	url: string
+	urlFaq: string
+	startDate: string
+	endDate: string
+	seriesId: string
+	queueIds: number[]
+	defaultLandingPage: boolean
+}
+
+export interface LolTftEventLolTftEvents {
+	subNavTabs: LolTftEventLolTftEvent[]
+}
+
+export interface LolTftEventLolTftHomeHub {
+	enabled: boolean
+	storePromoOfferIds: string[]
+	tacticianPromoOfferIds: string[]
+	battlePassOfferIds: string[]
+	fallbackStorePromoOfferIds: string[]
+	primeGamingPromoOffer?: LolTftEventLolTftPrimeGaming
+	overrideUrl: string
+	headerButtonsOverrideUrl: string
+}
+
+export interface LolTftEventLolTftNewsHub {
+	enabled: boolean
+	url: string
+}
+
+export interface LolTftEventLolTftPrimeGaming {
+	url: string
+	assetId: string
+}
+
+export interface LolTftEventLolTftPromoButton {
+	enabled: boolean
+	showTimerWhileEventActive: boolean
+	eventAssetId: string
+	eventKey: string
+	url: string
+}
+
+export interface LolTftEventLolTftPromoButtons {
+	promoButtons: LolTftEventLolTftPromoButton[]
+}
+
+export interface LolTftEventLolTftTencentEventHubConfig {
+	troveAssetId: string
+	troveURL: string
+	logoAssetId: string
+}
+
+export interface LolTftEventLolTftTencentEventHubConfigs {
+	tencentEventhubConfigs: LolTftEventLolTftTencentEventHubConfig[]
+}
+
+export type LolTftEventLoyaltyStatus = "DISABLED" | "REVOKE" | "CHANGE" | "EXPIRY" | "REWARDS_GRANT" | "LEGACY"
+
+export interface LolTftEventLoyaltyStatusNotification {
+	status: LolTftEventLoyaltyStatus
+}
+
+export interface LolTftEventMissionAsset {
+	internalName: string
+	path: string
+	iconNeedsFrame: boolean
+}
+
+export interface LolTftEventMissionsNotificationResource {
+	backgroundUrl: string
+	created: string
+	critical: boolean
+	data: Record<string, string>
+	detailKey: string
+	expires: string
+	iconUrl: string
+	/** @format uint64 */
+	id: number
+	source: string
+	state: string
+	titleKey: string
+	type: string
+}
+
+export interface LolTftEventMissionsSettingsDataResource {
+	selected_series: string
+}
+
+export interface LolTftEventPlayerUpdateResponse {
+	playerMissions: PlayerMissionDTO[]
+	playerSeries: SeriesDTO[]
+}
+
+export interface LolTftEventPluginRegionLocaleChangedEvent {
+	locale: string
+}
+
+export interface LolTftEventPublishingSettings {
+	publishingLocale: string
+}
+
+export interface LolTftEventQueue {
+	/** @format int32 */
+	id: number
+	/** @format int32 */
+	mapId: number
+	gameMode: string
+	category: LolTftEventQueueGameCategory
+}
+
+export type LolTftEventQueueGameCategory = "Alpha" | "VersusAi" | "PvP" | "Custom" | "None"
+
+export interface LolTftEventRewardGrant {
+	info: LolTftEventRewardGrantInfo
+	rewardGroup: LolTftEventRewardGroup
+}
+
+export interface LolTftEventRewardGrantElement {
+	id: string
+	itemId: string
+	itemType: string
+	fulfillmentSource: string
+	rewardStatus: LolTftEventRewardStatus
+	/** @format int32 */
+	quantity: number
+	media: Record<string, string>
+	localizations: Record<string, string>
+}
+
+export interface LolTftEventRewardGrantInfo {
+	id: string
+	granteeId: string
+	rewardGroupId: string
+	status: LolTftEventGrantStatus
+	grantElements: LolTftEventRewardGrantElement[]
+	selectedIds: string[]
+	viewed: boolean
+}
+
+export interface LolTftEventRewardGroup {
+	id: string
+	internalName: string
+	productId: string
+	types: string[]
+	rewards: LolTftEventSvcReward[]
+	childRewardGroupIds: string[]
+	rewardStrategy: LolTftEventRewardStrategy
+	selectionStrategyConfig: LolTftEventSelectionStrategyConfig
+	active: boolean
+	media: Record<string, string>
+	localizations: Record<string, string>
+}
+
+export interface LolTftEventRewardGroupsSelection {
+	rewardGroups: string[]
+}
+
+export type LolTftEventRewardStatus = "FULFILLED" | "PENDING"
+
+export type LolTftEventRewardStrategy = "SELECTION" | "RANDOM" | "ALL"
+
+export interface LolTftEventRewardsProductConfig {
+	enabled: boolean
+	serviceUrl: string
+}
+
+export interface LolTftEventSelectionStrategyConfig {
+	/** @format uint32 */
+	minSelectionsAllowed: number
+	/** @format uint32 */
+	maxSelectionsAllowed: number
+}
+
+export interface LolTftEventSeriesOpt {
+	seriesId: string
+	option: string
+}
+
+export interface LolTftEventSettingsResource {
+	data: unknown
+}
+
+export interface LolTftEventSvcReward {
+	id: string
+	itemId: string
+	/** @format int32 */
+	quantity: number
+	fulfillmentSource: string
+	media: Record<string, string>
+	localizations: Record<string, string>
+}
+
+export interface LolTftEventTFTEventMissionChain {
+	/** @format int32 */
+	chainIndex: number
+	/** @format uint32 */
+	chainSize: number
+	missions: PlayerMissionDTO[]
+}
+
+export interface LolTftEventTftOrb {
+	missionId: string
+	status: string
+	/** @format int64 */
+	unlockTime: number
+	/** @format uint8 */
+	rewardLevel: number
+	rewards: PlayerMissionRewardDTO[]
+}
+
+export interface LolTftEventTftPaidBattlepass {
+	/** @format int32 */
+	totalPointsEarned: number
+	milestones: LolTftEventTftPaidBattlepassMilestone[]
+	bonuses: LolTftEventTftPaidBattlepassMilestone[]
+	activeMilestone: LolTftEventTftPaidBattlepassMilestone
+	info: LolTftEventTftPaidBattlepassInfo
+	/** @format int32 */
+	lastViewedProgress: number
+	lastViewedMilestone: LolTftEventTftPaidBattlepassMilestone
+	progressMissionId: string
+	/** @format int32 */
+	currentLevel: number
+}
+
+export interface LolTftEventTftPaidBattlepassInfo {
+	title: string
+	description: string
+	/** @format uint64 */
+	startDate: number
+	/** @format uint64 */
+	endDate: number
+	premium: boolean
+	premiumTitle: string
+	premiumEntitlementId: string
+	pcPurchaseRequirement: string
+	media: Record<string, string>
+}
+
+export interface LolTftEventTftPaidBattlepassMilestone {
+	missionId: string
+	internalName: string
+	title: string
+	description: string
+	state: string
+	status: string
+	/** @format int32 */
+	pointsNeededForMilestone: number
+	/** @format int32 */
+	pointsEarnedForMilestone: number
+	/** @format int32 */
+	totalPointsForMilestone: number
+	/** @format int32 */
+	level: number
+	iconImageUrl: string
+	iconNeedsFrame: boolean
+	rewards: LolTftEventTftPaidBattlepassReward[]
+	isPaid: boolean
+	isLocked: boolean
+	isKeystone: boolean
+	isBonus: boolean
+}
+
+export interface LolTftEventTftPaidBattlepassReward {
+	rewardGroup: string
+	description: string
+	iconUrl: string
+	iconNeedsFrame: boolean
+}
+
+export interface LolTftEventTftWeeklyMissions {
+	missions: PlayerMissionDTO[]
+}
+
+export interface LolTftEventUserInfo {
+	userInfo: string
+}
+
 export interface LolTftGameflowGameData {
 	/** @format uint64 */
 	gameId: number
@@ -18970,6 +19316,7 @@ export interface LolTftLolTftHomeHub {
 	fallbackStorePromoOfferIds: string[]
 	primeGamingPromoOffer?: LolTftLolTftPrimeGaming
 	overrideUrl: string
+	headerButtonsOverrideUrl: string
 }
 
 export interface LolTftLolTftNewsHub {
@@ -18997,6 +19344,7 @@ export interface LolTftLolTftPromoButtons {
 export interface LolTftLolTftTencentEventHubConfig {
 	troveAssetId: string
 	troveURL: string
+	logoAssetId: string
 }
 
 export interface LolTftLolTftTencentEventHubConfigs {
@@ -19562,6 +19910,7 @@ export interface LolTftTeamPlannerTFTModeData {
 export interface LolTftTeamPlannerTFTTeamPlannerConfig {
 	enabled: boolean
 	remindersEnabled: boolean
+	traitTooltipChampsEnabled: boolean
 }
 
 export interface LolTftTeamPlannerTeamPlan {
@@ -19689,6 +20038,8 @@ export interface LolTftTrovesGameDataTrovesBannerTable {
 	name: string
 	loadoutsItem?: LolTftTrovesLoadoutsItem
 	children?: LolTftTrovesGameDataTrovesBannerTableEntry[]
+	/** @format uint32 */
+	priority: number
 }
 
 export interface LolTftTrovesGameDataTrovesBannerTableEntry {
@@ -20032,6 +20383,33 @@ export type LolUserExperienceGameflowPhase = "TerminatedInError" | "EndOfGame" |
 
 export interface LolUserExperienceGameflowSession {
 	phase: LolUserExperienceGameflowPhase
+}
+
+export type LolVanguardGameflowPhase = "TerminatedInError" | "EndOfGame" | "PreEndOfGame" | "WaitingForStats" | "Reconnect" | "InProgress" | "FailedToLaunch" | "GameStart" | "ChampSelect" | "ReadyCheck" | "CheckedIntoTournament" | "Matchmaking" | "Lobby" | "None"
+
+export interface LolVanguardGameflowSession {
+	phase: LolVanguardGameflowPhase
+}
+
+export interface LolVanguardLoginSession {
+	state: LolVanguardLoginSessionState
+	/** @format uint64 */
+	summonerId: number
+	/** @format uint64 */
+	accountId: number
+	puuid: string
+}
+
+export type LolVanguardLoginSessionState = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
+
+export interface LolVanguardVanguardMachineSpecs {
+	tpm2Enabled: boolean
+	secureBootEnabled: boolean
+}
+
+export interface LolVanguardVanguardSystemCheckTelemetryEvent {
+	passedOsCheck: boolean
+	passedSecureFeaturesCheck: boolean
 }
 
 export interface LolYourshopAccessTokenResource {
@@ -21331,7 +21709,7 @@ export interface PluginMetadataResource {
 	hasBundledAssets: boolean
 	globalAssetBundles: string[]
 	perLocaleAssetBundles: Record<string, unknown>
-	implements: Record<string, string>
+	implements: string[]
 	threading: PluginThreadingModel
 }
 

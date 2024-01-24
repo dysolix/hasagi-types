@@ -50,15 +50,6 @@ export interface LCUEndpoints {
 		post: { Parameters: [], Body: LolChatPlayerMuteUpdate, Response: unknown }
 		delete: { Parameters: [], Body: never, Response: unknown }
 	},
-	"/lol-chat/v1/session": {
-		get: { Parameters: [], Body: never, Response: LolChatSessionResource }
-		delete: { Parameters: [], Body: never, Response: unknown }
-	},
-	"/lol-chat/v1/settings/{key}": {
-		get: { Parameters: [key: string], Body: never, Response: unknown }
-		put: { Parameters: [key: string, params: { "value": unknown, "doAsync"?: boolean }], Body: never, Response: unknown }
-		delete: { Parameters: [key: string, params?: { "doAsync"?: boolean }], Body: never, Response: unknown }
-	},
 	"/lol-chat/v2/friend-requests/{id}": {
 		put: { Parameters: [id: string], Body: LolChatFriendRequestResource, Response: unknown }
 		delete: { Parameters: [id: string], Body: never, Response: unknown }
@@ -426,6 +417,9 @@ export interface LCUEndpoints {
 	"/lol-catalog/v1/items/{inventoryType}": {
 		get: { Parameters: [inventoryType: string], Body: never, Response: LolCatalogCatalogPluginItem[] }
 	},
+	"/lol-catalog/v1/items-list-details": {
+		get: { Parameters: [params: { "catalogItemsKeys": LolCatalogItemKey[] }], Body: never, Response: LolCatalogCatalogPluginItemWithDetails[] }
+	},
 	"/lol-catalog/v1/items-list-details/skip-cache": {
 		get: { Parameters: [params: { "catalogItemsKeys": LolCatalogItemKey[] }], Body: never, Response: LolCatalogCatalogPluginItemWithDetails[] }
 	},
@@ -618,7 +612,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-chat/v1/conversations/{id}/participants": {
 		get: { Parameters: [id: string], Body: never, Response: LolChatUserResource[] }
-		post: { Parameters: [id: string], Body: LolChatUserResource, Response: unknown }
 	},
 	"/lol-chat/v1/conversations/{id}/participants/{pid}": {
 		get: { Parameters: [id: string, pid: string], Body: never, Response: LolChatUserResource }
@@ -639,9 +632,6 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: LolChatGroupResource[] }
 		post: { Parameters: [], Body: LolChatGroupResource, Response: unknown }
 	},
-	"/lol-chat/v1/friend-groups/{id}/friends": {
-		get: { Parameters: [id: number], Body: never, Response: LolChatFriendResource[] }
-	},
 	"/lol-chat/v1/friends": {
 		get: { Parameters: [], Body: never, Response: LolChatFriendResource[] }
 	},
@@ -649,11 +639,11 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: LolChatUserResource }
 		put: { Parameters: [], Body: LolChatUserResource, Response: LolChatUserResource }
 	},
-	"/lol-chat/v1/proxy-mode-enabled": {
-		get: { Parameters: [], Body: never, Response: boolean }
-	},
 	"/lol-chat/v1/resources": {
 		get: { Parameters: [], Body: never, Response: LolChatProductMetadataMap }
+	},
+	"/lol-chat/v1/session": {
+		get: { Parameters: [], Body: never, Response: LolChatSessionResource }
 	},
 	"/lol-chat/v1/settings": {
 		get: { Parameters: [], Body: never, Response: unknown }
@@ -892,6 +882,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-esport-stream-notifications/v1/stream-url": {
 		get: { Parameters: [], Body: never, Response: string }
+	},
+	"/lol-event-mission/v1/event-mission": {
+		get: { Parameters: [], Body: never, Response: LolTftEventTFTEventMissionChain[] }
 	},
 	"/lol-event-shop/v1/categories-offers": {
 		get: { Parameters: [], Body: never, Response: LolEventShopCategoryOffersUIData[] }
@@ -1200,11 +1193,8 @@ export interface LCUEndpoints {
 	"/lol-kickout/v1/notification": {
 		get: { Parameters: [], Body: never, Response: LolKickoutKickoutMessage }
 	},
-	"/lol-kr-playtime-reminder/v1/message": {
-		get: { Parameters: [], Body: never, Response: string }
-	},
-	"/lol-kr-playtime-reminder/v1/playtime": {
-		get: { Parameters: [], Body: never, Response: LolKrPlaytimeReminderPlaytimeReminder }
+	"/lol-kr-playtime-reminder/v1/hours-played": {
+		get: { Parameters: [], Body: never, Response: number }
 	},
 	"/lol-kr-shutdown-law/v1/custom-status": {
 		get: { Parameters: [], Body: never, Response: LolKrShutdownLawQueueShutdownStatus }
@@ -1724,6 +1714,9 @@ export interface LCUEndpoints {
 	"/lol-player-preferences/v1/preference/{type}": {
 		get: { Parameters: [type: string], Body: never, Response: unknown }
 	},
+	"/lol-player-report-sender/v1/game-ids-with-verbal-abuse-report": {
+		get: { Parameters: [], Body: never, Response: number[] }
+	},
 	"/lol-player-report-sender/v1/in-game-reports": {
 		get: { Parameters: [], Body: never, Response: LolPlayerReportSenderPlayerReport[] }
 		post: { Parameters: [], Body: LolPlayerReportSenderPlayerReport, Response: unknown }
@@ -1867,6 +1860,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-regalia/v3/summoners/{summonerId}/regalia": {
 		get: { Parameters: [summonerId: number], Body: never, Response: LolRegaliaRegalia }
+	},
+	"/lol-remedy/v1/config/is-verbal-abuse-remedy-modal-enabled": {
+		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-replays/v1/configuration": {
 		get: { Parameters: [], Body: never, Response: LolReplaysReplaysConfiguration }
@@ -2219,6 +2215,12 @@ export interface LCUEndpoints {
 	"/lol-trophies/v1/players/{puuid}/trophies/profile": {
 		get: { Parameters: [puuid: string], Body: never, Response: LolTrophiesTrophyProfileData }
 	},
+	"/lol-vanguard/v1/config/days-to-reshow-modal": {
+		get: { Parameters: [], Body: never, Response: number }
+	},
+	"/lol-vanguard/v1/machine-specs": {
+		get: { Parameters: [], Body: never, Response: LolVanguardVanguardMachineSpecs }
+	},
 	"/lol-yourshop/v1/has-permissions": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
@@ -2541,15 +2543,8 @@ export interface LCUEndpoints {
 	"/lol-champ-select/v1/toggle-player-muted": {
 		post: { Parameters: [], Body: LolChampSelectMutedPlayerInfo, Response: unknown }
 	},
-	"/lol-chat/v1/conversations/{id}/closed": {
-		post: { Parameters: [id: string], Body: never, Response: unknown }
-		put: { Parameters: [id: string], Body: never, Response: unknown }
-	},
 	"/lol-chat/v1/conversations/eog-chat-toggle": {
 		post: { Parameters: [], Body: boolean, Response: unknown }
-	},
-	"/lol-chat/v1/session/rso": {
-		post: { Parameters: [], Body: LolChatAuthResourceRsoAccessToken, Response: LolChatSessionResource }
 	},
 	"/lol-chat/v1/system-mutes": {
 		post: { Parameters: [], Body: LolChatPlayerMuteUpdate, Response: unknown }
@@ -3180,6 +3175,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-tft/v1/tft/homeHub/redirect": {
 		post: { Parameters: [], Body: never, Response: void }
+	},
+	"/lol-vanguard/v1/telemetry/system-check": {
+		post: { Parameters: [], Body: LolVanguardVanguardSystemCheckTelemetryEvent, Response: unknown }
 	},
 	"/lol-yourshop/v1/offers/{id}/purchase": {
 		post: { Parameters: [id: string], Body: never, Response: LolYourshopPurchaseResponse }
