@@ -883,6 +883,69 @@ export interface LCUEndpoints {
 	"/lol-esport-stream-notifications/v1/stream-url": {
 		get: { Parameters: [], Body: never, Response: string }
 	},
+	"/lol-event-hub/v1/events": {
+		get: { Parameters: [], Body: never, Response: LolEventHubActiveEventUIData[] }
+	},
+	"/lol-event-hub/v1/events/{eventId}/event-details-data": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubEventDetailsUIData }
+	},
+	"/lol-event-hub/v1/events/{eventId}/info": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubEventInfoUIData }
+	},
+	"/lol-event-hub/v1/events/{eventId}/is-grace-period": {
+		get: { Parameters: [eventId: string], Body: never, Response: boolean }
+	},
+	"/lol-event-hub/v1/events/{eventId}/pass-background-data": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubEventBackgroundUIData }
+	},
+	"/lol-event-hub/v1/events/{eventId}/pass-bundles": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubBundleOfferUIData[] }
+	},
+	"/lol-event-hub/v1/events/{eventId}/progress-info-data": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubProgressInfoUIData }
+	},
+	"/lol-event-hub/v1/events/{eventId}/progression-purchase-data": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubProgressionPurchaseUIData }
+	},
+	"/lol-event-hub/v1/events/{eventId}/reward-track/bonus-items": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubRewardTrackItem[] }
+	},
+	"/lol-event-hub/v1/events/{eventId}/reward-track/bonus-progress": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubRewardTrackProgress }
+	},
+	"/lol-event-hub/v1/events/{eventId}/reward-track/failure": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubEventHubError }
+	},
+	"/lol-event-hub/v1/events/{eventId}/reward-track/items": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubRewardTrackItem[] }
+	},
+	"/lol-event-hub/v1/events/{eventId}/reward-track/progress": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubRewardTrackProgress }
+	},
+	"/lol-event-hub/v1/events/{eventId}/reward-track/unclaimed-rewards": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubUnclaimedRewardsUIData }
+	},
+	"/lol-event-hub/v1/events/{eventId}/reward-track/xp": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubRewardTrackXP }
+	},
+	"/lol-event-hub/v1/events/{eventId}/token-shop": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubTokenShopUIData }
+	},
+	"/lol-event-hub/v1/events/{eventId}/token-shop/categories-offers": {
+		get: { Parameters: [eventId: string], Body: never, Response: LolEventHubCategoryOffersUIData[] }
+	},
+	"/lol-event-hub/v1/events/{eventId}/token-shop/token-balance": {
+		get: { Parameters: [eventId: string], Body: never, Response: number }
+	},
+	"/lol-event-hub/v1/navigation-button-data": {
+		get: { Parameters: [], Body: never, Response: LolEventHubNavigationButtonUIData }
+	},
+	"/lol-event-hub/v1/skins": {
+		get: { Parameters: [], Body: never, Response: Record<string, LolEventHubEventPassInfo> }
+	},
+	"/lol-event-hub/v1/token-upsell": {
+		get: { Parameters: [], Body: never, Response: LolEventHubTokenUpsell[] }
+	},
 	"/lol-event-mission/v1/event-mission": {
 		get: { Parameters: [], Body: never, Response: LolTftEventTFTEventMissionChain[] }
 	},
@@ -1864,6 +1927,9 @@ export interface LCUEndpoints {
 	"/lol-remedy/v1/config/is-verbal-abuse-remedy-modal-enabled": {
 		get: { Parameters: [], Body: never, Response: boolean }
 	},
+	"/lol-remedy/v1/remedy-notifications": {
+		get: { Parameters: [], Body: never, Response: LolRemedyMail[] }
+	},
 	"/lol-replays/v1/configuration": {
 		get: { Parameters: [], Body: never, Response: LolReplaysReplaysConfiguration }
 	},
@@ -2217,6 +2283,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-vanguard/v1/config/days-to-reshow-modal": {
 		get: { Parameters: [], Body: never, Response: number }
+	},
+	"/lol-vanguard/v1/is-playing-in-pcb": {
+		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-vanguard/v1/machine-specs": {
 		get: { Parameters: [], Body: never, Response: LolVanguardVanguardMachineSpecs }
@@ -2680,6 +2749,15 @@ export interface LCUEndpoints {
 	},
 	"/lol-esport-stream-notifications/v1/send-stats": {
 		post: { Parameters: [params: { "eventType": string, "matchId": string }], Body: never, Response: void }
+	},
+	"/lol-event-hub/v1/events/{eventId}/purchase-offer": {
+		post: { Parameters: [eventId: string], Body: LolEventHubPurchaseOfferRequest, Response: LolEventHubPurchaseOfferResponseV3 }
+	},
+	"/lol-event-hub/v1/events/{eventId}/reward-track/claim-all": {
+		post: { Parameters: [eventId: string], Body: never, Response: void }
+	},
+	"/lol-event-hub/v1/purchase-item": {
+		post: { Parameters: [], Body: LolEventHubItemOrderDTO, Response: LolEventHubPurchaseOrderResponseDTO }
 	},
 	"/lol-event-shop/v1/claim-select-all": {
 		post: { Parameters: [], Body: never, Response: void }
@@ -3415,6 +3493,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-premade-voice/v1/self/mute": {
 		put: { Parameters: [], Body: number, Response: void }
+	},
+	"/lol-remedy/v1/ack-remedy-notification/{mailId}": {
+		put: { Parameters: [mailId: string], Body: never, Response: void }
 	},
 	"/lol-summoner/v1/current-summoner/icon": {
 		put: { Parameters: [], Body: LolSummonerSummonerIcon, Response: LolSummonerSummoner }
