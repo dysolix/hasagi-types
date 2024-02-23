@@ -62,6 +62,10 @@ export interface LCUEndpoints {
 		post: { Parameters: [delaySeconds: number], Body: never, Response: unknown }
 		delete: { Parameters: [delaySeconds: number], Body: never, Response: unknown }
 	},
+	"/lol-cosmetics/v1/favorites/tft/{cosmeticType}/{contentId}": {
+		put: { Parameters: [cosmeticType: string, contentId: string], Body: never, Response: unknown }
+		delete: { Parameters: [cosmeticType: string, contentId: string], Body: never, Response: unknown }
+	},
 	"/lol-cosmetics/v1/selection/companion": {
 		put: { Parameters: [], Body: number, Response: unknown }
 		delete: { Parameters: [], Body: never, Response: unknown }
@@ -824,6 +828,15 @@ export interface LCUEndpoints {
 	"/lol-content-targeting/v1/protected_filters": {
 		get: { Parameters: [], Body: never, Response: LolContentTargetingContentTargetingFilterResponse }
 	},
+	"/lol-cosmetics/v1/favorites/tft/companions": {
+		get: { Parameters: [], Body: never, Response: LolCosmeticsCompanionsFavoritesViewModel }
+	},
+	"/lol-cosmetics/v1/favorites/tft/damage-skins": {
+		get: { Parameters: [], Body: never, Response: LolCosmeticsTFTDamageSkinFavoritesViewModel }
+	},
+	"/lol-cosmetics/v1/favorites/tft/map-skins": {
+		get: { Parameters: [], Body: never, Response: LolCosmeticsTFTMapSkinFavoritesViewModel }
+	},
 	"/lol-cosmetics/v1/inventories/{setName}/companions": {
 		get: { Parameters: [setName: string], Body: never, Response: LolCosmeticsCompanionsGroupedViewModel }
 	},
@@ -1087,6 +1100,9 @@ export interface LCUEndpoints {
 		get: { Parameters: [], Body: never, Response: string[] }
 		post: { Parameters: [], Body: string[], Response: void }
 	},
+	"/lol-gameflow/v1/game-exit-early-vanguard": {
+		get: { Parameters: [], Body: never, Response: number }
+	},
 	"/lol-gameflow/v1/gameflow-metadata/player-status": {
 		get: { Parameters: [], Body: never, Response: LolGameflowPlayerStatus }
 		post: { Parameters: [], Body: LolGameflowPlayerStatus, Response: void }
@@ -1097,6 +1113,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-gameflow/v1/gameflow-phase": {
 		get: { Parameters: [], Body: never, Response: LolGameflowGameflowPhase }
+	},
+	"/lol-gameflow/v1/player-kicked-vanguard": {
+		get: { Parameters: [], Body: never, Response: boolean }
 	},
 	"/lol-gameflow/v1/session": {
 		get: { Parameters: [], Body: never, Response: LolGameflowGameflowSession }
@@ -1767,9 +1786,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-player-messaging/v1/notification": {
 		get: { Parameters: [], Body: never, Response: LolPlayerMessagingPlayerMessagingNotificationResource }
-	},
-	"/lol-player-name-transition/v1/modal-state": {
-		get: { Parameters: [], Body: never, Response: LolPlayerNameTransitionPlayerNameTransitionModal }
 	},
 	"/lol-player-preferences/v1/player-preferences-ready": {
 		get: { Parameters: [], Body: never, Response: boolean }
@@ -3089,9 +3105,6 @@ export interface LCUEndpoints {
 	"/lol-player-behavior/v2/reporter-feedback/{key}": {
 		post: { Parameters: [key: string], Body: never, Response: void }
 	},
-	"/lol-player-name-transition/v1/dismiss": {
-		post: { Parameters: [], Body: never, Response: unknown }
-	},
 	"/lol-player-preferences/v1/player-preferences-endpoint-override": {
 		post: { Parameters: [], Body: LolPlayerPreferencesPlayerPreferencesEndpoint, Response: unknown }
 	},
@@ -3166,6 +3179,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-rewards/v1/grants/{grantId}/select": {
 		post: { Parameters: [grantId: string], Body: LolRewardsSelectionRequestDTO, Response: LolRewardsRewardGrant }
+	},
+	"/lol-rewards/v1/reward/replay": {
+		post: { Parameters: [], Body: string, Response: void }
 	},
 	"/lol-rewards/v1/select-bulk": {
 		post: { Parameters: [], Body: LolRewardsSelectionRequestDTO[], Response: Record<string, LolRewardsSelectGrantStatusResponse> }
@@ -3416,6 +3432,9 @@ export interface LCUEndpoints {
 	"/lol-chat/v1/friend-groups/order": {
 		put: { Parameters: [], Body: LolChatFriendGroupOrder, Response: unknown }
 	},
+	"/lol-cosmetics/v1/favorites/tft/save": {
+		put: { Parameters: [], Body: never, Response: unknown }
+	},
 	"/lol-lobby/v1/lobby/members/localMember/position-preferences": {
 		put: { Parameters: [], Body: LolLobbyLobbyPositionPreferences, Response: unknown }
 	},
@@ -3499,6 +3518,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-summoner/v1/current-summoner/icon": {
 		put: { Parameters: [], Body: LolSummonerSummonerIcon, Response: LolSummonerSummoner }
+	},
+	"lol-tft-pass/v1/pass/{id}/milestone/{milestoneId}/reward": {
+		put: { Parameters: [id: string, milestoneId: string], Body: never, Response: void }
 	},
 	"/lol-tft-team-planner/v1/team": {
 		put: { Parameters: [], Body: never, Response: unknown }
