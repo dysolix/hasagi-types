@@ -171,9 +171,9 @@ export interface BracketMatch {
 	/** @format int32 */
 	order: number
 	/** @format int64 */
-	rosterId1: number
+	"rosterId1": number
 	/** @format int64 */
-	rosterId2: number
+	"rosterId2": number
 	resultHistory: string
 	/** @format int32 */
 	lowestPossiblePosition: number
@@ -259,9 +259,9 @@ export interface ChampSelectLcdsPlayerChampionSelectionDTO {
 	/** @format int32 */
 	selectedSkinIndex: number
 	/** @format int32 */
-	spell1Id: number
+	"spell1Id": number
 	/** @format int32 */
-	spell2Id: number
+	"spell2Id": number
 }
 
 export interface ChampSelectLcdsPlayerParticipant {
@@ -545,7 +545,7 @@ export interface CollectionsLcdsChampionDTO {
 	championSkins: CollectionsLcdsChampionSkinDTO[]
 	freeToPlay: boolean
 	freeToPlayReward: boolean
-	f2pRewardSources: string[]
+	"f2pRewardSources": string[]
 	owned: boolean
 	/** @format uint64 */
 	purchased: number
@@ -563,7 +563,7 @@ export interface CollectionsLcdsChampionSkinDTO {
 	/** @format int32 */
 	championId: number
 	freeToPlayReward: boolean
-	f2pRewardSources: string[]
+	"f2pRewardSources": string[]
 	lastSelected: boolean
 	owned: boolean
 	/** @format int32 */
@@ -764,9 +764,9 @@ export interface EndOfGameLcdsPlayerParticipantStatsSummary {
 	losses: number
 	botPlayer: boolean
 	/** @format int32 */
-	spell1Id: number
+	"spell1Id": number
 	/** @format int32 */
-	spell2Id: number
+	"spell2Id": number
 	/** @format int32 */
 	championId: number
 	/** @format int32 */
@@ -1184,9 +1184,9 @@ export interface LcdsPracticeGameSearchResult {
 	maxNumPlayers: number
 	privateGame: boolean
 	/** @format int32 */
-	team1Count: number
+	"team1Count": number
 	/** @format int32 */
-	team2Count: number
+	"team2Count": number
 	/** @format int32 */
 	spectatorCount: number
 	gameMap: LcdsGameMap
@@ -1399,7 +1399,7 @@ export interface LolActiveBoostsInventoryItemDTO {
 	instanceId: string
 	instanceTypeId: string
 	payload: unknown
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -1418,7 +1418,7 @@ export interface LolActiveBoostsInventoryItemWithPayload {
 	quantity: number
 	ownershipType: LolActiveBoostsItemOwnershipType
 	expirationDate: string
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -1467,7 +1467,7 @@ export interface LolBannersBannerFlag {
 	level: number
 	/** @format int64 */
 	seasonId: number
-	earnedDateIso8601: string
+	"earnedDateIso8601": string
 }
 
 export interface LolBannersBannerFrame {
@@ -2357,9 +2357,9 @@ export interface LolChampSelectChampSelectMySelection {
 	/** @format int32 */
 	selectedSkinId?: number
 	/** @format uint64 */
-	spell1Id?: number
+	"spell1Id"?: number
 	/** @format uint64 */
-	spell2Id?: number
+	"spell2Id"?: number
 	/** @format int64 */
 	wardSkinId?: number
 }
@@ -2390,9 +2390,9 @@ export interface LolChampSelectChampSelectPlayerSelection {
 	/** @format int64 */
 	wardSkinId: number
 	/** @format uint64 */
-	spell1Id: number
+	"spell1Id": number
 	/** @format uint64 */
-	spell2Id: number
+	"spell2Id": number
 	/** @format int32 */
 	team: number
 	assignedPosition: string
@@ -2449,8 +2449,8 @@ export interface LolChampSelectChampSelectSummoner {
 	cellId: number
 	/** @format uint64 */
 	slotId: number
-	spell1IconPath: string
-	spell2IconPath: string
+	"spell1IconPath": string
+	"spell2IconPath": string
 	assignedPosition: string
 	/** @format uint64 */
 	summonerId: number
@@ -2728,9 +2728,9 @@ export interface LolChampSelectLegacyChampSelectMySelection {
 	/** @format int32 */
 	selectedSkinId?: number
 	/** @format uint64 */
-	spell1Id?: number
+	"spell1Id"?: number
 	/** @format uint64 */
-	spell2Id?: number
+	"spell2Id"?: number
 	/** @format int64 */
 	wardSkinId?: number
 }
@@ -2745,9 +2745,9 @@ export interface LolChampSelectLegacyChampSelectPlayerSelection {
 	/** @format int64 */
 	wardSkinId: number
 	/** @format uint64 */
-	spell1Id: number
+	"spell1Id": number
 	/** @format uint64 */
-	spell2Id: number
+	"spell2Id": number
 	/** @format int32 */
 	team: number
 	assignedPosition: string
@@ -3343,7 +3343,7 @@ export interface LolChampionsInventoryItemWithPayload {
 	/** @format uint64 */
 	quantity: number
 	expirationDate: string
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -3448,7 +3448,7 @@ export interface LolChatChampSelection {
 }
 
 export interface LolChatChatDomainConfig {
-	P2PDomainName?: string
+	"P2PDomainName"?: string
 	CustomGameDomainName?: string
 	ChampSelectDomainName?: string
 	PostGameDomainName?: string
@@ -3816,7 +3816,7 @@ export interface LolChatFriendResource {
 	statusMessage: string
 	note: string
 	lastSeenOnlineTimestamp?: string
-	isP2PConversationMuted: boolean
+	"isP2PConversationMuted": boolean
 	/** @format uint32 */
 	groupId: number
 	/** @format uint32 */
@@ -5365,7 +5365,7 @@ export interface LolCollectionsInventoryItemDTO {
 	instanceId: string
 	instanceTypeId: string
 	payload: unknown
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	lsb: boolean
@@ -5676,7 +5676,7 @@ export interface LolCosmeticsCosmeticsCompanion {
 	owned: boolean
 	selected: boolean
 	loyalty: boolean
-	f2p: boolean
+	"f2p": boolean
 	/** @format uint32 */
 	rarityValue: number
 	purchaseDate: string
@@ -5700,7 +5700,7 @@ export interface LolCosmeticsCosmeticsCompanionViewModel {
 	selected: boolean
 	favorited: boolean
 	loyalty: boolean
-	f2p: boolean
+	"f2p": boolean
 	/** @format uint32 */
 	rarityValue: number
 	purchaseDate: string
@@ -5736,7 +5736,7 @@ export interface LolCosmeticsCosmeticsTFTDamageSkin {
 	owned: boolean
 	selected: boolean
 	loyalty: boolean
-	f2p: boolean
+	"f2p": boolean
 	/** @format uint32 */
 	rarityValue: number
 	purchaseDate: string
@@ -5759,7 +5759,7 @@ export interface LolCosmeticsCosmeticsTFTDamageSkinViewModel {
 	selected: boolean
 	favorited: boolean
 	loyalty: boolean
-	f2p: boolean
+	"f2p": boolean
 	/** @format uint32 */
 	rarityValue: number
 	purchaseDate: string
@@ -5782,7 +5782,7 @@ export interface LolCosmeticsCosmeticsTFTMapSkin {
 	owned: boolean
 	selected: boolean
 	loyalty: boolean
-	f2p: boolean
+	"f2p": boolean
 	/** @format uint32 */
 	rarityValue: number
 	purchaseDate: string
@@ -5802,7 +5802,7 @@ export interface LolCosmeticsCosmeticsTFTMapSkinViewModel {
 	selected: boolean
 	favorited: boolean
 	loyalty: boolean
-	f2p: boolean
+	"f2p": boolean
 	/** @format uint32 */
 	rarityValue: number
 	purchaseDate: string
@@ -5822,7 +5822,7 @@ export interface LolCosmeticsCosmeticsTFTPlaybook {
 	owned: boolean
 	selected: boolean
 	loyalty: boolean
-	f2p: boolean
+	"f2p": boolean
 	/** @format uint32 */
 	rarityValue: number
 	purchaseDate: string
@@ -5859,7 +5859,7 @@ export interface LolCosmeticsCosmeticsTFTPlaybookViewModel {
 	owned: boolean
 	selected: boolean
 	loyalty: boolean
-	f2p: boolean
+	"f2p": boolean
 	/** @format uint32 */
 	rarityValue: number
 	purchaseDate: string
@@ -6221,9 +6221,9 @@ export interface LolEndOfGameEndOfGamePlayer {
 	/** @format int32 */
 	profileIconId: number
 	/** @format int32 */
-	spell1Id: number
+	"spell1Id": number
 	/** @format int32 */
-	spell2Id: number
+	"spell2Id": number
 	summonerName: string
 	/** @format int32 */
 	teamId: number
@@ -6655,8 +6655,8 @@ export interface LolEsportStreamNotificationsESportStreamNotificationsConfig {
 	notificationsStreamURL: string
 	notificationsStreamGroupSlug: string
 	notificationsAssetMagickURL: string
-	useServiceEndpointV2: boolean
-	notificationsServiceEndpointV2: string
+	"useServiceEndpointV2": boolean
+	"notificationsServiceEndpointV2": string
 	/** @format int64 */
 	notificationsShortPollMinutes: number
 	/** @format int64 */
@@ -7325,7 +7325,7 @@ export interface LolEventHubInventoryItemDTO {
 	instanceId: string
 	instanceTypeId: string
 	payload: unknown
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -7344,7 +7344,7 @@ export interface LolEventHubInventoryItemWithPayload {
 	quantity: number
 	ownershipType: LolEventHubItemOwnershipType
 	expirationDate: string
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -8735,7 +8735,7 @@ export interface LolEventShopInventoryItemDTO {
 	instanceId: string
 	instanceTypeId: string
 	payload: unknown
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -8754,7 +8754,7 @@ export interface LolEventShopInventoryItemWithPayload {
 	quantity: number
 	ownershipType: LolEventShopItemOwnershipType
 	expirationDate: string
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -9842,8 +9842,8 @@ export interface LolGameQueuesQueue {
 	type: string
 	gameMode: string
 	assetMutator: string
-	maxTierForPremadeSize2: string
-	maxDivisionForPremadeSize2: string
+	"maxTierForPremadeSize2": string
+	"maxDivisionForPremadeSize2": string
 	category: LolGameQueuesQueueGameCategory
 	gameTypeConfig: LolGameQueuesQueueGameTypeConfig
 	/** @format int32 */
@@ -10276,7 +10276,7 @@ export interface LolHighlightsHighlight {
 	url: string
 	/** @format uint64 */
 	mtimeMsUtc: number
-	mtimeIso8601: string
+	"mtimeIso8601": string
 	/** @format uint64 */
 	fileSizeBytes: number
 }
@@ -10574,7 +10574,7 @@ export interface LolHonorV2HonorConfig {
 	SecondsToVote: number
 	HonorVisibilityEnabled: boolean
 	HonorSuggestionsEnabled: boolean
-	honorEndpointsV2Enabled: boolean
+	"honorEndpointsV2Enabled": boolean
 }
 
 export interface LolHonorV2HonorInteraction {
@@ -10904,7 +10904,7 @@ export interface LolInventoryInventoryItemDTO {
 	instanceId: string
 	instanceTypeId: string
 	payload: unknown
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -10923,7 +10923,7 @@ export interface LolInventoryInventoryItemWithPayload {
 	quantity: number
 	ownershipType: LolInventoryItemOwnershipType
 	expirationDate: string
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -11470,7 +11470,7 @@ export interface LolLoadoutsInventoryItemDTO {
 	entitlementTypeId: string
 	instanceId: string
 	instanceTypeId: string
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	lsb: boolean
 	/** @format uint64 */
@@ -11654,9 +11654,9 @@ export interface LolLobbyCustomGameDto {
 	/** @format int32 */
 	spectatorCount: number
 	/** @format int32 */
-	team1Count: number
+	"team1Count": number
 	/** @format int32 */
-	team2Count: number
+	"team2Count": number
 	/** @format int32 */
 	maxNumPlayers: number
 	lobbyName: string
@@ -12020,8 +12020,8 @@ export interface LolLobbyLobbyGameConfigDto {
 	shouldForceScarcePositionSelection: boolean
 	customLobbyName: string
 	customMutatorName: string
-	customTeam100: LolLobbyLobbyParticipantDto[]
-	customTeam200: LolLobbyLobbyParticipantDto[]
+	"customTeam100": LolLobbyLobbyParticipantDto[]
+	"customTeam200": LolLobbyLobbyParticipantDto[]
 	customSpectators: LolLobbyLobbyParticipantDto[]
 	customSpectatorPolicy: LolLobbyQueueCustomGameSpectatorPolicy
 	customRewardsDisabledReasons: string[]
@@ -12471,8 +12471,8 @@ export interface LolLobbyQueue {
 	type: string
 	gameMode: string
 	assetMutator: string
-	maxTierForPremadeSize2: string
-	maxDivisionForPremadeSize2: string
+	"maxTierForPremadeSize2": string
+	"maxDivisionForPremadeSize2": string
 	category: LolLobbyQueueGameCategory
 	gameTypeConfig: LolLobbyQueueGameTypeConfig
 	/** @format int32 */
@@ -12563,9 +12563,9 @@ export interface LolLobbyQuickPlayPresetSlotDto {
 	positionPreference: string
 	perks: string
 	/** @format uint64 */
-	spell1: number
+	"spell1": number
 	/** @format uint64 */
-	spell2: number
+	"spell2": number
 }
 
 export interface LolLobbyRankedPositionInfoDTO {
@@ -12735,9 +12735,9 @@ export interface LolLobbyTeamBuilderCellV1 {
 	skinId: number
 	assignedPosition: string
 	/** @format int32 */
-	spell1Id: number
+	"spell1Id": number
 	/** @format int32 */
-	spell2Id: number
+	"spell2Id": number
 	/** @format uint64 */
 	summonerId: number
 	puuid: string
@@ -12792,9 +12792,9 @@ export interface LolLobbyTeamBuilderChampSelectMySelection {
 	/** @format int32 */
 	selectedSkinId?: number
 	/** @format uint64 */
-	spell1Id?: number
+	"spell1Id"?: number
 	/** @format uint64 */
-	spell2Id?: number
+	"spell2Id"?: number
 	/** @format int64 */
 	wardSkinId?: number
 }
@@ -12809,9 +12809,9 @@ export interface LolLobbyTeamBuilderChampSelectPlayerSelection {
 	/** @format int64 */
 	wardSkinId: number
 	/** @format uint64 */
-	spell1Id: number
+	"spell1Id": number
 	/** @format uint64 */
-	spell2Id: number
+	"spell2Id": number
 	/** @format int32 */
 	team: number
 	assignedPosition: string
@@ -13553,7 +13553,7 @@ export interface LolLootCosmeticsTFTDamageSkin {
 	owned: boolean
 	selected: boolean
 	loyalty: boolean
-	f2p: boolean
+	"f2p": boolean
 	/** @format uint32 */
 	rarityValue: number
 	purchaseDate: string
@@ -13575,7 +13575,7 @@ export interface LolLootCosmeticsTFTDamageSkinViewModel {
 	owned: boolean
 	selected: boolean
 	loyalty: boolean
-	f2p: boolean
+	"f2p": boolean
 	/** @format uint32 */
 	rarityValue: number
 	purchaseDate: string
@@ -13597,7 +13597,7 @@ export interface LolLootCosmeticsTFTMapSkinViewModel {
 	owned: boolean
 	selected: boolean
 	loyalty: boolean
-	f2p: boolean
+	"f2p": boolean
 }
 
 export interface LolLootCounter {
@@ -14592,9 +14592,9 @@ export interface LolMatchHistoryMatchHistoryParticipant {
 	/** @format int32 */
 	championId: number
 	/** @format uint16 */
-	spell1Id: number
+	"spell1Id": number
 	/** @format uint16 */
-	spell2Id: number
+	"spell2Id": number
 	highestAchievedSeasonTier: string
 	stats: LolMatchHistoryMatchHistoryParticipantStatistics
 	timeline: LolMatchHistoryMatchHistoryTimeline
@@ -14651,19 +14651,19 @@ export interface LolMatchHistoryMatchHistoryParticipantStatistics {
 	participantId: number
 	win: boolean
 	/** @format int32 */
-	item0: number
+	"item0": number
 	/** @format int32 */
-	item1: number
+	"item1": number
 	/** @format int32 */
-	item2: number
+	"item2": number
 	/** @format int32 */
-	item3: number
+	"item3": number
 	/** @format int32 */
-	item4: number
+	"item4": number
 	/** @format int32 */
-	item5: number
+	"item5": number
 	/** @format int32 */
-	item6: number
+	"item6": number
 	/** @format int64 */
 	kills: number
 	/** @format int64 */
@@ -14776,85 +14776,85 @@ export interface LolMatchHistoryMatchHistoryParticipantStatistics {
 	/** @format int64 */
 	timeCCingOthers: number
 	/** @format int64 */
-	playerScore0: number
+	"playerScore0": number
 	/** @format int64 */
-	playerScore1: number
+	"playerScore1": number
 	/** @format int64 */
-	playerScore2: number
+	"playerScore2": number
 	/** @format int64 */
-	playerScore3: number
+	"playerScore3": number
 	/** @format int64 */
-	playerScore4: number
+	"playerScore4": number
 	/** @format int64 */
-	playerScore5: number
+	"playerScore5": number
 	/** @format int64 */
-	playerScore6: number
+	"playerScore6": number
 	/** @format int64 */
-	playerScore7: number
+	"playerScore7": number
 	/** @format int64 */
-	playerScore8: number
+	"playerScore8": number
 	/** @format int64 */
-	playerScore9: number
+	"playerScore9": number
 	/** @format int64 */
 	perkPrimaryStyle: number
 	/** @format int64 */
 	perkSubStyle: number
 	/** @format int64 */
-	perk0: number
+	"perk0": number
 	/** @format int64 */
-	perk0Var1: number
+	"perk0Var1": number
 	/** @format int64 */
-	perk0Var2: number
+	"perk0Var2": number
 	/** @format int64 */
-	perk0Var3: number
+	"perk0Var3": number
 	/** @format int64 */
-	perk1: number
+	"perk1": number
 	/** @format int64 */
-	perk1Var1: number
+	"perk1Var1": number
 	/** @format int64 */
-	perk1Var2: number
+	"perk1Var2": number
 	/** @format int64 */
-	perk1Var3: number
+	"perk1Var3": number
 	/** @format int64 */
-	perk2: number
+	"perk2": number
 	/** @format int64 */
-	perk2Var1: number
+	"perk2Var1": number
 	/** @format int64 */
-	perk2Var2: number
+	"perk2Var2": number
 	/** @format int64 */
-	perk2Var3: number
+	"perk2Var3": number
 	/** @format int64 */
-	perk3: number
+	"perk3": number
 	/** @format int64 */
-	perk3Var1: number
+	"perk3Var1": number
 	/** @format int64 */
-	perk3Var2: number
+	"perk3Var2": number
 	/** @format int64 */
-	perk3Var3: number
+	"perk3Var3": number
 	/** @format int64 */
-	perk4: number
+	"perk4": number
 	/** @format int64 */
-	perk4Var1: number
+	"perk4Var1": number
 	/** @format int64 */
-	perk4Var2: number
+	"perk4Var2": number
 	/** @format int64 */
-	perk4Var3: number
+	"perk4Var3": number
 	/** @format int64 */
-	perk5: number
+	"perk5": number
 	/** @format int64 */
-	perk5Var1: number
+	"perk5Var1": number
 	/** @format int64 */
-	perk5Var2: number
+	"perk5Var2": number
 	/** @format int64 */
-	perk5Var3: number
+	"perk5Var3": number
 	/** @format int32 */
-	playerAugment1: number
+	"playerAugment1": number
 	/** @format int32 */
-	playerAugment2: number
+	"playerAugment2": number
 	/** @format int32 */
-	playerAugment3: number
+	"playerAugment3": number
 	/** @format int32 */
-	playerAugment4: number
+	"playerAugment4": number
 	/** @format int32 */
 	playerSubteamId: number
 	/** @format int32 */
@@ -15760,7 +15760,7 @@ export interface LolPatchComponentState {
 	action: LolPatchComponentStateAction
 	isUpToDate: boolean
 	isUpdateAvailable: boolean
-	timeOfLastUpToDateCheckISO8601?: string
+	"timeOfLastUpToDateCheckISO8601"?: string
 	isCorrupted: boolean
 	progress?: LolPatchComponentActionProgress
 }
@@ -15929,9 +15929,9 @@ export interface LolPerksChampSelectMySelection {
 	/** @format int32 */
 	selectedSkinId?: number
 	/** @format uint64 */
-	spell1Id?: number
+	"spell1Id"?: number
 	/** @format uint64 */
-	spell2Id?: number
+	"spell2Id"?: number
 	/** @format int64 */
 	wardSkinId?: number
 }
@@ -15946,9 +15946,9 @@ export interface LolPerksChampSelectPlayerSelection {
 	/** @format int64 */
 	wardSkinId: number
 	/** @format uint64 */
-	spell1Id: number
+	"spell1Id": number
 	/** @format uint64 */
-	spell2Id: number
+	"spell2Id": number
 	/** @format int32 */
 	team: number
 	assignedPosition: string
@@ -16431,9 +16431,9 @@ export interface LolPftPFTEndOfGamePlayer {
 	/** @format int32 */
 	profileIconId: number
 	/** @format int32 */
-	spell1Id: number
+	"spell1Id": number
 	/** @format int32 */
-	spell2Id: number
+	"spell2Id": number
 	summonerName: string
 	/** @format int32 */
 	teamId: number
@@ -17823,11 +17823,11 @@ export interface LolRankedEosNotificationsConfig {
 export interface LolRankedEosNotificationsConfigEntry {
 	name: string
 	/** @format int64 */
-	offsetTime1: number
+	"offsetTime1": number
 	/** @format int64 */
-	offsetTime2: number
+	"offsetTime2": number
 	/** @format int64 */
-	offsetTime3: number
+	"offsetTime3": number
 }
 
 export interface LolRankedEosRewardData {
@@ -18555,7 +18555,7 @@ export interface LolRegaliaRegalia {
 }
 
 export interface LolRegaliaRegaliaAsync {
-	md5: string
+	"md5": string
 }
 
 export type LolRegaliaRegaliaBannerType = "lastSeasonHighestRank" | "blank"
@@ -20982,7 +20982,7 @@ export interface LolTftPassInventoryItemDTO {
 	instanceId: string
 	instanceTypeId: string
 	payload: unknown
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -21001,7 +21001,7 @@ export interface LolTftPassInventoryItemWithPayload {
 	quantity: number
 	ownershipType: LolTftPassItemOwnershipType
 	expirationDate: string
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -21661,7 +21661,7 @@ export interface LolTftTrovesTrovePurchaseResponse {
 
 export interface LolTftTrovesTroves {
 	enabled: boolean
-	v2Enabled: boolean
+	"v2Enabled": boolean
 	bannerList?: LolTftTrovesTrovesActiveBanner[]
 }
 
@@ -21944,7 +21944,7 @@ export interface LolVanguardLoginSession {
 export type LolVanguardLoginSessionState = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
 
 export interface LolVanguardVanguardMachineSpecs {
-	tpm2Enabled: boolean
+	"tpm2Enabled": boolean
 	secureBootEnabled: boolean
 }
 
@@ -22040,7 +22040,7 @@ export interface LolYourshopInventoryItemDTO {
 	instanceId: string
 	instanceTypeId: string
 	payload: unknown
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -22059,7 +22059,7 @@ export interface LolYourshopInventoryItemWithPayload {
 	quantity: number
 	ownershipType: LolYourshopItemOwnershipType
 	expirationDate: string
-	f2p: boolean
+	"f2p": boolean
 	rental: boolean
 	loyalty: boolean
 	loyaltySources: string[]
@@ -22783,7 +22783,7 @@ export interface PatcherComponentState {
 	action: PatcherComponentStateAction
 	isUpToDate: boolean
 	isUpdateAvailable: boolean
-	timeOfLastUpToDateCheckISO8601?: string
+	"timeOfLastUpToDateCheckISO8601"?: string
 	isCorrupted: boolean
 	progress?: PatcherComponentActionProgress
 }
@@ -23761,7 +23761,7 @@ export interface StoreLcdsChampionDTO {
 	championSkins: StoreLcdsChampionSkinDTO[]
 	freeToPlay: boolean
 	freeToPlayReward: boolean
-	f2pRewardSources: string[]
+	"f2pRewardSources": string[]
 	owned: boolean
 	rankedPlayEnabled: boolean
 }
@@ -23777,7 +23777,7 @@ export interface StoreLcdsChampionSkinDTO {
 	/** @format int32 */
 	championId: number
 	freeToPlayReward: boolean
-	f2pRewardSources: string[]
+	"f2pRewardSources": string[]
 	lastSelected: boolean
 	owned: boolean
 	/** @format int32 */

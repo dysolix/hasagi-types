@@ -23,6 +23,6 @@
     "url": "https://github.com/dysolix/hasagi-types.git"
   },
   "dependencies": {
-    "@hasagi/schema": "^0.5.2"
+    "@hasagi/schema": "^0.5.7"
   }
 }
