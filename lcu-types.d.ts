@@ -6075,8 +6075,21 @@ export interface LolDiscordRpPartyPresenceData {
 
 export interface LolDropsCapDropTableCounterDTO {
 	dropTableId: string
-	/** @format uint32 */
+	/** @format uint8 */
 	count: number
+}
+
+export interface LolDropsCapDropsDropTableDisplayMetadata {
+	isCollectorsBounty: boolean
+	nameTraKey: string
+	mythicOfferId: string
+	progressionId: string
+	/** @format uint8 */
+	priority: number
+	tables: Record<string, LolDropsOddsTableDisplayMetadata>
+	/** @format uint8 */
+	version: number
+	chaseContentId: string
 }
 
 export interface LolDropsCapDropsDropTablePityInfo {
@@ -6097,7 +6110,7 @@ export interface LolDropsCapDropsDropTableWithPityDTO {
 	cost: number
 	totalRollsInfo: LolDropsTotalRollsInfoDTO
 	pityInfo: LolDropsCapDropsDropTablePityInfo
-	displayMetadata: unknown
+	displayMetadata: LolDropsCapDropsDropTableDisplayMetadata
 }
 
 export interface LolDropsCapDropsOddsListEntryDTO {
@@ -6112,6 +6125,12 @@ export interface LolDropsCapDropsOddsTreeNodeDTO {
 	/** @format float */
 	odds: number
 	children: LolDropsCapDropsOddsTreeNodeDTO[]
+}
+
+export interface LolDropsOddsTableDisplayMetadata {
+	nameTraKey: string
+	/** @format uint8 */
+	priority: number
 }
 
 export interface LolDropsTotalRollsInfoDTO {
@@ -7271,6 +7290,7 @@ export interface LolEventHubHallOfLegends {
 	progressionPurchaseCatalogEntry: LolEventHubCatalogEntry
 	skinIds: string[]
 	rewardTrack: LolEventHubRewardTrack
+	narrativeElements: LolEventHubNarrativeElement[]
 }
 
 export interface LolEventHubInventoryCacheEntry {
@@ -7563,6 +7583,21 @@ export interface LolEventHubMilestoneInstance {
 	triggers: LolEventHubTrigger[]
 }
 
+export interface LolEventHubNarrativeElement {
+	localizedNarrativeTitle: string
+	localizedNarrativeDescription: string
+	narrativeBackgroundImage: string
+	narrativeTrackLevelRange: LolEventHubNarrativeTrackLevelRange
+	localizedNarrativeVideoUrl: string
+}
+
+export interface LolEventHubNarrativeTrackLevelRange {
+	/** @format uint16 */
+	beginNarrativeLevel: number
+	/** @format uint16 */
+	endNarrativeLevel: number
+}
+
 export interface LolEventHubNavigationButtonUIData {
 	activeEventId: string
 	showPip: boolean
@@ -7853,6 +7888,8 @@ export interface LolEventHubRewardTrackItemOption {
 	rewardName: string
 	rewardDescription: string
 	cardSize: string
+	rewardGroupId: string
+	celebrationType: LolEventHubCelebrationType
 }
 
 export type LolEventHubRewardTrackItemStates = "Selected" | "Unselected" | "Unlocked" | "Locked"
@@ -8099,7 +8136,7 @@ export interface LolEventHubTokenUpsell {
 	endDate: string
 }
 
-export type LolEventHubTokenUpsellLockedType = "LOCKED" | "UNLOCKED" | "UNASSIGNED"
+export type LolEventHubTokenUpsellLockedType = "UNLOCKED" | "LOCKED" | "UNASSIGNED"
 
 export interface LolEventHubTransaction {
 	transactionId: string
@@ -11876,7 +11913,6 @@ export interface LolLobbyLobby {
 	requiredPositionCoverageMet: boolean
 	allowablePremadeSizes: number[]
 	queueAvailability: LolLobbyQueueAvailability
-	spectatorDelayEnabled: boolean
 }
 
 export interface LolLobbyLobbyBotChampion {
@@ -11900,7 +11936,6 @@ export interface LolLobbyLobbyChangeGameDto {
 	/** @format int32 */
 	queueId: number
 	isCustom: boolean
-	spectatorDelayEnabled: boolean
 	customGameLobby?: LolLobbyLobbyCustomGameLobby
 	gameCustomization?: Record<string, string>
 }
@@ -11909,7 +11944,6 @@ export interface LolLobbyLobbyChangeQueue {
 	/** @format int32 */
 	queueId: number
 	isCustom: boolean
-	isSpectatorDelayEnabled: boolean
 	customGameLobby?: LolLobbyLobbyCustomGameLobby
 }
 
@@ -11962,6 +11996,7 @@ export interface LolLobbyLobbyCustomGameConfiguration {
 	tournamentPassbackUrl: string
 	tournamentPassbackDataPacket: string
 	gameServerRegion: string
+	spectatorDelayEnabled: boolean
 }
 
 export interface LolLobbyLobbyCustomGameLobby {
@@ -12150,6 +12185,7 @@ export interface LolLobbyLobbyParticipantDto {
 	/** @format int8 */
 	intraSubteamPosition?: number
 	tftNPEQueueBypass?: boolean
+	quickplayPlayerState?: string
 	playerSlots: LolLobbyQuickPlayPresetSlotDto[]
 	ready: boolean
 	showGhostedBanner: boolean
@@ -12339,6 +12375,7 @@ export interface LolLobbyPartyMemberMetadataDto {
 	playerSlots: LolLobbyQuickPlayPresetSlotDto[]
 	subteamData?: LolLobbySubteamDataDto
 	tftNPEQueueBypass?: boolean
+	quickplayPlayerState?: string
 }
 
 export type LolLobbyPartyMemberRoleEnum = "NONE" | "DECLINED" | "KICKED" | "HOLD" | "INVITED" | "MEMBER" | "LEADER"
@@ -21140,8 +21177,8 @@ export interface LolTftPassRMSRewardsNotificationPayload {
 	purchaserId: string
 	recipientId: string
 	transactionId: string
-	milestoneId: string
-	milestoneInstanceId: string
+	rewardId: string
+	rewardInstanceId: string
 	status: string
 }
 
@@ -21469,6 +21506,19 @@ export interface LolTftTrovesCapCounterBalanceDto {
 	active: boolean
 }
 
+export interface LolTftTrovesCapDropsDropTableDisplayMetadata {
+	isCollectorsBounty: boolean
+	nameTraKey: string
+	mythicOfferId: string
+	progressionId: string
+	/** @format uint8 */
+	priority: number
+	tables: Record<string, LolTftTrovesOddsTableDisplayMetadata>
+	/** @format uint8 */
+	version: number
+	chaseContentId: string
+}
+
 export interface LolTftTrovesCapOrdersRequestDTO {
 	data: unknown
 	meta: LolTftTrovesCapOrdersRequestMetaDTO
@@ -21491,7 +21541,7 @@ export interface LolTftTrovesCounterNotificationResource {
 
 export interface LolTftTrovesDropCounterDTO {
 	dropTableId: string
-	/** @format int32 */
+	/** @format uint16 */
 	count: number
 }
 
@@ -21513,7 +21563,7 @@ export interface LolTftTrovesDropsDropTableWithPityDTO {
 	cost: number
 	totalRollsInfo: LolTftTrovesTotalRollsInfoDTO
 	pityInfo: LolTftTrovesDropsDropTablePityInfo
-	displayMetadata: unknown
+	displayMetadata: LolTftTrovesCapDropsDropTableDisplayMetadata
 }
 
 export interface LolTftTrovesDropsOddsListEntryDTO {
@@ -21556,16 +21606,17 @@ export interface LolTftTrovesGameDataTrovesBanner {
 }
 
 export interface LolTftTrovesGameDataTrovesBannerReward {
-	id: string
+	itemInstanceId: string
+	itemTypeId: string
+	/** @format uint32 */
+	starLevel: number
 	name: string
 	/** @format uint32 */
 	quantity: number
 	rarity: LolTftTrovesLootRarity
 	currencyId: string
-	loadoutsItem: LolTftTrovesLoadoutsItem
 	rewardTexturePath: string
 	highlightRewardAssetPath: string
-	isChaseReward: boolean
 }
 
 export interface LolTftTrovesGameDataTrovesBannerTable {
@@ -21624,10 +21675,22 @@ export interface LolTftTrovesLootOddsResponse {
 
 export type LolTftTrovesLootRarity = "Ultimate" | "Mythic" | "Legendary" | "Epic" | "Default"
 
+export interface LolTftTrovesOddsTableDisplayMetadata {
+	nameTraKey: string
+	/** @format uint8 */
+	priority: number
+}
+
 export interface LolTftTrovesOrderNotificationResource {
 	eventTypeId: string
 	eventType: string
 	status: string
+}
+
+export interface LolTftTrovesPityCounterDTO {
+	dropTableId: string
+	/** @format uint8 */
+	count: number
 }
 
 export interface LolTftTrovesPlayerLoot {
@@ -21647,7 +21710,7 @@ export interface LolTftTrovesRiotMessagingServiceMessage {
 
 export interface LolTftTrovesTotalRollsInfoDTO {
 	totalRollsCounterId: string
-	/** @format int32 */
+	/** @format uint16 */
 	maxTotalRolls: number
 }
 
@@ -21661,6 +21724,7 @@ export interface LolTftTrovesTrovePurchaseResponse {
 
 export interface LolTftTrovesTroves {
 	enabled: boolean
+	useDisplayMetadata: boolean
 	"v2Enabled": boolean
 	bannerList?: LolTftTrovesTrovesActiveBanner[]
 }
@@ -21673,7 +21737,7 @@ export interface LolTftTrovesTrovesActiveBanner {
 
 export interface LolTftTrovesTrovesBanner {
 	id: string
-	/** @format uint32 */
+	/** @format uint8 */
 	version: number
 	sourceId: string
 	startDate: string
@@ -21695,6 +21759,7 @@ export interface LolTftTrovesTrovesBanner {
 	maxTotalRolls: number
 	/** @format uint32 */
 	pullCost: number
+	chaseContentId: string
 	celebrationTheme: LolTftTrovesTrovesCelebrationThemeData
 	status: LolTftTrovesTrovesStatus
 }
@@ -21838,11 +21903,11 @@ export interface LolTftTrovesTrovesStatus {
 	owned: boolean
 	/** @format uint32 */
 	availableContents: number
-	/** @format uint32 */
+	/** @format uint8 */
 	pityCount: number
 	dropTableId: string
 	hasPullError: boolean
-	/** @format uint32 */
+	/** @format uint16 */
 	totalRollsCount: number
 	isCollectorBountyMaxRollsMet: boolean
 }
@@ -21947,6 +22012,14 @@ export interface LolVanguardVanguardMachineSpecs {
 	"tpm2Enabled": boolean
 	secureBootEnabled: boolean
 }
+
+export interface LolVanguardVanguardSession {
+	state: LolVanguardVanguardSessionState
+	/** @format int32 */
+	vanguardStatus: number
+}
+
+export type LolVanguardVanguardSessionState = "ERROR" | "CONNECTED" | "IN_PROGRESS"
 
 export interface LolVanguardVanguardSystemCheckTelemetryEvent {
 	passedOsCheck: boolean

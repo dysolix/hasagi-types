@@ -908,6 +908,9 @@ export interface LCUEndpoints {
 	"/lol-event-hub/v1/events/{eventId}/is-grace-period": {
 		get: { path: [eventId: string], params: never, body: never, response: boolean }
 	},
+	"/lol-event-hub/v1/events/{eventId}/narrative": {
+		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubNarrativeElement[] }
+	},
 	"/lol-event-hub/v1/events/{eventId}/pass-background-data": {
 		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubEventBackgroundUIData }
 	},
@@ -1254,6 +1257,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-inventory/v1/signedWallet/{currencyType}": {
 		get: { path: [currencyType: string], params: never, body: never, response: Record<string, string> }
+	},
+	"/lol-inventory/v1/strawberryInventory": {
+		get: { path: never, params: never, body: never, response: string }
 	},
 	"/lol-inventory/v1/wallet": {
 		get: { path: never, params: { "currencyTypes": string[] }, body: never, response: Record<string, number> }
@@ -2300,11 +2306,17 @@ export interface LCUEndpoints {
 	"/lol-vanguard/v1/config/days-to-reshow-modal": {
 		get: { path: never, params: never, body: never, response: number }
 	},
+	"/lol-vanguard/v1/config/enabled": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
 	"/lol-vanguard/v1/is-playing-in-pcb": {
 		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-vanguard/v1/machine-specs": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolVanguardVanguardMachineSpecs }
+	},
+	"/lol-vanguard/v1/session": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolVanguardVanguardSession }
 	},
 	"/lol-yourshop/v1/has-permissions": {
 		get: { path: never, params: never, body: never, response: boolean }
@@ -3437,6 +3449,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby/v1/lobby/members/localMember/position-preferences": {
 		put: { path: never, params: never, body: LCUTypes.LolLobbyLobbyPositionPreferences, response: unknown }
+	},
+	"/lol-lobby/v1/lobby/members/localMember/quickplayPlayerState": {
+		put: { path: never, params: never, body: string, response: unknown }
 	},
 	"/lol-lobby/v1/parties/active": {
 		put: { path: never, params: never, body: number, response: void }
