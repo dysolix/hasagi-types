@@ -2514,9 +2514,6 @@ export interface LCUEndpoints {
 	"/lol-npe-tutorial-path/v1/tutorials/init": {
 		patch: { path: never, params: never, body: never, response: void }
 	},
-	"/lol-rewards/v1/grants/{grantId}/view": {
-		patch: { path: [grantId: string], params: never, body: never, response: void }
-	},
 	"/lol-rewards/v1/grants/view": {
 		patch: { path: never, params: never, body: string[], response: void }
 	},
@@ -3160,6 +3157,9 @@ export interface LCUEndpoints {
 		post: { path: never, params: never, body: LCUTypes.LolPurchaseWidgetPurchaseRequest, response: unknown }
 	},
 	"/lol-purchase-widget/v3/purchaseOffer": {
+		post: { path: never, params: never, body: LCUTypes.LolPurchaseWidgetPurchaseOfferRequestV3, response: LCUTypes.LolPurchaseWidgetPurchaseOfferResponseV3 }
+	},
+	"/lol-purchase-widget/v3/purchaseOfferViaCap": {
 		post: { path: never, params: never, body: LCUTypes.LolPurchaseWidgetPurchaseOfferRequestV3, response: LCUTypes.LolPurchaseWidgetPurchaseOfferResponseV3 }
 	},
 	"/lol-purchase-widget/v3/validateOffer": {
