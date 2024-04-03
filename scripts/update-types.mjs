@@ -1,6 +1,5 @@
 import { execSync } from "child_process";
 import fs from "fs/promises";
-import axios from "axios";
 import { HasagiClient } from "@hasagi/core";
 
 var TYPESCRIPT_CHANGED = false;
@@ -27,13 +26,21 @@ if (swagger !== oldSwagger)
 
 const client = new HasagiClient();
 await client.connect();
-const region = await client.request({ method: "get", url: "/riotclient/region-locale" });
-const version = await axios.get(`https://ddragon.leagueoflegends.com/realms/${region.webRegion}.json`).then(res => res.data.v);
+const clientVersion = await client.request("get", "/system/v1/builds").then(res => res.version.split(".").slice(0, 2).join("."));
 const packageObj = JSON.parse(await fs.readFile("./package.json", "utf8"));
-CLIENT_VERSION_CHANGED = packageObj.version !== version;
+CLIENT_VERSION_CHANGED = packageObj._clientVersion !== clientVersion;
 
 console.log(`TypeScript updated: ${TYPESCRIPT_CHANGED}`);
 console.log(`Swagger updated: ${SWAGGER_CHANGED}`);
 console.log(`Client version changed: ${CLIENT_VERSION_CHANGED}`);
-console.log(`Current client version: ${version}`);
+
+if (CLIENT_VERSION_CHANGED) {
+    console.log(`Client version: ${packageObj._clientVersion} -> ${clientVersion}`);
+    packageObj._clientVersion = clientVersion;
+    packageObj.version = clientVersion + ".1";
+    await fs.writeFile("./package.json", JSON.stringify(packageObj, null, 2));
+} else {
+    console.log(`Client version: ${clientVersion}`);
+}
+
 process.exit();
