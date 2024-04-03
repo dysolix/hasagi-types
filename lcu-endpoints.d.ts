@@ -1762,6 +1762,9 @@ export interface LCUEndpoints {
 	"/lol-player-behavior/v1/config": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPlayerBehaviorPlayerBehaviorConfig }
 	},
+	"/lol-player-behavior/v1/credibility-behavior-warnings": {
+		get: { path: never, params: never, body: never, response: void }
+	},
 	"/lol-player-behavior/v1/ranked-restriction": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPlayerBehaviorRestrictionNotification }
 	},
@@ -2236,6 +2239,9 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTastesDataModelResponse }
 	},
 	"/lol-tft-pass/v1/battle-pass": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolTftPassTftPaidBattlepass }
+	},
+	"/lol-tft-pass/v1/daily-login-pass": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftPassTftPaidBattlepass }
 	},
 	"/lol-tft-pass/v1/enabled": {
@@ -3504,6 +3510,9 @@ export interface LCUEndpoints {
 	"/lol-perks/v1/perks/ack-gameplay-updated": {
 		put: { path: never, params: never, body: number[], response: unknown }
 	},
+	"/lol-player-behavior/v1/ack-credibility-behavior-warning/{mailId}": {
+		put: { path: [mailId: string], params: never, body: never, response: void }
+	},
 	"/lol-player-behavior/v3/reform-card/{id}": {
 		put: { path: [id: string], params: never, body: never, response: void }
 	},
@@ -3563,15 +3572,9 @@ export interface LCUEndpoints {
 	},
 }
 
-   // @ts-expect-error
-    export type LCUEndpoint<Method extends HttpMethod, Path extends EndpointsWithMethod<Method>> = (...args: [...(LCUEndpoints[Path][Method]["path"] extends never ? [] : LCUEndpoints[Path][Method]["path"]), ...(LCUEndpointBodyType<Method, Path> extends never ? (LCUEndpointParams<Method, Path> extends never ? [] : {} extends LCUEndpointParams<Method, Path> ? [data?: LCUEndpointParams<Method, Path>] : [data: LCUEndpointParams<Method, Path>]) : [data: LCUEndpointBodyType<Method, Path>])]) => Promise<LCUEndpointResponseType<Method, Path>>
-    // @ts-expect-error
-    export type LCUEndpointResponseType<Method extends string, Path extends string> = Path extends keyof LCUEndpoints ? Method extends keyof LCUEndpoints[Path] ? LCUEndpoints[Path][Method]["response"] : unknown : unknown;
-    // @ts-expect-error
-    export type LCUEndpointBodyType<Method extends string, Path extends string> = Path extends keyof LCUEndpoints ? Method extends keyof LCUEndpoints[Path] ? LCUEndpoints[Path][Method]["body"] : unknown : unknown;
-    // @ts-expect-error
-    export type LCUEndpointParams<Method extends string, Path extends string> = Path extends keyof LCUEndpoints ? Method extends keyof LCUEndpoints[Path] ? LCUEndpoints[Path][Method]["params"] : unknown : unknown;
-    
-    export type EndpointsWithMethod<Method extends HttpMethod> = { [K in keyof LCUEndpoints]: LCUEndpoints[K] extends { [key in Method]: {} } ? K : never }[keyof LCUEndpoints];
-    
-    export type HttpMethod = "delete" | "get" | "head" | "patch" | "post" | "put";
+export type LCUEndpoint<Method extends HttpMethod, Path extends EndpointsWithMethod<Method>> = (...args: [...(Path extends keyof LCUEndpoints ? Method extends keyof LCUEndpoints[Path] ? "path" extends keyof LCUEndpoints[Path][Method] ? LCUEndpoints[Path][Method]["path"] extends never ? [] : LCUEndpoints[Path][Method]["path"] : [] : [] : []), ...(LCUEndpointBodyType<Method, Path> extends never ? (LCUEndpointParams<Method, Path> extends never ? [] : {} extends LCUEndpointParams<Method, Path> ? [data?: LCUEndpointParams<Method, Path>] : [data: LCUEndpointParams<Method, Path>]) : [data: LCUEndpointBodyType<Method, Path>])]) => Promise<LCUEndpointResponseType<Method, Path>>
+export type LCUEndpointResponseType<Method extends string, Path extends string> = Path extends keyof LCUEndpoints ? Method extends keyof LCUEndpoints[Path] ? "response" extends keyof LCUEndpoints[Path][Method] ? LCUEndpoints[Path][Method]["response"] : unknown : unknown : unknown;
+export type LCUEndpointBodyType<Method extends string, Path extends string> = Path extends keyof LCUEndpoints ? Method extends keyof LCUEndpoints[Path] ? "body" extends keyof LCUEndpoints[Path][Method] ? LCUEndpoints[Path][Method]["body"] : unknown : unknown : unknown;
+export type LCUEndpointParams<Method extends string, Path extends string> = Path extends keyof LCUEndpoints ? Method extends keyof LCUEndpoints[Path] ? "params" extends keyof LCUEndpoints[Path][Method] ? LCUEndpoints[Path][Method]["params"] : unknown : unknown : unknown;
+export type EndpointsWithMethod<Method extends HttpMethod> = { [K in keyof LCUEndpoints]: LCUEndpoints[K] extends { [key in Method]: {} } ? K : never }[keyof LCUEndpoints];
+export type HttpMethod = "delete" | "get" | "head" | "patch" | "post" | "put";
