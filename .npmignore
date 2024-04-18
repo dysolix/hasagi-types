@@ -2,3 +2,4 @@ node_modules
 scripts
 package-lock.json
 swagger.json
+.gitignore
