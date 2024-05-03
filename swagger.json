@@ -3,7 +3,7 @@
     "info": {
         "title": "LCU SCHEMA",
         "description": "\nAuto-generated using LCU's /help endpoint.\nThe following endpoints are not entirely auto-generated because their /help response is missing necessary fields:\n\n1.\tAsyncDelete\n2.\tAsyncResult\n3.\tAsyncStatus\n4.\tCancel\n5.\tExit\n6.\tGetRiotclientRegionLocale\n7.\tHelp\n8.\tLoggingGetEntries\n9.\tLoggingMetrics\n10.\tLoggingMetricsMetadata\n11.\tLoggingStart\n12.\tLoggingStop\n13.\tSubscribe\n14.\tUnsubscribe\n15.\tWebSocketFormat\n\n### Rules\n\n1.  No interacting with shop.\n2.  No interacting with chat.\n3.  No interacting with anything authentication related.\n4.  Don't automate anything Riot doesn't want you to (like ready check, bans, and champ selection)\n5.  If you can do it using the official Riot API, then don't do it using LCU.\n6.  Don't try to expose data that Riot wants to hide, e.g. names in ranked champ select.\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
-        "version": "14.8.575.9209"
+        "version": "14.9.581.3160"
     },
     "paths": {
         "/AsyncDelete": {
@@ -10134,6 +10134,28 @@
                 }
             }
         },
+        "/lol-dx9-deprecation/needs-hardware-upgrade": {
+            "get": {
+                "operationId": "GetLolDx9DeprecationNeedsHardwareUpgrade",
+                "description": "",
+                "tags": [
+                    "Plugin lol-dx9-deprecation"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/lol-email-verification/v1/email": {
             "get": {
                 "operationId": "GetLolEmailVerificationV1Email",
@@ -17958,28 +17980,6 @@
                 }
             }
         },
-        "/lol-player-behavior/v1/ranked-restriction": {
-            "get": {
-                "operationId": "GetLolPlayerBehaviorV1RankedRestriction",
-                "description": "",
-                "tags": [
-                    "Plugin lol-player-behavior"
-                ],
-                "parameters": [],
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolPlayerBehaviorRestrictionNotification"
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
         "/lol-player-behavior/v1/reform-card": {
             "get": {
                 "operationId": "GetLolPlayerBehaviorV1ReformCard",
@@ -23094,6 +23094,28 @@
                 "parameters": [],
                 "responses": {
                     "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-tft/v1/tft/backgrounds": {
+            "get": {
+                "operationId": "GetLolTftV1TftBackgrounds",
+                "description": "",
+                "tags": [
+                    "Plugin lol-tft"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolTftLolTftBackgrounds"
+                                }
+                            }
+                        },
                         "description": "Success response"
                     }
                 }
@@ -46422,7 +46444,7 @@
                     "championSetRewards": {
                         "type": "object",
                         "additionalProperties": {
-                            "type": "string"
+                            "$ref": "#/components/schemas/LolChampionMasterySetRewardEntry"
                         }
                     },
                     "seasonMilestoneRequireAndRewards": {
@@ -46431,7 +46453,7 @@
                             "$ref": "#/components/schemas/LolChampionMasterySeasonMilestoneRequireAndRewards"
                         }
                     },
-                    "newPlayerNextLevel": {
+                    "newChampionNextLevel": {
                         "$ref": "#/components/schemas/LolChampionMasteryLevelMark"
                     },
                     "totalScore": {
@@ -46445,7 +46467,7 @@
                     "championSet",
                     "championSetRewards",
                     "seasonMilestoneRequireAndRewards",
-                    "newPlayerNextLevel",
+                    "newChampionNextLevel",
                     "totalScore"
                 ]
             },
@@ -46838,6 +46860,23 @@
                     "rewardConfig"
                 ]
             },
+            "LolChampionMasterySetRewardEntry": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "type"
+                ]
+            },
             "LolChampionMasteryTopChampionMasteries": {
                 "type": "object",
                 "description": "",
@@ -46886,7 +46925,7 @@
                     "championSetRewards": {
                         "type": "object",
                         "additionalProperties": {
-                            "type": "string"
+                            "$ref": "#/components/schemas/LolChampionMasterySetRewardEntry"
                         }
                     },
                     "seasonMilestoneRequireAndRewards": {
@@ -46907,6 +46946,13 @@
                     "totalScore": {
                         "type": "integer",
                         "format": "int32"
+                    },
+                    "championCountByMilestone": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -46917,7 +46963,8 @@
                     "seasonMilestoneRequireAndRewards",
                     "defaultChampionMastery",
                     "customRewards",
-                    "totalScore"
+                    "totalScore",
+                    "championCountByMilestone"
                 ]
             },
             "LolChampionMasteryUIChampionMasteryCustomReward": {
@@ -58104,6 +58151,25 @@
                 ],
                 "additionalProperties": false
             },
+            "LolDx9DeprecationLocalSettingsCategory": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "schemaVersion": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "data",
+                    "schemaVersion"
+                ]
+            },
             "LolEmailVerificationAccessToken": {
                 "type": "object",
                 "description": "",
@@ -61464,6 +61530,9 @@
                     "eventName": {
                         "type": "string"
                     },
+                    "headerTitleImagePath": {
+                        "type": "string"
+                    },
                     "progressEndDate": {
                         "type": "string"
                     },
@@ -61487,6 +61556,7 @@
                 "required": [
                     "eventIconPath",
                     "eventName",
+                    "headerTitleImagePath",
                     "progressEndDate",
                     "shopEndDate",
                     "eventStartDate",
@@ -62112,6 +62182,9 @@
                     "headerIconImage": {
                         "type": "string"
                     },
+                    "headerTitleImage": {
+                        "type": "string"
+                    },
                     "startDate": {
                         "type": "string"
                     },
@@ -62183,6 +62256,7 @@
                     "localizedName",
                     "navbarIconImage",
                     "headerIconImage",
+                    "headerTitleImage",
                     "startDate",
                     "progressEndDate",
                     "endDate",
@@ -69679,6 +69753,11 @@
                         "format": "uint64",
                         "minimum": 0
                     },
+                    "legendaryMasteryScore": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "minimum": 0
+                    },
                     "patchline": {
                         "type": "string"
                     },
@@ -69741,6 +69820,7 @@
                     "availability",
                     "note",
                     "masteryScore",
+                    "legendaryMasteryScore",
                     "patchline",
                     "platformId",
                     "product",
@@ -105508,6 +105588,22 @@
                     "platformId"
                 ]
             },
+            "LolTftEventLolTftBackgrounds": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "backgrounds": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "backgrounds"
+                ]
+            },
             "LolTftEventLolTftBattlePassHub": {
                 "type": "object",
                 "description": "",
@@ -106657,6 +106753,22 @@
                 "required": [
                     "phase",
                     "gameData"
+                ]
+            },
+            "LolTftLolTftBackgrounds": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "backgrounds": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "backgrounds"
                 ]
             },
             "LolTftLolTftBattlePassHub": {
@@ -108998,9 +109110,6 @@
                     "enabled": {
                         "type": "boolean"
                     },
-                    "remindersEnabled": {
-                        "type": "boolean"
-                    },
                     "traitTooltipChampsEnabled": {
                         "type": "boolean"
                     },
@@ -109011,7 +109120,6 @@
                 "additionalProperties": false,
                 "required": [
                     "enabled",
-                    "remindersEnabled",
                     "traitTooltipChampsEnabled",
                     "multipleSetsEnabled"
                 ]
@@ -109064,6 +109172,28 @@
                     "remindersEnabled",
                     "registeredTeamIndex",
                     "hasViewedTeamPlanner"
+                ]
+            },
+            "LolTftTeamPlannerTeamsForSet": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "teams": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LolTftTeamPlannerTeamPlan"
+                        }
+                    },
+                    "registeredTeamIndex": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "teams",
+                    "registeredTeamIndex"
                 ]
             },
             "LolTftTrovesCapCounterBalanceDto": {
