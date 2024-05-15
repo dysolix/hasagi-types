@@ -1,7 +1,7 @@
 {
   "name": "@hasagi/types",
-  "version": "14.9.1",
-  "_clientVersion": "14.9.581.3160",
+  "version": "14.10.1",
+  "_clientVersion": "14.10.584.5961",
   "description": "This package contains the auto-generated LCU types.",
   "scripts": {
     "update": "node scripts/update-types.mjs"
@@ -12,8 +12,8 @@
   "author": "dysolix",
   "license": "MIT",
   "devDependencies": {
-    "@hasagi/cli": "^0.8.14",
-    "@hasagi/core": "^0.4.11",
+    "@hasagi/cli": "^0.9.0",
+    "@hasagi/core": "^0.5.0",
     "axios": "^1.6.8"
   },
   "exports": {
