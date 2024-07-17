@@ -323,9 +323,6 @@ export interface LCUEndpoints {
 	"/client-config/v2/namespace/{namespace}/public": {
 		get: { path: [namespace: string], params: never, body: never, response: Record<string, unknown> }
 	},
-	"/config/v1/config": {
-		get: { path: never, params: never, body: never, response: unknown }
-	},
 	"/cookie-jar/v1/cookies": {
 		get: { path: never, params: never, body: never, response: LCUTypes.cookie[] }
 		post: { path: never, params: never, body: LCUTypes.cookie[], response: unknown }
@@ -958,7 +955,7 @@ export interface LCUEndpoints {
 		get: { path: [eventId: string], params: never, body: never, response: number }
 	},
 	"/lol-event-hub/v1/navigation-button-data": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolEventHubNavigationButtonUIData }
+		get: { path: never, params: never, body: never, response: LCUTypes.LolEventHubNavigationButtonUIData[] }
 	},
 	"/lol-event-hub/v1/skins": {
 		get: { path: never, params: never, body: never, response: Record<string, LCUTypes.LolEventHubEventPassInfo> }
@@ -1600,6 +1597,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-missions/v1/missions": {
 		get: { path: never, params: never, body: never, response: LCUTypes.PlayerMissionDTO[] }
+	},
+	"/lol-missions/v1/missions/series/{seriesName}": {
+		get: { path: [seriesName: string], params: never, body: never, response: LCUTypes.PlayerMissionDTO[] }
 	},
 	"/lol-missions/v1/series": {
 		get: { path: never, params: never, body: never, response: LCUTypes.SeriesDTO[] }
@@ -3369,9 +3369,6 @@ export interface LCUEndpoints {
 	"/sanitizer/v1/sanitize": {
 		post: { path: never, params: never, body: LCUTypes.SanitizerSanitizeRequest, response: LCUTypes.SanitizerSanitizeResponse }
 	},
-	"/services-api/config/v1/client-config": {
-		post: { path: never, params: never, body: unknown, response: void }
-	},
 	"/telemetry/v1/common-data/{key}": {
 		post: { path: [key: string], params: never, body: string, response: void }
 	},
@@ -3548,9 +3545,6 @@ export interface LCUEndpoints {
 	},
 	"/riotclient/ux-state/ack": {
 		put: { path: never, params: never, body: number, response: void }
-	},
-	"/services-api/game-session/v1/game-session-token": {
-		put: { path: never, params: never, body: string, response: void }
 	},
 	"/Subscribe": {
 		post: { path: never, params: { "eventName": string, "format"?: LCUTypes.RemotingSerializedFormat }, body: never, response: unknown }
