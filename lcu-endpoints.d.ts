@@ -1426,6 +1426,9 @@ export interface LCUEndpoints {
 	"/lol-lobby/v2/registration-status": {
 		get: { path: never, params: never, body: never, response: unknown }
 	},
+	"/lol-lock-and-load/v1/should-wait-for-home-hubs": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
 	"/lol-login/v1/account-state": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLoginAccountStateResource }
 		post: { path: never, params: never, body: never, response: void }
@@ -1572,7 +1575,7 @@ export interface LCUEndpoints {
 		get: { path: never, params: { "begIndex"?: number, "endIndex"?: number }, body: never, response: LCUTypes.LolMatchHistoryMatchHistoryList }
 	},
 	"/lol-match-history/v1/products/tft/{puuid}/matches": {
-		get: { path: [puuid: string], params: { "begin"?: number, "count"?: number, "tag"?: string }, body: never, response: LCUTypes.LolMatchHistoryGAMHSMatchHistoryList }
+		get: { path: [puuid: string], params: { "begin"?: number, "count"?: number, "tags"?: string[] }, body: never, response: LCUTypes.LolMatchHistoryGAMHSMatchHistoryList }
 	},
 	"/lol-match-history/v1/recently-played-summoners": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolMatchHistoryRecentlyPlayedSummoner[] }
@@ -1774,6 +1777,9 @@ export interface LCUEndpoints {
 	"/lol-premade-voice/v1/capturedevices": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPremadeVoiceDeviceResource[] }
 		put: { path: never, params: never, body: string, response: void }
+	},
+	"/lol-premade-voice/v1/devices/capture/permission": {
+		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-premade-voice/v1/first-experience": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPremadeVoiceFirstExperience }
@@ -2245,9 +2251,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-tft/v1/tft/battlePassHub": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftLolTftBattlePassHub }
-	},
-	"/lol-tft/v1/tft/directToHub": {
-		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-tft/v1/tft/events": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftLolTftEvents }

@@ -10235,7 +10235,7 @@ export interface LolLeaverBusterLeaverBusterNotificationResource {
 	fromRms: boolean
 }
 
-export type LolLeaverBusterLeaverBusterNotificationType = "RankedRestrictedGames" | "OnLockoutWarning" | "PreLockoutWarning" | "Reforming" | "PunishedGamesRemaining" | "PunishmentIncurred" | "TaintedWarning" | "Invalid"
+export type LolLeaverBusterLeaverBusterNotificationType = "WinBasedRankedRestrictionsEnabled" | "RankedRestrictedGames" | "OnLockoutWarning" | "PreLockoutWarning" | "Reforming" | "PunishedGamesRemaining" | "PunishmentIncurred" | "TaintedWarning" | "Invalid"
 
 export interface LolLeaverBusterLeaverBusterPenaltyResponse {
 	puuid: string
@@ -10298,6 +10298,7 @@ export interface LolLeaverBusterRankedRestrictionEntryDto {
 	/** @format int32 */
 	restrictedGamesOriginal: number
 	rankedRestrictionAckNeeded: boolean
+	winRequired: boolean
 }
 
 export interface LolLeaverBusterRankedRestrictionGamesUpdate {
@@ -20956,6 +20957,7 @@ export interface LolTftTeamPlannerTFTMapSetData {
 
 export interface LolTftTeamPlannerTFTModeData {
 	mDefaultSet: LolTftTeamPlannerTFTMapSetData
+	mEventSet: LolTftTeamPlannerTFTMapSetData
 }
 
 export interface LolTftTeamPlannerTFTTeamPlannerConfig {
@@ -22060,6 +22062,10 @@ export interface LolYourshopXboxSubscriptionStatus {
 
 export interface LolYourshopYourshopConfig {
 	Active: boolean
+	/** @format double */
+	activationSpreadSeconds: number
+	/** @format double */
+	firstActivationThresholdSeconds: number
 	ThemedBackground: boolean
 	PromotionName: string
 	PromotionStartDate: string
