@@ -11,7 +11,8 @@ const oldTypes = await fs.readFile("./lcu-types.d.ts", "utf8");
 const oldEvents = await fs.readFile("./lcu-events.d.ts", "utf8");
 const oldSwagger = await fs.readFile("./swagger.json", "utf8");
 
-execSync("hasagi schema --swagger ./ --typescript ./");
+console.log("Generating schema...");
+execSync("npm run generate");
 
 const endpoints = await fs.readFile("./lcu-endpoints.d.ts", "utf8");
 const types = await fs.readFile("./lcu-types.d.ts", "utf8");
