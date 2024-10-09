@@ -104,11 +104,6 @@ export interface LCUEndpoints {
 		put: { path: [id: number], params: never, body: LCUTypes.LolHighlightsHighlight, response: LCUTypes.LolHighlightsHighlight }
 		delete: { path: [id: number], params: never, body: never, response: LCUTypes.LolHighlightsHighlight }
 	},
-	"/lol-honeyfruit/v1/account-claim/migration": {
-		get: { path: never, params: never, body: never, response: string }
-		post: { path: never, params: never, body: never, response: string }
-		delete: { path: never, params: never, body: never, response: unknown }
-	},
 	"/lol-leaver-buster/v1/notifications/{id}": {
 		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolLeaverBusterLeaverBusterNotificationResource }
 		delete: { path: [id: number], params: never, body: never, response: unknown }
@@ -233,6 +228,10 @@ export interface LCUEndpoints {
 	},
 	"/lol-suggested-players/v1/suggested-players/{summonerId}": {
 		delete: { path: [summonerId: number], params: never, body: never, response: unknown }
+	},
+	"/lol-tft-team-planner/v1/sets/{set}/reminders/{team}": {
+		patch: { path: [set: string, team: string], params: never, body: never, response: unknown }
+		delete: { path: [set: string, team: string], params: never, body: never, response: unknown }
 	},
 	"/lol-tft-team-planner/v1/sets/{set}/teams/{team}": {
 		post: { path: [set: string, team: string], params: never, body: never, response: unknown }
@@ -922,6 +921,9 @@ export interface LCUEndpoints {
 	"/lol-event-hub/v1/events/{eventId}/reward-track/bonus-progress": {
 		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubRewardTrackProgress }
 	},
+	"/lol-event-hub/v1/events/{eventId}/reward-track/counter": {
+		get: { path: [eventId: string], params: { "beforeEpoch": number }, body: never, response: number }
+	},
 	"/lol-event-hub/v1/events/{eventId}/reward-track/failure": {
 		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubEventHubError }
 	},
@@ -1099,18 +1101,8 @@ export interface LCUEndpoints {
 	"/lol-highlights/v1/highlights-folder-path/default": {
 		get: { path: never, params: never, body: never, response: string }
 	},
-	"/lol-honeyfruit/v1/account-claim/account-status/{puuid}": {
-		get: { path: [puuid: string], params: never, body: never, response: LCUTypes.LolHoneyfruitAccountClaimStatus }
-	},
-	"/lol-honeyfruit/v1/account-claim/auto-dismiss": {
-		get: { path: never, params: never, body: never, response: boolean }
-		put: { path: never, params: never, body: boolean, response: unknown }
-	},
-	"/lol-honeyfruit/v1/linking-settings-button-available": {
-		get: { path: never, params: never, body: never, response: boolean }
-	},
 	"/lol-honeyfruit/v1/vng-publisher-settings": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolHoneyfruitHoneyfruitVNGPublisherSettings }
+		get: { path: never, params: never, body: never, response: LCUTypes.LolSettingsHoneyfruitVNGPublisherSettings }
 		post: { path: never, params: never, body: never, response: unknown }
 	},
 	"/lol-honor-v2/v1/ballot": {
@@ -1362,6 +1354,9 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyQuickPlayPresetSlotDto[] }
 		put: { path: never, params: never, body: LCUTypes.LolLobbyQuickPlayPresetSlotDto[], response: unknown }
 	},
+	"/lol-lobby/v1/lobby/npe-config": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTFTNPEConfig }
+	},
 	"/lol-lobby/v1/lobby/tft-ranked-history": {
 		get: { path: never, params: never, body: never, response: boolean }
 	},
@@ -1417,6 +1412,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby/v2/registration-status": {
 		get: { path: never, params: never, body: never, response: unknown }
+	},
+	"/lol-lock-and-load/v1/home-hubs-waits": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolLockAndLoadHomeHubsWaits }
 	},
 	"/lol-lock-and-load/v1/should-show-progress-bar-text": {
 		get: { path: never, params: never, body: never, response: boolean }
@@ -1604,6 +1602,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-npe-rewards/v1/challenges/progress": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolNpeRewardsChallengesProgress }
+	},
+	"/lol-npe-rewards/v1/get_poro_experiments": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolNpeRewardsPoroExperimentData }
 	},
 	"/lol-npe-rewards/v1/level-rewards": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolNpeRewardsRewardSeries }
@@ -2218,6 +2219,24 @@ export interface LCUEndpoints {
 	"/lol-tft-pass/v1/skill-tree-pass": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftPassTftBattlepass }
 	},
+	"/lol-tft-skill-tree/v1/enabled": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
+	"/lol-tft-skill-tree/v1/player-progression": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolTftSkillTreeEventSkillPlayerProgression }
+	},
+	"/lol-tft-skill-tree/v1/ready": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
+	"/lol-tft-skill-tree/v1/skill/{skillId}": {
+		get: { path: [skillId: number], params: never, body: never, response: LCUTypes.LolTftSkillTreeEventSkill }
+	},
+	"/lol-tft-skill-tree/v1/skill-tree": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolTftSkillTreeEventSkillTreeData }
+	},
+	"/lol-tft-skill-tree/v1/skill-tree-rank/{rank}": {
+		get: { path: [rank: number], params: never, body: never, response: LCUTypes.LolTftSkillTreeEventSkillTreeRank }
+	},
 	"/lol-tft-team-planner/v1/config": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftTeamPlannerTFTTeamPlannerConfig }
 	},
@@ -2228,6 +2247,10 @@ export interface LCUEndpoints {
 	"/lol-tft-team-planner/v1/sets/dirty": {
 		get: { path: never, params: never, body: never, response: Record<string, LCUTypes.LolTftTeamPlannerTeamsForSet> }
 	},
+	"/lol-tft-team-planner/v1/sort-option": {
+		get: { path: never, params: never, body: never, response: string }
+		patch: { path: never, params: never, body: string, response: unknown }
+	},
 	"/lol-tft-team-planner/v1/team/local": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftTeamPlannerTeamSettings }
 	},
@@ -2236,8 +2259,7 @@ export interface LCUEndpoints {
 		patch: { path: never, params: never, body: boolean, response: unknown }
 	},
 	"/lol-tft-team-planner/v2/reminders": {
-		get: { path: never, params: never, body: never, response: string }
-		patch: { path: never, params: never, body: string, response: unknown }
+		get: { path: never, params: never, body: never, response: string[] }
 	},
 	"/lol-tft-troves/v1/banners": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftTrovesTrovesBanner[] }
@@ -2412,6 +2434,9 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: number }
 	},
 	"/riotclient/auth-token": {
+		get: { path: never, params: never, body: never, response: string }
+	},
+	"/riotclient/clipboard/read": {
 		get: { path: never, params: never, body: never, response: string }
 	},
 	"/riotclient/command-line-args": {
@@ -2854,9 +2879,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-highlights/v1/file-browser/{highlightId}": {
 		post: { path: [highlightId: number], params: never, body: never, response: unknown }
-	},
-	"/lol-honeyfruit/v1/account-claim/linking-redirect": {
-		post: { path: never, params: never, body: never, response: void }
 	},
 	"/lol-honor/v1/ballot": {
 		post: { path: never, params: never, body: never, response: string }
@@ -3556,6 +3578,12 @@ export interface LCUEndpoints {
 	},
 	"/lol-tft-pass/v1/pass/{id}/milestone/claimAllRewards": {
 		put: { path: [id: string], params: never, body: never, response: void }
+	},
+	"/lol-tft-skill-tree/v1/skill/{skillId}/equip": {
+		put: { path: [skillId: number], params: never, body: never, response: LCUTypes.LolTftSkillTreeEventSkillTreeRank }
+	},
+	"/lol-tft-skill-tree/v1/skill-tree-rank/{rank}/claim-rewards": {
+		put: { path: [rank: number], params: never, body: never, response: void }
 	},
 	"/lol-tft-team-planner/v1/sets/save-all": {
 		put: { path: never, params: never, body: never, response: unknown }
