@@ -1120,6 +1120,9 @@ export interface LCUEndpoints {
 	"/lol-honor-v2/v1/level-change": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolHonorV2VendedHonorChange }
 	},
+	"/lol-honor-v2/v1/level-change-notifications": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolHonorV2Mail[] }
+	},
 	"/lol-honor-v2/v1/mutual-honor": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolHonorV2MutualHonor }
 	},
@@ -2436,8 +2439,9 @@ export interface LCUEndpoints {
 	"/riotclient/auth-token": {
 		get: { path: never, params: never, body: never, response: string }
 	},
-	"/riotclient/clipboard/read": {
+	"/riotclient/clipboard": {
 		get: { path: never, params: never, body: never, response: string }
+		post: { path: never, params: never, body: string, response: boolean }
 	},
 	"/riotclient/command-line-args": {
 		get: { path: never, params: never, body: never, response: string[] }
@@ -2565,8 +2569,8 @@ export interface LCUEndpoints {
 	"/lol-challenges/v1/ack-challenge-update/{id}": {
 		post: { path: [id: number], params: never, body: never, response: void }
 	},
-	"/lol-challenges/v1/rsbot-challenges": {
-		post: { path: never, params: never, body: never, response: Record<string, LCUTypes.LolChallengesUIChallenge> }
+	"/lol-challenges/v1/rsbot-challenges/{gameId}": {
+		post: { path: [gameId: number], params: never, body: never, response: Record<string, LCUTypes.LolChallengesUIChallenge> }
 	},
 	"/lol-challenges/v1/update-player-preferences": {
 		post: { path: never, params: never, body: LCUTypes.LolChallengesChallengesPlayerPreferences, response: void }
@@ -3294,8 +3298,14 @@ export interface LCUEndpoints {
 	"/lol-tft-pass/v1/passes": {
 		post: { path: never, params: never, body: never, response: void }
 	},
+	"/lol-tft-team-planner/v1/sets/{set}/team-code/{team}": {
+		post: { path: [set: string, team: string], params: never, body: never, response: string }
+	},
 	"/lol-tft-team-planner/v1/sets/{set}/teams/{team}/import": {
 		post: { path: [set: string, team: string], params: never, body: string[], response: unknown }
+	},
+	"/lol-tft-team-planner/v1/team-code/clipboard/{set}": {
+		post: { path: [set: string], params: never, body: never, response: LCUTypes.LolTftTeamPlannerImportedTeamCodeData }
 	},
 	"/lol-tft-troves/v1/purchase": {
 		post: { path: never, params: never, body: LCUTypes.LolTftTrovesTrovesPurchaseRequest, response: LCUTypes.LolTftTrovesCapOrdersResponseDTO }
