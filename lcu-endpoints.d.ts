@@ -385,6 +385,18 @@ export interface LCUEndpoints {
 	"/lol-active-boosts/v1/active-boosts": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolActiveBoostsActiveBoosts }
 	},
+	"/lol-activity-center/v1/config-data": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolActivityCenterConfigData }
+	},
+	"/lol-activity-center/v1/content/{pageName}": {
+		get: { path: [pageName: string], params: never, body: never, response: unknown }
+	},
+	"/lol-activity-center/v1/content/client-nav": {
+		get: { path: never, params: never, body: never, response: unknown }
+	},
+	"/lol-activity-center/v1/overrides": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolActivityCenterTencentOverrides }
+	},
 	"/lol-anti-addiction/v1/anti-addiction-token": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolAntiAddictionAntiAddictionToken }
 	},
@@ -925,7 +937,7 @@ export interface LCUEndpoints {
 		get: { path: [eventId: string], params: { "beforeEpoch": number }, body: never, response: number }
 	},
 	"/lol-event-hub/v1/events/{eventId}/reward-track/failure": {
-		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubEventHubError }
+		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubRewardTrackError }
 	},
 	"/lol-event-hub/v1/events/{eventId}/reward-track/items": {
 		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubRewardTrackItem[] }
@@ -1631,6 +1643,12 @@ export interface LCUEndpoints {
 	"/lol-npe-tutorial-path/v1/tutorials": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolNpeTutorialPathTutorial[] }
 	},
+	"/lol-objectives/v1/missions-by-tag": {
+		get: { path: never, params: { "tags": string[] }, body: never, response: Record<string, LCUTypes.LolObjectivesUIMissions> }
+	},
+	"/lol-objectives/v1/objectives/{gameType}": {
+		get: { path: [gameType: string], params: never, body: never, response: LCUTypes.LolObjectivesUIObjectivesGroup[] }
+	},
 	"/lol-patch/v1/checking-enabled": {
 		get: { path: never, params: never, body: never, response: boolean }
 	},
@@ -1968,6 +1986,9 @@ export interface LCUEndpoints {
 	"/lol-seasons/v1/season/recent-final-split": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolSeasonsAllSeasonsProduct }
 	},
+	"/lol-seasons/v1/season/should-ac-refresh": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
 	"/lol-service-status/v1/lcu-status": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolServiceStatusServiceStatusResource }
 	},
@@ -2247,12 +2268,16 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: boolean }
 		patch: { path: never, params: never, body: boolean, response: unknown }
 	},
+	"/lol-tft-team-planner/v1/previous-context": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolTftTeamPlannerPreviouslyUsedContext }
+		put: { path: never, params: never, body: LCUTypes.LolTftTeamPlannerPreviouslyUsedContext, response: unknown }
+	},
 	"/lol-tft-team-planner/v1/sets/dirty": {
 		get: { path: never, params: never, body: never, response: Record<string, LCUTypes.LolTftTeamPlannerTeamsForSet> }
 	},
 	"/lol-tft-team-planner/v1/sort-option": {
-		get: { path: never, params: never, body: never, response: string }
-		patch: { path: never, params: never, body: string, response: unknown }
+		get: { path: never, params: never, body: never, response: number }
+		patch: { path: never, params: never, body: number, response: unknown }
 	},
 	"/lol-tft-team-planner/v1/team/local": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftTeamPlannerTeamSettings }
@@ -2565,6 +2590,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-account-verification/v1/sendDeactivationPin": {
 		post: { path: never, params: never, body: void, response: void }
+	},
+	"/lol-activity-center/v1/clear-cache": {
+		post: { path: never, params: never, body: never, response: void }
 	},
 	"/lol-challenges/v1/ack-challenge-update/{id}": {
 		post: { path: [id: number], params: never, body: never, response: void }
@@ -2890,6 +2918,9 @@ export interface LCUEndpoints {
 	"/lol-honor/v1/honor": {
 		post: { path: never, params: never, body: LCUTypes.LolHonorV2ApiHonorPlayerServerRequestV3, response: void }
 	},
+	"/lol-honor-v2/v1/ack-honor-notification/{mailId}": {
+		post: { path: [mailId: string], params: never, body: never, response: void }
+	},
 	"/lol-honor-v2/v1/honor-player": {
 		post: { path: never, params: never, body: LCUTypes.LolHonorV2ApiHonorPlayerServerRequest, response: string }
 	},
@@ -3211,6 +3242,9 @@ export interface LCUEndpoints {
 	"/lol-replays/v2/metadata/{gameId}/create": {
 		post: { path: [gameId: number], params: never, body: LCUTypes.LolReplaysReplayCreateMetadata, response: void }
 	},
+	"/lol-rewards/v1/celebrations/fsc": {
+		post: { path: never, params: never, body: LCUTypes.LolRewardsFSC, response: void }
+	},
 	"/lol-rewards/v1/grants/{grantId}/select": {
 		post: { path: [grantId: string], params: never, body: LCUTypes.LolRewardsSelectionRequestDTO, response: LCUTypes.LolRewardsRewardGrant }
 	},
@@ -3303,6 +3337,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-tft-team-planner/v1/sets/{set}/teams/{team}/import": {
 		post: { path: [set: string, team: string], params: never, body: string[], response: unknown }
+	},
+	"/lol-tft-team-planner/v1/sets/{set}/teams/{team}/lastView": {
+		post: { path: [set: string, team: string], params: never, body: never, response: unknown }
 	},
 	"/lol-tft-team-planner/v1/team-code/clipboard/{set}": {
 		post: { path: [set: string], params: never, body: never, response: LCUTypes.LolTftTeamPlannerImportedTeamCodeData }
