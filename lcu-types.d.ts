@@ -1454,6 +1454,43 @@ export interface LolActiveBoostsLoyaltyStatusNotification {
 	rewards: LolActiveBoostsLoyaltyRewardsSimplified
 }
 
+export interface LolActivityCenterConfigData {
+	puuid: string
+	sessionId: string
+	region: string
+	locale: string
+	webRegion: string
+	webLocale: string
+	publishingLocale: string
+	rsoPlatformId: string
+	enabled: boolean
+	clientNavEnabled: boolean
+}
+
+export interface LolActivityCenterLoginSession {
+	state: LolActivityCenterLoginSessionStates
+	/** @format uint64 */
+	summonerId: number
+	puuid: string
+	connected: boolean
+}
+
+export type LolActivityCenterLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
+
+export interface LolActivityCenterPublishingSettings {
+	region: string
+	locale: string
+	webRegion: string
+	webLocale: string
+	publishingLocale: string
+	rsoPlatformId: string
+}
+
+export interface LolActivityCenterTencentOverrides {
+	infoHubAlternativeExperienceUrl: string
+	activityCenterAlternativeExperienceUrl: string
+}
+
 export interface LolAntiAddictionAntiAddictionState {
 	policyType: LolAntiAddictionPolicyType
 	localizationKey: string
@@ -7487,6 +7524,40 @@ export interface LolEventHubExternalItemMetadataEntry {
 	value: string
 }
 
+export interface LolEventHubFSC {
+	id: string
+	canvas: LolEventHubFSCCanvas
+	media: LolEventHubFSCMedia
+	rewards: LolEventHubFSCRewards[]
+}
+
+export interface LolEventHubFSCCanvas {
+	title: string
+	subtitle: string
+	canvasBackgroundImage: string
+	canvasSize: LolEventHubFSCCanvasSize
+	canvasDesign: string
+}
+
+export type LolEventHubFSCCanvasSize = "FULL" | "LARGE" | "MEDIUM" | "SMALL"
+
+export interface LolEventHubFSCMedia {
+	introAnimation: string
+	introAnimationAudio: string
+	introLowSpecImage: string
+	loopAnimation: string
+	loopAnimationAudio: string
+	transitionAnimation: string
+	transitionAnimationAudio: string
+}
+
+export interface LolEventHubFSCRewards {
+	image: string
+	imageOverlay: string
+	title: string
+	subtitle: string
+}
+
 export type LolEventHubGrantStatus = "FAILED" | "FULFILLED" | "PENDING_SELECTION" | "PENDING_FULFILLMENT"
 
 export interface LolEventHubGrantorDescription {
@@ -8119,6 +8190,11 @@ export interface LolEventHubRewardTrackConfiguration {
 	premiumEntitlementId: string
 }
 
+export interface LolEventHubRewardTrackError {
+	errorMessage: string
+	errorId: string
+}
+
 export interface LolEventHubRewardTrackItem {
 	state: LolEventHubRewardTrackItemStates
 	rewardOptions: LolEventHubRewardTrackItemOption[]
@@ -8675,6 +8751,10 @@ export interface LolGameClientChatMutedPlayerInfo {
 	obfuscatedSummonerId: number
 }
 
+export interface LolGameQueuesDoubleUpConfig {
+	enabled: boolean
+}
+
 export interface LolGameQueuesLoginDataPacket {
 	gameTypeConfigs: LolGameQueuesQueueGameTypeConfig[]
 }
@@ -8880,6 +8960,7 @@ export interface LolGameflowGameStateUpdate {
 	gameState: string
 	gameType: string
 	errorMessage: string
+	playerCredentials?: GameflowLcdsPlayerCredentialsDto
 }
 
 export interface LolGameflowGameflowAvailability {
@@ -9377,12 +9458,21 @@ export interface LolHonorV2Queue {
 	removalFromGameDelayMinutes: number
 }
 
+export interface LolHonorV2Redemption {
+	/** @format int32 */
+	required: number
+	/** @format int32 */
+	remaining: number
+	eventType: string
+}
+
 export interface LolHonorV2RetrieveProfileResponse {
 	/** @format int32 */
 	honorLevel: number
 	/** @format int32 */
 	checkpoint: number
 	rewardsLocked: boolean
+	redemptions: LolHonorV2Redemption[]
 }
 
 export interface LolHonorV2Reward {
@@ -10451,7 +10541,7 @@ export interface LolLobbyEligibilityRestriction {
 	summonerIdsString: string
 }
 
-export type LolLobbyEligibilityRestrictionCode = "MmrStandardDeviationTooLarge" | "UserInfoNotAvailable" | "InventoryQueuesInfoNotAvailable" | "InventoryChampsInfoNotAvailable" | "LeaguesInfoNotAvailable" | "SummonerInfoNotAvailable" | "MinorInfoNotAvailable" | "BanInfoNotAvailable" | "TooManyIncompleteSubteamsRestriction" | "QPScarcePositionsNotAvailableRestriction" | "QPNonUniquePrimarySlotRestriction" | "QPInvalidChampionSelectionRestriction" | "QPInvalidPositionSelectionRestriction" | "QPInvalidNumberOfPlayerSlotsRestriction" | "QPPlayerChampionCoverageRestriction" | "QPPartyChampionCoverageRestriction" | "QPPlayerPositionCoverageRestriction" | "QPPartyPositionCoverageRestriction" | "QPPlayerScarcePositionCoverageRestriction" | "MinNormalGamesForRankedRestriction" | "LOLNewPlayerRestriction" | "UnknownRestriction" | "SeasonVersionLockout" | "TFTNewPlayerRestriction" | "QueueEntryNotEntitledRestriction" | "GameVersionNotSupported" | "GameVersionMissing" | "GameVersionMismatch" | "PrerequisiteQueuesNotPlayedRestriction" | "TeamSizeRestriction" | "TeamHighMMRMaxSizeRestriction" | "PlayerRankedSuspensionRestriction" | "PlayerRankSoloOnlyRestriction" | "PlayerTimePlayedRestriction" | "PlayerMinorRestriction" | "PlayerMinLevelRestriction" | "PlayerMaxLevelRestriction" | "PlayerTimeBasedRankRestriction" | "PlayerGameBasedRankRestriction" | "PlayerLeaverTaintedWarningRestriction" | "PlayerLeaverQueueLockoutRestriction" | "PlayerLeaverBustedRestriction" | "PlayerInGameRestriction" | "PlayerReadyCheckFailRestriction" | "PlayerDodgeRestriction" | "PlayerBingeRestriction" | "TeamMinSizeRestriction" | "TeamMaxSizeRestriction" | "TeamSkillRestriction" | "TeamDivisionRestriction" | "PlayerAvailableChampionRestriction" | "PlayerBannedRestriction" | "PlayerTimedRestriction" | "PlayerLevelRestriction" | "QueueUnsupported" | "QueueDisabled"
+export type LolLobbyEligibilityRestrictionCode = "MmrStandardDeviationTooLarge" | "UserInfoNotAvailable" | "InventoryQueuesInfoNotAvailable" | "InventoryChampsInfoNotAvailable" | "LeaguesInfoNotAvailable" | "SummonerInfoNotAvailable" | "MinorInfoNotAvailable" | "BanInfoNotAvailable" | "TooManyIncompleteSubteamsRestriction" | "QPInsufficientPlayerChampionCoveragePopularChampion" | "QPScarcePositionsNotAvailableRestriction" | "QPNonUniquePrimarySlotRestriction" | "QPInvalidChampionSelectionRestriction" | "QPInvalidPositionSelectionRestriction" | "QPInvalidNumberOfPlayerSlotsRestriction" | "QPPlayerChampionCoverageRestriction" | "QPPartyChampionCoverageRestriction" | "QPPlayerPositionCoverageRestriction" | "QPPartyPositionCoverageRestriction" | "QPPlayerScarcePositionCoverageRestriction" | "MinNormalGamesForRankedRestriction" | "LOLNewPlayerRestriction" | "UnknownRestriction" | "SeasonVersionLockout" | "TFTNewPlayerRestriction" | "QueueEntryNotEntitledRestriction" | "GameVersionNotSupported" | "GameVersionMissing" | "GameVersionMismatch" | "PrerequisiteQueuesNotPlayedRestriction" | "TeamSizeRestriction" | "TeamHighMMRMaxSizeRestriction" | "PlayerRankedSuspensionRestriction" | "PlayerRankSoloOnlyRestriction" | "PlayerTimePlayedRestriction" | "PlayerMinorRestriction" | "PlayerMinLevelRestriction" | "PlayerMaxLevelRestriction" | "PlayerTimeBasedRankRestriction" | "PlayerGameBasedRankRestriction" | "PlayerLeaverTaintedWarningRestriction" | "PlayerLeaverQueueLockoutRestriction" | "PlayerLeaverBustedRestriction" | "PlayerInGameRestriction" | "PlayerReadyCheckFailRestriction" | "PlayerDodgeRestriction" | "PlayerBingeRestriction" | "TeamMinSizeRestriction" | "TeamMaxSizeRestriction" | "TeamSkillRestriction" | "TeamDivisionRestriction" | "PlayerAvailableChampionRestriction" | "PlayerBannedRestriction" | "PlayerTimedRestriction" | "PlayerLevelRestriction" | "QueueUnsupported" | "QueueDisabled"
 
 export interface LolLobbyEntitlementsTokenResource {
 	accessToken: string
@@ -10763,6 +10853,7 @@ export interface LolLobbyLobbyDto {
 	multiUserChatPassword: string
 	mucJwtDto: LolLobbyMucJwtDto
 	scarcePositions: string[]
+	popularChampions: number[]
 }
 
 export interface LolLobbyLobbyGameConfigDto {
@@ -12439,6 +12530,40 @@ export interface LolLootEntityInstance {
 	groupId: string
 	counters: LolLootCounterInstance[]
 	milestones: LolLootMilestoneInstance[]
+}
+
+export interface LolLootFSC {
+	id: string
+	canvas: LolLootFSCCanvas
+	media: LolLootFSCMedia
+	rewards: LolLootFSCRewards[]
+}
+
+export interface LolLootFSCCanvas {
+	title: string
+	subtitle: string
+	canvasBackgroundImage: string
+	canvasSize: LolLootFSCCanvasSize
+	canvasDesign: string
+}
+
+export type LolLootFSCCanvasSize = "FULL" | "LARGE" | "MEDIUM" | "SMALL"
+
+export interface LolLootFSCMedia {
+	introAnimation: string
+	introAnimationAudio: string
+	introLowSpecImage: string
+	loopAnimation: string
+	loopAnimationAudio: string
+	transitionAnimation: string
+	transitionAnimationAudio: string
+}
+
+export interface LolLootFSCRewards {
+	image: string
+	imageOverlay: string
+	title: string
+	subtitle: string
 }
 
 export interface LolLootGameDataNexusFinisher {
@@ -14715,6 +14840,304 @@ export interface LolNpeTutorialPathTutorialReward {
 export type LolNpeTutorialPathTutorialStatus = "COMPLETED" | "UNLOCKED" | "LOCKED"
 
 export type LolNpeTutorialPathTutorialType = "REWARD" | "CARD"
+
+export interface LolObjectivesCollectionsChampion {
+	/** @format int32 */
+	id: number
+	freeToPlay: boolean
+	ownership: LolObjectivesCollectionsOwnership
+	skins: LolObjectivesCollectionsChampionSkin[]
+}
+
+export interface LolObjectivesCollectionsChampionSkin {
+	/** @format int32 */
+	championId: number
+	/** @format int32 */
+	id: number
+	ownership: LolObjectivesCollectionsOwnership
+}
+
+export interface LolObjectivesCollectionsOwnership {
+	loyaltyReward: boolean
+	xboxGPReward: boolean
+	owned: boolean
+	rental: LolObjectivesCollectionsRental
+}
+
+export interface LolObjectivesCollectionsRental {
+	rented: boolean
+}
+
+export interface LolObjectivesCollectionsSummoner {
+	/** @format int32 */
+	summonerLevel: number
+}
+
+export interface LolObjectivesCollectionsSummonerIcons {
+	icons: number[]
+}
+
+export interface LolObjectivesCollectionsWardSkin {
+	/** @format int64 */
+	id: number
+	ownership: LolObjectivesCollectionsOwnership
+}
+
+export type LolObjectivesGameflowPhase = "TerminatedInError" | "EndOfGame" | "PreEndOfGame" | "WaitingForStats" | "Reconnect" | "InProgress" | "FailedToLaunch" | "GameStart" | "ChampSelect" | "ReadyCheck" | "CheckedIntoTournament" | "Matchmaking" | "Lobby" | "None"
+
+export interface LolObjectivesGameflowSession {
+	phase: LolObjectivesGameflowPhase
+}
+
+export type LolObjectivesGrantStatus = "FAILED" | "FULFILLED" | "PENDING_SELECTION" | "PENDING_FULFILLMENT"
+
+export interface LolObjectivesInventoryItemWithPayload {
+	/** @format int32 */
+	itemId: number
+}
+
+export interface LolObjectivesLoginSession {
+	/** @format uint64 */
+	accountId: number
+	/** @format uint64 */
+	summonerId: number
+	puuid: string
+	platformId: string
+}
+
+export type LolObjectivesLoyaltyStatus = "DISABLED" | "REVOKE" | "CHANGE" | "EXPIRY" | "REWARDS_GRANT" | "LEGACY"
+
+export interface LolObjectivesLoyaltyStatusNotification {
+	status: LolObjectivesLoyaltyStatus
+}
+
+export interface LolObjectivesMissionAsset {
+	internalName: string
+	path: string
+	iconNeedsFrame: boolean
+}
+
+export interface LolObjectivesMissionsNotificationResource {
+	backgroundUrl: string
+	created: string
+	critical: boolean
+	data: Record<string, string>
+	detailKey: string
+	expires: string
+	iconUrl: string
+	/** @format uint64 */
+	id: number
+	source: string
+	state: string
+	titleKey: string
+	type: string
+}
+
+export interface LolObjectivesMissionsSettingsDataResource {
+	selected_series: string
+}
+
+export interface LolObjectivesNonPooledObjectives {
+	id: string
+	tag: string[]
+	localizedTag: string
+	objectivesType: string
+	/** @format uint64 */
+	startDate: number
+	/** @format uint64 */
+	endDate: number
+	/** @format uint8 */
+	priority: number
+	backgroundImage: string
+	isEnabled: boolean
+	localizedTitle: string
+	localizedDescription: string
+}
+
+export interface LolObjectivesObjectivesContainer {
+	pooledObjectives: LolObjectivesPooledObjectives[]
+	nonPooledObjectives: LolObjectivesNonPooledObjectives[]
+}
+
+export interface LolObjectivesObjectivesGroup {
+	backgroundImage: string
+	/** @format uint64 */
+	startDate: number
+	/** @format uint64 */
+	endDate: number
+	objectives: LolObjectivesObjectivesContainer[]
+	isActive: boolean
+	gameType: string
+}
+
+export interface LolObjectivesObjectivesHub {
+	objectivesGroup: LolObjectivesObjectivesGroup[]
+}
+
+export interface LolObjectivesObjectivesTitle {
+	localizedTitle: string
+	localizedDescription: string
+}
+
+export interface LolObjectivesPlayerUpdateResponse {
+	playerMissions: PlayerMissionDTO[]
+	playerSeries: SeriesDTO[]
+}
+
+export interface LolObjectivesPluginRegionLocaleChangedEvent {
+	locale: string
+}
+
+export interface LolObjectivesPooledObjectives {
+	id: string
+	tag: string[]
+	localizedTag: string
+	objectivesType: string
+	/** @format uint64 */
+	startDate: number
+	/** @format uint64 */
+	endDate: number
+	/** @format uint8 */
+	priority: number
+	backgroundImage: string
+	isEnabled: boolean
+	objectivesTitle: LolObjectivesObjectivesTitle[]
+	/** @format uint8 */
+	maxRefresh: number
+	/** @format uint16 */
+	refreshInterval: number
+}
+
+export interface LolObjectivesRewardGrant {
+	info: LolObjectivesRewardGrantInfo
+	rewardGroup: LolObjectivesRewardGroup
+}
+
+export interface LolObjectivesRewardGrantElement {
+	id: string
+	itemId: string
+	itemType: string
+	fulfillmentSource: string
+	rewardStatus: LolObjectivesRewardStatus
+	/** @format int32 */
+	quantity: number
+	media: Record<string, string>
+	localizations: Record<string, string>
+}
+
+export interface LolObjectivesRewardGrantInfo {
+	id: string
+	granteeId: string
+	rewardGroupId: string
+	status: LolObjectivesGrantStatus
+	grantElements: LolObjectivesRewardGrantElement[]
+	selectedIds: string[]
+	viewed: boolean
+}
+
+export interface LolObjectivesRewardGroup {
+	id: string
+	internalName: string
+	productId: string
+	types: string[]
+	rewards: LolObjectivesSvcReward[]
+	childRewardGroupIds: string[]
+	rewardStrategy: LolObjectivesRewardStrategy
+	selectionStrategyConfig: LolObjectivesSelectionStrategyConfig
+	active: boolean
+	media: Record<string, string>
+	localizations: Record<string, string>
+}
+
+export interface LolObjectivesRewardGroupsSelection {
+	rewardGroups: string[]
+}
+
+export type LolObjectivesRewardStatus = "FULFILLED" | "PENDING"
+
+export type LolObjectivesRewardStrategy = "SELECTION" | "RANDOM" | "ALL"
+
+export interface LolObjectivesRewardsProductConfig {
+	enabled: boolean
+	serviceUrl: string
+}
+
+export interface LolObjectivesSelectionStrategyConfig {
+	/** @format uint32 */
+	minSelectionsAllowed: number
+	/** @format uint32 */
+	maxSelectionsAllowed: number
+}
+
+export interface LolObjectivesSeriesOpt {
+	seriesId: string
+	option: string
+}
+
+export interface LolObjectivesSvcReward {
+	id: string
+	itemId: string
+	/** @format int32 */
+	quantity: number
+	fulfillmentSource: string
+	media: Record<string, string>
+	localizations: Record<string, string>
+}
+
+export interface LolObjectivesTftOrb {
+	missionId: string
+	status: string
+	/** @format int64 */
+	unlockTime: number
+	/** @format uint8 */
+	rewardLevel: number
+	rewards: PlayerMissionRewardDTO[]
+}
+
+export interface LolObjectivesTftWeeklyMissions {
+	missions: PlayerMissionDTO[]
+}
+
+export interface LolObjectivesUIMissions {
+	missions: PlayerMissionDTO[]
+}
+
+export interface LolObjectivesUIObjectives {
+	id: string
+	localizedTitle: string[]
+	tag: string[]
+	localizedTag: string
+	objectivesType: string
+	/** @format uint64 */
+	startDate: number
+	/** @format uint64 */
+	endDate: number
+	/** @format uint8 */
+	priority: number
+	backgroundImage: string
+	/** @format uint8 */
+	maxRefresh: number
+	/** @format uint16 */
+	refreshInterval: number
+	missions: PlayerMissionDTO[]
+	isEnabled: boolean
+	isPooledMission: boolean
+}
+
+export interface LolObjectivesUIObjectivesGroup {
+	backgroundImage: string
+	gameType: string
+	/** @format uint64 */
+	startDate: number
+	/** @format uint64 */
+	endDate: number
+	isActive: boolean
+	objectives: LolObjectivesUIObjectives[]
+}
+
+export interface LolObjectivesUserInfo {
+	userInfo: string
+}
 
 export interface LolPatchChunkingPatcherEnvironment {
 	game_patcher_available: boolean
@@ -18174,7 +18597,395 @@ export interface LolReplaysRoflFileMetadata {
 	lastKeyFrameId: number
 }
 
+export type LolRewardTrackCelebrationType = "FULLSCREEN" | "TOAST" | "NONE"
+
+export interface LolRewardTrackCounter {
+	id: string
+	name: string
+	groupId: string
+	direction: string
+	/** @format int64 */
+	startValue: number
+}
+
+export interface LolRewardTrackCounterInstance {
+	ownerId: string
+	productId: string
+	groupId: string
+	counterId: string
+	/** @format int64 */
+	counterValue: number
+}
+
+export interface LolRewardTrackEntityInstance {
+	groupId: string
+	counters: LolRewardTrackCounterInstance[]
+	milestones: LolRewardTrackMilestoneInstance[]
+}
+
+export interface LolRewardTrackFSC {
+	id: string
+	canvas: LolRewardTrackFSCCanvas
+	media: LolRewardTrackFSCMedia
+	rewards: LolRewardTrackFSCRewards[]
+}
+
+export interface LolRewardTrackFSCCanvas {
+	title: string
+	subtitle: string
+	canvasBackgroundImage: string
+	canvasSize: LolRewardTrackFSCCanvasSize
+	canvasDesign: string
+}
+
+export type LolRewardTrackFSCCanvasSize = "FULL" | "LARGE" | "MEDIUM" | "SMALL"
+
+export interface LolRewardTrackFSCMedia {
+	introAnimation: string
+	introAnimationAudio: string
+	introLowSpecImage: string
+	loopAnimation: string
+	loopAnimationAudio: string
+	transitionAnimation: string
+	transitionAnimationAudio: string
+}
+
+export interface LolRewardTrackFSCRewards {
+	image: string
+	imageOverlay: string
+	title: string
+	subtitle: string
+}
+
+export type LolRewardTrackGrantStatus = "FAILED" | "FULFILLED" | "PENDING_SELECTION" | "PENDING_FULFILLMENT"
+
+export interface LolRewardTrackGrantorDescription {
+	appName: string
+	entityId: string
+}
+
+export interface LolRewardTrackGroup {
+	id: string
+	productId: string
+	name: string
+	repeat: LolRewardTrackRepeat
+	counters: LolRewardTrackCounter[]
+	milestones: LolRewardTrackMilestone[]
+}
+
+export interface LolRewardTrackMilestone {
+	id: string
+	name: string
+	groupId: string
+	counterId: string
+	/** @format int64 */
+	triggerValue: number
+	properties: Record<string, string>
+}
+
+export interface LolRewardTrackMilestoneInstance {
+	milestoneId: string
+	instanceId: string
+	ownerId: string
+	productId: string
+	groupId: string
+	counterId: string
+	/** @format int64 */
+	triggerValue: number
+	/** @format uint32 */
+	repeatSequence: number
+	triggered: boolean
+	triggeredTimestamp: string
+	triggers: LolRewardTrackTrigger[]
+}
+
+export interface LolRewardTrackNextRewardUIData {
+	thumbIconPath: string
+	state: LolRewardTrackRewardTrackItemHeaderType
+	name: string
+	description: string
+	level: string
+}
+
+export interface LolRewardTrackRMSPayload {
+	productId: string
+	affinities: string[]
+}
+
+export interface LolRewardTrackRegionLocale {
+	region: string
+	locale: string
+}
+
+export interface LolRewardTrackRepeat {
+	/** @format int32 */
+	count: number
+	/** @format uint32 */
+	scope: number
+	/** @format float */
+	multiplier: number
+	milestones: LolRewardTrackMilestone[]
+	repeatTriggers: LolRewardTrackRepeatGroupTrigger[]
+}
+
+export interface LolRewardTrackRepeatGroupTrigger {
+	type: string
+	counterId: string
+	/** @format uint16 */
+	startTriggerValue: number
+	/** @format uint16 */
+	increaseBy: number
+	/** @format float */
+	multiplier: number
+}
+
+export interface LolRewardTrackRequestDTO_SelectionRequestDTO {
+	data: LolRewardTrackSelectionRequestDTO
+	metadata: LolRewardTrackRequestMetadataDTO
+}
+
+export interface LolRewardTrackRequestDTO_vector_SelectionRequestDTO {
+	data: LolRewardTrackSelectionRequestDTO[]
+	metadata: LolRewardTrackRequestMetadataDTO
+}
+
+export interface LolRewardTrackRequestDTO_vector_string {
+	data: string[]
+	metadata: LolRewardTrackRequestMetadataDTO
+}
+
+export interface LolRewardTrackRequestMetadataDTO {
+	transactionId?: string
+}
+
+export interface LolRewardTrackResponseDTO_SvcRewardGrant {
+	data: LolRewardTrackSvcRewardGrant
+	metadata: LolRewardTrackResponseMetadataDTO
+}
+
+export interface LolRewardTrackResponseDTO_map_RewardGroupId_SelectGrantStatus {
+	data: Record<string, LolRewardTrackSelectGrantStatusResponse>
+	metadata: LolRewardTrackResponseMetadataDTO
+}
+
+export interface LolRewardTrackResponseDTO_vector_SvcRewardGrant {
+	data: LolRewardTrackSvcRewardGrant[]
+	metadata: LolRewardTrackResponseMetadataDTO
+}
+
+export interface LolRewardTrackResponseDTO_vector_SvcRewardGroup {
+	data: LolRewardTrackSvcRewardGroup[]
+	metadata: LolRewardTrackResponseMetadataDTO
+}
+
+export interface LolRewardTrackResponseMetadataDTO {
+	[key: string | number]: any
+}
+
+export interface LolRewardTrackReward {
+	id: string
+	itemId: string
+	itemType: string
+	/** @format int32 */
+	quantity: number
+	fulfillmentSource: string
+	media: Record<string, string>
+	localizations: Record<string, string>
+}
+
+export interface LolRewardTrackRewardGrant {
+	info: LolRewardTrackSvcRewardGrant
+	rewardGroup: LolRewardTrackSvcRewardGroup
+}
+
+export type LolRewardTrackRewardStatus = "FAILED" | "FULFILLED" | "PENDING"
+
+export type LolRewardTrackRewardStrategy = "SELECTION" | "RANDOM" | "ALL"
+
+export interface LolRewardTrackRewardTrackError {
+	errorMessage: string
+	errorId: string
+}
+
+export interface LolRewardTrackRewardTrackItem {
+	state: LolRewardTrackRewardTrackItemStates
+	rewardOptions: LolRewardTrackRewardTrackItemOption[]
+	rewardTags: LolRewardTrackRewardTrackItemTag[]
+	/** @format int64 */
+	progressRequired: number
+	threshold: string
+}
+
+export type LolRewardTrackRewardTrackItemHeaderType = "NONE" | "FREE" | "PREMIUM"
+
+export interface LolRewardTrackRewardTrackItemOption {
+	state: LolRewardTrackRewardTrackItemStates
+	thumbIconPath: string
+	splashImagePath: string
+	selected: boolean
+	overrideFooter: string
+	headerType: LolRewardTrackRewardTrackItemHeaderType
+	rewardName: string
+	rewardDescription: string
+	cardSize: string
+	rewardGroupId: string
+	celebrationType: LolRewardTrackCelebrationType
+}
+
+export type LolRewardTrackRewardTrackItemStates = "Selected" | "Unselected" | "Unlocked" | "Locked"
+
+export type LolRewardTrackRewardTrackItemTag = "Multiple" | "Choice" | "Instant" | "Free" | "Rare"
+
+export interface LolRewardTrackRewardTrackProgress {
+	/** @format int16 */
+	level: number
+	/** @format int16 */
+	totalLevels: number
+	/** @format uint16 */
+	levelProgress: number
+	/** @format uint16 */
+	futureLevelProgress: number
+	/** @format int64 */
+	passProgress: number
+	/** @format int64 */
+	currentLevelXP: number
+	/** @format int64 */
+	totalLevelXP: number
+	/** @format uint32 */
+	iteration: number
+}
+
+export interface LolRewardTrackRewardTrackXP {
+	/** @format int64 */
+	currentLevel: number
+	/** @format int64 */
+	currentLevelXP: number
+	/** @format int64 */
+	totalLevelXP: number
+	isBonusPhase: boolean
+	/** @format uint32 */
+	iteration: number
+}
+
+export interface LolRewardTrackRewardsConfig {
+	GrantFiltering: boolean
+}
+
+export type LolRewardTrackSelectGrantStatusResponse = "FAILED" | "SELECTED"
+
+export interface LolRewardTrackSelectionRequestDTO {
+	grantId: string
+	rewardGroupId: string
+	selections: string[]
+}
+
+export interface LolRewardTrackSelectionStrategyConfig {
+	/** @format uint32 */
+	minSelectionsAllowed: number
+	/** @format uint32 */
+	maxSelectionsAllowed: number
+}
+
+export interface LolRewardTrackSvcRewardGrant {
+	id: string
+	granteeId: string
+	rewardGroupId: string
+	dateCreated: string
+	status: LolRewardTrackGrantStatus
+	grantElements: LolRewardTrackSvcRewardGrantElement[]
+	selectedIds: string[]
+	viewed: boolean
+	grantorDescription: LolRewardTrackGrantorDescription
+	messageParameters: Record<string, unknown>
+}
+
+export interface LolRewardTrackSvcRewardGrantElement {
+	elementId: string
+	itemId: string
+	itemType: string
+	fulfillmentSource: string
+	status: LolRewardTrackRewardStatus
+	/** @format int32 */
+	quantity: number
+	media: Record<string, string>
+	localizations: Record<string, string>
+}
+
+export interface LolRewardTrackSvcRewardGroup {
+	id: string
+	productId: string
+	types: string[]
+	rewards: LolRewardTrackReward[]
+	childRewardGroupIds: string[]
+	rewardStrategy: LolRewardTrackRewardStrategy
+	selectionStrategyConfig?: LolRewardTrackSelectionStrategyConfig
+	active: boolean
+	media: Record<string, string>
+	localizations: Record<string, string>
+	celebrationType: LolRewardTrackCelebrationType
+}
+
+export interface LolRewardTrackTrackProgressNextReward {
+	/** @format int64 */
+	currentXP: number
+	/** @format int64 */
+	nextLevelXP: number
+	/** @format int64 */
+	currentLevel: number
+	nextReward: LolRewardTrackNextRewardUIData
+}
+
+export interface LolRewardTrackTrigger {
+	type: string
+	counterId: string
+	/** @format uint64 */
+	triggerValue: number
+}
+
+export interface LolRewardTrackUnclaimedRewardsUIData {
+	/** @format int32 */
+	rewardsCount: number
+	/** @format int32 */
+	lockedTokensCount: number
+	/** @format int64 */
+	timeOfLastUnclaimedReward: number
+}
+
 export type LolRewardsCelebrationType = "FULLSCREEN" | "TOAST" | "NONE"
+
+export interface LolRewardsFSC {
+	id: string
+	canvas: LolRewardsFSCCanvas
+	media: LolRewardsFSCMedia
+	rewards: LolRewardsFSCRewards[]
+}
+
+export interface LolRewardsFSCCanvas {
+	title: string
+	subtitle: string
+	canvasBackgroundImage: string
+	canvasSize: LolRewardsFSCCanvasSize
+	canvasDesign: string
+}
+
+export type LolRewardsFSCCanvasSize = "FULL" | "LARGE" | "MEDIUM" | "SMALL"
+
+export interface LolRewardsFSCMedia {
+	introAnimation: string
+	introAnimationAudio: string
+	introLowSpecImage: string
+	loopAnimation: string
+	loopAnimationAudio: string
+	transitionAnimation: string
+	transitionAnimationAudio: string
+}
+
+export interface LolRewardsFSCRewards {
+	image: string
+	imageOverlay: string
+	title: string
+	subtitle: string
+}
 
 export type LolRewardsGrantStatus = "FAILED" | "FULFILLED" | "PENDING_SELECTION" | "PENDING_FULFILLMENT"
 
@@ -21152,8 +21963,12 @@ export interface LolTftTeamPlannerNamecheckResponse {
 }
 
 export interface LolTftTeamPlannerPreviouslyUsedContext {
+	optionalTeamId: string
+	setId: string
 	/** @format uint8 */
 	sortOption: number
+	/** @format uint8 */
+	viewId: number
 }
 
 export interface LolTftTeamPlannerQueue {
