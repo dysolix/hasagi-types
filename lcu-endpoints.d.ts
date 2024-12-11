@@ -104,6 +104,10 @@ export interface LCUEndpoints {
 		put: { path: [id: number], params: never, body: LCUTypes.LolHighlightsHighlight, response: LCUTypes.LolHighlightsHighlight }
 		delete: { path: [id: number], params: never, body: never, response: LCUTypes.LolHighlightsHighlight }
 	},
+	"/lol-honor-v2/v1/ballot": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolHonorV2Ballot }
+		delete: { path: never, params: never, body: never, response: void }
+	},
 	"/lol-leaver-buster/v1/notifications/{id}": {
 		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolLeaverBusterLeaverBusterNotificationResource }
 		delete: { path: [id: number], params: never, body: never, response: unknown }
@@ -396,6 +400,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-activity-center/v1/overrides": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolActivityCenterTencentOverrides }
+	},
+	"/lol-activity-center/v1/ready": {
+		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-anti-addiction/v1/anti-addiction-token": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolAntiAddictionAntiAddictionToken }
@@ -1117,9 +1124,6 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolSettingsHoneyfruitVNGPublisherSettings }
 		post: { path: never, params: never, body: never, response: unknown }
 	},
-	"/lol-honor-v2/v1/ballot": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolHonorV2Ballot }
-	},
 	"/lol-honor-v2/v1/config": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolHonorV2HonorConfig }
 	},
@@ -1248,6 +1252,33 @@ export interface LCUEndpoints {
 	"/lol-kr-shutdown-law/v1/status": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolKrShutdownLawAllQueueShutdownStatus }
 	},
+	"/lol-leaderboard/v1/name/{name}/currentSeason": {
+		get: { path: [name: string], params: never, body: never, response: string }
+	},
+	"/lol-leaderboard/v1/name/{name}/groupings": {
+		get: { path: [name: string], params: never, body: never, response: string[] }
+	},
+	"/lol-leaderboard/v1/name/{name}/pageSize": {
+		get: { path: [name: string], params: never, body: never, response: number }
+	},
+	"/lol-leaderboard/v1/name/{name}/season/{season}/grouping/{grouping}": {
+		get: { path: [name: string, season: string, grouping: string], params: { "startRank": number, "endRank": number }, body: never, response: LCUTypes.LolLeaderboardLeaderboardPageResponse }
+	},
+	"/lol-leaderboard/v1/name/{name}/season/{season}/grouping/{grouping}/entry-ranking/{entityId}": {
+		get: { path: [name: string, season: string, grouping: string, entityId: string], params: never, body: never, response: LCUTypes.LolLeaderboardLeaderboardPlayerRanking }
+	},
+	"/lol-leaderboard/v1/name/{name}/season/{season}/grouping/{grouping}/jump-to-entry/{entityId}": {
+		get: { path: [name: string, season: string, grouping: string, entityId: string], params: { "pageSize": number }, body: never, response: LCUTypes.LolLeaderboardLeaderboardPageResponse }
+	},
+	"/lol-leaderboard/v1/name/{name}/season/{season}/grouping/{grouping}/multipage": {
+		get: { path: [name: string, season: string, grouping: string], params: { "startPage": number, "endPage": number, "pageSize": number }, body: never, response: LCUTypes.LolLeaderboardLeaderboardPageResponse }
+	},
+	"/lol-leaderboard/v1/name/{name}/timer": {
+		get: { path: [name: string], params: never, body: never, response: number }
+	},
+	"/lol-leaderboard/v1/ready": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
 	"/lol-league-session/v1/league-session-token": {
 		get: { path: never, params: never, body: never, response: string }
 	},
@@ -1285,6 +1316,9 @@ export interface LCUEndpoints {
 		get: { path: [scope: string, scopeItemId: number], params: never, body: never, response: LCUTypes.LolLoadoutsScopedLoadout[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/bannable-champion-ids": {
+		get: { path: never, params: never, body: never, response: number[] }
+	},
+	"/lol-lobby-team-builder/champ-select/v1/crowd-favorte-champion-list": {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/current-champion": {
@@ -1368,12 +1402,6 @@ export interface LCUEndpoints {
 	"/lol-lobby/v1/lobby/members/localMember/player-slots": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyQuickPlayPresetSlotDto[] }
 		put: { path: never, params: never, body: LCUTypes.LolLobbyQuickPlayPresetSlotDto[], response: unknown }
-	},
-	"/lol-lobby/v1/lobby/npe-config": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTFTNPEConfig }
-	},
-	"/lol-lobby/v1/lobby/tft-ranked-history": {
-		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-lobby/v1/parties/gamemode": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyGameModeDto }
@@ -1539,6 +1567,12 @@ export interface LCUEndpoints {
 	"/lol-loyalty/v1/status-notification": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLoyaltyLoyaltyStatusNotification }
 	},
+	"/lol-mac-graphics-upgrade/needs-hardware-upgrade": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
+	"/lol-mac-graphics-upgrade/notification-type": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolMacGraphicsUpgradeMacGraphicsUpgradeNotificationType }
+	},
 	"/lol-maps/v1/map/{id}": {
 		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolMapsMaps }
 	},
@@ -1614,6 +1648,34 @@ export interface LCUEndpoints {
 	},
 	"/lol-missions/v1/series": {
 		get: { path: never, params: never, body: never, response: LCUTypes.SeriesDTO[] }
+	},
+	"/lol-nacho/v1/banner-odds": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoBannerOddsInfo }
+	},
+	"/lol-nacho/v1/banners": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoNachoBannersResponse[] }
+	},
+	"/lol-nacho/v1/get-active-store-catalog": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoShoppeCatalogEntry[] }
+	},
+	"/lol-nacho/v1/get-current-catalog-item": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoShoppeCatalogEntry }
+	},
+	"/lol-nacho/v1/get-store-digests": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoStoreDigests }
+	},
+	"/lol-nacho/v1/mock-roll-rewards": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoNachoPurchaseResponse }
+		post: { path: never, params: never, body: LCUTypes.LolNachoFinalPurchaseUnitDto[], response: void }
+	},
+	"/lol-nacho/v1/pity-counter": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoCapCounterData }
+	},
+	"/lol-nacho/v1/purchases/{purchaseId}": {
+		get: { path: [purchaseId: string], params: never, body: never, response: LCUTypes.LolNachoNachoPurchaseResponse }
+	},
+	"/lol-nacho/v1/roll-purchase-enabled": {
+		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-npe-rewards/v1/challenges/progress": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolNpeRewardsChallengesProgress }
@@ -1945,6 +2007,30 @@ export interface LCUEndpoints {
 	},
 	"/lol-replays/v1/rofls/path/default": {
 		get: { path: never, params: never, body: never, response: string }
+	},
+	"/lol-reward-track/{progressionGroupId}/reward-track/bonus-items": {
+		get: { path: [progressionGroupId: string], params: never, body: never, response: LCUTypes.LolRewardTrackRewardTrackItem[] }
+	},
+	"/lol-reward-track/{progressionGroupId}/reward-track/bonus-progress": {
+		get: { path: [progressionGroupId: string], params: never, body: never, response: LCUTypes.LolRewardTrackRewardTrackProgress }
+	},
+	"/lol-reward-track/{progressionGroupId}/reward-track/failure": {
+		get: { path: [progressionGroupId: string], params: never, body: never, response: LCUTypes.LolRewardTrackRewardTrackError }
+	},
+	"/lol-reward-track/{progressionGroupId}/reward-track/items": {
+		get: { path: [progressionGroupId: string], params: never, body: never, response: LCUTypes.LolRewardTrackRewardTrackItem[] }
+	},
+	"/lol-reward-track/{progressionGroupId}/reward-track/progress": {
+		get: { path: [progressionGroupId: string], params: never, body: never, response: LCUTypes.LolRewardTrackRewardTrackProgress }
+	},
+	"/lol-reward-track/{progressionGroupId}/reward-track/unclaimed-rewards": {
+		get: { path: [progressionGroupId: string], params: never, body: never, response: LCUTypes.LolRewardTrackUnclaimedRewardsUIData }
+	},
+	"/lol-reward-track/{progressionGroupId}/reward-track/xp": {
+		get: { path: [progressionGroupId: string], params: never, body: never, response: LCUTypes.LolRewardTrackRewardTrackXP }
+	},
+	"/lol-reward-track/register/{progressionGroupId}": {
+		get: { path: [progressionGroupId: string], params: never, body: never, response: void }
 	},
 	"/lol-rewards/v1/grants": {
 		get: { path: never, params: { "status"?: LCUTypes.LolRewardsGrantStatus }, body: never, response: LCUTypes.LolRewardsRewardGrant[] }
@@ -3116,6 +3202,12 @@ export interface LCUEndpoints {
 	"/lol-loyalty/v1/updateLoyaltyInventory": {
 		post: { path: never, params: never, body: LCUTypes.LolLoyaltyLoyaltyRewards, response: void }
 	},
+	"/lol-mac-graphics-upgrade/hardware-upgrade-notification/ack": {
+		post: { path: never, params: never, body: never, response: void }
+	},
+	"/lol-mac-graphics-upgrade/legacy-mode-notification/ack": {
+		post: { path: never, params: never, body: never, response: void }
+	},
 	"/lol-maps/v1/map": {
 		post: { path: never, params: never, body: LCUTypes.LolMapsMaps, response: void }
 	},
@@ -3132,6 +3224,21 @@ export interface LCUEndpoints {
 		post: { path: never, params: never, body: never, response: unknown }
 	},
 	"/lol-missions/v1/force": {
+		post: { path: never, params: never, body: never, response: void }
+	},
+	"/lol-nacho/v1/purchase/blessing-token": {
+		post: { path: never, params: never, body: LCUTypes.LolNachoBlessingTokenPurchaseRequest, response: string }
+	},
+	"/lol-nacho/v1/purchase/roll": {
+		post: { path: never, params: never, body: LCUTypes.LolNachoBlessingTokenPurchaseRequest, response: string }
+	},
+	"/lol-nacho/v1/set-current-catalog-item": {
+		post: { path: never, params: never, body: never, response: void }
+	},
+	"/lol-nacho/v1/set-product-id": {
+		post: { path: never, params: never, body: never, response: void }
+	},
+	"/lol-nacho/v1/set-store-id": {
 		post: { path: never, params: never, body: never, response: void }
 	},
 	"/lol-npe-rewards/v1/challenges/opt": {
@@ -3331,6 +3438,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-tft-pass/v1/passes": {
 		post: { path: never, params: never, body: never, response: void }
+	},
+	"/lol-tft-team-planner/v1/is-name-valid/{name}": {
+		post: { path: [name: string], params: never, body: never, response: boolean }
 	},
 	"/lol-tft-team-planner/v1/sets/{set}/team-code/{team}": {
 		post: { path: [set: string, team: string], params: never, body: never, response: string }

@@ -9444,6 +9444,7 @@ export interface LolHonorV2ProfileInfo {
 	/** @format int32 */
 	checkpoint: number
 	rewardsLocked: boolean
+	redemptions: LolHonorV2Redemption[]
 }
 
 export interface LolHonorV2Queue {
@@ -9957,6 +9958,11 @@ export interface LolItemSetsGameDataChampion {
 	alias: string
 }
 
+export interface LolItemSetsGameDataSummaryChampion {
+	/** @format int32 */
+	id: number
+}
+
 export interface LolItemSetsItemSet {
 	uid: string
 	title: string
@@ -10070,6 +10076,57 @@ export interface LolL10nRegionLocale {
 	locale: string
 	webRegion: string
 	webLanguage: string
+}
+
+export interface LolLeaderboardLeaderboardConfiguration {
+	name: string
+	groupings: string[]
+	/** @format uint8 */
+	pageSize: number
+	/** @format uint32 */
+	refreshTimeMS: number
+	season: string
+}
+
+export interface LolLeaderboardLeaderboardPageResponse {
+	grouping: string
+	season: string
+	region: string
+	name: string
+	/** @format uint32 */
+	startRank: number
+	/** @format uint32 */
+	endRank: number
+	/** @format uint32 */
+	size: number
+	rankings: LolLeaderboardPagedLeaderboardEntry[]
+}
+
+export interface LolLeaderboardLeaderboardPlayerRanking {
+	entityId: string
+	/** @format uint32 */
+	ranking: number
+}
+
+export interface LolLeaderboardLoginSession {
+	state: LolLeaderboardLoginSessionStates
+	/** @format uint64 */
+	summonerId: number
+	/** @format uint64 */
+	accountId: number
+	idToken: string
+}
+
+export type LolLeaderboardLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
+
+export interface LolLeaderboardPagedLeaderboardEntry {
+	entityId: string
+	entityName: string
+	/** @format uint32 */
+	ranking: number
+	/** @format uint32 */
+	score: number
+	anonymous: boolean
 }
 
 export interface LolLeagueSessionAntiAddictionTokenEnvelope {
@@ -11010,7 +11067,6 @@ export interface LolLobbyLobbyParticipantDto {
 	subteamIndex?: number
 	/** @format int8 */
 	intraSubteamPosition?: number
-	tftNPEQueueBypass?: boolean
 	quickplayPlayerState?: string
 	strawberryMapId?: string
 	playerSlots: LolLobbyQuickPlayPresetSlotDto[]
@@ -11204,7 +11260,6 @@ export interface LolLobbyPartyMemberMetadataDto {
 	properties?: unknown
 	playerSlots: LolLobbyQuickPlayPresetSlotDto[]
 	subteamData?: LolLobbySubteamDataDto
-	tftNPEQueueBypass?: boolean
 	quickplayPlayerState?: string
 }
 
@@ -11244,10 +11299,6 @@ export interface LolLobbyPartyStatusDto {
 	partySize: number
 }
 
-export interface LolLobbyPlatformStats {
-	playerStatSummaries: LolLobbyPlayerStatSummaryContainer
-}
-
 export interface LolLobbyPlayerCollectionDto {
 	players: LolLobbyPlayerDto[]
 }
@@ -11265,27 +11316,11 @@ export interface LolLobbyPlayerDto {
 	serverUtcMillis: number
 	parties?: LolLobbyPartyMemberDto[]
 	currentParty?: LolLobbyPartyDto
-	/** @format int64 */
-	tftGamesPlayed: number
-	/** @format int64 */
-	tftGamesWon: number
 	registration: LolLobbyRegistrationCredentials
 	/** @format uint64 */
 	createdAt: number
 	/** @format uint64 */
 	version: number
-}
-
-export interface LolLobbyPlayerStatSummary {
-	playerStatSummaryType: string
-	/** @format int32 */
-	wins: number
-	/** @format int32 */
-	gamesPlayed: number
-}
-
-export interface LolLobbyPlayerStatSummaryContainer {
-	playerStatSummarySet: LolLobbyPlayerStatSummary[]
 }
 
 export interface LolLobbyPlayerStatus {
@@ -11542,32 +11577,6 @@ export interface LolLobbySummoner {
 	internalName: string
 	gameName: string
 	tagLine: string
-}
-
-export interface LolLobbyTFTNPEConfig {
-	enabled: boolean
-	queueBypass: boolean
-	shouldShowNPEQueue: boolean
-}
-
-export interface LolLobbyTFTNPESettings {
-	data?: LolLobbyTFTNPESettingsResource
-	/** @format uint32 */
-	schemaVersion: number
-}
-
-export interface LolLobbyTFTNPESettingsResource {
-	/** @format int32 */
-	gamesPlayed: number
-	/** @format int32 */
-	gamesWon: number
-}
-
-export interface LolLobbyTFTNewPlayerDto {
-	/** @format int32 */
-	tftGamesPlayed: number
-	/** @format int32 */
-	tftGamesWon: number
 }
 
 export interface LolLobbyTeamBuilderActionV1 {
@@ -12173,6 +12182,7 @@ export interface LolLobbyTeamBuilderTbdInventory {
 	initialSpellIds: number[]
 	allChampionIds: number[]
 	disabledChampionIds: number[]
+	crowdFavoriteChampionIds: number[]
 }
 
 export interface LolLobbyTeamBuilderTeamBoost {
@@ -13372,6 +13382,14 @@ export interface LolLoyaltyRmsEntitlementPayload {
 	resourceOperation: string
 }
 
+export interface LolMacGraphicsUpgradeLocalSettingsCategory {
+	data: unknown
+	/** @format int32 */
+	schemaVersion: number
+}
+
+export type LolMacGraphicsUpgradeMacGraphicsUpgradeNotificationType = "TURN_OFF_LEGACY_MODE" | "HARDWARE_UPGRADE" | "NONE"
+
 export interface LolMapsGameModeSpellList {
 	spells: number[]
 }
@@ -14459,6 +14477,271 @@ export interface LolModeProgressionLoadoutsSlot {
 	inventoryType: string
 	/** @format int32 */
 	itemId: number
+}
+
+export interface LolNachoBannerOddsInfo {
+	id: string
+	name: string
+	productId: string
+	rewardTables: LolNachoNachoRollRewardsTable[]
+}
+
+export interface LolNachoBlessingTokenPurchaseRequest {
+	/** @format uint32 */
+	quantity: number
+}
+
+export interface LolNachoCapCounterData {
+	/** @format uint32 */
+	amount: number
+	/** @format uint32 */
+	version: number
+	active: boolean
+	lastModifiedDate: string
+}
+
+export interface LolNachoCapDropsDropTableDisplayMetadata {
+	/** @format uint8 */
+	version: number
+	oddsTree: LolNachoDropsOddsTreeNodeDTO
+}
+
+export interface LolNachoClientConfigNachoBanners {
+	enabled: boolean
+	bannerList: LolNachoNachoActiveBanner[]
+}
+
+export interface LolNachoDropsOddsTreeNodeDTO {
+	nodeId: string
+	/** @format float */
+	odds: number
+	children: LolNachoDropsOddsTreeNodeDTO[]
+	fallbackChildren: LolNachoDropsOddsTreeNodeDTO[]
+	itemInstanceId: string
+	type: string
+	parentItemInstanceId: string
+	/** @format uint32 */
+	priority: number
+}
+
+export interface LolNachoFinalPurchaseUnitDto {
+	fulfillment: LolNachoFulfillmentDto
+}
+
+export interface LolNachoFulfillmentDto {
+	results: unknown
+}
+
+export interface LolNachoGameDataNachoBanner {
+	id: string
+	bannerCurrencyId: string
+	activationTime: string
+	deactivationTime: string
+	chasePityCounter: LolNachoGameDataPityCounter
+	/** @format uint32 */
+	chasePityThreshold: number
+	/** @format uint32 */
+	highlightPityThreshold: number
+	bannerBackgroundTexture: string
+	bannerBackgroundParallax: string
+	name: string
+	description: string
+	bannerChaseAnimationWebmPath: string
+	bannerChaseAnimationParallax: string
+	rollVignetteSkinIntroWebmPath: string
+	rollVignetteSkinIntroSfxPath: string
+	chaseCelebrationIntroWebmPath: string
+	chaseCelebrationVo: LolNachoGameDataNachoBannerVo
+	hubIntroVo: LolNachoGameDataNachoBannerVo
+	rollVignette: LolNachoNachoVignette
+	rollCardTierOne: LolNachoNachoRollCard
+	rollCardTierTwo: LolNachoNachoRollCard
+	rollCardTierThree: LolNachoNachoRollCard
+}
+
+export interface LolNachoGameDataNachoBannerTable {
+	id: string
+	name: string
+	translatedName: string
+	rewardTexturePath: string
+	chromaRewardTexturePath: string
+	children: LolNachoGameDataNachoBannerTableEntry[]
+}
+
+export interface LolNachoGameDataNachoBannerTableEntry {
+	bannerNode: LolNachoGameDataNachoBannerTable
+}
+
+export interface LolNachoGameDataNachoBannerVo {
+	path: string
+	/** @format uint32 */
+	defaultDelayMillis: number
+	localeOverrides: LolNachoGameDataNachoBannerVoOverrideOptions[]
+}
+
+export interface LolNachoGameDataNachoBannerVoOverrideOptions {
+	locale: string
+	/** @format uint32 */
+	delayMillis: number
+}
+
+export interface LolNachoGameDataNachoReward {
+	itemInstanceId: string
+	translatedName: string
+	/** @format uint32 */
+	id: number
+	/** @format uint32 */
+	quantity: number
+}
+
+export interface LolNachoGameDataPityCounter {
+	id: string
+	name: string
+}
+
+export interface LolNachoLoginSession {
+	state: LolNachoLoginSessionStates
+	/** @format uint64 */
+	summonerId: number
+	/** @format uint64 */
+	accountId: number
+	puuid: string
+}
+
+export type LolNachoLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
+
+export interface LolNachoNachoActiveBanner {
+	storeId: string
+	catalogEntryId: string
+	tokenCatalogEntryId: string
+	/** @format uint8 */
+	version: number
+}
+
+export interface LolNachoNachoBannersResponse {
+	id: string
+	bannerBackgroundTexture: string
+	bannerBackgroundParallax: string
+	name: string
+	description: string
+	bannerChaseAnimationWebmPath: string
+	bannerChaseAnimationParallax: string
+	chasePityCounter: LolNachoGameDataPityCounter
+	bannerDeactivationDateTime: string
+	/** @format uint32 */
+	chasePityThreshold: number
+	/** @format uint32 */
+	highlightPityThreshold: number
+	rollVignetteSkinIntroWebmPath: string
+	rollVignetteSkinIntroSfxPath: string
+	chaseCelebrationIntroWebmPath: string
+	chaseCelebrationVo: LolNachoGameDataNachoBannerVo
+	hubIntroVo: LolNachoGameDataNachoBannerVo
+	rollVignette: LolNachoNachoVignette
+	rollCardTierOne: LolNachoNachoRollCard
+	rollCardTierTwo: LolNachoNachoRollCard
+	rollCardTierThree: LolNachoNachoRollCard
+}
+
+export interface LolNachoNachoPurchaseResponse {
+	id: string
+	status: LolNachoNachoPurchaseResponseStatus
+	rollResults: LolNachoNachoRewardData[]
+}
+
+export type LolNachoNachoPurchaseResponseStatus = "Failure" | "Success" | "Pending" | "None"
+
+export interface LolNachoNachoRewardData {
+	/** @format float */
+	odds: number
+	itemInstanceId: string
+	translatedName: string
+	/** @format uint32 */
+	id: number
+	type: string
+	/** @format uint32 */
+	parentId: number
+	/** @format uint32 */
+	priority: number
+	isChaseItem: boolean
+	/** @format uint32 */
+	quantity: number
+}
+
+export interface LolNachoNachoRollCard {
+	cardPath: string
+	cardBackPath: string
+	cardWebmTopPath: string
+	cardWebmBotPath: string
+	cardWebmHoverPath: string
+	cardWebmLoopPath: string
+}
+
+export interface LolNachoNachoRollRewardsTable {
+	/** @format float */
+	odds: number
+	translatedName: string
+	/** @format uint32 */
+	priority: number
+	children: LolNachoNachoRewardData[]
+	fallbackChildren: LolNachoNachoRewardData[]
+}
+
+export interface LolNachoNachoVignette {
+	introTierOneWebmPath: string
+	introTierOneMultiWebmPath: string
+	introTierTwoWebmPath: string
+	introTierTwoMultiWebmPath: string
+	introTierThreeWebmPath: string
+	introTierThreeMultiWebmPath: string
+}
+
+export interface LolNachoPaymentDto {
+	/** @format double */
+	discountPercent: number
+	/** @format int64 */
+	discountedDelta: number
+	name: string
+	/** @format int64 */
+	finalDelta: number
+	/** @format int64 */
+	delta: number
+}
+
+export interface LolNachoPaymentOptionDto {
+	key: string
+	payments: LolNachoPaymentDto[]
+}
+
+export interface LolNachoPurchaseUnitDto {
+	paymentOptions: LolNachoPaymentOptionDto[]
+	fulfillment: LolNachoFulfillmentDto
+}
+
+export interface LolNachoShoppeCatalogEntry {
+	id: string
+	name: string
+	productId: string
+	purchaseUnits: LolNachoPurchaseUnitDto[]
+	purchaseVisibility: string
+	refundRule: string
+	purchaseLimits: LolNachoVelocityLimitDeltaDto[]
+}
+
+export interface LolNachoStoreDigest {
+	id: string
+}
+
+export interface LolNachoStoreDigests {
+	digests: LolNachoStoreDigest[]
+}
+
+export interface LolNachoVelocityLimitDeltaDto {
+	ruleId: string
+	/** @format int64 */
+	delta: number
+	/** @format int64 */
+	remaining: number
 }
 
 export interface LolNpeRewardsAccountSettingsData {
@@ -21975,6 +22258,15 @@ export interface LolTftTeamPlannerQueue {
 	gameMode: string
 }
 
+export interface LolTftTeamPlannerSanitizeRequest {
+	texts: string[]
+	aggressiveScan?: boolean
+}
+
+export interface LolTftTeamPlannerSanitizeResponse {
+	modified: boolean
+}
+
 export interface LolTftTeamPlannerSettingsStorageContainer {
 	data: LolTftTeamPlannerTeamSettings
 	/** @format uint32 */
@@ -22004,6 +22296,7 @@ export interface LolTftTeamPlannerTFTTeamPlannerConfig {
 	multipleSetsEnabled: boolean
 	multipleTeamsEnabled: boolean
 	tencentNameCheckEnabled: boolean
+	globalNameSanitizationEnabled: boolean
 }
 
 export interface LolTftTeamPlannerTeamPlan {
