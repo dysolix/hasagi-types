@@ -3,3 +3,4 @@ scripts
 package-lock.json
 swagger.json
 .gitignore
+.github
