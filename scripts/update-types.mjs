@@ -39,7 +39,9 @@ console.log(`Client version changed: ${CLIENT_VERSION_CHANGED}`);
 if (CLIENT_VERSION_CHANGED) {
     console.log(`Client version: ${packageObj._clientVersion} -> ${clientVersion}`);
     packageObj._clientVersion = clientVersion;
-    packageObj.version = shortVersion + ".1";
+    if (!packageObj.version.startsWith(shortVersion))
+        packageObj.version = shortVersion + ".1";
+    
     await fs.writeFile("./package.json", JSON.stringify(packageObj, null, 2));
 } else {
     console.log(`Client version: ${clientVersion}`);

@@ -1,6 +1,6 @@
 {
   "name": "@hasagi/types",
-  "version": "14.24.1",
+  "version": "14.24.2",
   "_clientVersion": "14.24.642.2065",
   "description": "This package contains auto-generated LCU types and endpoints.",
   "scripts": {
