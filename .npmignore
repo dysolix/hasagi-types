@@ -4,3 +4,5 @@ package-lock.json
 swagger.json
 .gitignore
 .github
+CODEOWNERS
+README.md
