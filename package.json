@@ -4,9 +4,9 @@
   "_clientVersion": "14.24.642.2065",
   "description": "This package contains auto-generated LCU types and endpoints.",
   "scripts": {
-    "update": "node scripts/update-types.mjs",
-    "updateDeps": "npm install @hasagi/core@latest @hasagi/cli@latest",
-    "generate": "hasagi schema --swagger ./ --typescript ./"
+    "update-types": "node scripts/update-types.mjs",
+    "update-deps": "npm install @hasagi/core@latest @hasagi/cli@latest",
+    "generate": "hasagi schema --swagger ./ --typescript ./dist"
   },
   "keywords": [
     "hasagi"
@@ -15,11 +15,11 @@
   "license": "MIT",
   "devDependencies": {
     "@hasagi/cli": "^0.9.0",
-    "@hasagi/core": "^0.5.7",
+    "@hasagi/core": "^0.5.11",
     "axios": "^1.6.8"
   },
   "exports": {
-    ".": "./index.d.ts"
+    ".": "./dist/index.d.ts"
   },
   "repository": {
     "type": "git",
