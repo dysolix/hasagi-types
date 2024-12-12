@@ -7,3 +7,9 @@ The types are available in the npm package `@hasagi/types`.
 ```shell
 npm install @hasagi/types
 ```
+
+## Updating the types
+If you cloned the repository and want to update the types you can run this command while the League client is open.
+```shell
+npm run update-types
+```
