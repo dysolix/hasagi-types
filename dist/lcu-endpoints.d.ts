@@ -910,6 +910,9 @@ export interface LCUEndpoints {
 	"/lol-event-hub/v1/events": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolEventHubActiveEventUIData[] }
 	},
+	"/lol-event-hub/v1/events/{eventId}/chapters": {
+		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubChaptersUIData }
+	},
 	"/lol-event-hub/v1/events/{eventId}/event-details-data": {
 		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubEventDetailsUIData }
 	},
@@ -921,6 +924,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-event-hub/v1/events/{eventId}/narrative": {
 		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubNarrativeElement[] }
+	},
+	"/lol-event-hub/v1/events/{eventId}/objectives-banner": {
+		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubObjectivesBanner }
 	},
 	"/lol-event-hub/v1/events/{eventId}/pass-background-data": {
 		get: { path: [eventId: string], params: never, body: never, response: LCUTypes.LolEventHubEventBackgroundUIData }
@@ -1002,6 +1008,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-game-queues/v1/custom-non-default": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolGameQueuesQueueCustomGame }
+	},
+	"/lol-game-queues/v1/customs-in-parties-enabled": {
+		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-game-queues/v1/game-type-config/{gameTypeConfigId}": {
 		get: { path: [gameTypeConfigId: number], params: never, body: never, response: LCUTypes.LolGameQueuesQueueGameTypeConfig }
@@ -1167,6 +1176,9 @@ export interface LCUEndpoints {
 		get: { path: [summonerId: number], params: never, body: never, response: LCUTypes.LolHovercardHovercardUserInfo }
 	},
 	"/lol-inventory/v1/champSelectInventory": {
+		get: { path: never, params: never, body: never, response: string }
+	},
+	"/lol-inventory/v1/cherryInventory": {
 		get: { path: never, params: never, body: never, response: string }
 	},
 	"/lol-inventory/v1/initial-configuration-complete": {
@@ -1658,6 +1670,9 @@ export interface LCUEndpoints {
 	"/lol-nacho/v1/get-active-store-catalog": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoShoppeCatalogEntry[] }
 	},
+	"/lol-nacho/v1/get-active-stores": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoStoresResponse }
+	},
 	"/lol-nacho/v1/get-current-catalog-item": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoShoppeCatalogEntry }
 	},
@@ -2065,6 +2080,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-seasons/v1/season/LOL/current-split-seasons": {
 		get: { path: never, params: never, body: never, response: number[] }
+	},
+	"/lol-seasons/v1/season/name/{name}": {
+		get: { path: [name: string], params: never, body: never, response: LCUTypes.LolSeasonsAllSeasonsProduct }
 	},
 	"/lol-seasons/v1/season/product/{product}": {
 		get: { path: [product: string], params: never, body: never, response: LCUTypes.LolSeasonsAllSeasonsProduct }
@@ -3232,6 +3250,9 @@ export interface LCUEndpoints {
 	"/lol-nacho/v1/purchase/roll": {
 		post: { path: never, params: never, body: LCUTypes.LolNachoBlessingTokenPurchaseRequest, response: string }
 	},
+	"/lol-nacho/v1/set-active-stores": {
+		post: { path: never, params: never, body: LCUTypes.LolNachoSetActiveStoresRequest, response: void }
+	},
 	"/lol-nacho/v1/set-current-catalog-item": {
 		post: { path: never, params: never, body: never, response: void }
 	},
@@ -3564,9 +3585,6 @@ export interface LCUEndpoints {
 	},
 	"/sanitizer/v1/sanitize": {
 		post: { path: never, params: never, body: LCUTypes.SanitizerSanitizeRequest, response: LCUTypes.SanitizerSanitizeResponse }
-	},
-	"/services-api/config/v1/client-config": {
-		post: { path: never, params: never, body: unknown, response: void }
 	},
 	"/services-api/config/v2/client-config/{prefix}/{scope}": {
 		post: { path: [prefix: string, scope: string], params: never, body: unknown, response: void }
