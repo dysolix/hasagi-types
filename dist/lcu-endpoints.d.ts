@@ -420,6 +420,12 @@ export interface LCUEndpoints {
 	"/lol-banners/v1/players/{puuid}/flags/equipped": {
 		get: { path: [puuid: string], params: never, body: never, response: LCUTypes.LolBannersBannerFlag }
 	},
+	"/lol-cap-missions/v1/getmissions": {
+		get: { path: never, params: { "Ids": string[] }, body: never, response: LCUTypes.LolCapMissionsCapMissionsMeResponse }
+	},
+	"/lol-cap-missions/v1/ready": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
 	"/lol-catalog/v1/item-details": {
 		get: { path: never, params: { "inventoryType": string, "itemId": number }, body: never, response: LCUTypes.LolCatalogCatalogPluginItemWithDetails }
 	},
@@ -2378,6 +2384,7 @@ export interface LCUEndpoints {
 	},
 	"/lol-tft-team-planner/v1/sets/dirty": {
 		get: { path: never, params: never, body: never, response: Record<string, LCUTypes.LolTftTeamPlannerTeamsForSet> }
+		post: { path: never, params: never, body: never, response: Record<string, LCUTypes.LolTftTeamPlannerTeamsForSet> }
 	},
 	"/lol-tft-team-planner/v1/sort-option": {
 		get: { path: never, params: never, body: never, response: number }
@@ -2968,6 +2975,9 @@ export interface LCUEndpoints {
 	"/lol-gameflow/v1/early-exit": {
 		post: { path: never, params: never, body: never, response: unknown }
 	},
+	"/lol-gameflow/v1/gameflow-monitor": {
+		post: { path: never, params: never, body: unknown, response: void }
+	},
 	"/lol-gameflow/v1/pre-end-game-transition": {
 		post: { path: never, params: never, body: boolean, response: void }
 	},
@@ -3054,9 +3064,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-license-agreement/v1/agreements/{id}/decline": {
 		post: { path: [id: string], params: never, body: never, response: unknown }
-	},
-	"/lol-loadouts/v4/loadouts": {
-		post: { path: never, params: never, body: LCUTypes.LolLoadoutsCreateLoadoutDTO, response: LCUTypes.LolLoadoutsScopedLoadout }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/retrieve-latest-game-dto": {
 		post: { path: never, params: never, body: never, response: unknown }
@@ -3675,6 +3682,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby/v1/parties/ready": {
 		put: { path: never, params: never, body: number, response: void }
+	},
+	"/lol-lobby/v2/lobby/memberData": {
+		put: { path: never, params: never, body: Record<string, string>, response: void }
 	},
 	"/lol-lobby/v2/lobby/members/localMember/position-preferences": {
 		put: { path: never, params: never, body: LCUTypes.LolLobbyLobbyPositionPreferences, response: unknown }

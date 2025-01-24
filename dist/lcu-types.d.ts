@@ -670,6 +670,8 @@ export interface EndOfGameLcdsEndOfGameStats {
 	gameId: number
 	/** @format uint32 */
 	gameLength: number
+	/** @format int64 */
+	endOfGameTimestamp: number
 	gameMode: string
 	gameMutators: string[]
 	gameType: string
@@ -1592,6 +1594,45 @@ export interface LolBannersTournamentFrameInventoryItem {
 	payload: LolBannersCapClashFrameEntitlementPayload
 	purchaseDate: string
 }
+
+export interface LolCapMissionsCapMissionSeries {
+	name: string
+	configurationId: string
+	missions: LolCapMissionsCapMissionSeriesMission[]
+}
+
+export interface LolCapMissionsCapMissionSeriesMission {
+	name: string
+	missionId: string
+	missionCollectionId: string
+	status: string
+	objectives: LolCapMissionsCapMissionSeriesMissionObjective[]
+}
+
+export interface LolCapMissionsCapMissionSeriesMissionObjective {
+	statId: string
+	/** @format uint32 */
+	goal: number
+	/** @format uint32 */
+	currentValue: number
+}
+
+export interface LolCapMissionsCapMissionsMeResponse {
+	productId: string
+	ownerId: string
+	series: LolCapMissionsCapMissionSeries[]
+}
+
+export interface LolCapMissionsLoginSession {
+	state: LolCapMissionsLoginSessionStates
+	/** @format uint64 */
+	summonerId: number
+	/** @format uint64 */
+	accountId: number
+	idToken: string
+}
+
+export type LolCapMissionsLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
 
 export interface LolCatalogBundled {
 	flexible: boolean
@@ -6617,6 +6658,8 @@ export interface LolEndOfGameEndOfGameStats {
 	gameId: number
 	/** @format int32 */
 	gameLength: number
+	/** @format int64 */
+	endOfGameTimestamp: number
 	gameMode: string
 	gameMutators: string[]
 	gameType: string
@@ -11252,6 +11295,7 @@ export interface LolLobbyLobbyParticipantDto {
 	teamId: number
 	firstPositionPreference: string
 	secondPositionPreference: string
+	memberData?: Record<string, string>
 	/** @format int8 */
 	subteamIndex?: number
 	/** @format int8 */
@@ -11447,6 +11491,7 @@ export interface LolLobbyPartyMemberDto {
 export interface LolLobbyPartyMemberMetadataDto {
 	positionPref: string[]
 	properties?: unknown
+	memberData?: unknown
 	playerSlots: LolLobbyQuickPlayPresetSlotDto[]
 	subteamData?: LolLobbySubteamDataDto
 	quickplayPlayerState?: string
