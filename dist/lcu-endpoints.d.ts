@@ -1667,20 +1667,16 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoNachoBannersResponse[] }
 	},
 	"/lol-nacho/v1/get-active-store-catalog": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoShoppeCatalogEntry[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.CatalogEntryDto[] }
 	},
 	"/lol-nacho/v1/get-active-stores": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoStoresResponse }
+		get: { path: never, params: never, body: never, response: LCUTypes.StoresResponseDto }
 	},
 	"/lol-nacho/v1/get-current-catalog-item": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoShoppeCatalogEntry }
+		get: { path: never, params: never, body: never, response: LCUTypes.CatalogEntryDto }
 	},
 	"/lol-nacho/v1/get-store-digests": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoStoreDigests }
-	},
-	"/lol-nacho/v1/mock-roll-rewards": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoNachoPurchaseResponse }
-		post: { path: never, params: never, body: LCUTypes.LolNachoFinalPurchaseUnitDto[], response: unknown }
+		get: { path: never, params: never, body: never, response: LCUTypes.StoreDigestsDto }
 	},
 	"/lol-nacho/v1/purchases/{purchaseId}": {
 		get: { path: [purchaseId: string], params: never, body: never, response: LCUTypes.LolNachoNachoPurchaseResponse }
