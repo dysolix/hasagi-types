@@ -85,6 +85,10 @@ export interface LCUEndpoints {
 		put: { path: never, params: never, body: number, response: unknown }
 		delete: { path: never, params: never, body: never, response: unknown }
 	},
+	"/lol-cosmetics/v1/selection/tft-zoom-skin": {
+		put: { path: never, params: never, body: number, response: unknown }
+		delete: { path: never, params: never, body: never, response: unknown }
+	},
 	"/lol-gameflow/v1/early-exit-notifications/eog": {
 		get: { path: never, params: never, body: never, response: unknown[] }
 		delete: { path: never, params: never, body: never, response: unknown }
@@ -359,7 +363,7 @@ export interface LCUEndpoints {
 	"/deep-links/v1/settings": {
 		get: { path: never, params: never, body: never, response: LCUTypes.DeepLinksDeepLinksSettings }
 	},
-	"/dx9-deprecation/notification-type": {
+	"/dx11-upgrade/notification-type": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolDx9DeprecationDx9DeprecationNotificationType }
 	},
 	"/entitlements/v1/token": {
@@ -489,18 +493,18 @@ export interface LCUEndpoints {
 	"/lol-champ-select-legacy/v1/session": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectLegacyChampSelectSession }
 	},
+	"/lol-champ-select-legacy/v1/session/champion-swaps": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectLegacyChampSelectSwapContract[] }
+	},
+	"/lol-champ-select-legacy/v1/session/champion-swaps/{id}": {
+		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectLegacyChampSelectSwapContract }
+	},
 	"/lol-champ-select-legacy/v1/session/my-selection": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectLegacyChampSelectPlayerSelection }
 		patch: { path: never, params: never, body: LCUTypes.LolChampSelectLegacyChampSelectMySelection, response: unknown }
 	},
 	"/lol-champ-select-legacy/v1/session/timer": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectLegacyChampSelectTimer }
-	},
-	"/lol-champ-select-legacy/v1/session/trades": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectLegacyChampSelectTradeContract[] }
-	},
-	"/lol-champ-select-legacy/v1/session/trades/{id}": {
-		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectLegacyChampSelectTradeContract }
 	},
 	"/lol-champ-select-legacy/v1/team-boost": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectLegacyTeamBoost }
@@ -523,11 +527,14 @@ export interface LCUEndpoints {
 	"/lol-champ-select/v1/muted-players": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectMutedPlayerInfo[] }
 	},
-	"/lol-champ-select/v1/ongoing-swap": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapNotification }
+	"/lol-champ-select/v1/ongoing-champion-swap": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectChampionSwapNotification }
 	},
-	"/lol-champ-select/v1/ongoing-trade": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectTradeNotification }
+	"/lol-champ-select/v1/ongoing-pick-order-swap": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectPickOrderSwapNotification }
+	},
+	"/lol-champ-select/v1/ongoing-position-swap": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectPositionSwapNotification }
 	},
 	"/lol-champ-select/v1/pickable-champion-ids": {
 		get: { path: never, params: never, body: never, response: number[] }
@@ -541,24 +548,27 @@ export interface LCUEndpoints {
 	"/lol-champ-select/v1/session": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSession }
 	},
+	"/lol-champ-select/v1/session/champion-swaps": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract[] }
+	},
+	"/lol-champ-select/v1/session/champion-swaps/{id}": {
+		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract }
+	},
 	"/lol-champ-select/v1/session/my-selection": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectPlayerSelection }
 		patch: { path: never, params: never, body: LCUTypes.LolChampSelectChampSelectMySelection, response: unknown }
 	},
-	"/lol-champ-select/v1/session/swaps": {
+	"/lol-champ-select/v1/session/pick-order-swaps": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract[] }
 	},
-	"/lol-champ-select/v1/session/swaps/{id}": {
+	"/lol-champ-select/v1/session/pick-order-swaps/{id}": {
 		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract }
+	},
+	"/lol-champ-select/v1/session/position-swaps": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract[] }
 	},
 	"/lol-champ-select/v1/session/timer": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectTimer }
-	},
-	"/lol-champ-select/v1/session/trades": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectTradeContract[] }
-	},
-	"/lol-champ-select/v1/session/trades/{id}": {
-		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectTradeContract }
 	},
 	"/lol-champ-select/v1/sfx-notifications": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectSfxNotification[] }
@@ -827,6 +837,9 @@ export interface LCUEndpoints {
 	"/lol-cosmetics/v1/favorites/tft/map-skins": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolCosmeticsTFTMapSkinFavoritesViewModel }
 	},
+	"/lol-cosmetics/v1/favorites/tft/zoom-skins": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolCosmeticsTFTZoomSkinFavoritesViewModel }
+	},
 	"/lol-cosmetics/v1/inventories/{setName}/companions": {
 		get: { path: [setName: string], params: never, body: never, response: LCUTypes.LolCosmeticsCompanionsGroupedViewModel }
 	},
@@ -838,6 +851,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-cosmetics/v1/inventories/{setName}/playbooks": {
 		get: { path: [setName: string], params: never, body: never, response: LCUTypes.LolCosmeticsTFTPlaybookGroupedViewModel }
+	},
+	"/lol-cosmetics/v1/inventories/{setName}/zoom-skins": {
+		get: { path: [setName: string], params: never, body: never, response: LCUTypes.LolCosmeticsTFTZoomSkinGroupedViewModel }
 	},
 	"/lol-drops/v1/drop-tables": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolDropsCapDropsDropTableWithPityDTO[] }
@@ -861,9 +877,6 @@ export interface LCUEndpoints {
 		get: { path: [playerId: string], params: never, body: never, response: LCUTypes.LolDropsCapDropTableCounterDTO[] }
 	},
 	"/lol-drops/v1/ready": {
-		get: { path: never, params: never, body: never, response: boolean }
-	},
-	"/lol-dx9-deprecation/needs-hardware-upgrade": {
 		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-email-verification/v1/email": {
@@ -956,7 +969,7 @@ export interface LCUEndpoints {
 		get: { path: [eventId: string], params: never, body: never, response: number }
 	},
 	"/lol-event-hub/v1/navigation-button-data": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolEventHubNavigationButtonUIData }
+		get: { path: never, params: never, body: never, response: LCUTypes.LolEventHubNavigationButtonUIData[] }
 	},
 	"/lol-event-hub/v1/skins": {
 		get: { path: never, params: never, body: never, response: Record<string, LCUTypes.LolEventHubEventPassInfo> }
@@ -1330,11 +1343,14 @@ export interface LCUEndpoints {
 	"/lol-lobby-team-builder/champ-select/v1/preferences": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampionSelectPreferences }
 	},
-	"/lol-lobby-team-builder/champ-select/v1/sending-loadouts-gcos-enabled": {
-		get: { path: never, params: never, body: never, response: boolean }
-	},
 	"/lol-lobby-team-builder/champ-select/v1/session": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSession }
+	},
+	"/lol-lobby-team-builder/champ-select/v1/session/champion-swaps": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract[] }
+	},
+	"/lol-lobby-team-builder/champ-select/v1/session/champion-swaps/{id}": {
+		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/my-selection": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectPlayerSelection }
@@ -1343,20 +1359,20 @@ export interface LCUEndpoints {
 	"/lol-lobby-team-builder/champ-select/v1/session/obfuscated-summoner-ids": {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
-	"/lol-lobby-team-builder/champ-select/v1/session/swaps": {
+	"/lol-lobby-team-builder/champ-select/v1/session/pick-order-swaps": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract[] }
 	},
-	"/lol-lobby-team-builder/champ-select/v1/session/swaps/{id}": {
+	"/lol-lobby-team-builder/champ-select/v1/session/pick-order-swaps/{id}": {
+		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
+	},
+	"/lol-lobby-team-builder/champ-select/v1/session/position-swaps": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract[] }
+	},
+	"/lol-lobby-team-builder/champ-select/v1/session/position-swaps/{id}": {
 		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/timer": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectTimer }
-	},
-	"/lol-lobby-team-builder/champ-select/v1/session/trades": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectTradeContract[] }
-	},
-	"/lol-lobby-team-builder/champ-select/v1/session/trades/{id}": {
-		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectTradeContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/team-boost": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderTeamBoost }
@@ -1590,6 +1606,12 @@ export interface LCUEndpoints {
 	"/lol-marketplace/v1/products/{product}/stores": {
 		get: { path: [product: string], params: never, body: never, response: LCUTypes.LolMarketplaceStoresResponse }
 	},
+	"/lol-marketplace/v1/products/tft/configs": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolMarketplaceTFTRotationalShopConfig }
+	},
+	"/lol-marketplace/v1/products/tft/stores/upgrades": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolMarketplaceStoreDto }
+	},
 	"/lol-marketplace/v1/purchases/{purchaseId}": {
 		get: { path: [purchaseId: string], params: never, body: never, response: LCUTypes.LolMarketplacePurchaseTransaction }
 	},
@@ -1705,6 +1727,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-objectives/v1/objectives/{gameType}": {
 		get: { path: [gameType: string], params: never, body: never, response: LCUTypes.LolObjectivesUIObjectivesGroup[] }
+	},
+	"/lol-objectives/v1/ready": {
+		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-patch/v1/checking-enabled": {
 		get: { path: never, params: never, body: never, response: boolean }
@@ -1943,9 +1968,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-ranked/v1/social-leaderboard-ranked-queue-stats-for-puuids": {
 		get: { path: never, params: { "queueType": LCUTypes.LolRankedLeagueQueueType, "puuids": string[] }, body: never, response: Record<string, LCUTypes.LolRankedSocialLeaderboardRankedQueueStats> }
-	},
-	"/lol-ranked/v1/splits-config": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolRankedRewardsInfo }
 	},
 	"/lol-ranked/v1/top-rated-ladders-enabled": {
 		get: { path: never, params: never, body: never, response: string[] }
@@ -2653,7 +2675,7 @@ export interface LCUEndpoints {
 	"/deep-links/v1/launch-lor-link": {
 		post: { path: never, params: never, body: never, response: string }
 	},
-	"/dx9-deprecation/legacy-mode-notification/ack": {
+	"/dx11-upgrade/notification-ack": {
 		post: { path: never, params: never, body: never, response: unknown }
 	},
 	"/lol-account-verification/v1/confirmActivationPin": {
@@ -2686,28 +2708,31 @@ export interface LCUEndpoints {
 	"/lol-champ-select-legacy/v1/session/actions/{id}/complete": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
+	"/lol-champ-select-legacy/v1/session/champion-swaps/{id}/accept": {
+		post: { path: [id: number], params: never, body: never, response: unknown }
+	},
+	"/lol-champ-select-legacy/v1/session/champion-swaps/{id}/cancel": {
+		post: { path: [id: number], params: never, body: never, response: unknown }
+	},
+	"/lol-champ-select-legacy/v1/session/champion-swaps/{id}/decline": {
+		post: { path: [id: number], params: never, body: never, response: unknown }
+	},
+	"/lol-champ-select-legacy/v1/session/champion-swaps/{id}/request": {
+		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectLegacyChampSelectSwapContract }
+	},
 	"/lol-champ-select-legacy/v1/session/my-selection/reroll": {
 		post: { path: never, params: never, body: never, response: unknown }
-	},
-	"/lol-champ-select-legacy/v1/session/trades/{id}/accept": {
-		post: { path: [id: number], params: never, body: never, response: unknown }
-	},
-	"/lol-champ-select-legacy/v1/session/trades/{id}/cancel": {
-		post: { path: [id: number], params: never, body: never, response: unknown }
-	},
-	"/lol-champ-select-legacy/v1/session/trades/{id}/decline": {
-		post: { path: [id: number], params: never, body: never, response: unknown }
-	},
-	"/lol-champ-select-legacy/v1/session/trades/{id}/request": {
-		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectLegacyChampSelectTradeContract }
 	},
 	"/lol-champ-select/v1/battle-training/launch": {
 		post: { path: never, params: never, body: never, response: unknown }
 	},
-	"/lol-champ-select/v1/ongoing-swap/{id}/clear": {
+	"/lol-champ-select/v1/ongoing-champion-swap/{id}/clear": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-champ-select/v1/ongoing-trade/{id}/clear": {
+	"/lol-champ-select/v1/ongoing-pick-order-swap/{id}/clear": {
+		post: { path: [id: number], params: never, body: never, response: unknown }
+	},
+	"/lol-champ-select/v1/ongoing-position-swap/{id}/clear": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
 	"/lol-champ-select/v1/retrieve-latest-game-dto": {
@@ -2719,35 +2744,47 @@ export interface LCUEndpoints {
 	"/lol-champ-select/v1/session/bench/swap/{championId}": {
 		post: { path: [championId: number], params: never, body: never, response: unknown }
 	},
+	"/lol-champ-select/v1/session/champion-swaps/{id}/accept": {
+		post: { path: [id: number], params: never, body: never, response: unknown }
+	},
+	"/lol-champ-select/v1/session/champion-swaps/{id}/cancel": {
+		post: { path: [id: number], params: never, body: never, response: unknown }
+	},
+	"/lol-champ-select/v1/session/champion-swaps/{id}/decline": {
+		post: { path: [id: number], params: never, body: never, response: unknown }
+	},
+	"/lol-champ-select/v1/session/champion-swaps/{id}/request": {
+		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract }
+	},
 	"/lol-champ-select/v1/session/my-selection/reroll": {
 		post: { path: never, params: never, body: never, response: unknown }
 	},
-	"/lol-champ-select/v1/session/simple-inventory": {
-		post: { path: never, params: never, body: never, response: unknown }
-	},
-	"/lol-champ-select/v1/session/swaps/{id}/accept": {
+	"/lol-champ-select/v1/session/pick-order-swaps/{id}/accept": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-champ-select/v1/session/swaps/{id}/cancel": {
+	"/lol-champ-select/v1/session/pick-order-swaps/{id}/cancel": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-champ-select/v1/session/swaps/{id}/decline": {
+	"/lol-champ-select/v1/session/pick-order-swaps/{id}/decline": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-champ-select/v1/session/swaps/{id}/request": {
+	"/lol-champ-select/v1/session/pick-order-swaps/{id}/request": {
 		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract }
 	},
-	"/lol-champ-select/v1/session/trades/{id}/accept": {
+	"/lol-champ-select/v1/session/position-swaps/{id}/accept": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-champ-select/v1/session/trades/{id}/cancel": {
+	"/lol-champ-select/v1/session/position-swaps/{id}/cancel": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-champ-select/v1/session/trades/{id}/decline": {
+	"/lol-champ-select/v1/session/position-swaps/{id}/decline": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-champ-select/v1/session/trades/{id}/request": {
-		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectTradeContract }
+	"/lol-champ-select/v1/session/position-swaps/{id}/request": {
+		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract }
+	},
+	"/lol-champ-select/v1/session/simple-inventory": {
+		post: { path: never, params: never, body: never, response: unknown }
 	},
 	"/lol-champ-select/v1/team-boost/purchase": {
 		post: { path: never, params: never, body: never, response: unknown }
@@ -3043,35 +3080,47 @@ export interface LCUEndpoints {
 	"/lol-lobby-team-builder/champ-select/v1/session/bench/swap/{championId}": {
 		post: { path: [championId: number], params: never, body: never, response: unknown }
 	},
+	"/lol-lobby-team-builder/champ-select/v1/session/champion-swaps/{id}/accept": {
+		post: { path: [id: number], params: never, body: never, response: unknown }
+	},
+	"/lol-lobby-team-builder/champ-select/v1/session/champion-swaps/{id}/cancel": {
+		post: { path: [id: number], params: never, body: never, response: unknown }
+	},
+	"/lol-lobby-team-builder/champ-select/v1/session/champion-swaps/{id}/decline": {
+		post: { path: [id: number], params: never, body: never, response: unknown }
+	},
+	"/lol-lobby-team-builder/champ-select/v1/session/champion-swaps/{id}/request": {
+		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
+	},
 	"/lol-lobby-team-builder/champ-select/v1/session/my-selection/reroll": {
 		post: { path: never, params: never, body: never, response: unknown }
 	},
-	"/lol-lobby-team-builder/champ-select/v1/session/quit": {
-		post: { path: never, params: never, body: never, response: unknown }
-	},
-	"/lol-lobby-team-builder/champ-select/v1/session/swaps/{id}/accept": {
+	"/lol-lobby-team-builder/champ-select/v1/session/pick-order-swaps/{id}/accept": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-lobby-team-builder/champ-select/v1/session/swaps/{id}/cancel": {
+	"/lol-lobby-team-builder/champ-select/v1/session/pick-order-swaps/{id}/cancel": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-lobby-team-builder/champ-select/v1/session/swaps/{id}/decline": {
+	"/lol-lobby-team-builder/champ-select/v1/session/pick-order-swaps/{id}/decline": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-lobby-team-builder/champ-select/v1/session/swaps/{id}/request": {
+	"/lol-lobby-team-builder/champ-select/v1/session/pick-order-swaps/{id}/request": {
 		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
 	},
-	"/lol-lobby-team-builder/champ-select/v1/session/trades/{id}/accept": {
+	"/lol-lobby-team-builder/champ-select/v1/session/position-swaps/{id}/accept": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-lobby-team-builder/champ-select/v1/session/trades/{id}/cancel": {
+	"/lol-lobby-team-builder/champ-select/v1/session/position-swaps/{id}/cancel": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-lobby-team-builder/champ-select/v1/session/trades/{id}/decline": {
+	"/lol-lobby-team-builder/champ-select/v1/session/position-swaps/{id}/decline": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
-	"/lol-lobby-team-builder/champ-select/v1/session/trades/{id}/request": {
-		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectTradeContract }
+	"/lol-lobby-team-builder/champ-select/v1/session/position-swaps/{id}/request": {
+		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
+	},
+	"/lol-lobby-team-builder/champ-select/v1/session/quit": {
+		post: { path: never, params: never, body: never, response: unknown }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/simple-inventory": {
 		post: { path: never, params: never, body: never, response: unknown }
