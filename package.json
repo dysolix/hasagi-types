@@ -1,7 +1,7 @@
 {
   "name": "@hasagi/types",
-  "version": "15.6.1",
-  "_clientVersion": "15.6.665.2347",
+  "version": "15.7.1",
+  "_clientVersion": "15.7.669.5499",
   "description": "This package contains auto-generated LCU types and endpoints.",
   "scripts": {
     "update-types": "node scripts/update-types.mjs",

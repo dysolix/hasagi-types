@@ -508,6 +508,60 @@ export interface ChemtechShoppe_RefundResponseDto {
 	notes: string[]
 }
 
+export interface ChemtechShoppe_RotatingStoreDigestDto {
+	id: string
+	productId: string
+	name: string
+	type: string
+	rotationCadence: string
+	displayMetadata: unknown
+	currRotationStartTime: string
+	nextRotationStartTime: string
+}
+
+export interface ChemtechShoppe_RotatingStoreDigestResponseDto {
+	data: ChemtechShoppe_RotatingStoreDigestsDto
+	paging: ChemtechShoppe_PagingDto
+	stats: ChemtechShoppe_StatsDto
+	notes: string[]
+}
+
+export interface ChemtechShoppe_RotatingStoreDigestsDto {
+	digests: ChemtechShoppe_RotatingStoreDigestDto[]
+}
+
+export interface ChemtechShoppe_RotatingStoreDto {
+	id: string
+	productId: string
+	name: string
+	type: string
+	slots: ChemtechShoppe_RotatingStoreSlotDto[]
+	rotationCadence: string
+	displayMetadata: unknown
+	currRotationStartTime: string
+	nextRotationStartTime: string
+}
+
+export interface ChemtechShoppe_RotatingStoreResponseDto {
+	data: ChemtechShoppe_RotatingStoreDto
+	paging: ChemtechShoppe_PagingDto
+	stats: ChemtechShoppe_StatsDto
+	notes: string[]
+}
+
+export interface ChemtechShoppe_RotatingStoreSlotDto {
+	/** @format int32 */
+	selectionCount: number
+	catalogEntries: ChemtechShoppe_CatalogEntryDto[]
+}
+
+export interface ChemtechShoppe_RotatingStoresResponseDto {
+	data: ChemtechShoppe_RotatingStoreDto[]
+	paging: ChemtechShoppe_PagingDto
+	stats: ChemtechShoppe_StatsDto
+	notes: string[]
+}
+
 export interface ChemtechShoppe_StatsDto {
 	/** @format int64 */
 	durationMs: number
@@ -2615,6 +2669,23 @@ export interface LolChampSelectChampSelectBannedChampions {
 	numBans: number
 }
 
+export interface LolChampSelectChampSelectChampionSwapNotification {
+	/** @format int64 */
+	id: number
+	/** @format int64 */
+	responderIndex: number
+	state: LolChampSelectChampSelectSwapState
+	/** @format int64 */
+	otherSummonerIndex: number
+	responderChampionName: string
+	requesterChampionName: string
+	requesterChampionSplashPath: string
+	initiatedByLocalPlayer: boolean
+	type: LolChampSelectChampSelectSwapType
+	/** @format int32 */
+	requesterChampionId: number
+}
+
 export interface LolChampSelectChampSelectChatRoomDetails {
 	multiUserChatId: string
 	multiUserChatPassword: string
@@ -2628,8 +2699,20 @@ export interface LolChampSelectChampSelectMySelection {
 	"spell1Id"?: number
 	/** @format uint64 */
 	"spell2Id"?: number
+}
+
+export interface LolChampSelectChampSelectPickOrderSwapNotification {
 	/** @format int64 */
-	wardSkinId?: number
+	id: number
+	/** @format int64 */
+	requestorIndex: number
+	/** @format int64 */
+	responderIndex: number
+	state: LolChampSelectChampSelectSwapState
+	/** @format int64 */
+	otherSummonerIndex: number
+	initiatedByLocalPlayer: boolean
+	type: LolChampSelectChampSelectSwapType
 }
 
 export interface LolChampSelectChampSelectPinDropNotification {
@@ -2655,8 +2738,6 @@ export interface LolChampSelectChampSelectPlayerSelection {
 	championId: number
 	/** @format int32 */
 	selectedSkinId: number
-	/** @format int64 */
-	wardSkinId: number
 	/** @format uint64 */
 	"spell1Id": number
 	/** @format uint64 */
@@ -2668,11 +2749,28 @@ export interface LolChampSelectChampSelectPlayerSelection {
 	championPickIntent: number
 	/** @format uint64 */
 	summonerId: number
+	playerAlias: string
 	puuid: string
 	nameVisibilityType: string
 	/** @format uint64 */
 	obfuscatedSummonerId: number
 	obfuscatedPuuid: string
+}
+
+export interface LolChampSelectChampSelectPositionSwapNotification {
+	/** @format int64 */
+	id: number
+	/** @format int64 */
+	requestorIndex: number
+	/** @format int64 */
+	responderIndex: number
+	requesterPosition: string
+	responderPosition: string
+	state: LolChampSelectChampSelectSwapState
+	/** @format int64 */
+	otherSummonerIndex: number
+	initiatedByLocalPlayer: boolean
+	type: LolChampSelectChampSelectSwapType
 }
 
 export interface LolChampSelectChampSelectSession {
@@ -2682,8 +2780,9 @@ export interface LolChampSelectChampSelectSession {
 	chatDetails: LolChampSelectChampSelectChatRoomDetails
 	myTeam: LolChampSelectChampSelectPlayerSelection[]
 	theirTeam: LolChampSelectChampSelectPlayerSelection[]
-	trades: LolChampSelectChampSelectTradeContract[]
+	trades: LolChampSelectChampSelectSwapContract[]
 	pickOrderSwaps: LolChampSelectChampSelectSwapContract[]
+	positionSwaps: LolChampSelectChampSelectSwapContract[]
 	actions: unknown[]
 	bans: LolChampSelectChampSelectBannedChampions
 	/** @format int64 */
@@ -2704,8 +2803,6 @@ export interface LolChampSelectChampSelectSession {
 	benchChampions: LolChampSelectBenchChampion[]
 	/** @format int64 */
 	counter: number
-	/** @format int64 */
-	recoveryCounter: number
 	skipChampionSelect: boolean
 	hasSimultaneousBans: boolean
 	hasSimultaneousPicks: boolean
@@ -2724,6 +2821,7 @@ export interface LolChampSelectChampSelectSummoner {
 	assignedPosition: string
 	/** @format uint64 */
 	summonerId: number
+	playerAlias: string
 	puuid: string
 	nameVisibilityType: string
 	/** @format uint64 */
@@ -2761,8 +2859,11 @@ export interface LolChampSelectChampSelectSummoner {
 	tradeId: number
 	/** @format int64 */
 	swapId: number
+	/** @format int64 */
+	positionSwapId: number
 	showTrades: boolean
 	showSwaps: boolean
+	showPositionSwaps: boolean
 	showMuted: boolean
 }
 
@@ -2774,20 +2875,9 @@ export interface LolChampSelectChampSelectSwapContract {
 	state: LolChampSelectChampSelectSwapState
 }
 
-export interface LolChampSelectChampSelectSwapNotification {
-	/** @format int64 */
-	id: number
-	/** @format int64 */
-	requestorIndex: number
-	/** @format int64 */
-	responderIndex: number
-	state: LolChampSelectChampSelectSwapState
-	/** @format int64 */
-	otherSummonerIndex: number
-	initiatedByLocalPlayer: boolean
-}
-
 export type LolChampSelectChampSelectSwapState = "ACCEPTED" | "CANCELLED" | "DECLINED" | "SENT" | "RECEIVED" | "INVALID" | "BUSY" | "AVAILABLE"
+
+export type LolChampSelectChampSelectSwapType = "POSITION" | "PICK_ORDER" | "CHAMPION"
 
 export interface LolChampSelectChampSelectTimer {
 	/** @format int64 */
@@ -2799,30 +2889,6 @@ export interface LolChampSelectChampSelectTimer {
 	/** @format uint64 */
 	internalNowInEpochMs: number
 }
-
-export interface LolChampSelectChampSelectTradeContract {
-	/** @format int64 */
-	id: number
-	/** @format int64 */
-	cellId: number
-	state: LolChampSelectChampSelectTradeState
-}
-
-export interface LolChampSelectChampSelectTradeNotification {
-	/** @format int64 */
-	id: number
-	/** @format int64 */
-	responderIndex: number
-	state: LolChampSelectChampSelectTradeState
-	/** @format int64 */
-	otherSummonerIndex: number
-	responderChampionName: string
-	requesterChampionName: string
-	requesterChampionSplashPath: string
-	initiatedByLocalPlayer: boolean
-}
-
-export type LolChampSelectChampSelectTradeState = "ACCEPTED" | "CANCELLED" | "DECLINED" | "SENT" | "RECEIVED" | "INVALID" | "BUSY" | "AVAILABLE"
 
 export interface LolChampSelectChampionMastery {
 	/** @format int32 */
@@ -3021,8 +3087,6 @@ export interface LolChampSelectLegacyChampSelectMySelection {
 	"spell1Id"?: number
 	/** @format uint64 */
 	"spell2Id"?: number
-	/** @format int64 */
-	wardSkinId?: number
 }
 
 export interface LolChampSelectLegacyChampSelectPlayerSelection {
@@ -3032,8 +3096,6 @@ export interface LolChampSelectLegacyChampSelectPlayerSelection {
 	championId: number
 	/** @format int32 */
 	selectedSkinId: number
-	/** @format int64 */
-	wardSkinId: number
 	/** @format uint64 */
 	"spell1Id": number
 	/** @format uint64 */
@@ -3054,7 +3116,7 @@ export interface LolChampSelectLegacyChampSelectSession {
 	chatDetails: LolChampSelectLegacyChampSelectChatRoomDetails
 	myTeam: LolChampSelectLegacyChampSelectPlayerSelection[]
 	theirTeam: LolChampSelectLegacyChampSelectPlayerSelection[]
-	trades: LolChampSelectLegacyChampSelectTradeContract[]
+	trades: LolChampSelectLegacyChampSelectSwapContract[]
 	actions: unknown[]
 	bans: LolChampSelectLegacyChampSelectBannedChampions
 	/** @format int64 */
@@ -3072,6 +3134,16 @@ export interface LolChampSelectLegacyChampSelectSession {
 	isCustomGame: boolean
 }
 
+export interface LolChampSelectLegacyChampSelectSwapContract {
+	/** @format int64 */
+	id: number
+	/** @format int64 */
+	cellId: number
+	state: LolChampSelectLegacyChampSelectSwapState
+}
+
+export type LolChampSelectLegacyChampSelectSwapState = "SENT" | "RECEIVED" | "INVALID" | "BUSY" | "AVAILABLE"
+
 export interface LolChampSelectLegacyChampSelectTimer {
 	/** @format int64 */
 	adjustedTimeLeftInPhase: number
@@ -3082,16 +3154,6 @@ export interface LolChampSelectLegacyChampSelectTimer {
 	/** @format uint64 */
 	internalNowInEpochMs: number
 }
-
-export interface LolChampSelectLegacyChampSelectTradeContract {
-	/** @format int64 */
-	id: number
-	/** @format int64 */
-	cellId: number
-	state: LolChampSelectLegacyChampSelectTradeState
-}
-
-export type LolChampSelectLegacyChampSelectTradeState = "SENT" | "RECEIVED" | "INVALID" | "BUSY" | "AVAILABLE"
 
 export interface LolChampSelectLegacyChampionSelectPreferences {
 	skins: Record<string, number>
@@ -6535,7 +6597,6 @@ export interface LolDropsCapDropsDropTableDisplayMetadata {
 	isCollectorsBounty: boolean
 	dataAssetId: string
 	nameTraKey: string
-	mythicOfferId: string
 	progressionId: string
 	/** @format uint8 */
 	priority: number
@@ -8074,6 +8135,11 @@ export interface LolEventHubLoginSession {
 
 export type LolEventHubLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
 
+export interface LolEventHubLolInventoryType {
+	inventoryTypeId: string
+	capInventoryTypeId: string
+}
+
 export interface LolEventHubLoyaltyRewards {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
@@ -9068,10 +9134,6 @@ export interface LolGameClientChatMutedPlayerInfo {
 	obfuscatedPuuid: string
 	/** @format uint64 */
 	obfuscatedSummonerId: number
-}
-
-export interface LolGameQueuesDoubleUpConfig {
-	enabled: boolean
 }
 
 export interface LolGameQueuesLoginDataPacket {
@@ -10100,6 +10162,11 @@ export interface LolInventoryLoginSession {
 }
 
 export type LolInventoryLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
+
+export interface LolInventoryLolInventoryType {
+	inventoryTypeId: string
+	capInventoryTypeId: string
+}
 
 export interface LolInventoryLoyaltyRewards {
 	/** @format int32 */
@@ -11911,7 +11978,6 @@ export interface LolLobbyTeamBuilderAfkCheckStateV1 {
 	remainingAfkMillis: number
 	afkReady: boolean
 	inventoryDraft: LolLobbyTeamBuilderTbdInventory
-	additionalInventoryTypes: string[]
 	compressAfkCheckPayload: boolean
 	autoAccept: boolean
 	mucJwtDto: LolLobbyTeamBuilderMucJwtDto
@@ -11946,6 +12012,7 @@ export interface LolLobbyTeamBuilderCellV1 {
 	"spell2Id": number
 	/** @format uint64 */
 	summonerId: number
+	playerAlias: string
 	puuid: string
 	nameVisibilityType: string
 	/** @format uint64 */
@@ -12001,8 +12068,6 @@ export interface LolLobbyTeamBuilderChampSelectMySelection {
 	"spell1Id"?: number
 	/** @format uint64 */
 	"spell2Id"?: number
-	/** @format int64 */
-	wardSkinId?: number
 }
 
 export interface LolLobbyTeamBuilderChampSelectPlayerSelection {
@@ -12012,8 +12077,6 @@ export interface LolLobbyTeamBuilderChampSelectPlayerSelection {
 	championId: number
 	/** @format int32 */
 	selectedSkinId: number
-	/** @format int64 */
-	wardSkinId: number
 	/** @format uint64 */
 	"spell1Id": number
 	/** @format uint64 */
@@ -12026,6 +12089,7 @@ export interface LolLobbyTeamBuilderChampSelectPlayerSelection {
 	playerType: string
 	/** @format uint64 */
 	summonerId: number
+	playerAlias: string
 	puuid: string
 	nameVisibilityType: string
 	/** @format uint64 */
@@ -12040,8 +12104,9 @@ export interface LolLobbyTeamBuilderChampSelectSession {
 	chatDetails: LolLobbyTeamBuilderChampSelectChatRoomDetails
 	myTeam: LolLobbyTeamBuilderChampSelectPlayerSelection[]
 	theirTeam: LolLobbyTeamBuilderChampSelectPlayerSelection[]
-	trades: LolLobbyTeamBuilderChampSelectTradeContract[]
+	trades: LolLobbyTeamBuilderChampSelectSwapContract[]
 	pickOrderSwaps: LolLobbyTeamBuilderChampSelectSwapContract[]
+	positionSwaps: LolLobbyTeamBuilderChampSelectSwapContract[]
 	actions: unknown[]
 	/** @format int64 */
 	localPlayerCellId: number
@@ -12060,8 +12125,6 @@ export interface LolLobbyTeamBuilderChampSelectSession {
 	benchChampions: LolLobbyTeamBuilderBenchChampion[]
 	/** @format int64 */
 	counter: number
-	/** @format int64 */
-	recoveryCounter: number
 	skipChampionSelect: boolean
 	isSpectating: boolean
 	hasSimultaneousBans: boolean
@@ -12090,16 +12153,6 @@ export interface LolLobbyTeamBuilderChampSelectTimer {
 	/** @format uint64 */
 	internalNowInEpochMs: number
 }
-
-export interface LolLobbyTeamBuilderChampSelectTradeContract {
-	/** @format int64 */
-	id: number
-	/** @format int64 */
-	cellId: number
-	state: LolLobbyTeamBuilderChampSelectTradeState
-}
-
-export type LolLobbyTeamBuilderChampSelectTradeState = "SENT" | "RECEIVED" | "INVALID" | "BUSY" | "AVAILABLE"
 
 export interface LolLobbyTeamBuilderChampionBenchChampionV1 {
 	/** @format int32 */
@@ -12133,13 +12186,13 @@ export interface LolLobbyTeamBuilderChampionSelectStateV1 {
 	currentTotalTimeMillis: number
 	/** @format int64 */
 	currentTimeRemainingMillis: number
-	trades: LolLobbyTeamBuilderTradeV1[]
-	pickOrderSwaps: LolLobbyTeamBuilderPickOrderSwapV1[]
+	trades: LolLobbyTeamBuilderSwapV1[]
+	pickOrderSwaps: LolLobbyTeamBuilderSwapV1[]
+	positionSwaps: LolLobbyTeamBuilderSwapV1[]
 	pickIntentClearedReason: string
 	allowOptingOutOfBanning: boolean
 	allowSkinSelection: boolean
 	allowDuplicatePicks: boolean
-	lcuSkipsSendingLoadoutsGco: boolean
 	rerollState: LolLobbyTeamBuilderRerollStateV1
 	lockedEventsState: LolLobbyTeamBuilderLockedEventsStateV1
 	battleBoostState: LolLobbyTeamBuilderTeamBuilderBoostInfo
@@ -12360,14 +12413,6 @@ export interface LolLobbyTeamBuilderMucJwtDto {
 	targetRegion: string
 }
 
-export interface LolLobbyTeamBuilderPickOrderSwapV1 {
-	/** @format int32 */
-	id: number
-	/** @format int32 */
-	cellId: number
-	state: string
-}
-
 export interface LolLobbyTeamBuilderQueue {
 	/** @format int32 */
 	id: number
@@ -12462,6 +12507,14 @@ export interface LolLobbyTeamBuilderSettingCategoryResource {
 	data: LolLobbyTeamBuilderChampionSelectPreferences
 }
 
+export interface LolLobbyTeamBuilderSwapV1 {
+	/** @format int32 */
+	id: number
+	/** @format int32 */
+	cellId: number
+	state: string
+}
+
 export interface LolLobbyTeamBuilderTBDMatchmakingState {
 	/** @format int64 */
 	estimatedMatchmakingTimeMillis: number
@@ -12473,8 +12526,6 @@ export interface LolLobbyTeamBuilderTBDMatchmakingState {
 export interface LolLobbyTeamBuilderTbLobbyStateResource {
 	/** @format int32 */
 	counter: number
-	/** @format int32 */
-	recoveryCounter: number
 	phaseName: string
 	/** @format int32 */
 	queueId: number
@@ -12530,14 +12581,6 @@ export interface LolLobbyTeamBuilderTeamBuilderBoostInfo {
 export interface LolLobbyTeamBuilderTeambuilderLeagueEdgeResponse {
 	payload: LolLobbyTeamBuilderTbLobbyStateResource
 	status: string
-}
-
-export interface LolLobbyTeamBuilderTradeV1 {
-	/** @format int32 */
-	id: number
-	/** @format int32 */
-	cellId: number
-	state: string
 }
 
 export interface LolLobbyUserInfoToken {
@@ -13795,6 +13838,29 @@ export interface LolMarketplaceCatalogEntryDto {
 	purchaseLimits: LolMarketplaceVelocityLimitDeltaDto[]
 }
 
+export interface LolMarketplaceEntitlementDto {
+	id: string
+	label: string
+	typeId: string
+	productId: string
+	active: boolean
+	createdDate: string
+	lastModifiedDate: string
+	firstUsedDate: string
+	recipient: unknown
+	ownerId: string
+	item: LolMarketplaceEntitlementItemDto
+}
+
+export interface LolMarketplaceEntitlementItemDto {
+	id: string
+	typeId: string
+}
+
+export interface LolMarketplaceEntitlementsResponse {
+	data: LolMarketplaceEntitlementDto[]
+}
+
 export interface LolMarketplaceFinalPurchaseUnitDto {
 	payments: LolMarketplacePaymentDto[]
 	fulfillment: LolMarketplaceFulfillmentDto
@@ -13874,6 +13940,7 @@ export interface LolMarketplacePurchaseDto {
 	purchaseVisibility: string
 	refund: LolMarketplaceRefundDto
 	refundRule: string
+	refundable: boolean
 	source: string
 }
 
@@ -14026,6 +14093,28 @@ export interface LolMarketplaceStoresResponse {
 	stats: LolMarketplaceResponseStats
 	notes: string[]
 	errors: LolMarketplaceResponseError[]
+}
+
+export interface LolMarketplaceTFTRotationalShopConfig {
+	enabled: boolean
+	contentPreviewConfig: unknown
+	uiToggleEnabled: boolean
+	navs: LolMarketplaceTFTRotationalShopNavConfig[]
+	refund: LolMarketplaceTFTRotationalShopRefundConfig
+	littleLegendsUpgradeEnabled: boolean
+}
+
+export interface LolMarketplaceTFTRotationalShopNavConfig {
+	name: string
+	enabled: boolean
+	supportedCurrencies: string[]
+}
+
+export interface LolMarketplaceTFTRotationalShopRefundConfig {
+	enabled: boolean
+	allowedTypes: string[]
+	/** @format uint8 */
+	thresholdDays: number
 }
 
 export interface LolMarketplaceTraKeyName {
@@ -15511,6 +15600,19 @@ export type LolNpeTutorialPathTutorialStatus = "COMPLETED" | "UNLOCKED" | "LOCKE
 
 export type LolNpeTutorialPathTutorialType = "REWARD" | "CARD"
 
+export interface LolObjectivesActiveEventUIData {
+	eventId: string
+	eventInfo: LolObjectivesEventInfoUIData
+}
+
+export interface LolObjectivesCatalogEntry {
+	contentId: string
+	/** @format int32 */
+	itemId: number
+	offerId: string
+	typeId: string
+}
+
 export interface LolObjectivesCollectionsChampion {
 	/** @format int32 */
 	id: number
@@ -15551,6 +15653,26 @@ export interface LolObjectivesCollectionsWardSkin {
 	/** @format int64 */
 	id: number
 	ownership: LolObjectivesCollectionsOwnership
+}
+
+export interface LolObjectivesEventInfoUIData {
+	eventId: string
+	eventName: string
+	eventType: string
+	eventIcon: string
+	navBarIcon: string
+	eventTokenImage: string
+	/** @format int32 */
+	currentTokenBalance: number
+	/** @format int32 */
+	lockedTokenCount: number
+	/** @format int32 */
+	unclaimedRewardCount: number
+	/** @format int64 */
+	timeOfLastUnclaimedReward: number
+	isPassPurchased: boolean
+	eventPassBundles: LolObjectivesCatalogEntry[]
+	tokenBundles: LolObjectivesCatalogEntry[]
 }
 
 export type LolObjectivesGameflowPhase = "TerminatedInError" | "EndOfGame" | "PreEndOfGame" | "WaitingForStats" | "Reconnect" | "InProgress" | "FailedToLaunch" | "GameStart" | "ChampSelect" | "ReadyCheck" | "CheckedIntoTournament" | "Matchmaking" | "Lobby" | "None"
@@ -15624,12 +15746,15 @@ export interface LolObjectivesNonPooledObjectives {
 	localizedDescription: string
 }
 
+export type LolObjectivesObjectiveCategoryType = "kTFTPassData" | "kEventHubConfiguration" | "kNonPass"
+
 export interface LolObjectivesObjectivesContainer {
 	pooledObjectives: LolObjectivesPooledObjectives[]
 	nonPooledObjectives: LolObjectivesNonPooledObjectives[]
 }
 
 export interface LolObjectivesObjectivesGroup {
+	uuid: string
 	backgroundImage: string
 	/** @format uint64 */
 	startDate: number
@@ -15794,7 +15919,22 @@ export interface LolObjectivesUIObjectives {
 	isPooledMission: boolean
 }
 
+export interface LolObjectivesUIObjectivesCategory {
+	id: string
+	/** @format uint64 */
+	startDate: number
+	/** @format uint64 */
+	progressEndDate: number
+	/** @format uint64 */
+	endDate: number
+	categorySectionImage: string
+	categoryName: string
+	objectives: LolObjectivesUIObjectives[]
+	categoryType: LolObjectivesObjectiveCategoryType
+}
+
 export interface LolObjectivesUIObjectivesGroup {
+	uuid: string
 	backgroundImage: string
 	gameType: string
 	/** @format uint64 */
@@ -15803,6 +15943,7 @@ export interface LolObjectivesUIObjectivesGroup {
 	endDate: number
 	isActive: boolean
 	objectives: LolObjectivesUIObjectives[]
+	objectivesCategories: LolObjectivesUIObjectivesCategory[]
 }
 
 export interface LolObjectivesUserInfo {
@@ -15967,30 +16108,6 @@ export interface LolPatchUxResource {
 	visible: boolean
 }
 
-export interface LolPerksChampSelectAction {
-	/** @format int64 */
-	id: number
-	/** @format int64 */
-	actorCellId: number
-	/** @format int32 */
-	championId: number
-	type: string
-	completed: boolean
-}
-
-export interface LolPerksChampSelectBannedChampions {
-	myTeamBans: number[]
-	theirTeamBans: number[]
-	/** @format int32 */
-	numBans: number
-}
-
-export interface LolPerksChampSelectChatRoomDetails {
-	multiUserChatId: string
-	multiUserChatPassword: string
-	mucJwtDto: LolPerksMucJwtDto
-}
-
 export interface LolPerksChampSelectMySelection {
 	/** @format int32 */
 	selectedSkinId?: number
@@ -15998,8 +16115,6 @@ export interface LolPerksChampSelectMySelection {
 	"spell1Id"?: number
 	/** @format uint64 */
 	"spell2Id"?: number
-	/** @format int64 */
-	wardSkinId?: number
 }
 
 export interface LolPerksChampSelectPlayerSelection {
@@ -16009,8 +16124,6 @@ export interface LolPerksChampSelectPlayerSelection {
 	championId: number
 	/** @format int32 */
 	selectedSkinId: number
-	/** @format int64 */
-	wardSkinId: number
 	/** @format uint64 */
 	"spell1Id": number
 	/** @format uint64 */
@@ -16026,15 +16139,9 @@ export interface LolPerksChampSelectPlayerSelection {
 
 export interface LolPerksChampSelectSession {
 	timer: LolPerksChampSelectTimer
-	chatDetails: LolPerksChampSelectChatRoomDetails
 	myTeam: LolPerksChampSelectPlayerSelection[]
-	theirTeam: LolPerksChampSelectPlayerSelection[]
-	trades: LolPerksChampSelectTradeContract[]
-	actions: unknown[]
-	bans: LolPerksChampSelectBannedChampions
 	/** @format int64 */
 	localPlayerCellId: number
-	isSpectating: boolean
 }
 
 export interface LolPerksChampSelectTimer {
@@ -16047,16 +16154,6 @@ export interface LolPerksChampSelectTimer {
 	/** @format uint64 */
 	internalNowInEpochMs: number
 }
-
-export interface LolPerksChampSelectTradeContract {
-	/** @format int64 */
-	id: number
-	/** @format int64 */
-	cellId: number
-	state: LolPerksChampSelectTradeState
-}
-
-export type LolPerksChampSelectTradeState = "SENT" | "RECEIVED" | "INVALID" | "BUSY" | "AVAILABLE"
 
 export interface LolPerksChampionPreferredStyle {
 	championName: string
@@ -16133,13 +16230,6 @@ export interface LolPerksLoginSession {
 }
 
 export type LolPerksLoginSessionState = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
-
-export interface LolPerksMucJwtDto {
-	jwt: string
-	channelClaim: string
-	domain: string
-	targetRegion: string
-}
 
 export interface LolPerksNamecheckAuthorization {
 	subject: string
@@ -18333,16 +18423,6 @@ export interface LolRankedRewardNotification {
 	seasonId: number
 }
 
-export interface LolRankedRewardsInfo {
-	splits: LolRankedSeasonSplit[]
-	currentSplit?: LolRankedSeasonSplit
-	rewardInfoByRewardId: Record<string, LolRankedSplitReward>
-	/** @format int32 */
-	currentSplitId: number
-	/** @format int32 */
-	currentSeasonId: number
-}
-
 export interface LolRankedSeasonDTO {
 	/** @format int32 */
 	currentSeasonId: number
@@ -18350,32 +18430,6 @@ export interface LolRankedSeasonDTO {
 	currentSeasonEnd: number
 	/** @format int64 */
 	nextSeasonStart: number
-}
-
-export interface LolRankedSeasonSplit {
-	/** @format int32 */
-	splitId: number
-	/** @format int32 */
-	seasonId: number
-	/** @format uint64 */
-	startTimeMillis: number
-	/** @format uint64 */
-	endTimeMillis: number
-	rewardTrack: LolRankedSplitRewardGroup[]
-	victoriousSkinRewardGroup: LolRankedVictoriousSkin
-}
-
-export interface LolRankedSeasonSplitDTO {
-	/** @format int32 */
-	splitId: number
-	/** @format int32 */
-	seasonId: number
-	/** @format uint64 */
-	startTime: number
-	/** @format uint64 */
-	endTime: number
-	rewardTrack: LolRankedSplitRewardGroupDTO[]
-	victoriousSkinRewardGroup: LolRankedVictoriousSkinDTO
 }
 
 export interface LolRankedSequenceEvent {
@@ -18457,49 +18511,6 @@ export interface LolRankedSplitPointsNotification {
 	splitPointsBreakdown: Record<string, number>
 }
 
-export interface LolRankedSplitReward {
-	rewardType: string
-	/** @format int32 */
-	quantity: number
-	description: string
-	id: string
-	/** @format int32 */
-	regaliaLevel?: number
-	/** @format int32 */
-	pointsRequired: number
-	/** @format int32 */
-	splitId: number
-	/** @format int32 */
-	championId: number
-}
-
-export interface LolRankedSplitRewardDTO {
-	rewardType: string
-	metadata: LolRankedSplitRewardsMetaData
-	defaultRewardId: string
-	tieredRewardIds: Record<string, string>
-}
-
-export interface LolRankedSplitRewardGroup {
-	/** @format int32 */
-	splitPoints: number
-	rewards: LolRankedSplitReward[]
-}
-
-export interface LolRankedSplitRewardGroupDTO {
-	/** @format int32 */
-	splitPoints: number
-	rewards: LolRankedSplitRewardDTO[]
-}
-
-export interface LolRankedSplitRewardsMetaData {
-	/** @format int32 */
-	quantity: number
-	description: string
-	/** @format int32 */
-	championId: number
-}
-
 export interface LolRankedSummoner {
 	/** @format uint64 */
 	summonerId: number
@@ -18507,11 +18518,6 @@ export interface LolRankedSummoner {
 }
 
 export interface LolRankedVictoriousSkin {
-	splitPointsByHighestSeasonEndTier: Record<string, number>
-	itemInstanceId: string
-}
-
-export interface LolRankedVictoriousSkinDTO {
 	splitPointsByHighestSeasonEndTier: Record<string, number>
 	itemInstanceId: string
 }
@@ -21465,6 +21471,7 @@ export interface LolTftEventLolTftBattlePassHub {
 
 export interface LolTftEventLolTftEvent {
 	titleTranslationKey: string
+	eventId: string
 	enabled: boolean
 	url: string
 	urlFaq: string
@@ -21476,6 +21483,8 @@ export interface LolTftEventLolTftEvent {
 	defaultLandingPage: boolean
 	eventHubAssetKey: string
 	eventHubTemplateType: string
+	eventPassId: string
+	skillTreePassId: string
 	eventFuture: boolean
 	weblinkSubnavs: LolTftEventLolTftEventWebLinkSubnav[]
 }
@@ -21719,6 +21728,7 @@ export interface LolTftLolTftBattlePassHub {
 
 export interface LolTftLolTftEvent {
 	titleTranslationKey: string
+	eventId: string
 	enabled: boolean
 	url: string
 	urlFaq: string
@@ -21730,6 +21740,8 @@ export interface LolTftLolTftEvent {
 	defaultLandingPage: boolean
 	eventHubAssetKey: string
 	eventHubTemplateType: string
+	eventPassId: string
+	skillTreePassId: string
 	eventFuture: boolean
 	weblinkSubnavs: LolTftLolTftEventWebLinkSubnav[]
 }
@@ -21970,6 +21982,11 @@ export interface LolTftPassLoginSession {
 }
 
 export type LolTftPassLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
+
+export interface LolTftPassLolInventoryType {
+	inventoryTypeId: string
+	capInventoryTypeId: string
+}
 
 export interface LolTftPassLoyaltyRewards {
 	/** @format int32 */
@@ -22781,7 +22798,6 @@ export interface LolTftTrovesCapDropsDropTableDisplayMetadata {
 	isCollectorsBounty: boolean
 	dataAssetId: string
 	nameTraKey: string
-	mythicOfferId: string
 	progressionId: string
 	/** @format uint8 */
 	priority: number
@@ -22900,7 +22916,6 @@ export interface LolTftTrovesGameDataTrovesBanner {
 	id: string
 	activationTime: string
 	deactivationTime: string
-	mythicTokenOfferId: string
 	/** @format uint32 */
 	pityThreshold: number
 	bannerTexture: string
@@ -23122,7 +23137,6 @@ export interface LolTftTrovesTrovesBanner {
 	/** @format uint32 */
 	pityLimit: number
 	rollOffer: string
-	mythicOffer: string
 	bannerTexture: string
 	thumbnailTexture: string
 	backgroundTexture: string
@@ -23154,8 +23168,6 @@ export interface LolTftTrovesTrovesCelebrationHighlightSegmentData {
 	lottieJsonPath: string
 	revealSoundPath: string
 	transitionWipeSoundPath: string
-	promiseTokenTitle: string
-	promiseTokenDescription: string
 }
 
 export interface LolTftTrovesTrovesCelebrationPortalSegmentData {
@@ -23616,6 +23628,11 @@ export interface LolYourshopLoginSession {
 }
 
 export type LolYourshopLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
+
+export interface LolYourshopLolInventoryType {
+	inventoryTypeId: string
+	capInventoryTypeId: string
+}
 
 export interface LolYourshopLoyaltyRewards {
 	/** @format int32 */
@@ -24400,6 +24417,7 @@ export interface PaymentsPMCStartUrlRequest {
 	/** @format int16 */
 	minVirtualAmount: number
 	orderDetailsJSON: string
+	machineId: string
 }
 
 export interface PaymentsPMCStartUrlResult {
