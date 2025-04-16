@@ -1887,17 +1887,64 @@ export interface LolCapMissionsCapMissionSeries {
 export interface LolCapMissionsCapMissionSeriesMission {
 	name: string
 	missionId: string
+	expression: string
 	missionCollectionId: string
 	status: string
+	completedTimeUtc: string
+	missionInstanceId: string
 	objectives: LolCapMissionsCapMissionSeriesMissionObjective[]
+	eligibility: LolCapMissionsCapMissionSeriesMissionEligibility[]
+	rewardsStatus: LolCapMissionsCapMissionSeriesMissionRewardsStatus
+	/** @format uint32 */
+	repeatSequence: number
+	properties: Record<string, string>
+	metadata: Record<string, string>
+}
+
+export interface LolCapMissionsCapMissionSeriesMissionEligibility {
+	type: string
+	missionCollectionId: string
+	missionId: string
+	startTime: string
 }
 
 export interface LolCapMissionsCapMissionSeriesMissionObjective {
 	statId: string
+	objectiveId: string
 	/** @format uint32 */
 	goal: number
 	/** @format uint32 */
 	currentValue: number
+}
+
+export interface LolCapMissionsCapMissionSeriesMissionReward {
+	type: string
+	counterId: string
+	itemId: string
+	itemTypeId: string
+	typeId: string
+	/** @format uint32 */
+	amount: number
+}
+
+export interface LolCapMissionsCapMissionSeriesMissionRewardsStatus {
+	requiresClaim: boolean
+	status: string
+	rewards: LolCapMissionsCapMissionSeriesMissionReward[]
+}
+
+export interface LolCapMissionsCapMissionsMarkAsViewedPostBody {
+	events: LolCapMissionsCapMissionsMarkAsViewedPostBodyEvent[]
+}
+
+export interface LolCapMissionsCapMissionsMarkAsViewedPostBodyEvent {
+	configurationId: string
+	missions: LolCapMissionsCapMissionsMarkAsViewedPostBodyMission[]
+}
+
+export interface LolCapMissionsCapMissionsMarkAsViewedPostBodyMission {
+	missionInstanceId: string
+	metadata: Record<string, string>
 }
 
 export interface LolCapMissionsCapMissionsMeResponse {
@@ -1924,6 +1971,12 @@ export interface LolCapMissionsRiotMessagingServiceMessage {
 	/** @format int64 */
 	timestamp: number
 	payload: string
+}
+
+export interface LolCapMissionsRiotMessagingServicePayload {
+	deltaEventId: string
+	ownerId: string
+	updatedMissions: string[]
 }
 
 export interface LolCatalogBundled {
@@ -2019,6 +2072,8 @@ export interface LolCatalogCatalogPluginItemWithDetails {
 	bundledDiscountPrices?: LolCatalogCatalogPluginPrice[]
 	assets: LolCatalogCatalogPluginItemAssets
 	metadata: LolCatalogItemMetadataEntry[]
+	/** @format int64 */
+	bundleFinalPrice: number
 }
 
 export interface LolCatalogCatalogPluginPrice {
@@ -2749,8 +2804,10 @@ export interface LolChampSelectChampSelectPlayerSelection {
 	championPickIntent: number
 	/** @format uint64 */
 	summonerId: number
-	playerAlias: string
+	gameName: string
+	tagLine: string
 	puuid: string
+	isHumanoid: boolean
 	nameVisibilityType: string
 	/** @format uint64 */
 	obfuscatedSummonerId: number
@@ -2789,6 +2846,7 @@ export interface LolChampSelectChampSelectSession {
 	localPlayerCellId: number
 	isSpectating: boolean
 	allowSkinSelection: boolean
+	allowSubsetChampionPicks: boolean
 	allowDuplicatePicks: boolean
 	allowBattleBoost: boolean
 	/** @format int32 */
@@ -2821,8 +2879,10 @@ export interface LolChampSelectChampSelectSummoner {
 	assignedPosition: string
 	/** @format uint64 */
 	summonerId: number
-	playerAlias: string
+	gameName: string
+	tagLine: string
 	puuid: string
+	isHumanoid: boolean
 	nameVisibilityType: string
 	/** @format uint64 */
 	obfuscatedSummonerId: number
@@ -6070,6 +6130,20 @@ export interface LolCosmeticsCapOffer {
 	createdDate: string
 }
 
+export interface LolCosmeticsCatalogEntryDto {
+	id: string
+	productId: string
+	name: string
+	description: string
+	endTime: string
+	purchaseUnits: LolCosmeticsPurchaseUnitDto[]
+	displayMetadata: unknown
+	refundRule: string
+	giftRule: string
+	prerequisites: LolCosmeticsPrerequisiteDto[]
+	purchaseLimits: LolCosmeticsVelocityLimitDeltaDto[]
+}
+
 export interface LolCosmeticsCompanionsFavoritesViewModel {
 	favoriteItems: LolCosmeticsCosmeticsCompanionViewModel[]
 }
@@ -6121,6 +6195,8 @@ export interface LolCosmeticsCosmeticsCompanion {
 	/** @format uint32 */
 	level: number
 	upgrades: string[]
+	companionType: string
+	TFTRarity: string
 }
 
 export interface LolCosmeticsCosmeticsCompanionViewModel {
@@ -6148,12 +6224,15 @@ export interface LolCosmeticsCosmeticsCompanionViewModel {
 	upgrades: LolCosmeticsCosmeticsCompanionViewModel[]
 	offerData?: LolCosmeticsCapOffer
 	starShardsPrice: LolCosmeticsCosmeticsOfferPrice
+	companionType: string
+	TFTRarity: string
 }
 
 export interface LolCosmeticsCosmeticsOfferPrice {
 	offerId: string
 	/** @format uint64 */
 	price: number
+	chemtechUpgradeStoreId: string
 }
 
 export interface LolCosmeticsCosmeticsSettings {
@@ -6180,6 +6259,7 @@ export interface LolCosmeticsCosmeticsTFTDamageSkin {
 	groupId: number
 	groupName: string
 	upgrades: string[]
+	TFTRarity: string
 }
 
 export interface LolCosmeticsCosmeticsTFTDamageSkinViewModel {
@@ -6204,6 +6284,7 @@ export interface LolCosmeticsCosmeticsTFTDamageSkinViewModel {
 	groupId: number
 	groupName: string
 	upgrades: LolCosmeticsCosmeticsTFTDamageSkinViewModel[]
+	TFTRarity: string
 }
 
 export interface LolCosmeticsCosmeticsTFTMapSkin {
@@ -6223,6 +6304,7 @@ export interface LolCosmeticsCosmeticsTFTMapSkin {
 	/** @format uint32 */
 	groupId: number
 	groupName: string
+	TFTRarity: string
 }
 
 export interface LolCosmeticsCosmeticsTFTMapSkinViewModel {
@@ -6244,6 +6326,7 @@ export interface LolCosmeticsCosmeticsTFTMapSkinViewModel {
 	/** @format uint32 */
 	groupId: number
 	groupName: string
+	TFTRarity: string
 }
 
 export interface LolCosmeticsCosmeticsTFTPlaybook {
@@ -6324,6 +6407,7 @@ export interface LolCosmeticsCosmeticsTFTZoomSkin {
 	/** @format uint32 */
 	groupId: number
 	groupName: string
+	TFTRarity: string
 }
 
 export interface LolCosmeticsCosmeticsTFTZoomSkinViewModel {
@@ -6345,12 +6429,58 @@ export interface LolCosmeticsCosmeticsTFTZoomSkinViewModel {
 	/** @format uint32 */
 	groupId: number
 	groupName: string
+	TFTRarity: string
+}
+
+export interface LolCosmeticsEntitlementDto {
+	id: string
+	label: string
+	typeId: string
+	productId: string
+	active: boolean
+	createdDate: string
+	lastModifiedDate: string
+	firstUsedDate: string
+	recipient: unknown
+	ownerId: string
+	item: LolCosmeticsEntitlementItemDto
+}
+
+export interface LolCosmeticsEntitlementItemDto {
+	id: string
+	typeId: string
+}
+
+export interface LolCosmeticsEntitlementsResponse {
+	data: LolCosmeticsEntitlementDto[]
 }
 
 export interface LolCosmeticsFavoriteCosmetics {
 	companions: string[]
 	tft_map_skins: string[]
 	tft_damage_skins: string[]
+}
+
+export interface LolCosmeticsFinalPurchaseUnitDto {
+	payments: LolCosmeticsPaymentDto[]
+	fulfillment: LolCosmeticsFulfillmentDto
+}
+
+export interface LolCosmeticsFulfillmentDto {
+	/** @format int64 */
+	delta: number
+	/** @format int64 */
+	finalDelta: number
+	name: string
+	/** @format int64 */
+	maxQuantity: number
+	/** @format uint64 */
+	ownedQuantity: number
+	ownershipCompensationMode: string
+	itemTypeId: string
+	itemId: string
+	currencyId: string
+	subCurrencyDeltas: Record<string, number>
 }
 
 export interface LolCosmeticsGameDataCompanion {
@@ -6370,6 +6500,8 @@ export interface LolCosmeticsGameDataCompanion {
 	rarityValue: number
 	upgrades: string[]
 	TFTOnly: boolean
+	companionType: string
+	TFTRarity: string
 }
 
 export interface LolCosmeticsGameDataTFTCosmeticsDefaults {
@@ -6390,6 +6522,7 @@ export interface LolCosmeticsGameDataTFTDamageSkin {
 	rarityValue: number
 	/** @format uint32 */
 	level: number
+	TFTRarity: string
 }
 
 export interface LolCosmeticsGameDataTFTMapSkin {
@@ -6404,6 +6537,7 @@ export interface LolCosmeticsGameDataTFTMapSkin {
 	groupName: string
 	/** @format uint32 */
 	rarityValue: number
+	TFTRarity: string
 }
 
 export interface LolCosmeticsGameDataTFTPlaybook {
@@ -6437,6 +6571,7 @@ export interface LolCosmeticsGameDataTFTZoomSkin {
 	groupName: string
 	/** @format uint32 */
 	rarityValue: number
+	TFTRarity: string
 }
 
 export interface LolCosmeticsLoadout {
@@ -6459,10 +6594,222 @@ export interface LolCosmeticsLoadoutUpdateDto {
 	loadout: Record<string, LolCosmeticsLoadoutItem>
 }
 
+export interface LolCosmeticsPagination {
+	/** @format uint32 */
+	offset: number
+	/** @format uint32 */
+	limit: number
+	/** @format uint32 */
+	maxLimit: number
+	/** @format uint32 */
+	total: number
+	previous: string
+	next: string
+}
+
+export interface LolCosmeticsPaymentDto {
+	/** @format int64 */
+	delta: number
+	/** @format int64 */
+	finalDelta: number
+	name: string
+	/** @format int64 */
+	discountedDelta: number
+	/** @format double */
+	discountPercent: number
+	itemTypeId: string
+	itemId: string
+	currencyId: string
+}
+
+export interface LolCosmeticsPaymentOptionDto {
+	key: string
+	payments: LolCosmeticsPaymentDto[]
+}
+
+export interface LolCosmeticsPrerequisiteDto {
+	status: string
+	itemTypeId: string
+	itemId: string
+	/** @format uint16 */
+	requiredQuantity: number
+}
+
+export interface LolCosmeticsPurchaseDto {
+	id: string
+	productId: string
+	storeId: string
+	storeName: string
+	catalogEntryId: string
+	catalogEntryName: string
+	purchaserId: string
+	recipientId: string
+	purchaseUnits: LolCosmeticsFinalPurchaseUnitDto[]
+	createdTime: string
+	completedTime: string
+	purchaseState: string
+	purchaseVisibility: string
+	refund: LolCosmeticsRefundDto
+	refundRule: string
+	refundable: boolean
+	source: string
+}
+
+export interface LolCosmeticsPurchaseErrorMessageDto {
+	/** @format int32 */
+	httpStatus: number
+	errorCode: string
+	message: string
+}
+
+export interface LolCosmeticsPurchaseHistoryResponse {
+	data: LolCosmeticsPurchaseDto[]
+	paging: LolCosmeticsPagination
+	stats: LolCosmeticsResponseStats
+	notes: string[]
+	errors: LolCosmeticsResponseError[]
+}
+
+export interface LolCosmeticsPurchaseRequest {
+	storeId: string
+	catalogEntryId: string
+	paymentOptionsKeys: string[]
+	/** @format uint32 */
+	quantity: number
+}
+
+export interface LolCosmeticsPurchaseRequestDto {
+	storeId: string
+	catalogEntryId: string
+	paymentOptionsKeys: string[]
+	idempotencyId: string
+	source: string
+	/** @format uint32 */
+	quantity: number
+}
+
+export interface LolCosmeticsPurchaseResponse {
+	data: LolCosmeticsPurchaseDto
+	paging: LolCosmeticsPagination
+	stats: LolCosmeticsResponseStats
+	notes: string[]
+	errors: LolCosmeticsResponseError[]
+}
+
+export interface LolCosmeticsPurchaseTransaction {
+	purchaseId: string
+	productId: string
+	storeId: string
+	catalogEntryId: string
+	purchaseState: string
+	refundId: string
+	refundState: string
+}
+
+export interface LolCosmeticsPurchaseUnitDto {
+	paymentOptions: LolCosmeticsPaymentOptionDto[]
+	payment: LolCosmeticsPaymentDto[]
+	fulfillment: LolCosmeticsFulfillmentDto
+}
+
+export interface LolCosmeticsRefundDto {
+	id: string
+	purchaseId: string
+	createdTime: string
+	completedTime: string
+	state: string
+	source: string
+}
+
+export interface LolCosmeticsRefundRequest {
+	purchaseId: string
+}
+
+export interface LolCosmeticsRefundRequestDto {
+	purchaseId: string
+	source: string
+}
+
+export interface LolCosmeticsRefundResponse {
+	data: LolCosmeticsRefundDto
+	paging: LolCosmeticsPagination
+	stats: LolCosmeticsResponseStats
+	notes: string[]
+	errors: LolCosmeticsResponseError[]
+}
+
+export interface LolCosmeticsRegionLocale {
+	region: string
+	locale: string
+	webRegion: string
+}
+
+export interface LolCosmeticsResponseError {
+	message: string
+	type: string
+	/** @format uint32 */
+	code: number
+}
+
+export interface LolCosmeticsResponseStats {
+	/** @format uint32 */
+	durationMs: number
+}
+
+export interface LolCosmeticsRiotMessagingServiceMessage {
+	resource: string
+	service: string
+	version: string
+	/** @format int64 */
+	timestamp: number
+	payload: string
+}
+
+export interface LolCosmeticsRotationalShopBundleData {
+	asset: string
+	description: string
+	descriptionKey: string
+	title: string
+	titleKey: string
+}
+
+export interface LolCosmeticsRotationalShopBundleListData {
+	items: LolCosmeticsRotationalShopBundleData[]
+}
+
+export interface LolCosmeticsRotationalShopItemData {
+	backgroundTextureLCU: string
+	contentID: string
+	descriptionTraKey: string
+	description: string
+	name: string
+	standaloneLoadoutsLargeIcon: string
+	videoID: string
+	redeemIconTexture: string
+	rarity: string
+	typeID: string
+}
+
 export interface LolCosmeticsSettingsStorageContainer {
 	data: LolCosmeticsCosmeticsSettings
 	/** @format uint16 */
 	schemaVersion: number
+}
+
+export interface LolCosmeticsStoreDto {
+	id: string
+	productId: string
+	name: string
+	catalogEntries: LolCosmeticsCatalogEntryDto[]
+	displayMetadata: unknown
+}
+
+export interface LolCosmeticsStoresResponse {
+	data: LolCosmeticsStoreDto[]
+	paging: LolCosmeticsPagination
+	stats: LolCosmeticsResponseStats
+	notes: string[]
+	errors: LolCosmeticsResponseError[]
 }
 
 export interface LolCosmeticsTFTDamageSkinFavoritesViewModel {
@@ -6531,6 +6878,28 @@ export interface LolCosmeticsTFTPlaybookGroupedViewModel {
 	groups: LolCosmeticsTFTPlaybookGroupViewModel[]
 }
 
+export interface LolCosmeticsTFTRotationalShopConfig {
+	enabled: boolean
+	contentPreviewConfig: unknown
+	uiToggleEnabled: boolean
+	navs: LolCosmeticsTFTRotationalShopNavConfig[]
+	refund: LolCosmeticsTFTRotationalShopRefundConfig
+	littleLegendsUpgradeEnabled: boolean
+}
+
+export interface LolCosmeticsTFTRotationalShopNavConfig {
+	name: string
+	enabled: boolean
+	supportedCurrencies: string[]
+}
+
+export interface LolCosmeticsTFTRotationalShopRefundConfig {
+	enabled: boolean
+	allowedTypes: string[]
+	/** @format uint8 */
+	thresholdDays: number
+}
+
 export interface LolCosmeticsTFTSettingsDataResource {
 	iconOverride: string
 }
@@ -6565,10 +6934,29 @@ export interface LolCosmeticsTFTZoomSkinGroupedViewModel {
 	groups: LolCosmeticsTFTZoomSkinGroupViewModel[]
 }
 
+export interface LolCosmeticsTraKeyName {
+	nameTraKey: string
+	translatedName: string
+}
+
 export interface LolCosmeticsUserResource {
 	/** @format uint64 */
 	summonerId: number
 	lol: Record<string, string>
+}
+
+export interface LolCosmeticsVelocityLimitDeltaDto {
+	ruleId: string
+	/** @format int64 */
+	delta: number
+	/** @format int64 */
+	remaining: number
+}
+
+export interface LolCosmeticsVelocityLimiterDto {
+	/** @format int64 */
+	availableTokens: number
+	refill: string
 }
 
 export interface LolDiscordRpGameDataChampionSummary {
@@ -7947,6 +8335,7 @@ export interface LolEventHubInventoryItem {
 	/** @format uint64 */
 	quantity: number
 	ownershipType: LolEventHubItemOwnershipType
+	usedInGameDate: string
 	expirationDate: string
 	/** @format uint64 */
 	wins: number
@@ -7986,6 +8375,7 @@ export interface LolEventHubInventoryItemWithPayload {
 	/** @format uint64 */
 	quantity: number
 	ownershipType: LolEventHubItemOwnershipType
+	usedInGameDate: string
 	expirationDate: string
 	"f2p": boolean
 	rental: boolean
@@ -8225,7 +8615,10 @@ export interface LolEventHubNarrativeElement {
 export interface LolEventHubNarrativeVideo {
 	localizedNarrativeVideoUrl: string
 	localizedPlayNarrativeButtonLabel: string
+	localizedVideoTitle: string
+	thumbnailImage: string
 	narrativeVideoIsLockedOnLevel?: boolean
+	localizedNarrativeVideoDescription: string
 }
 
 export interface LolEventHubNavigationButtonUIData {
@@ -8302,6 +8695,10 @@ export interface LolEventHubPlayerSettingsData {
 	lastSeenTokenBalance: number
 	/** @format uint32 */
 	lastSeenTokenShopOffersVersion: number
+}
+
+export interface LolEventHubPlayerSettingsDataMap {
+	playerSettingsDataMap: Record<string, LolEventHubPlayerSettingsData>
 }
 
 export interface LolEventHubPriceDetail {
@@ -8703,7 +9100,7 @@ export interface LolEventHubSelectionStrategyConfig {
 }
 
 export interface LolEventHubSettingsResource {
-	data: LolEventHubPlayerSettingsData
+	data: LolEventHubPlayerSettingsDataMap
 	/** @format int16 */
 	schemaVersion: number
 }
@@ -10079,6 +10476,7 @@ export interface LolInventoryInventoryItem {
 	/** @format uint64 */
 	quantity: number
 	ownershipType: LolInventoryItemOwnershipType
+	usedInGameDate: string
 	expirationDate: string
 	/** @format uint64 */
 	wins: number
@@ -10118,6 +10516,7 @@ export interface LolInventoryInventoryItemWithPayload {
 	/** @format uint64 */
 	quantity: number
 	ownershipType: LolInventoryItemOwnershipType
+	usedInGameDate: string
 	expirationDate: string
 	"f2p": boolean
 	rental: boolean
@@ -12012,8 +12411,10 @@ export interface LolLobbyTeamBuilderCellV1 {
 	"spell2Id": number
 	/** @format uint64 */
 	summonerId: number
-	playerAlias: string
+	gameName: string
+	tagLine: string
 	puuid: string
+	isHumanoid: boolean
 	nameVisibilityType: string
 	/** @format uint64 */
 	obfuscatedSummonerId: number
@@ -12089,8 +12490,10 @@ export interface LolLobbyTeamBuilderChampSelectPlayerSelection {
 	playerType: string
 	/** @format uint64 */
 	summonerId: number
-	playerAlias: string
+	gameName: string
+	tagLine: string
 	puuid: string
+	isHumanoid: boolean
 	nameVisibilityType: string
 	/** @format uint64 */
 	obfuscatedSummonerId: number
@@ -12111,6 +12514,7 @@ export interface LolLobbyTeamBuilderChampSelectSession {
 	/** @format int64 */
 	localPlayerCellId: number
 	allowSkinSelection: boolean
+	allowSubsetChampionPicks: boolean
 	allowDuplicatePicks: boolean
 	allowBattleBoost: boolean
 	/** @format int32 */
@@ -12192,6 +12596,7 @@ export interface LolLobbyTeamBuilderChampionSelectStateV1 {
 	pickIntentClearedReason: string
 	allowOptingOutOfBanning: boolean
 	allowSkinSelection: boolean
+	allowSubsetChampionPicks: boolean
 	allowDuplicatePicks: boolean
 	rerollState: LolLobbyTeamBuilderRerollStateV1
 	lockedEventsState: LolLobbyTeamBuilderLockedEventsStateV1
@@ -12549,6 +12954,7 @@ export interface LolLobbyTeamBuilderTbdInventory {
 	allChampionIds: number[]
 	disabledChampionIds: number[]
 	crowdFavoriteChampionIds: number[]
+	subsetChampionIds: number[]
 }
 
 export interface LolLobbyTeamBuilderTeamBoost {
@@ -14800,6 +15206,123 @@ export interface LolMatchmakingQueue {
 
 export type LolMatchmakingQueueCustomGameSpectatorPolicy = "AllAllowed" | "FriendsAllowed" | "LobbyAllowed" | "NotAllowed"
 
+export interface LolMissionsCAPMission {
+	missionId: string
+	title: string
+	description: string
+	missionIconAsset: LolMissionsMissionAsset
+	rewards: LolMissionsCAPMissionReward[]
+	objectives: LolMissionsCAPMissionObjective[]
+}
+
+export interface LolMissionsCAPMissionCollection {
+	missionCollectionId: string
+	dates: LolMissionsCAPMissionCollectionDates
+	seriesList: LolMissionsCAPMissionSeries[]
+}
+
+export interface LolMissionsCAPMissionCollectionDateRange {
+	/** @format uint64 */
+	activationTimeEpoch: number
+	/** @format uint64 */
+	deactivationTimeEpoch: number
+}
+
+export interface LolMissionsCAPMissionCollectionDates {
+	live: LolMissionsCAPMissionCollectionDateRange
+	pbe: LolMissionsCAPMissionCollectionDateRange
+	internal: LolMissionsCAPMissionCollectionDateRange
+}
+
+export interface LolMissionsCAPMissionObjective {
+	statId: string
+	description: string
+}
+
+export interface LolMissionsCAPMissionReward {
+	itemId: string
+	rewardName: string
+	/** @format uint32 */
+	quantity: number
+	rewardAsset: LolMissionsMissionAsset
+}
+
+export interface LolMissionsCAPMissionSeries {
+	seriesId: string
+	seriesTitle: string
+	seriesIconAsset: LolMissionsMissionAsset
+	missions: LolMissionsCAPMission[]
+}
+
+export interface LolMissionsCapMissionSeriesMission {
+	name: string
+	missionId: string
+	expression: string
+	missionCollectionId: string
+	status: string
+	completedTimeUtc: string
+	missionInstanceId: string
+	objectives: LolMissionsCapMissionSeriesMissionObjective[]
+	eligibility: LolMissionsCapMissionSeriesMissionEligibility[]
+	rewardsStatus: LolMissionsCapMissionSeriesMissionRewardsStatus
+	/** @format uint32 */
+	repeatSequence: number
+	properties: Record<string, string>
+	metadata: Record<string, string>
+}
+
+export interface LolMissionsCapMissionSeriesMissionEligibility {
+	type: string
+	missionCollectionId: string
+	missionId: string
+	startTime: string
+}
+
+export interface LolMissionsCapMissionSeriesMissionObjective {
+	statId: string
+	objectiveId: string
+	/** @format uint32 */
+	goal: number
+	/** @format uint32 */
+	currentValue: number
+}
+
+export interface LolMissionsCapMissionSeriesMissionReward {
+	type: string
+	counterId: string
+	itemId: string
+	itemTypeId: string
+	typeId: string
+	/** @format uint32 */
+	amount: number
+}
+
+export interface LolMissionsCapMissionSeriesMissionRewardsStatus {
+	requiresClaim: boolean
+	status: string
+	rewards: LolMissionsCapMissionSeriesMissionReward[]
+}
+
+export interface LolMissionsCapMissionsMarkAsViewedPostBody {
+	events: LolMissionsCapMissionsMarkAsViewedPostBodyEvent[]
+}
+
+export interface LolMissionsCapMissionsMarkAsViewedPostBodyEvent {
+	configurationId: string
+	missions: LolMissionsCapMissionsMarkAsViewedPostBodyMission[]
+}
+
+export interface LolMissionsCapMissionsMarkAsViewedPostBodyMission {
+	missionInstanceId: string
+	metadata: Record<string, string>
+}
+
+export interface LolMissionsCapMissionsMeResponse {
+	productId: string
+	ownerId: string
+	series: LolMissionsCapMissionSeries[]
+}
+
 export interface LolMissionsCollectionsChampion {
 	/** @format int32 */
 	id: number
@@ -14863,6 +15386,8 @@ export interface LolMissionsLoginSession {
 	puuid: string
 	platformId: string
 }
+
+export type LolMissionsLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
 
 export type LolMissionsLoyaltyStatus = "DISABLED" | "REVOKE" | "CHANGE" | "EXPIRY" | "REWARDS_GRANT" | "LEGACY"
 
@@ -14957,6 +15482,21 @@ export type LolMissionsRewardStrategy = "SELECTION" | "RANDOM" | "ALL"
 export interface LolMissionsRewardsProductConfig {
 	enabled: boolean
 	serviceUrl: string
+}
+
+export interface LolMissionsRiotMessagingServiceMessage {
+	resource: string
+	service: string
+	version: string
+	/** @format int64 */
+	timestamp: number
+	payload: string
+}
+
+export interface LolMissionsRiotMessagingServicePayload {
+	deltaEventId: string
+	ownerId: string
+	updatedMissions: string[]
 }
 
 export interface LolMissionsSelectionStrategyConfig {
@@ -15605,6 +16145,123 @@ export interface LolObjectivesActiveEventUIData {
 	eventInfo: LolObjectivesEventInfoUIData
 }
 
+export interface LolObjectivesCAPMission {
+	missionId: string
+	title: string
+	description: string
+	missionIconAsset: LolObjectivesMissionAsset
+	rewards: LolObjectivesCAPMissionReward[]
+	objectives: LolObjectivesCAPMissionObjective[]
+}
+
+export interface LolObjectivesCAPMissionCollection {
+	missionCollectionId: string
+	dates: LolObjectivesCAPMissionCollectionDates
+	seriesList: LolObjectivesCAPMissionSeries[]
+}
+
+export interface LolObjectivesCAPMissionCollectionDateRange {
+	/** @format uint64 */
+	activationTimeEpoch: number
+	/** @format uint64 */
+	deactivationTimeEpoch: number
+}
+
+export interface LolObjectivesCAPMissionCollectionDates {
+	live: LolObjectivesCAPMissionCollectionDateRange
+	pbe: LolObjectivesCAPMissionCollectionDateRange
+	internal: LolObjectivesCAPMissionCollectionDateRange
+}
+
+export interface LolObjectivesCAPMissionObjective {
+	statId: string
+	description: string
+}
+
+export interface LolObjectivesCAPMissionReward {
+	itemId: string
+	rewardName: string
+	/** @format uint32 */
+	quantity: number
+	rewardAsset: LolObjectivesMissionAsset
+}
+
+export interface LolObjectivesCAPMissionSeries {
+	seriesId: string
+	seriesTitle: string
+	seriesIconAsset: LolObjectivesMissionAsset
+	missions: LolObjectivesCAPMission[]
+}
+
+export interface LolObjectivesCapMissionSeriesMission {
+	name: string
+	missionId: string
+	expression: string
+	missionCollectionId: string
+	status: string
+	completedTimeUtc: string
+	missionInstanceId: string
+	objectives: LolObjectivesCapMissionSeriesMissionObjective[]
+	eligibility: LolObjectivesCapMissionSeriesMissionEligibility[]
+	rewardsStatus: LolObjectivesCapMissionSeriesMissionRewardsStatus
+	/** @format uint32 */
+	repeatSequence: number
+	properties: Record<string, string>
+	metadata: Record<string, string>
+}
+
+export interface LolObjectivesCapMissionSeriesMissionEligibility {
+	type: string
+	missionCollectionId: string
+	missionId: string
+	startTime: string
+}
+
+export interface LolObjectivesCapMissionSeriesMissionObjective {
+	statId: string
+	objectiveId: string
+	/** @format uint32 */
+	goal: number
+	/** @format uint32 */
+	currentValue: number
+}
+
+export interface LolObjectivesCapMissionSeriesMissionReward {
+	type: string
+	counterId: string
+	itemId: string
+	itemTypeId: string
+	typeId: string
+	/** @format uint32 */
+	amount: number
+}
+
+export interface LolObjectivesCapMissionSeriesMissionRewardsStatus {
+	requiresClaim: boolean
+	status: string
+	rewards: LolObjectivesCapMissionSeriesMissionReward[]
+}
+
+export interface LolObjectivesCapMissionsMarkAsViewedPostBody {
+	events: LolObjectivesCapMissionsMarkAsViewedPostBodyEvent[]
+}
+
+export interface LolObjectivesCapMissionsMarkAsViewedPostBodyEvent {
+	configurationId: string
+	missions: LolObjectivesCapMissionsMarkAsViewedPostBodyMission[]
+}
+
+export interface LolObjectivesCapMissionsMarkAsViewedPostBodyMission {
+	missionInstanceId: string
+	metadata: Record<string, string>
+}
+
+export interface LolObjectivesCapMissionsMeResponse {
+	productId: string
+	ownerId: string
+	series: LolObjectivesCapMissionSeries[]
+}
+
 export interface LolObjectivesCatalogEntry {
 	contentId: string
 	/** @format int32 */
@@ -15662,6 +16319,9 @@ export interface LolObjectivesEventInfoUIData {
 	eventIcon: string
 	navBarIcon: string
 	eventTokenImage: string
+	startDate: string
+	progressEndDate: string
+	endDate: string
 	/** @format int32 */
 	currentTokenBalance: number
 	/** @format int32 */
@@ -15696,6 +16356,8 @@ export interface LolObjectivesLoginSession {
 	puuid: string
 	platformId: string
 }
+
+export type LolObjectivesLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
 
 export type LolObjectivesLoyaltyStatus = "DISABLED" | "REVOKE" | "CHANGE" | "EXPIRY" | "REWARDS_GRANT" | "LEGACY"
 
@@ -15754,7 +16416,7 @@ export interface LolObjectivesObjectivesContainer {
 }
 
 export interface LolObjectivesObjectivesGroup {
-	uuid: string
+	id: string
 	backgroundImage: string
 	/** @format uint64 */
 	startDate: number
@@ -15857,6 +16519,21 @@ export interface LolObjectivesRewardsProductConfig {
 	serviceUrl: string
 }
 
+export interface LolObjectivesRiotMessagingServiceMessage {
+	resource: string
+	service: string
+	version: string
+	/** @format int64 */
+	timestamp: number
+	payload: string
+}
+
+export interface LolObjectivesRiotMessagingServicePayload {
+	deltaEventId: string
+	ownerId: string
+	updatedMissions: string[]
+}
+
 export interface LolObjectivesSelectionStrategyConfig {
 	/** @format uint32 */
 	minSelectionsAllowed: number
@@ -15877,6 +16554,67 @@ export interface LolObjectivesSvcReward {
 	fulfillmentSource: string
 	media: Record<string, string>
 	localizations: Record<string, string>
+}
+
+export interface LolObjectivesTftBattlepass {
+	/** @format int32 */
+	totalPointsEarned: number
+	milestones: LolObjectivesTftBattlepassMilestone[]
+	bonuses: LolObjectivesTftBattlepassMilestone[]
+	activeMilestone: LolObjectivesTftBattlepassMilestone
+	info: LolObjectivesTftBattlepassInfo
+	/** @format int32 */
+	lastViewedProgress: number
+	lastViewedMilestone: LolObjectivesTftBattlepassMilestone
+	/** @format int32 */
+	currentLevel: number
+}
+
+export interface LolObjectivesTftBattlepassInfo {
+	title: string
+	description: string
+	/** @format uint64 */
+	startDate: number
+	/** @format uint64 */
+	endDate: number
+	premium: boolean
+	premiumTitle: string
+	premiumEntitlementId: string
+	pcPurchaseRequirement: string
+	passId: string
+	media: Record<string, string>
+}
+
+export interface LolObjectivesTftBattlepassMilestone {
+	milestoneId: string
+	title: string
+	description: string
+	status: string
+	/** @format int32 */
+	pointsNeededForMilestone: number
+	/** @format int32 */
+	pointsEarnedForMilestone: number
+	/** @format int32 */
+	totalPointsForMilestone: number
+	/** @format int32 */
+	level: number
+	iconImageUrl: string
+	iconNeedsFrame: boolean
+	rewards: LolObjectivesTftBattlepassReward[]
+	isPaid: boolean
+	isLocked: boolean
+	isKeystone: boolean
+	isBonus: boolean
+	isClaimRequestPending: boolean
+}
+
+export interface LolObjectivesTftBattlepassReward {
+	name: string
+	description: string
+	itemId: string
+	itemTypeId: string
+	iconUrl: string
+	iconNeedsFrame: boolean
 }
 
 export interface LolObjectivesTftOrb {
@@ -15929,6 +16667,7 @@ export interface LolObjectivesUIObjectivesCategory {
 	endDate: number
 	categorySectionImage: string
 	categoryName: string
+	overrideBackgroundImage: string
 	objectives: LolObjectivesUIObjectives[]
 	categoryType: LolObjectivesObjectiveCategoryType
 }
@@ -17975,28 +18714,6 @@ export interface LolRankedEosNotificationsConfigEntry {
 	"offsetTime3": number
 }
 
-export interface LolRankedEosRewardData {
-	id: string
-	type: string
-	overrideImagePath: string
-}
-
-export interface LolRankedEosRewardGroupsConfig {
-	rewardGroups: Record<string, LolRankedEosRewardGroupsRewardsList>
-}
-
-export interface LolRankedEosRewardGroupsRewardsList {
-	rewards: string[]
-}
-
-export interface LolRankedEosRewardsConfig {
-	seasons: Record<string, LolRankedEosRewardsConfigEntry>
-}
-
-export interface LolRankedEosRewardsConfigEntry {
-	rewards: Record<string, LolRankedEosRewardData>
-}
-
 export interface LolRankedEosSettingsData {
 	notificationShown: boolean
 }
@@ -18060,8 +18777,10 @@ export interface LolRankedLcuLeagueNotification {
 	timeUntilInactivityStatusChanges: number
 	rewardEarnedId: string
 	rewardEarnedType: string
+	rewardEarnedTitle: string
+	rewardEarnedDescription: string
+	rewardEarnedTier: string
 	rewardOverrideImagePath: string
-	splitPointsNotification?: LolRankedSplitPointsNotification
 	promoSeriesForRanksEnabled: boolean
 	/** @format int32 */
 	consolationLpUsed: number
@@ -18250,6 +18969,32 @@ export interface LolRankedLoginSession {
 
 export type LolRankedLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
 
+export interface LolRankedLolEosRewardGameData {
+	id: string
+	name: string
+	title: string
+	description: string
+	tier: LolRankedLolEosRewardTier
+	type: LolRankedLolEosRewardType
+	overrideImagePath: string
+}
+
+export interface LolRankedLolEosRewardGroupGameData {
+	id: string
+	rewardNames: string[]
+}
+
+export type LolRankedLolEosRewardTier = "kChallenger" | "kGrandmaster" | "kMaster" | "kDiamond" | "kEmerald" | "kPlatinum" | "kGold" | "kSilver" | "kBronze" | "kIron" | "kNone"
+
+export type LolRankedLolEosRewardType = "kEmote" | "kSummonerIcon" | "kVictoriousSkinBorder" | "kVictoriousChroma" | "kVictoriousSkin" | "kChampion" | "kEternalsCapsule" | "kNone"
+
+export interface LolRankedLolEosRewardsConfigGameData {
+	/** @format int64 */
+	seasonId: number
+	rewards: LolRankedLolEosRewardGameData[]
+	rewardGroups: LolRankedLolEosRewardGroupGameData[]
+}
+
 export type LolRankedMiniseries = "N" | "L" | "W"
 
 export type LolRankedNotificationDisplayType = "VIGNETTE" | "MODAL" | "TOAST" | "NONE"
@@ -18419,7 +19164,7 @@ export type LolRankedRatedTier = "ORANGE" | "PURPLE" | "BLUE" | "GREEN" | "GRAY"
 
 export interface LolRankedRewardNotification {
 	rewardGroupId: string
-	/** @format int32 */
+	/** @format int64 */
 	seasonId: number
 }
 
@@ -18493,22 +19238,6 @@ export interface LolRankedSocialLeaderboardRankedQueueStatsDTO {
 	wins: number
 	/** @format int32 */
 	losses: number
-}
-
-export interface LolRankedSplitPointsNotification {
-	/** @format int32 */
-	splitPointsDelta: number
-	/** @format int32 */
-	splitPointsBeforeGame: number
-	/** @format int32 */
-	splitPointsAfterGame: number
-	/** @format int32 */
-	previousSplitPointsRequired: number
-	/** @format int32 */
-	splitPointsRequired: number
-	nextRewardId: string
-	nextRewardType: string
-	splitPointsBreakdown: Record<string, number>
 }
 
 export interface LolRankedSummoner {
@@ -21385,6 +22114,123 @@ export interface LolTftDataModelResponse {
 	modelData: unknown
 }
 
+export interface LolTftEventCAPMission {
+	missionId: string
+	title: string
+	description: string
+	missionIconAsset: LolTftEventMissionAsset
+	rewards: LolTftEventCAPMissionReward[]
+	objectives: LolTftEventCAPMissionObjective[]
+}
+
+export interface LolTftEventCAPMissionCollection {
+	missionCollectionId: string
+	dates: LolTftEventCAPMissionCollectionDates
+	seriesList: LolTftEventCAPMissionSeries[]
+}
+
+export interface LolTftEventCAPMissionCollectionDateRange {
+	/** @format uint64 */
+	activationTimeEpoch: number
+	/** @format uint64 */
+	deactivationTimeEpoch: number
+}
+
+export interface LolTftEventCAPMissionCollectionDates {
+	live: LolTftEventCAPMissionCollectionDateRange
+	pbe: LolTftEventCAPMissionCollectionDateRange
+	internal: LolTftEventCAPMissionCollectionDateRange
+}
+
+export interface LolTftEventCAPMissionObjective {
+	statId: string
+	description: string
+}
+
+export interface LolTftEventCAPMissionReward {
+	itemId: string
+	rewardName: string
+	/** @format uint32 */
+	quantity: number
+	rewardAsset: LolTftEventMissionAsset
+}
+
+export interface LolTftEventCAPMissionSeries {
+	seriesId: string
+	seriesTitle: string
+	seriesIconAsset: LolTftEventMissionAsset
+	missions: LolTftEventCAPMission[]
+}
+
+export interface LolTftEventCapMissionSeriesMission {
+	name: string
+	missionId: string
+	expression: string
+	missionCollectionId: string
+	status: string
+	completedTimeUtc: string
+	missionInstanceId: string
+	objectives: LolTftEventCapMissionSeriesMissionObjective[]
+	eligibility: LolTftEventCapMissionSeriesMissionEligibility[]
+	rewardsStatus: LolTftEventCapMissionSeriesMissionRewardsStatus
+	/** @format uint32 */
+	repeatSequence: number
+	properties: Record<string, string>
+	metadata: Record<string, string>
+}
+
+export interface LolTftEventCapMissionSeriesMissionEligibility {
+	type: string
+	missionCollectionId: string
+	missionId: string
+	startTime: string
+}
+
+export interface LolTftEventCapMissionSeriesMissionObjective {
+	statId: string
+	objectiveId: string
+	/** @format uint32 */
+	goal: number
+	/** @format uint32 */
+	currentValue: number
+}
+
+export interface LolTftEventCapMissionSeriesMissionReward {
+	type: string
+	counterId: string
+	itemId: string
+	itemTypeId: string
+	typeId: string
+	/** @format uint32 */
+	amount: number
+}
+
+export interface LolTftEventCapMissionSeriesMissionRewardsStatus {
+	requiresClaim: boolean
+	status: string
+	rewards: LolTftEventCapMissionSeriesMissionReward[]
+}
+
+export interface LolTftEventCapMissionsMarkAsViewedPostBody {
+	events: LolTftEventCapMissionsMarkAsViewedPostBodyEvent[]
+}
+
+export interface LolTftEventCapMissionsMarkAsViewedPostBodyEvent {
+	configurationId: string
+	missions: LolTftEventCapMissionsMarkAsViewedPostBodyMission[]
+}
+
+export interface LolTftEventCapMissionsMarkAsViewedPostBodyMission {
+	missionInstanceId: string
+	metadata: Record<string, string>
+}
+
+export interface LolTftEventCapMissionsMeResponse {
+	productId: string
+	ownerId: string
+	series: LolTftEventCapMissionSeries[]
+}
+
 export interface LolTftEventCollectionsChampion {
 	/** @format int32 */
 	id: number
@@ -21461,6 +22307,8 @@ export interface LolTftEventLoginSession {
 	platformId: string
 }
 
+export type LolTftEventLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
+
 export interface LolTftEventLolTftBackgrounds {
 	backgrounds: Record<string, string>
 }
@@ -21509,6 +22357,7 @@ export interface LolTftEventLolTftHomeHub {
 	primeGamingPromoOffer?: LolTftEventLolTftPrimeGaming
 	overrideUrl: string
 	headerButtonsOverrideUrl: string
+	rotatingShopPromos: LolTftEventTFTRotatingShopPromos
 }
 
 export interface LolTftEventLolTftNewsHub {
@@ -21653,6 +22502,21 @@ export interface LolTftEventRewardsProductConfig {
 	serviceUrl: string
 }
 
+export interface LolTftEventRiotMessagingServiceMessage {
+	resource: string
+	service: string
+	version: string
+	/** @format int64 */
+	timestamp: number
+	payload: string
+}
+
+export interface LolTftEventRiotMessagingServicePayload {
+	deltaEventId: string
+	ownerId: string
+	updatedMissions: string[]
+}
+
 export interface LolTftEventSelectionStrategyConfig {
 	/** @format uint32 */
 	minSelectionsAllowed: number
@@ -21685,6 +22549,23 @@ export interface LolTftEventTFTEventMissionChain {
 	/** @format uint32 */
 	chainSize: number
 	missions: PlayerMissionDTO[]
+}
+
+export interface LolTftEventTFTEventMissionChains {
+	missionChains: LolTftEventTFTEventMissionChain[]
+	seriesId: string
+}
+
+export interface LolTftEventTFTRotatingShopPromo {
+	id: string
+	bundleId: string
+	storeType: string
+}
+
+export interface LolTftEventTFTRotatingShopPromos {
+	firstPromos: LolTftEventTFTRotatingShopPromo[]
+	secondPromos: LolTftEventTFTRotatingShopPromo[]
+	fallbackPromo: LolTftEventTFTRotatingShopPromo
 }
 
 export interface LolTftEventTftOrb {
@@ -21766,6 +22647,7 @@ export interface LolTftLolTftHomeHub {
 	primeGamingPromoOffer?: LolTftLolTftPrimeGaming
 	overrideUrl: string
 	headerButtonsOverrideUrl: string
+	rotatingShopPromos: LolTftTFTRotatingShopPromos
 }
 
 export interface LolTftLolTftNewsHub {
@@ -21899,6 +22781,7 @@ export interface LolTftPassInventoryItem {
 	/** @format uint64 */
 	quantity: number
 	ownershipType: LolTftPassItemOwnershipType
+	usedInGameDate: string
 	expirationDate: string
 	/** @format uint64 */
 	wins: number
@@ -21938,6 +22821,7 @@ export interface LolTftPassInventoryItemWithPayload {
 	/** @format uint64 */
 	quantity: number
 	ownershipType: LolTftPassItemOwnershipType
+	usedInGameDate: string
 	expirationDate: string
 	"f2p": boolean
 	rental: boolean
@@ -22185,7 +23069,7 @@ export interface LolTftPassTFTPassDTO {
 	premiumTitle: string
 	description: string
 	/** @format int64 */
-	activiationTimeMS: number
+	activationTimeMS: number
 	/** @format int64 */
 	deactivationTimeMS: number
 	assetID: string
@@ -22639,6 +23523,18 @@ export interface LolTftSkillTreeUpdateLoadoutDTO {
 export interface LolTftSkillTreeUpdateLoadoutRequestDTO {
 	serviceToJwtsMap: Record<string, unknown>
 	loadout: LolTftSkillTreeUpdateLoadoutDTO
+}
+
+export interface LolTftTFTRotatingShopPromo {
+	id: string
+	bundleId: string
+	storeType: string
+}
+
+export interface LolTftTFTRotatingShopPromos {
+	firstPromos: LolTftTFTRotatingShopPromo[]
+	secondPromos: LolTftTFTRotatingShopPromo[]
+	fallbackPromo: LolTftTFTRotatingShopPromo
 }
 
 export interface LolTftTeamPlannerChampion {
@@ -23545,6 +24441,7 @@ export interface LolYourshopInventoryItem {
 	/** @format uint64 */
 	quantity: number
 	ownershipType: LolYourshopItemOwnershipType
+	usedInGameDate: string
 	expirationDate: string
 	/** @format uint64 */
 	wins: number
@@ -23584,6 +24481,7 @@ export interface LolYourshopInventoryItemWithPayload {
 	/** @format uint64 */
 	quantity: number
 	ownershipType: LolYourshopItemOwnershipType
+	usedInGameDate: string
 	expirationDate: string
 	"f2p": boolean
 	rental: boolean
