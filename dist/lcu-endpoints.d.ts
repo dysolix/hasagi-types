@@ -978,7 +978,7 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolEventHubTokenUpsell[] }
 	},
 	"/lol-event-mission/v1/event-mission": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolTftEventTFTEventMissionChain[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.LolTftEventTFTEventMissionChains[] }
 	},
 	"/lol-game-client-chat/v1/buddies": {
 		get: { path: never, params: never, body: never, response: string[] }
@@ -1373,6 +1373,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/timer": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectTimer }
+	},
+	"/lol-lobby-team-builder/champ-select/v1/subset-champion-list": {
+		get: { path: never, params: never, body: never, response: number[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/team-boost": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderTeamBoost }
@@ -1948,8 +1951,8 @@ export interface LCUEndpoints {
 	"/lol-ranked/v1/eos-notifications": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolRankedEosNotificationResource[] }
 	},
-	"/lol-ranked/v1/eos-rewards": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolRankedEosRewardsConfig }
+	"/lol-ranked/v1/eos-rewards/{seasonId}": {
+		get: { path: [seasonId: number], params: never, body: never, response: LCUTypes.LolRankedLolEosRewardsConfigGameData }
 	},
 	"/lol-ranked/v1/league-ladders/{puuid}": {
 		get: { path: [puuid: string], params: never, body: never, response: LCUTypes.LolRankedLeagueLadderInfo[] }
@@ -2317,6 +2320,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-tastes/v1/tft-overview-model": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTastesDataModelResponse }
+	},
+	"/lol-tft-pass/v1/active-passes": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolTftPassTftBattlepass[] }
 	},
 	"/lol-tft-pass/v1/battle-pass": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftPassTftBattlepass }
@@ -2692,6 +2698,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-activity-center/v1/clear-cache": {
 		post: { path: never, params: never, body: never, response: unknown }
+	},
+	"/lol-cap-missions/v1/markasviewed": {
+		post: { path: never, params: never, body: LCUTypes.LolCapMissionsCapMissionsMarkAsViewedPostBodyEvent[], response: unknown }
 	},
 	"/lol-challenges/v1/ack-challenge-update/{id}": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
