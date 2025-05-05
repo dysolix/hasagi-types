@@ -510,7 +510,7 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectLegacyTeamBoost }
 	},
 	"/lol-champ-select/v1/all-grid-champions": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampGridChampion[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampGridChampion[] }
 	},
 	"/lol-champ-select/v1/bannable-champion-ids": {
 		get: { path: never, params: never, body: never, response: number[] }
@@ -522,19 +522,19 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
 	"/lol-champ-select/v1/grid-champions/{championId}": {
-		get: { path: [championId: number], params: never, body: never, response: LCUTypes.LolChampSelectChampGridChampion }
+		get: { path: [championId: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampGridChampion }
 	},
 	"/lol-champ-select/v1/muted-players": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectMutedPlayerInfo[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_MutedPlayerInfo[] }
 	},
 	"/lol-champ-select/v1/ongoing-champion-swap": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectChampionSwapNotification }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectChampionSwapNotification }
 	},
 	"/lol-champ-select/v1/ongoing-pick-order-swap": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectPickOrderSwapNotification }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectPickOrderSwapNotification }
 	},
 	"/lol-champ-select/v1/ongoing-position-swap": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectPositionSwapNotification }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectPositionSwapNotification }
 	},
 	"/lol-champ-select/v1/pickable-champion-ids": {
 		get: { path: never, params: never, body: never, response: number[] }
@@ -543,47 +543,47 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
 	"/lol-champ-select/v1/pin-drop-notification": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectPinDropNotification }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectPinDropNotification }
 	},
 	"/lol-champ-select/v1/session": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSession }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSession }
 	},
 	"/lol-champ-select/v1/session/champion-swaps": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract[] }
 	},
 	"/lol-champ-select/v1/session/champion-swaps/{id}": {
-		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract }
+		get: { path: [id: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract }
 	},
 	"/lol-champ-select/v1/session/my-selection": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectPlayerSelection }
-		patch: { path: never, params: never, body: LCUTypes.LolChampSelectChampSelectMySelection, response: unknown }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectPlayerSelection }
+		patch: { path: never, params: never, body: LCUTypes.TeamBuilderDirect_ChampSelectMySelection, response: unknown }
 	},
 	"/lol-champ-select/v1/session/pick-order-swaps": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract[] }
 	},
 	"/lol-champ-select/v1/session/pick-order-swaps/{id}": {
-		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract }
+		get: { path: [id: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract }
 	},
 	"/lol-champ-select/v1/session/position-swaps": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract[] }
 	},
 	"/lol-champ-select/v1/session/timer": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectChampSelectTimer }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_TeambuilderDirectTypes_ChampSelectTimer }
 	},
 	"/lol-champ-select/v1/sfx-notifications": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectSfxNotification[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_SfxNotification[] }
 	},
 	"/lol-champ-select/v1/skin-carousel-skins": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectSkinSelectorSkin[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_SkinSelectorSkin[] }
 	},
 	"/lol-champ-select/v1/skin-selector-info": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectSkinSelectorInfo }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_SkinSelectorInfo }
 	},
 	"/lol-champ-select/v1/summoners/{slotId}": {
-		get: { path: [slotId: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSummoner }
+		get: { path: [slotId: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSummoner }
 	},
 	"/lol-champ-select/v1/team-boost": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolChampSelectTeamBoost }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_TeamBoost }
 	},
 	"/lol-champion-mastery/v1/{puuid}/champion-mastery": {
 		get: { path: [puuid: string], params: never, body: never, response: LCUTypes.LolChampionMasteryChampionMastery[] }
@@ -1341,47 +1341,47 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/preferences": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampionSelectPreferences }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampionSelectPreferences }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSession }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSession }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/champion-swaps": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/champion-swaps/{id}": {
-		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
+		get: { path: [id: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/my-selection": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectPlayerSelection }
-		patch: { path: never, params: never, body: LCUTypes.LolLobbyTeamBuilderChampSelectMySelection, response: unknown }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectPlayerSelection }
+		patch: { path: never, params: never, body: LCUTypes.TeamBuilderDirect_ChampSelectMySelection, response: unknown }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/obfuscated-summoner-ids": {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/pick-order-swaps": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/pick-order-swaps/{id}": {
-		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
+		get: { path: [id: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/position-swaps": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract[] }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/position-swaps/{id}": {
-		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
+		get: { path: [id: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/timer": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectTimer }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_TeambuilderDirectTypes_ChampSelectTimer }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/subset-champion-list": {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/team-boost": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderTeamBoost }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_TeamBoost }
 	},
 	"/lol-lobby-team-builder/v1/matchmaking": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderMatchmakingSearchResource }
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_MatchmakingSearchResource }
 	},
 	"/lol-lobby/v1/autofill-displayed": {
 		get: { path: never, params: never, body: never, response: boolean }
@@ -2640,13 +2640,13 @@ export interface LCUEndpoints {
 		patch: { path: [id: number], params: never, body: LCUTypes.LolChampSelectLegacyChampSelectAction, response: unknown }
 	},
 	"/lol-champ-select/v1/session/actions/{id}": {
-		patch: { path: [id: number], params: never, body: LCUTypes.LolChampSelectChampSelectAction, response: unknown }
+		patch: { path: [id: number], params: never, body: LCUTypes.TeamBuilderDirect_ChampSelectAction, response: unknown }
 	},
 	"/lol-cosmetics/v1/recent/{type}": {
 		patch: { path: [type: string], params: never, body: string[], response: unknown }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/actions/{id}": {
-		patch: { path: [id: number], params: never, body: LCUTypes.LolLobbyTeamBuilderChampSelectAction, response: unknown }
+		patch: { path: [id: number], params: never, body: LCUTypes.TeamBuilderDirect_ChampSelectAction, response: unknown }
 	},
 	"/lol-npe-tutorial-path/v1/tutorials/init": {
 		patch: { path: never, params: never, body: never, response: unknown }
@@ -2763,7 +2763,7 @@ export interface LCUEndpoints {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
 	"/lol-champ-select/v1/session/champion-swaps/{id}/request": {
-		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract }
+		post: { path: [id: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract }
 	},
 	"/lol-champ-select/v1/session/my-selection/reroll": {
 		post: { path: never, params: never, body: never, response: unknown }
@@ -2778,7 +2778,7 @@ export interface LCUEndpoints {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
 	"/lol-champ-select/v1/session/pick-order-swaps/{id}/request": {
-		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract }
+		post: { path: [id: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract }
 	},
 	"/lol-champ-select/v1/session/position-swaps/{id}/accept": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
@@ -2790,7 +2790,7 @@ export interface LCUEndpoints {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
 	"/lol-champ-select/v1/session/position-swaps/{id}/request": {
-		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolChampSelectChampSelectSwapContract }
+		post: { path: [id: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract }
 	},
 	"/lol-champ-select/v1/session/simple-inventory": {
 		post: { path: never, params: never, body: never, response: unknown }
@@ -2802,7 +2802,7 @@ export interface LCUEndpoints {
 		post: { path: [championId: number, position: string], params: never, body: never, response: unknown }
 	},
 	"/lol-champ-select/v1/toggle-player-muted": {
-		post: { path: never, params: never, body: LCUTypes.LolChampSelectMutedPlayerInfo, response: unknown }
+		post: { path: never, params: never, body: LCUTypes.TeamBuilderDirect_MutedPlayerInfo, response: unknown }
 	},
 	"/lol-champion-mastery/v1/{puuid}/champion-mastery/top": {
 		post: { path: [puuid: string], params: never, body: number, response: LCUTypes.LolChampionMasteryTopChampionMasteries }
@@ -3099,7 +3099,7 @@ export interface LCUEndpoints {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/champion-swaps/{id}/request": {
-		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
+		post: { path: [id: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/my-selection/reroll": {
 		post: { path: never, params: never, body: never, response: unknown }
@@ -3114,7 +3114,7 @@ export interface LCUEndpoints {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/pick-order-swaps/{id}/request": {
-		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
+		post: { path: [id: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/position-swaps/{id}/accept": {
 		post: { path: [id: number], params: never, body: never, response: unknown }
@@ -3126,7 +3126,7 @@ export interface LCUEndpoints {
 		post: { path: [id: number], params: never, body: never, response: unknown }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/position-swaps/{id}/request": {
-		post: { path: [id: number], params: never, body: never, response: LCUTypes.LolLobbyTeamBuilderChampSelectSwapContract }
+		post: { path: [id: number], params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampSelectSwapContract }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/quit": {
 		post: { path: never, params: never, body: never, response: unknown }
