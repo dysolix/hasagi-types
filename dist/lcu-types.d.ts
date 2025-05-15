@@ -14337,7 +14337,7 @@ export interface LolMissionsCapMissionsMarkAsViewedPostBodyMission {
 export interface LolMissionsCapMissionsMeResponse {
 	productId: string
 	ownerId: string
-	series: LolMissionsCapMissionSeries[]
+	series: LolMissionsCAPMissionSeries[]
 }
 
 export interface LolMissionsCollectionsChampion {
@@ -15322,7 +15322,7 @@ export interface LolObjectivesCapMissionsMarkAsViewedPostBodyMission {
 export interface LolObjectivesCapMissionsMeResponse {
 	productId: string
 	ownerId: string
-	series: LolObjectivesCapMissionSeries[]
+	series: LolObjectivesCAPMissionSeries[]
 }
 
 export interface LolObjectivesCatalogEntry {
@@ -21334,7 +21334,7 @@ export interface LolTftEventCapMissionsMarkAsViewedPostBodyMission {
 export interface LolTftEventCapMissionsMeResponse {
 	productId: string
 	ownerId: string
-	series: LolTftEventCapMissionSeries[]
+	series: LolTftEventCAPMissionSeries[]
 }
 
 export interface LolTftEventCollectionsChampion {
@@ -25720,9 +25720,9 @@ export interface TeamBuilderDirect_ChampSelectSwapContract {
 	state: TeamBuilderDirect_ChampSelectSwapState
 }
 
-export type TeamBuilderDirect-ChampSelectSwapState = "ACCEPTED" | "CANCELLED" | "DECLINED" | "SENT" | "RECEIVED" | "INVALID" | "BUSY" | "AVAILABLE"
+export type TeamBuilderDirect_ChampSelectSwapState = "ACCEPTED" | "CANCELLED" | "DECLINED" | "SENT" | "RECEIVED" | "INVALID" | "BUSY" | "AVAILABLE"
 
-export type TeamBuilderDirect-ChampSelectSwapType = "POSITION" | "PICK_ORDER" | "CHAMPION"
+export type TeamBuilderDirect_ChampSelectSwapType = "POSITION" | "PICK_ORDER" | "CHAMPION"
 
 export interface TeamBuilderDirect_ChampionBenchState {
 	benchEnabled: boolean
@@ -25973,21 +25973,21 @@ export interface TeamBuilderDirect_GameflowGameDodge {
 	dodgeIds: number[]
 }
 
-export type TeamBuilderDirect-GameflowGameDodgeState = "TournamentDodged" | "StrangerDodged" | "PartyDodged" | "Invalid"
+export type TeamBuilderDirect_GameflowGameDodgeState = "TournamentDodged" | "StrangerDodged" | "PartyDodged" | "Invalid"
 
 export interface TeamBuilderDirect_GameflowGameMap {
 	perPositionRequiredSummonerSpells: Record<string, TeamBuilderDirect_GameModeSpellList>
 	perPositionDisallowedSummonerSpells: Record<string, TeamBuilderDirect_GameModeSpellList>
 }
 
-export type TeamBuilderDirect-GameflowPhase = "TerminatedInError" | "EndOfGame" | "PreEndOfGame" | "WaitingForStats" | "Reconnect" | "InProgress" | "FailedToLaunch" | "GameStart" | "ChampSelect" | "ReadyCheck" | "CheckedIntoTournament" | "Matchmaking" | "Lobby" | "None"
+export type TeamBuilderDirect_GameflowPhase = "TerminatedInError" | "EndOfGame" | "PreEndOfGame" | "WaitingForStats" | "Reconnect" | "InProgress" | "FailedToLaunch" | "GameStart" | "ChampSelect" | "ReadyCheck" | "CheckedIntoTournament" | "Matchmaking" | "Lobby" | "None"
 
 export interface TeamBuilderDirect_GameflowQueue {
 	/** @format int32 */
 	id: number
 }
 
-export type TeamBuilderDirect-GameflowServiceErrorType = "PLAYER_LACKS_VANGUARD_SESSION"
+export type TeamBuilderDirect_GameflowServiceErrorType = "PLAYER_LACKS_VANGUARD_SESSION"
 
 export interface TeamBuilderDirect_GameflowSession {
 	phase: TeamBuilderDirect_GameflowPhase
@@ -26057,7 +26057,7 @@ export interface TeamBuilderDirect_LoginSession {
 	summonerId?: number
 }
 
-export type TeamBuilderDirect-LoginSessionState = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
+export type TeamBuilderDirect_LoginSessionState = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
 
 export interface TeamBuilderDirect_MatchmakingDodgeData {
 	state: TeamBuilderDirect_MatchmakingDodgeState
@@ -26065,9 +26065,9 @@ export interface TeamBuilderDirect_MatchmakingDodgeData {
 	dodgerId: number
 }
 
-export type TeamBuilderDirect-MatchmakingDodgeState = "TournamentDodged" | "StrangerDodged" | "PartyDodged" | "Invalid"
+export type TeamBuilderDirect_MatchmakingDodgeState = "TournamentDodged" | "StrangerDodged" | "PartyDodged" | "Invalid"
 
-export type TeamBuilderDirect-MatchmakingDodgeWarning = "Penalty" | "Warning" | "None"
+export type TeamBuilderDirect_MatchmakingDodgeWarning = "Penalty" | "Warning" | "None"
 
 export interface TeamBuilderDirect_MatchmakingLowPriorityData {
 	penalizedSummonerIds: number[]
@@ -26087,9 +26087,9 @@ export interface TeamBuilderDirect_MatchmakingReadyCheckResource {
 	declinerIds: number[]
 }
 
-export type TeamBuilderDirect-MatchmakingReadyCheckResponse = "Declined" | "Accepted" | "None"
+export type TeamBuilderDirect_MatchmakingReadyCheckResponse = "Declined" | "Accepted" | "None"
 
-export type TeamBuilderDirect-MatchmakingReadyCheckState = "Error" | "PartyNotReady" | "StrangerNotReady" | "EveryoneReady" | "InProgress" | "Invalid"
+export type TeamBuilderDirect_MatchmakingReadyCheckState = "Error" | "PartyNotReady" | "StrangerNotReady" | "EveryoneReady" | "InProgress" | "Invalid"
 
 export interface TeamBuilderDirect_MatchmakingSearchErrorResource {
 	/** @format int32 */
@@ -26118,7 +26118,7 @@ export interface TeamBuilderDirect_MatchmakingSearchResource {
 	errors: TeamBuilderDirect_MatchmakingSearchErrorResource[]
 }
 
-export type TeamBuilderDirect-MatchmakingSearchState = "ServiceShutdown" | "ServiceError" | "Error" | "Found" | "Searching" | "Canceled" | "AbandonedLowPriorityQueue" | "Invalid"
+export type TeamBuilderDirect_MatchmakingSearchState = "ServiceShutdown" | "ServiceError" | "Error" | "Found" | "Searching" | "Canceled" | "AbandonedLowPriorityQueue" | "Invalid"
 
 export interface TeamBuilderDirect_MatchmakingState {
 	/** @format int64 */
@@ -26149,7 +26149,7 @@ export interface TeamBuilderDirect_PlayerStatus {
 	lastQueuedLobbyStatus?: TeamBuilderDirect_LobbyStatus
 }
 
-export type TeamBuilderDirect-QuestSkinProductType = "kTieredSkin" | "kQuestSkin"
+export type TeamBuilderDirect_QuestSkinProductType = "kTieredSkin" | "kQuestSkin"
 
 export interface TeamBuilderDirect_Queue {
 	/** @format int32 */
@@ -26193,9 +26193,9 @@ export interface TeamBuilderDirect_Queue {
 	removalFromGameDelayMinutes: number
 }
 
-export type TeamBuilderDirect-QueueAvailability = "DoesntMeetRequirements" | "PlatformDisabled" | "Available"
+export type TeamBuilderDirect_QueueAvailability = "DoesntMeetRequirements" | "PlatformDisabled" | "Available"
 
-export type TeamBuilderDirect-QueueGameCategory = "Alpha" | "VersusAi" | "PvP" | "Custom" | "None"
+export type TeamBuilderDirect_QueueGameCategory = "Alpha" | "VersusAi" | "PvP" | "Custom" | "None"
 
 export interface TeamBuilderDirect_QueueGameTypeConfig {
 	/** @format int64 */
