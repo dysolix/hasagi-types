@@ -259,7 +259,7 @@ export interface LCUEndpoints {
 		delete: { path: [set: string, team: string, championId: string, index: number], params: never, body: never, response: unknown }
 	},
 	"/lol-tft-troves/v1/roll-rewards": {
-		get: { path: never, params: never, body: never, response: void }
+		get: { path: never, params: never, body: never, response: LCUTypes.undefined }
 		delete: { path: never, params: never, body: never, response: void }
 	},
 	"/patcher/v1/notifications/{id}": {
@@ -1124,7 +1124,7 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-gameflow/v1/spectate/delayed-launch": {
-		get: { path: never, params: never, body: never, response: void }
+		get: { path: never, params: never, body: never, response: LCUTypes.undefined }
 	},
 	"/lol-gameflow/v1/watch": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolGameflowGameflowWatchPhase }
@@ -1522,7 +1522,7 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLoginLeagueSessionTokenEnvelope }
 	},
 	"/lol-loot/v1/currency-configuration": {
-		get: { path: never, params: never, body: never, response: void }
+		get: { path: never, params: never, body: never, response: LCUTypes.undefined }
 	},
 	"/lol-loot/v1/enabled": {
 		get: { path: never, params: never, body: never, response: boolean }
@@ -1589,7 +1589,7 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-loot/v1/recipes/configuration": {
-		get: { path: never, params: never, body: never, response: void }
+		get: { path: never, params: never, body: never, response: LCUTypes.undefined }
 	},
 	"/lol-loot/v1/recipes/initial-item/{lootId}": {
 		get: { path: [lootId: string], params: never, body: never, response: LCUTypes.LolLootRecipeWithMilestones[] }
@@ -1854,7 +1854,7 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPlayerBehaviorPlayerBehaviorConfig }
 	},
 	"/lol-player-behavior/v1/credibility-behavior-warnings": {
-		get: { path: never, params: never, body: never, response: void }
+		get: { path: never, params: never, body: never, response: LCUTypes.undefined }
 	},
 	"/lol-player-behavior/v1/reform-card": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPlayerBehaviorReformCard }
@@ -2073,7 +2073,7 @@ export interface LCUEndpoints {
 		get: { path: [progressionGroupId: string], params: never, body: never, response: LCUTypes.LolRewardTrackRewardTrackXP }
 	},
 	"/lol-reward-track/register/{progressionGroupId}": {
-		get: { path: [progressionGroupId: string], params: never, body: never, response: void }
+		get: { path: [progressionGroupId: string], params: never, body: never, response: LCUTypes.undefined }
 	},
 	"/lol-rewards/v1/grants": {
 		get: { path: never, params: { "status"?: LCUTypes.LolRewardsGrantStatus }, body: never, response: LCUTypes.LolRewardsRewardGrant[] }
@@ -2447,13 +2447,13 @@ export interface LCUEndpoints {
 		get: { path: [dropTableId: string], params: never, body: never, response: LCUTypes.LolTftTrovesVerboseLootOddsResponse }
 	},
 	"/lol-tft-troves/v1/milestone-notifications": {
-		get: { path: never, params: never, body: never, response: void }
+		get: { path: never, params: never, body: never, response: LCUTypes.undefined }
 	},
 	"/lol-tft-troves/v1/milestones": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftTrovesTrovesMilestones }
 	},
 	"/lol-tft-troves/v1/status-notifications": {
-		get: { path: never, params: never, body: never, response: void }
+		get: { path: never, params: never, body: never, response: LCUTypes.undefined }
 	},
 	"/lol-tft/v1/tft/backgrounds": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftLolTftBackgrounds }
@@ -2495,7 +2495,7 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolVanguardVanguardMachineSpecs }
 	},
 	"/lol-vanguard/v1/notification": {
-		get: { path: never, params: { "message": void }, body: never, response: void }
+		get: { path: never, params: { "message": string }, body: never, response: LCUTypes.undefined }
 	},
 	"/lol-vanguard/v1/session": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolVanguardVanguardSession }

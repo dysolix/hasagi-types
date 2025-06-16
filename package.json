@@ -14,7 +14,7 @@
   "author": "dysolix",
   "license": "MIT",
   "devDependencies": {
-    "@hasagi/cli": "^0.9.6",
+    "@hasagi/cli": "^0.9.7",
     "@hasagi/core": "^0.6.3",
     "axios": "^1.6.8"
   },
