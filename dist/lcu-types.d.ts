@@ -14341,7 +14341,7 @@ export interface LolMissionsCapMissionsMarkAsViewedPostBodyMission {
 export interface LolMissionsCapMissionsMeResponse {
 	productId: string
 	ownerId: string
-	series: LolMissionsCAPMissionSeries[]
+	series: LolMissionsCapMissionSeries[]
 }
 
 export interface LolMissionsCollectionsChampion {
@@ -15327,7 +15327,7 @@ export interface LolObjectivesCapMissionsMarkAsViewedPostBodyMission {
 export interface LolObjectivesCapMissionsMeResponse {
 	productId: string
 	ownerId: string
-	series: LolObjectivesCAPMissionSeries[]
+	series: LolObjectivesCapMissionSeries[]
 }
 
 export interface LolObjectivesCatalogEntry {
@@ -21355,7 +21355,7 @@ export interface LolTftEventCapMissionsMarkAsViewedPostBodyMission {
 export interface LolTftEventCapMissionsMeResponse {
 	productId: string
 	ownerId: string
-	series: LolTftEventCAPMissionSeries[]
+	series: LolTftEventCapMissionSeries[]
 }
 
 export interface LolTftEventCollectionsChampion {
