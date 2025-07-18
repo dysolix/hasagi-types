@@ -9250,6 +9250,7 @@ export interface LolGameQueuesQueue {
 	gameSelectCategory: string
 	/** @format uint8 */
 	gameSelectPriority: number
+	isLimitedTimeQueue: boolean
 	isSkillTreeQueue: boolean
 	isCustom: boolean
 	/** @format uint32 */
@@ -9341,6 +9342,7 @@ export interface LolGameQueuesQueueTranslation {
 	gameSelectCategory: string
 	/** @format uint8 */
 	gameSelectPriority: number
+	isLimitedTimeQueue: boolean
 	isSkillTreeQueue: boolean
 	hidePlayerPosition: boolean
 }
@@ -13580,16 +13582,6 @@ export interface LolMarketplaceVelocityLimiterDto {
 	refill: string
 }
 
-export interface LolMatchHistoryAcsEndPoint {
-	url: string
-}
-
-export interface LolMatchHistoryAcsPlayer {
-	platformId: string
-	/** @format uint64 */
-	accountId: number
-}
-
 export interface LolMatchHistoryAlias {
 	gameName: string
 	tagLine: string
@@ -13628,15 +13620,6 @@ export interface LolMatchHistoryLoginSession {
 }
 
 export type LolMatchHistoryLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
-
-export interface LolMatchHistoryMHSummoner {
-	/** @format uint64 */
-	summonerId: number
-	/** @format uint64 */
-	accountId: number
-	displayName: string
-	puuid: string
-}
 
 export interface LolMatchHistoryMatchHistoryEvent {
 	type: string
@@ -13988,45 +13971,6 @@ export interface LolMatchHistoryMatchHistoryParticipantStatistics {
 	subteamPlacement: number
 }
 
-export interface LolMatchHistoryMatchHistoryPlayerChampMasteryDelta {
-	grade: string
-}
-
-export interface LolMatchHistoryMatchHistoryPlayerDelta {
-	/** @format uint64 */
-	originalAccountId: number
-	originalPlatformId: string
-	deltas: LolMatchHistoryMatchHistoryPlayerGameDelta[]
-}
-
-export interface LolMatchHistoryMatchHistoryPlayerGameDelta {
-	gamePlatformId: string
-	/** @format uint64 */
-	gameId: number
-	platformDelta: LolMatchHistoryMatchHistoryPlayerPlatformDelta
-	leagueDelta: LolMatchHistoryMatchHistoryPlayerLeagueDelta
-	champMastery: LolMatchHistoryMatchHistoryPlayerChampMasteryDelta
-}
-
-export interface LolMatchHistoryMatchHistoryPlayerLeagueDelta {
-	/** @format uint64 */
-	leaguePointDelta: number
-	reason: string
-	miniSeriesProgress: string[]
-	/** @format uint64 */
-	timestamp: number
-}
-
-export interface LolMatchHistoryMatchHistoryPlayerPlatformDelta {
-	/** @format uint64 */
-	xpDelta: number
-	/** @format uint64 */
-	ipDelta: number
-	compensationModeEnabled: boolean
-	/** @format uint64 */
-	timestamp: number
-}
-
 export interface LolMatchHistoryMatchHistoryPosition {
 	/** @format int16 */
 	x: number
@@ -14111,6 +14055,10 @@ export interface LolMatchHistoryRecentlyPlayedSummoner {
 }
 
 export interface LolMatchHistorySummoner {
+	/** @format uint64 */
+	summonerId: number
+	/** @format uint64 */
+	accountId: number
 	displayName: string
 	gameName: string
 	tagLine: string
@@ -26337,6 +26285,8 @@ export interface TeamBuilderDirect_ChampSelectSession {
 	id: string
 	/** @format uint64 */
 	gameId: number
+	/** @format int32 */
+	queueId: number
 	timer: TeamBuilderDirect_TeambuilderDirectTypes_ChampSelectTimer
 	chatDetails: TeamBuilderDirect_ChampSelectChatRoomDetails
 	myTeam: TeamBuilderDirect_ChampSelectPlayerSelection[]
@@ -26743,13 +26693,30 @@ export interface TeamBuilderDirect_InventoryDraft {
 }
 
 export interface TeamBuilderDirect_InventoryItem {
-	/** @format int64 */
+	/** @format int32 */
 	itemId: number
+	inventoryType: string
+}
+
+export interface TeamBuilderDirect_InventoryItemDTO {
+	/** @format int32 */
+	itemId: number
+	inventoryType: string
+	payload: unknown
+	"f2p": boolean
+	rental: boolean
+	loyalty: boolean
+	lsb: boolean
 }
 
 export interface TeamBuilderDirect_InventoryItemWithPayload {
-	/** @format int64 */
+	/** @format int32 */
 	itemId: number
+	inventoryType: string
+	"f2p": boolean
+	rental: boolean
+	loyalty: boolean
+	owned: boolean
 	payload: unknown
 }
 
@@ -26804,6 +26771,7 @@ export interface TeamBuilderDirect_MatchmakingReadyCheckResource {
 	/** @format float */
 	timer: number
 	declinerIds: number[]
+	autoAccept: boolean
 }
 
 export type TeamBuilderDirect_MatchmakingReadyCheckResponse = "Declined" | "Accepted" | "None"
@@ -26861,6 +26829,17 @@ export interface TeamBuilderDirect_MutedPlayerInfo {
 	obfuscatedPuuid: string
 	/** @format uint64 */
 	obfuscatedSummonerId: number
+}
+
+/** The container for all the operational queue configs */
+export interface TeamBuilderDirect_OperationalQueueConfig {
+	/** @format int32 */
+	queueId: number
+	isEnabled: boolean
+	mutators: string
+	isVisibleInClient: boolean
+	isSpectatable: boolean
+	"f2pRotations": string
 }
 
 export interface TeamBuilderDirect_PlayerStatus {

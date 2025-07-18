@@ -1354,6 +1354,9 @@ export interface LCUEndpoints {
 	"/lol-lobby-team-builder/champ-select/v1/disabled-champion-ids": {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
+	"/lol-lobby-team-builder/champ-select/v1/f2p-rotation-for-current-queue": {
+		get: { path: never, params: never, body: never, response: number[] }
+	},
 	"/lol-lobby-team-builder/champ-select/v1/has-auto-assigned-smite": {
 		get: { path: never, params: never, body: never, response: boolean }
 	},
@@ -1408,6 +1411,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby-team-builder/v1/matchmaking": {
 		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_MatchmakingSearchResource }
+	},
+	"/lol-lobby-team-builder/v1/ready-check/isAutoAccept": {
+		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-lobby/v1/autofill-displayed": {
 		get: { path: never, params: never, body: never, response: boolean }
@@ -1652,9 +1658,6 @@ export interface LCUEndpoints {
 	"/lol-marketplace/v1/ready": {
 		get: { path: never, params: never, body: never, response: boolean }
 	},
-	"/lol-match-history/v1/delta": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolMatchHistoryMatchHistoryPlayerDelta }
-	},
 	"/lol-match-history/v1/game-timelines/{gameId}": {
 		get: { path: [gameId: number], params: never, body: never, response: LCUTypes.LolMatchHistoryMatchHistoryTimelineFrames }
 	},
@@ -1672,12 +1675,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-match-history/v1/recently-played-summoners": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolMatchHistoryRecentlyPlayedSummoner[] }
-	},
-	"/lol-match-history/v1/web-url": {
-		get: { path: never, params: never, body: never, response: string }
-	},
-	"/lol-match-history/v3/matchlist/account/{accountId}": {
-		get: { path: [accountId: number], params: { "begIndex"?: number, "endIndex"?: number }, body: never, response: LCUTypes.LolMatchHistoryMatchHistoryList }
 	},
 	"/lol-matchmaking/v1/ready-check": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolMatchmakingMatchmakingReadyCheckResource }
@@ -3126,6 +3123,9 @@ export interface LCUEndpoints {
 	"/lol-honor-v2/v1/ack-honor-notification/{mailId}": {
 		post: { path: [mailId: string], params: never, body: never, response: void }
 	},
+	"/lol-honor-v2/v1/ballot/refresh": {
+		post: { path: never, params: never, body: never, response: void }
+	},
 	"/lol-honor-v2/v1/honor-player": {
 		post: { path: never, params: never, body: LCUTypes.LolHonorV2ApiHonorPlayerServerRequest, response: string }
 	},
@@ -3338,9 +3338,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-marketplace/v1/products/{product}/refunds": {
 		post: { path: [product: string], params: never, body: LCUTypes.LolMarketplaceRefundRequest, response: LCUTypes.LolMarketplaceRefundResponse }
-	},
-	"/lol-match-history/v1/acs-endpoint-override": {
-		post: { path: never, params: never, body: LCUTypes.LolMatchHistoryAcsEndPoint, response: unknown }
 	},
 	"/lol-matchmaking/v1/ready-check/accept": {
 		post: { path: never, params: never, body: never, response: unknown }
