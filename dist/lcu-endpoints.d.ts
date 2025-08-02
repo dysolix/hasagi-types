@@ -1713,6 +1713,9 @@ export interface LCUEndpoints {
 	"/lol-nacho/v1/banners": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoNachoBannersResponse[] }
 	},
+	"/lol-nacho/v1/counters/{counterId}": {
+		get: { path: [counterId: string], params: never, body: never, response: LCUTypes.LolNachoCapCounterData }
+	},
 	"/lol-nacho/v1/get-active-store-catalog": {
 		get: { path: never, params: never, body: never, response: LCUTypes.ChemtechShoppe_CatalogEntryDto[] }
 	},
@@ -2402,6 +2405,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-tft-pass/v1/objectives-banner/{id}": {
 		get: { path: [id: string], params: never, body: never, response: LCUTypes.LolTftPassObjectivesBanner }
+	},
+	"/lol-tft-pass/v1/pm-ultimate-victory-pass": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolTftPassTftBattlepass }
 	},
 	"/lol-tft-pass/v1/ready": {
 		get: { path: never, params: never, body: never, response: boolean }

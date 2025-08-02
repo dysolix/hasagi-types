@@ -3264,6 +3264,7 @@ export interface LolChampionsCollectionsChampion {
 	botEnabled: boolean
 	freeToPlay: boolean
 	rankedPlayEnabled: boolean
+	isVisibleInClient: boolean
 	passive: LolChampionsCollectionsChampionSpell
 	skins: LolChampionsCollectionsChampionSkin[]
 	spells: LolChampionsCollectionsChampionSpell[]
@@ -3306,6 +3307,7 @@ export interface LolChampionsCollectionsChampionMinimal {
 	botEnabled: boolean
 	freeToPlay: boolean
 	rankedPlayEnabled: boolean
+	isVisibleInClient: boolean
 }
 
 export interface LolChampionsCollectionsChampionPlayableCounts {
@@ -3467,6 +3469,7 @@ export interface LolChampionsGameDataChampion {
 	skins: LolChampionsGameDataChampionSkin[]
 	spells: LolChampionsGameDataChampionSpell[]
 	tacticalInfo: LolChampionsGameDataChampionTacticalInfo
+	isVisibleInClient: boolean
 }
 
 export interface LolChampionsGameDataChampionChroma {
@@ -6993,6 +6996,14 @@ export interface LolEndOfGameGameDataTftTrait {
 	name: string
 }
 
+export interface LolEndOfGameGameStateUpdate {
+	/** @format uint64 */
+	gameId: number
+	gameState: string
+	gameType: string
+	errorMessage: string
+}
+
 export interface LolEndOfGameGameflowAvailability {
 	state: string
 }
@@ -7688,6 +7699,7 @@ export interface LolEventHubEventInfoUIData {
 	eventType: string
 	eventIcon: string
 	navBarIcon: string
+	battleExpIcon: string
 	eventTokenImage: string
 	startDate: string
 	progressEndDate: string
@@ -7723,6 +7735,7 @@ export interface LolEventHubEventShop {
 	localizedName: string
 	backgroundImage: string
 	navbarIconImage: string
+	battleExpIconImage: string
 	headerIconImage: string
 	startDate: string
 	progressEndDate: string
@@ -7889,6 +7902,7 @@ export interface LolEventHubHallOfLegends {
 	localizedName: string
 	navbarIconImage: string
 	headerIconImage: string
+	battleExpIconImage: string
 	headerTitleImage: string
 	startDate: string
 	progressEndDate: string
@@ -8687,6 +8701,7 @@ export interface LolEventHubSeasonPass {
 	localizedName: string
 	navbarIconImage: string
 	headerIconImage: string
+	battleExpIconImage: string
 	headerTitleImage: string
 	startDate: string
 	progressEndDate: string
@@ -18124,6 +18139,10 @@ export interface LolRankedRankedQueueStats {
 	wins: number
 	/** @format int32 */
 	losses: number
+	/** @format int32 */
+	currentSeasonWinsForRewards: number
+	/** @format int32 */
+	previousSeasonWinsForRewards: number
 	highestTier: string
 	highestDivision: LolRankedLeagueDivision
 	previousSeasonEndTier: string
@@ -18151,6 +18170,10 @@ export interface LolRankedRankedQueueStatsDTO {
 	wins: number
 	/** @format int32 */
 	losses: number
+	/** @format int32 */
+	currentSeasonWinsForRewards: number
+	/** @format int32 */
+	previousSeasonWinsForRewards: number
 	highestTier: string
 	highestRank: string
 	previousSeasonEndTier: string
@@ -21985,6 +22008,7 @@ export interface LolTftPassEventInfoUIData {
 	eventType: string
 	eventIcon: string
 	navBarIcon: string
+	battleExpIcon: string
 	eventTokenImage: string
 	startDate: string
 	progressEndDate: string
@@ -22013,6 +22037,7 @@ export interface LolTftPassEventShop {
 	localizedName: string
 	backgroundImage: string
 	navbarIconImage: string
+	battleExpIconImage: string
 	headerIconImage: string
 	startDate: string
 	progressEndDate: string
@@ -22086,6 +22111,7 @@ export interface LolTftPassHallOfLegends {
 	localizedName: string
 	navbarIconImage: string
 	headerIconImage: string
+	battleExpIconImage: string
 	headerTitleImage: string
 	startDate: string
 	progressEndDate: string
@@ -22688,6 +22714,7 @@ export interface LolTftPassSeasonPass {
 	localizedName: string
 	navbarIconImage: string
 	headerIconImage: string
+	battleExpIconImage: string
 	headerTitleImage: string
 	startDate: string
 	progressEndDate: string
@@ -22786,6 +22813,7 @@ export interface LolTftPassTFTPassClientConfig {
 	eventPassId: string
 	dailyLoginPassId: string
 	skillTreePassId: string
+	pmUltimateVictoryPassId: string
 }
 
 export interface LolTftPassTFTPassDTO {
