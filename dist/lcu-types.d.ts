@@ -4395,6 +4395,55 @@ export interface LolChatSettingsResource {
 	data: unknown
 }
 
+export interface LolChatSocialPresencesSession {
+	player: LolChatSocialPresencesSessionPlayer
+	activity?: LolChatSocialPresencesSessionActivity
+	crossPlayPermissions?: LolChatSocialPresencesSessionCrossPlayPermissions
+	party?: LolChatSocialPresencesSessionParty
+	productData?: string
+	region: string
+}
+
+export interface LolChatSocialPresencesSessionActivity {
+	actors: string[]
+	location: string
+	mode: string
+	progress: LolChatSocialPresencesSessionActivityProgress
+	spectate: string
+}
+
+export interface LolChatSocialPresencesSessionActivityProgress {
+	type: string
+	value: string
+}
+
+export interface LolChatSocialPresencesSessionCrossPlayPermissions {
+	hasPartyCrossPlayEnabled: boolean
+	hasPlayerCrossPlayEnabled: boolean
+	isInParty: boolean
+	partyMemberPlatforms: string[]
+}
+
+export interface LolChatSocialPresencesSessionParty {
+	/** @format uint64 */
+	currentSize: number
+	id: string
+	join: string
+	/** @format uint64 */
+	maxSize: number
+}
+
+export interface LolChatSocialPresencesSessionPlayer {
+	profileBanner?: string
+	profileIcon?: string
+	show: string
+	state?: string
+}
+
+export interface LolChatSocialPresencesStatusMessage {
+	statusMessage: string
+}
+
 export interface LolChatSpectateGameInfoResource {
 	dropInSpectateGameId: string
 	gameQueueType: string
@@ -6121,6 +6170,16 @@ export interface LolCosmeticsGameDataCompanion {
 	TFTRarity: string
 }
 
+export interface LolCosmeticsGameDataTFTAugmentPillar {
+	contentId: string
+	/** @format int32 */
+	itemId: number
+	name: string
+	description: string
+	loadoutsIcon: string
+	TFTRarity: string
+}
+
 export interface LolCosmeticsGameDataTFTCosmeticsDefaults {
 	playbook: unknown
 }
@@ -6579,6 +6638,14 @@ export interface LolCosmeticsVelocityLimiterDto {
 	refill: string
 }
 
+export type LolDirectxUpgradeDirectXUpgradeNotificationType = "FUTURE_HARDWARE_UPGRADE" | "HARDWARE_UPGRADE" | "NONE"
+
+export interface LolDirectxUpgradeLocalSettingsCategory {
+	data: unknown
+	/** @format int32 */
+	schemaVersion: number
+}
+
 export interface LolDiscordRpGameDataChampionSummary {
 	/** @format int32 */
 	id: number
@@ -6656,14 +6723,6 @@ export interface LolDropsOddsTableDisplayMetadata {
 	nameTraKey: string
 	/** @format uint8 */
 	priority: number
-}
-
-export type LolDx9DeprecationDx9DeprecationNotificationType = "TURN_OFF_DX9_LEGACY_MODE" | "HARDWARE_UPGRADE" | "NONE"
-
-export interface LolDx9DeprecationLocalSettingsCategory {
-	data: unknown
-	/** @format int32 */
-	schemaVersion: number
 }
 
 export interface LolEmailVerificationAccessToken {
@@ -7136,6 +7195,13 @@ export interface LolEndOfGameTFTEndOfGameCustomAugmentContainerViewModel {
 	description: string
 }
 
+export interface LolEndOfGameTFTEndOfGameEventPVEViewModel {
+	buddyName: string
+	buddyIcon: string
+	bossName: string
+	affixes: string[]
+}
+
 export interface LolEndOfGameTFTEndOfGameItemViewModel {
 	name: string
 	icon: string
@@ -7212,6 +7278,7 @@ export interface LolEndOfGameTFTEndOfGameViewModel {
 	players: LolEndOfGameTFTEndOfGamePlayerViewModel[]
 	localPlayer?: LolEndOfGameTFTEndOfGamePlayerViewModel
 	playerSkillTreeEoG?: LolEndOfGameTFTEndOfGameSkillTreeViewModel
+	eventPVEData?: LolEndOfGameTFTEndOfGameEventPVEViewModel
 	/** @format uint32 */
 	gameLength: number
 	/** @format uint64 */
@@ -7716,6 +7783,8 @@ export interface LolEventHubEventInfoUIData {
 	eventIcon: string
 	navBarIcon: string
 	battleExpIcon: string
+	localizedSeasonLogo: string
+	localizedShortName: string
 	eventTokenImage: string
 	startDate: string
 	progressEndDate: string
@@ -8733,6 +8802,8 @@ export interface LolEventHubSeasonPass {
 	upsellBackgroundImageUrl: string
 	upsellTooltipBackgroundImageUrl: string
 	objectiveBannerImage: string
+	localizedSeasonLogo: string
+	localizedShortName: string
 	chapters: LolEventHubChapter[]
 }
 
@@ -9283,6 +9354,7 @@ export interface LolGameQueuesQueue {
 	gameSelectPriority: number
 	isLimitedTimeQueue: boolean
 	isSkillTreeQueue: boolean
+	isBotHonoringAllowed: boolean
 	isCustom: boolean
 	/** @format uint32 */
 	numberOfTeamsInLobby: number
@@ -9375,6 +9447,7 @@ export interface LolGameQueuesQueueTranslation {
 	gameSelectPriority: number
 	isLimitedTimeQueue: boolean
 	isSkillTreeQueue: boolean
+	isBotHonoringAllowed: boolean
 	hidePlayerPosition: boolean
 }
 
@@ -9578,6 +9651,7 @@ export interface LolGameflowQueue {
 	/** @format int32 */
 	removalFromGameDelayMinutes: number
 	isCustom: boolean
+	isBotHonoringAllowed: boolean
 }
 
 export type LolGameflowQueueAvailability = "DoesntMeetRequirements" | "PlatformDisabled" | "Available"
@@ -9736,6 +9810,8 @@ export interface LolHonorV2EligiblePlayer {
 	summonerId: number
 	summonerName: string
 	championName: string
+	/** @format int32 */
+	championId: number
 	skinSplashPath: string
 	role: string
 	botPlayer: boolean
@@ -9752,6 +9828,8 @@ export interface LolHonorV2EndOfGamePlayer {
 	summonerId: number
 	skinSplashPath: string
 	championName: string
+	/** @format int32 */
+	championId: number
 	detectedTeamPosition: string
 }
 
@@ -9882,6 +9960,7 @@ export interface LolHonorV2Queue {
 	removalFromGameAllowed: boolean
 	/** @format int32 */
 	removalFromGameDelayMinutes: number
+	isBotHonoringAllowed: boolean
 }
 
 export interface LolHonorV2Redemption {
@@ -11855,6 +11934,7 @@ export interface LolLobbyQueue {
 	/** @format uint8 */
 	gameSelectPriority: number
 	isSkillTreeQueue: boolean
+	isBotHonoringAllowed: boolean
 	isCustom: boolean
 	/** @format uint32 */
 	numberOfTeamsInLobby: number
@@ -13289,6 +13369,10 @@ export interface LolMapsMaps {
 	platformName: string
 	assets: Record<string, string>
 	locStrings: Record<string, string>
+	/** @format int32 */
+	setModalButtonBottom: number
+	/** @format int32 */
+	setModalButtonLeft: number
 	categorizedContentBundles: unknown
 	tutorialCards: LolMapsTutorialCard[]
 	properties: unknown
@@ -13362,6 +13446,11 @@ export interface LolMarketplaceFulfillmentDto {
 	currencyId: string
 	subCurrencyDeltas: Record<string, number>
 	progressionCounterId: string
+}
+
+export interface LolMarketplaceGameDataCompanion {
+	contentId: string
+	companionType: string
 }
 
 export interface LolMarketplacePagination {
@@ -13646,6 +13735,13 @@ export interface LolMatchHistoryGAMHSMatchHistoryMetadata {
 	/** @format uint64 */
 	timestamp: number
 	private: boolean
+}
+
+export interface LolMatchHistoryGameDataChampionSummary {
+	/** @format int32 */
+	id: number
+	name: string
+	alias: string
 }
 
 export interface LolMatchHistoryLoginSession {
@@ -15655,6 +15751,7 @@ export interface LolObjectivesTftBattlepassInfo {
 	premiumEntitlementId: string
 	pcPurchaseRequirement: string
 	passId: string
+	hasLevelPurchasing: boolean
 	media: Record<string, string>
 	passType: LolObjectivesTftPassType
 }
@@ -15760,6 +15857,11 @@ export interface LolObjectivesUserInfo {
 	userInfo: string
 }
 
+export interface LolPatchAppUpdateConfig {
+	disableDeprecatedProductIntegrationState: boolean
+	enablePatchProxyState: boolean
+}
+
 export interface LolPatchChunkingPatcherEnvironment {
 	game_patcher_available: boolean
 	game_patcher_enabled: boolean
@@ -15801,11 +15903,6 @@ export interface LolPatchConfigStatus {
 	readiness: LolPatchConfigReadiness
 }
 
-export interface LolPatchCurrentUpdateStatus {
-	updateAvailable: boolean
-	updateRequired: boolean
-}
-
 export interface LolPatchEntitlementsTokenResource {
 	accessToken: string
 	token: string
@@ -15824,6 +15921,11 @@ export interface LolPatchNotification {
 }
 
 export type LolPatchNotificationId = "BrokenPermissions" | "NotEnoughDiskSpace" | "DidRestoreClientBackup" | "FailedToWriteError" | "MissingFilesError" | "ConnectionError" | "UnspecifiedError"
+
+export interface LolPatchPatchProxyState {
+	state: string
+	launchable: boolean
+}
 
 export interface LolPatchPatchSieveCompatVersion {
 	id: string
@@ -15882,9 +15984,7 @@ export interface LolPatchPatcherSettings {
 	patchsieve_url: string
 }
 
-export interface LolPatchProductIntegrationAppStatus {
-	patchlineId: string
-	productId: string
+export interface LolPatchProductIntegrationState {
 	updateAvailable: boolean
 	updateRequired: boolean
 }
@@ -21139,12 +21239,7 @@ export interface LolSummonerProfilesChampionMasteryData {
 	highestGrade?: string
 }
 
-export interface LolSummonerProfilesChampionMasteryPrivateView {
-	puuid: string
-	data: LolSummonerProfilesChampionMasteryData[]
-}
-
-export interface LolSummonerProfilesChampionMasteryPublicView {
+export interface LolSummonerProfilesChampionMasteryView {
 	puuid: string
 	data: LolSummonerProfilesChampionMasteryData[]
 }
@@ -21153,6 +21248,10 @@ export interface LolSummonerProfilesHonorView {
 	/** @format int32 */
 	honorLevel: number
 	redemptions: LolSummonerProfilesRedemption[]
+}
+
+export interface LolSummonerProfilesPrivacyView {
+	anonymityEnabled: boolean
 }
 
 export interface LolSummonerProfilesPuuidAndViews {
@@ -21170,7 +21269,7 @@ export interface LolSummonerProfilesRedemption {
 export interface LolSummonerProfilesSummonerLevel {
 	puuid: string
 	/** @format uint32 */
-	summonerLevel: number
+	level: number
 	/** @format uint32 */
 	xpSinceLastLevel: number
 	/** @format uint32 */
@@ -22069,6 +22168,8 @@ export interface LolTftPassEventInfoUIData {
 	eventIcon: string
 	navBarIcon: string
 	battleExpIcon: string
+	localizedSeasonLogo: string
+	localizedShortName: string
 	eventTokenImage: string
 	startDate: string
 	progressEndDate: string
@@ -22790,6 +22891,8 @@ export interface LolTftPassSeasonPass {
 	upsellBackgroundImageUrl: string
 	upsellTooltipBackgroundImageUrl: string
 	objectiveBannerImage: string
+	localizedSeasonLogo: string
+	localizedShortName: string
 	chapters: LolTftPassChapter[]
 }
 
@@ -22896,6 +22999,7 @@ export interface LolTftPassTFTPassDTO {
 	premiumEntitlementID: string
 	storePurchaseIDs: Record<string, string>
 	milestones: LolTftPassTFTPassMilestoneDTO[]
+	hasLevelPurchasing: boolean
 	status: string
 }
 
@@ -22960,6 +23064,7 @@ export interface LolTftPassTftBattlepassInfo {
 	premiumEntitlementId: string
 	pcPurchaseRequirement: string
 	passId: string
+	hasLevelPurchasing: boolean
 	media: Record<string, string>
 	passType: LolTftPassTftPassType
 }
@@ -23333,6 +23438,7 @@ export interface LolTftSkillTreeTftBattlepassInfo {
 	premiumEntitlementId: string
 	pcPurchaseRequirement: string
 	passId: string
+	hasLevelPurchasing: boolean
 	media: Record<string, string>
 	passType: LolTftSkillTreeTftPassType
 }
