@@ -77,6 +77,10 @@ export interface LCUEndpoints {
 		put: { path: never, params: never, body: number, response: unknown }
 		delete: { path: never, params: never, body: never, response: unknown }
 	},
+	"/lol-cosmetics/v1/selection/tft-augment-pillar": {
+		put: { path: never, params: never, body: number, response: unknown }
+		delete: { path: never, params: never, body: never, response: unknown }
+	},
 	"/lol-cosmetics/v1/selection/tft-damage-skin": {
 		put: { path: never, params: never, body: number, response: unknown }
 		delete: { path: never, params: never, body: never, response: unknown }
@@ -424,6 +428,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-catalog/v1/items/{inventoryType}": {
 		get: { path: [inventoryType: string], params: never, body: never, response: LCUTypes.LolCatalogCatalogPluginItem[] }
+	},
+	"/lol-catalog/v1/items/get-related-skins": {
+		get: { path: never, params: { "itemId": number }, body: never, response: LCUTypes.LolCatalogCatalogPluginItemWithDetails[] }
 	},
 	"/lol-catalog/v1/items-list-details": {
 		get: { path: never, params: { "catalogItemsKeys": LCUTypes.LolCatalogItemKey[] }, body: never, response: LCUTypes.LolCatalogCatalogPluginItemWithDetails[] }
@@ -843,6 +850,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-cosmetics/v1/favorites/tft/zoom-skins": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolCosmeticsTFTZoomSkinFavoritesViewModel }
+	},
+	"/lol-cosmetics/v1/inventories/{setName}/augment-pillars": {
+		get: { path: [setName: string], params: never, body: never, response: LCUTypes.LolCosmeticsTFTAugmentPillarGroupedViewModel }
 	},
 	"/lol-cosmetics/v1/inventories/{setName}/companions": {
 		get: { path: [setName: string], params: never, body: never, response: LCUTypes.LolCosmeticsCompanionsGroupedViewModel }
@@ -1968,6 +1978,9 @@ export interface LCUEndpoints {
 	"/lol-purchase-widget/v1/configuration": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPurchaseWidgetPurchaseWidgetConfig }
 	},
+	"/lol-purchase-widget/v1/get-related-skins": {
+		get: { path: never, params: { "itemId": number }, body: never, response: LCUTypes.LolPurchaseWidgetCatalogPluginItemWithDetails[] }
+	},
 	"/lol-purchase-widget/v1/order-notifications": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPurchaseWidgetOrderNotificationResource[] }
 	},
@@ -2478,6 +2491,9 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: string[] }
 	},
 	"/lol-tft-troves/v1/banners": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolTftTrovesTrovesBanner[] }
+	},
+	"/lol-tft-troves/v1/catalog-banners": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftTrovesTrovesBanner[] }
 	},
 	"/lol-tft-troves/v1/config": {
