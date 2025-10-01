@@ -1,23 +1,41 @@
 import fs from "fs/promises";
 import { execSync } from "child_process";
 import { HasagiClient } from "@hasagi/core";
+import { getSwagger, getTypeScript, getExtendedHelp } from "@hasagi/schema";
 
 var TYPESCRIPT_CHANGED = false;
 var SWAGGER_CHANGED = false;
 var CLIENT_VERSION_CHANGED = false;
 
-const oldEndpoints = await fs.readFile("./dist/lcu-endpoints.d.ts", "utf8");
-const oldTypes = await fs.readFile("./dist/lcu-types.d.ts", "utf8");
-const oldEvents = await fs.readFile("./dist/lcu-events.d.ts", "utf8");
-const oldSwagger = await fs.readFile("./swagger.json", "utf8");
+const [oldEndpoints, oldTypes, oldEvents, oldSwagger] = await Promise.all([
+    fs.readFile("./dist/lcu-endpoints.d.ts", "utf8"),
+    fs.readFile("./dist/lcu-types.d.ts", "utf8"),
+    fs.readFile("./dist/lcu-events.d.ts", "utf8"),
+    fs.readFile("./swagger.json", "utf8")
+]);
 
 console.log("Generating schema...");
-execSync("npm run generate");
 
-const endpoints = await fs.readFile("./dist/lcu-endpoints.d.ts", "utf8");
-const types = await fs.readFile("./dist/lcu-types.d.ts", "utf8");
-const events = await fs.readFile("./dist/lcu-events.d.ts", "utf8");
-const swagger = await fs.readFile("./swagger.json", "utf8");
+const { extendedSchema: schema } = await getExtendedHelp(true);
+const _swagger = await getSwagger(schema);
+const {
+    lcuTypes,
+    lcuEndpoints,
+    lcuEvents,
+} = await getTypeScript(_swagger, schema);
+
+await Promise.all([
+    fs.writeFile("./dist/lcu-endpoints.d.ts", lcuEndpoints),
+    fs.writeFile("./dist/lcu-types.d.ts", lcuTypes),
+    fs.writeFile("./dist/lcu-events.d.ts", lcuEvents)
+]);
+
+const swagger = JSON.stringify(_swagger, null, 4);
+fs.writeFile("./swagger.json", swagger);
+
+const endpoints = lcuEndpoints;
+const types = lcuTypes;
+const events = lcuEvents;
 
 if (endpoints !== oldEndpoints || types !== oldTypes || events !== oldEvents)
     TYPESCRIPT_CHANGED = true;
