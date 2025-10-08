@@ -423,8 +423,8 @@ export interface LCUEndpoints {
 	"/lol-catalog/v1/items/{inventoryType}": {
 		get: { path: [inventoryType: string], params: never, body: never, response: LCUTypes.LolCatalogCatalogPluginItem[] }
 	},
-	"/lol-catalog/v1/items/get-related-skins": {
-		get: { path: never, params: { "itemId": number }, body: never, response: LCUTypes.LolCatalogCatalogPluginItemWithDetails[] }
+	"/lol-catalog/v1/items/{skinId}/related-bundles": {
+		get: { path: [skinId: number], params: never, body: never, response: LCUTypes.LolCatalogCatalogPluginItemWithDetails[] }
 	},
 	"/lol-catalog/v1/items-list-details": {
 		get: { path: never, params: { "catalogItemsKeys": LCUTypes.LolCatalogItemKey[] }, body: never, response: LCUTypes.LolCatalogCatalogPluginItemWithDetails[] }
@@ -1340,9 +1340,6 @@ export interface LCUEndpoints {
 	"/lol-license-agreement/v1/privacy-policy": {
 		get: { path: never, params: never, body: never, response: string }
 	},
-	"/lol-license-agreement/v1/serve-location": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLicenseAgreementLicenseServeLocation }
-	},
 	"/lol-loadouts/v1/loadouts-ready": {
 		get: { path: never, params: never, body: never, response: boolean }
 	},
@@ -1365,9 +1362,6 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: number }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/disabled-champion-ids": {
-		get: { path: never, params: never, body: never, response: number[] }
-	},
-	"/lol-lobby-team-builder/champ-select/v1/f2p-rotation-for-current-queue": {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
 	"/lol-lobby-team-builder/champ-select/v1/has-auto-assigned-smite": {
@@ -1975,8 +1969,8 @@ export interface LCUEndpoints {
 	"/lol-purchase-widget/v1/configuration": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPurchaseWidgetPurchaseWidgetConfig }
 	},
-	"/lol-purchase-widget/v1/get-related-skins": {
-		get: { path: never, params: { "itemId": number }, body: never, response: LCUTypes.LolPurchaseWidgetCatalogPluginItemWithDetails[] }
+	"/lol-purchase-widget/v1/items/{skinId}/related-bundles": {
+		get: { path: [skinId: number], params: never, body: never, response: LCUTypes.LolPurchaseWidgetCatalogPluginItemWithDetails[] }
 	},
 	"/lol-purchase-widget/v1/order-notifications": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPurchaseWidgetOrderNotificationResource[] }
@@ -2320,6 +2314,9 @@ export interface LCUEndpoints {
 	"/lol-summoner-profiles/v1/get-honor-view": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolSummonerProfilesHonorView }
 	},
+	"/lol-summoner-profiles/v1/get-privacy-view": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolSummonerProfilesPrivacyView }
+	},
 	"/lol-summoner-profiles/v1/get-summoner-level-view": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolSummonerProfilesSummonerLevel }
 	},
@@ -2508,9 +2505,6 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: string[] }
 	},
 	"/lol-tft-troves/v1/banners": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolTftTrovesTrovesBanner[] }
-	},
-	"/lol-tft-troves/v1/catalog-banners": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftTrovesTrovesBanner[] }
 	},
 	"/lol-tft-troves/v1/config": {
@@ -3561,6 +3555,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-settings/v2/reload/{ppType}": {
 		post: { path: [ppType: string], params: never, body: never, response: void }
+	},
+	"/lol-shoppefront/v1/bulk-purchases": {
+		post: { path: never, params: never, body: LCUTypes.LolShoppefrontBulkPurchaseRequest, response: string }
 	},
 	"/lol-shoppefront/v1/purchases": {
 		post: { path: never, params: never, body: LCUTypes.LolShoppefrontPurchaseRequest, response: string }
