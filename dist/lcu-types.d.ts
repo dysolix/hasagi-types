@@ -454,6 +454,18 @@ export interface ChampionScoutingDTO {
 	kda: number
 }
 
+export interface ChemtechShoppe_BulkPurchaseRequestDto {
+	bulkPurchaseId: string
+	purchaserId: string
+	source: string
+	subPurchaseRequests: ChemtechShoppe_SubPurchaseRequestDto[]
+}
+
+export interface ChemtechShoppe_BulkPurchaseResponseDto {
+	bulkPurchaseId: string
+	purchases: ChemtechShoppe_PurchaseDto[]
+}
+
 export interface ChemtechShoppe_CatalogEntryDto {
 	id: string
 	name: string
@@ -558,6 +570,8 @@ export interface ChemtechShoppe_PrerequisiteDto {
 	requiredQuantity: number
 	/** @format int64 */
 	ownedQuantity: number
+	catalogEntry: unknown
+	milestoneId: string
 }
 
 export interface ChemtechShoppe_PurchaseDto {
@@ -589,8 +603,9 @@ export interface ChemtechShoppe_PurchaseRequestDto {
 	idempotencyId: string
 	/** @format int64 */
 	quantity: number
-	source: string
 	customInventoryLocation: string
+	purchaserId: string
+	source: string
 }
 
 export interface ChemtechShoppe_PurchaseResponseDto {
@@ -633,58 +648,17 @@ export interface ChemtechShoppe_RefundResponseDto {
 	notes: string[]
 }
 
-export interface ChemtechShoppe_RotatingStoreDigestDto {
-	id: string
-	productId: string
-	name: string
-	type: string
-	rotationCadence: string
-	displayMetadata: unknown
+export interface ChemtechShoppe_RotatingStoreMetadataDto {
+	slots: ChemtechShoppe_RotatingStoreSlotMetadataDto[]
 	currRotationStartTime: string
 	nextRotationStartTime: string
-}
-
-export interface ChemtechShoppe_RotatingStoreDigestResponseDto {
-	data: ChemtechShoppe_RotatingStoreDigestsDto
-	paging: ChemtechShoppe_PagingDto
-	stats: ChemtechShoppe_StatsDto
-	notes: string[]
-}
-
-export interface ChemtechShoppe_RotatingStoreDigestsDto {
-	digests: ChemtechShoppe_RotatingStoreDigestDto[]
-}
-
-export interface ChemtechShoppe_RotatingStoreDto {
-	id: string
-	productId: string
-	name: string
-	type: string
-	slots: ChemtechShoppe_RotatingStoreSlotDto[]
 	rotationCadence: string
-	displayMetadata: unknown
-	currRotationStartTime: string
-	nextRotationStartTime: string
 }
 
-export interface ChemtechShoppe_RotatingStoreResponseDto {
-	data: ChemtechShoppe_RotatingStoreDto
-	paging: ChemtechShoppe_PagingDto
-	stats: ChemtechShoppe_StatsDto
-	notes: string[]
-}
-
-export interface ChemtechShoppe_RotatingStoreSlotDto {
-	/** @format int32 */
+export interface ChemtechShoppe_RotatingStoreSlotMetadataDto {
+	/** @format int64 */
 	selectionCount: number
-	catalogEntries: ChemtechShoppe_CatalogEntryDto[]
-}
-
-export interface ChemtechShoppe_RotatingStoresResponseDto {
-	data: ChemtechShoppe_RotatingStoreDto[]
-	paging: ChemtechShoppe_PagingDto
-	stats: ChemtechShoppe_StatsDto
-	notes: string[]
+	catalogEntryIds: string[]
 }
 
 export interface ChemtechShoppe_StatsDto {
@@ -697,6 +671,9 @@ export interface ChemtechShoppe_StoreDigestDto {
 	productId: string
 	name: string
 	displayMetaData: unknown
+	startTime: string
+	endTime: string
+	rotatingStoreMetadata: ChemtechShoppe_RotatingStoreMetadataDto
 }
 
 export interface ChemtechShoppe_StoreDigestsDto {
@@ -712,10 +689,14 @@ export interface ChemtechShoppe_StoreDigestsResponseDto {
 
 export interface ChemtechShoppe_StoreDto {
 	id: string
+	type: string
 	productId: string
 	name: string
 	catalogEntries: ChemtechShoppe_CatalogEntryDto[]
 	displayMetadata: unknown
+	startTime: string
+	endTime: string
+	rotatingStoreMetadata: ChemtechShoppe_RotatingStoreMetadataDto
 }
 
 export interface ChemtechShoppe_StoreResponseDto {
@@ -730,6 +711,16 @@ export interface ChemtechShoppe_StoresResponseDto {
 	paging: ChemtechShoppe_PagingDto
 	stats: ChemtechShoppe_StatsDto
 	notes: string[]
+}
+
+export interface ChemtechShoppe_SubPurchaseRequestDto {
+	storeId: string
+	catalogEntryId: string
+	paymentOptionsKeys: string[]
+	idempotencyId: string
+	/** @format int64 */
+	quantity: number
+	customInventoryLocation: string
 }
 
 export interface ChemtechShoppe_VelocityLimitDeltaDto {
@@ -2168,6 +2159,7 @@ export interface LolCatalogCatalogPluginItem {
 	tilePath: string
 	loadScreenPath: string
 	rarity: string
+	taggedChampionsIds: number[]
 	/** @format uint64 */
 	purchaseDate: number
 	/** @format uint64 */
@@ -2344,6 +2336,7 @@ export interface LolCatalogGameDataSummonerEmote {
 	name: string
 	inventoryIcon: string
 	description: string
+	taggedChampionsIds: number[]
 }
 
 export interface LolCatalogGameDataSummonerIcon {
@@ -2684,7 +2677,7 @@ export interface LolChallengesSequenceEvent {
 	priority: number
 }
 
-export type LolChallengesSource = "NONE" | "SUMMONER_SERVICE" | "ETERNALS" | "LOOT" | "CLASH" | "RANKED_LEAGUES" | "CHAMPION_MASTERY" | "HONOR" | "CAP_INVENTORY" | "EOGD" | "CHALLENGES"
+export type LolChallengesSource = "NONE" | "EOGD_RANKED_LEAGUES" | "EOGD_CHAMPION_MASTERY" | "SUMMONER_SERVICE" | "ETERNALS" | "LOOT" | "CLASH" | "RANKED_LEAGUES" | "CHAMPION_MASTERY" | "HONOR" | "CAP_INVENTORY" | "EOGD" | "CHALLENGES"
 
 export interface LolChallengesUICategoryProgress {
 	level: string
@@ -4392,6 +4385,21 @@ export type LolChatSessionState = "shuttingdown" | "disconnected" | "loaded" | "
 
 export interface LolChatSettingsResource {
 	data: unknown
+}
+
+export interface LolChatSocialBlockedList {
+	blockedUsers: LolChatSocialBlockedUser[]
+}
+
+export interface LolChatSocialBlockedUser {
+	blockedPlatforms: string[]
+	gameName: string
+	gameTag: string
+	isFriendsOnActiveConsole: boolean
+	puuid: string
+	relationshipOnConsole: string
+	relationshipOnDiscord: string
+	relationshipOnRiot: string
 }
 
 export interface LolChatSocialPresencesSession {
@@ -6278,6 +6286,7 @@ export interface LolCosmeticsFulfillmentDto {
 	currencyId: string
 	subCurrencyDeltas: Record<string, number>
 	progressionCounterId: string
+	dropTableId: string
 }
 
 export interface LolCosmeticsGameDataCompanion {
@@ -7595,6 +7604,26 @@ export interface LolEventHubActiveEventUIData {
 	eventInfo: LolEventHubEventInfoUIData
 }
 
+export interface LolEventHubActivityCenterMilestones {
+	eventId: string
+	eventHubType: string
+	localizedName: string
+	navbarIconImage: string
+	startDate: string
+	progressEndDate: string
+	endDate: string
+	isGameModeEvent: boolean
+	/** @format uint32 */
+	queueId: number
+	localizedLogo: string
+	backgroundImage: string
+	helpModalImage: string
+	objectiveBannerImage: string
+	objectiveCard: LolEventHubObjectiveCard
+	eventPassBundlesCatalogEntry: LolEventHubCatalogEntry[]
+	rewardTrack: LolEventHubRewardTrack
+}
+
 export interface LolEventHubBalance {
 	currencyType: string
 	/** @format int32 */
@@ -7820,8 +7849,6 @@ export interface LolEventHubChapter {
 	localizedDescription: string
 	cardImage: string
 	backgroundImage: string
-	backgroundVideo: string
-	foregroundImage: string
 	objectiveBannerImage: string
 	/** @format uint16 */
 	chapterStart: number
@@ -7931,7 +7958,7 @@ export interface LolEventHubEventHubError {
 	errorId: string
 }
 
-export type LolEventHubEventHubType = "SeasonPass" | "HallOfLegends" | "EventShop"
+export type LolEventHubEventHubType = "ActivityCenterMilestones" | "SeasonPass" | "HallOfLegends" | "EventShop"
 
 export interface LolEventHubEventInfoUIData {
 	eventId: string
@@ -7940,12 +7967,13 @@ export interface LolEventHubEventInfoUIData {
 	eventIcon: string
 	navBarIcon: string
 	battleExpIcon: string
-	localizedSeasonLogo: string
 	localizedShortName: string
 	eventTokenImage: string
 	startDate: string
 	progressEndDate: string
 	endDate: string
+	localizedLogo: string
+	objectiveCard: LolEventHubObjectiveCard
 	/** @format int32 */
 	currentTokenBalance: number
 	/** @format int32 */
@@ -7955,6 +7983,9 @@ export interface LolEventHubEventInfoUIData {
 	/** @format int64 */
 	timeOfLastUnclaimedReward: number
 	isPassPurchased: boolean
+	isGameModeEvent: boolean
+	/** @format int32 */
+	queueId: number
 	eventPassBundles: LolEventHubCatalogEntry[]
 	tokenBundles: LolEventHubCatalogEntry[]
 }
@@ -7977,7 +8008,6 @@ export interface LolEventHubEventShop {
 	localizedName: string
 	backgroundImage: string
 	navbarIconImage: string
-	battleExpIconImage: string
 	headerIconImage: string
 	startDate: string
 	progressEndDate: string
@@ -8506,6 +8536,12 @@ export interface LolEventHubNextRewardUIData {
 	level: string
 }
 
+export interface LolEventHubObjectiveCard {
+	missionSeriesName: string
+	objectiveGroup: string
+	objectiveCategoryId: string
+}
+
 export interface LolEventHubObjectivesBanner {
 	eventName: string
 	promotionBannerImage: string
@@ -8944,7 +8980,6 @@ export interface LolEventHubSeasonPass {
 	eventHubType: string
 	localizedName: string
 	navbarIconImage: string
-	headerIconImage: string
 	battleExpIconImage: string
 	headerTitleImage: string
 	startDate: string
@@ -11556,6 +11591,7 @@ export interface LolLobbyLobbyCustomGameConfiguration {
 	gameServerRegion: string
 	spectatorDelayEnabled: boolean
 	hidePublicly: boolean
+	aramMapMutator: string
 }
 
 export interface LolLobbyLobbyCustomGameLobby {
@@ -13612,6 +13648,7 @@ export interface LolMarketplaceFulfillmentDto {
 	currencyId: string
 	subCurrencyDeltas: Record<string, number>
 	progressionCounterId: string
+	dropTableId: string
 }
 
 export interface LolMarketplaceGameDataCompanion {
@@ -18517,6 +18554,7 @@ export interface LolRankedRankedStats {
 	/** @format int32 */
 	previousSeasonSplitPoints: number
 	seasons: Record<string, LolRankedSeasonDTO>
+	shouldShowIndicator: boolean
 }
 
 export interface LolRankedRankedStatsDTO {
@@ -18530,6 +18568,7 @@ export interface LolRankedRankedStatsDTO {
 	/** @format int32 */
 	previousSeasonSplitPoints: number
 	seasons: Record<string, LolRankedSeasonDTO>
+	shouldShowIndicator: boolean
 }
 
 export interface LolRankedRatedLadderEntryDTO {
@@ -18605,6 +18644,7 @@ export interface LolRankedSignedRankedStatsDTO {
 	/** @format int32 */
 	previousSeasonSplitPoints: number
 	seasons: Record<string, LolRankedSeasonDTO>
+	shouldShowIndicator: boolean
 	jwt: string
 }
 
@@ -20286,6 +20326,10 @@ export interface LolSettingsVNGStatusResponse {
 	action_url_raw: string
 }
 
+export interface LolShoppefrontBulkPurchaseRequest {
+	purchaseItems: LolShoppefrontPurchaseRequest[]
+}
+
 export interface LolShoppefrontPurchaseRequest {
 	storeId: string
 	catalogEntryId: string
@@ -20297,6 +20341,8 @@ export interface LolShoppefrontPurchaseRequest {
 export interface LolShoppefrontPurchaseResponse {
 	id: string
 	status: LolShoppefrontPurchaseResponseStatus
+	/** @format uint8 */
+	numberOfPendingPurchases: number
 }
 
 export type LolShoppefrontPurchaseResponseStatus = "Failure" | "Success" | "Pending" | "None"
@@ -22867,6 +22913,26 @@ export interface LolTftPassActiveEventUIData {
 	eventInfo: LolTftPassEventInfoUIData
 }
 
+export interface LolTftPassActivityCenterMilestones {
+	eventId: string
+	eventHubType: string
+	localizedName: string
+	navbarIconImage: string
+	startDate: string
+	progressEndDate: string
+	endDate: string
+	isGameModeEvent: boolean
+	/** @format uint32 */
+	queueId: number
+	localizedLogo: string
+	backgroundImage: string
+	helpModalImage: string
+	objectiveBannerImage: string
+	objectiveCard: LolTftPassObjectiveCard
+	eventPassBundlesCatalogEntry: LolTftPassCatalogEntry[]
+	rewardTrack: LolTftPassRewardTrack
+}
+
 export interface LolTftPassBundleOfferUIData {
 	details: LolTftPassBundledItemUIData
 	/** @format int64 */
@@ -22917,8 +22983,6 @@ export interface LolTftPassChapter {
 	localizedDescription: string
 	cardImage: string
 	backgroundImage: string
-	backgroundVideo: string
-	foregroundImage: string
 	objectiveBannerImage: string
 	/** @format uint16 */
 	chapterStart: number
@@ -23007,7 +23071,7 @@ export interface LolTftPassEventDetailsUIData {
 	spotlightSkinId: number
 }
 
-export type LolTftPassEventHubType = "SeasonPass" | "HallOfLegends" | "EventShop"
+export type LolTftPassEventHubType = "ActivityCenterMilestones" | "SeasonPass" | "HallOfLegends" | "EventShop"
 
 export interface LolTftPassEventInfoUIData {
 	eventId: string
@@ -23016,12 +23080,13 @@ export interface LolTftPassEventInfoUIData {
 	eventIcon: string
 	navBarIcon: string
 	battleExpIcon: string
-	localizedSeasonLogo: string
 	localizedShortName: string
 	eventTokenImage: string
 	startDate: string
 	progressEndDate: string
 	endDate: string
+	localizedLogo: string
+	objectiveCard: LolTftPassObjectiveCard
 	/** @format int32 */
 	currentTokenBalance: number
 	/** @format int32 */
@@ -23031,6 +23096,9 @@ export interface LolTftPassEventInfoUIData {
 	/** @format int64 */
 	timeOfLastUnclaimedReward: number
 	isPassPurchased: boolean
+	isGameModeEvent: boolean
+	/** @format int32 */
+	queueId: number
 	eventPassBundles: LolTftPassCatalogEntry[]
 	tokenBundles: LolTftPassCatalogEntry[]
 }
@@ -23046,7 +23114,6 @@ export interface LolTftPassEventShop {
 	localizedName: string
 	backgroundImage: string
 	navbarIconImage: string
-	battleExpIconImage: string
 	headerIconImage: string
 	startDate: string
 	progressEndDate: string
@@ -23383,6 +23450,12 @@ export interface LolTftPassNextRewardUIData {
 	name: string
 	description: string
 	level: string
+}
+
+export interface LolTftPassObjectiveCard {
+	missionSeriesName: string
+	objectiveGroup: string
+	objectiveCategoryId: string
 }
 
 export interface LolTftPassObjectivesBanner {
@@ -23724,7 +23797,6 @@ export interface LolTftPassSeasonPass {
 	eventHubType: string
 	localizedName: string
 	navbarIconImage: string
-	headerIconImage: string
 	battleExpIconImage: string
 	headerTitleImage: string
 	startDate: string
@@ -24555,6 +24627,45 @@ export interface LolTftTrovesCatalogEntryDto {
 	purchaseLimits: LolTftTrovesVelocityLimitDeltaDto[]
 }
 
+export interface LolTftTrovesChemtechShoppeDropTableOddsTreeDto {
+	nodeHierarchy: Record<string, LolTftTrovesChemtechShoppeDropTableOddsTreeHierarchyDto>
+	nodes: Record<string, LolTftTrovesChemtechShoppeDropTableOddsTreeNodeDto>
+	nodeTraKeys: Record<string, LolTftTrovesChemtechShoppeDropTableOddsTreeNodeTraKeyDto>
+	rootNodeId: string
+	templateName: string
+}
+
+export interface LolTftTrovesChemtechShoppeDropTableOddsTreeHierarchyDto {
+	childNodeIds: string[]
+}
+
+export interface LolTftTrovesChemtechShoppeDropTableOddsTreeNodeDto {
+	id: string
+	name: string
+	/** @format double */
+	odds: number
+	/** @format uint32 */
+	displayPriority: number
+	sourceId: string
+	/** @format uint32 */
+	rewardQuantity: number
+}
+
+export interface LolTftTrovesChemtechShoppeDropTableOddsTreeNodeTraKeyDto {
+	nameTraKey: string
+}
+
+export interface LolTftTrovesChemtechShoppeDropTableOddsTreeResultDto {
+	data: LolTftTrovesChemtechShoppeDropTableOddsTreeDto
+}
+
+export interface LolTftTrovesCompanionData {
+	name: string
+	contentId: string
+	speciesName: string
+	companionType: string
+}
+
 export interface LolTftTrovesCounter {
 	id: string
 	name: string
@@ -24680,6 +24791,7 @@ export interface LolTftTrovesFulfillmentDto {
 	currencyId: string
 	subCurrencyDeltas: Record<string, number>
 	progressionCounterId: string
+	dropTableId: string
 }
 
 export interface LolTftTrovesGameDataCompanion {
@@ -25130,6 +25242,7 @@ export interface LolTftTrovesTrovePurchaseResponse {
 
 export interface LolTftTrovesTroves {
 	enabled: boolean
+	capCatalogEnabled: boolean
 	bannerList?: LolTftTrovesTrovesActiveBanner[]
 }
 
@@ -28197,17 +28310,6 @@ export interface TeamBuilderDirect_MutedPlayerInfo {
 	obfuscatedSummonerId: number
 }
 
-/** The container for all the operational queue configs */
-export interface TeamBuilderDirect_OperationalQueueConfig {
-	/** @format int32 */
-	queueId: number
-	isEnabled: boolean
-	mutators: string
-	isVisibleInClient: boolean
-	isSpectatable: boolean
-	"f2pRotations": string
-}
-
 export interface TeamBuilderDirect_PlayerStatus {
 	currentLobbyStatus?: TeamBuilderDirect_LobbyStatus
 	lastQueuedLobbyStatus?: TeamBuilderDirect_LobbyStatus
@@ -28438,8 +28540,7 @@ export interface TeamBuilderDirect_TbdGameDto {
 
 export interface TeamBuilderDirect_TeamBoost {
 	/** @format int64 */
-	summonerId: number
-	puuid: string
+	activatorCellId: number
 	skinUnlockMode: string
 	/** @format int64 */
 	price: number
