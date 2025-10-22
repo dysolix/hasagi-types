@@ -1331,12 +1331,6 @@ export interface LCUEndpoints {
 	"/lol-license-agreement/v1/agreement": {
 		get: { path: never, params: never, body: never, response: string }
 	},
-	"/lol-license-agreement/v1/agreements": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLicenseAgreementLicenseAgreement[] }
-	},
-	"/lol-license-agreement/v1/all-agreements": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLicenseAgreementLicenseAgreement[] }
-	},
 	"/lol-license-agreement/v1/privacy-policy": {
 		get: { path: never, params: never, body: never, response: string }
 	},
@@ -1987,6 +1981,9 @@ export interface LCUEndpoints {
 	"/lol-ranked/v1/apex-leagues/{queueType}/{tier}": {
 		get: { path: [queueType: LCUTypes.LolRankedLeagueQueueType, tier: string], params: never, body: never, response: LCUTypes.LolRankedLeagueLadderInfo }
 	},
+	"/lol-ranked/v1/cached-ranked-stats/{puuid}": {
+		get: { path: [puuid: string], params: never, body: never, response: LCUTypes.LolRankedRankedStats }
+	},
 	"/lol-ranked/v1/challenger-ladders-enabled": {
 		get: { path: never, params: never, body: never, response: string[] }
 	},
@@ -2313,6 +2310,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-summoner-profiles/v1/get-honor-view": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolSummonerProfilesHonorView }
+	},
+	"/lol-summoner-profiles/v1/get-lol-eos-rewards-view": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolSummonerProfilesLolEosRewardView }
 	},
 	"/lol-summoner-profiles/v1/get-privacy-view": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolSummonerProfilesPrivacyView }
@@ -3208,12 +3208,6 @@ export interface LCUEndpoints {
 	"/lol-kr-shutdown-law/v1/rating-screen/acknowledge": {
 		post: { path: never, params: never, body: never, response: void }
 	},
-	"/lol-license-agreement/v1/agreements/{id}/accept": {
-		post: { path: [id: string], params: never, body: never, response: unknown }
-	},
-	"/lol-license-agreement/v1/agreements/{id}/decline": {
-		post: { path: [id: string], params: never, body: never, response: unknown }
-	},
 	"/lol-lobby-team-builder/champ-select/v1/retrieve-latest-game-dto": {
 		post: { path: never, params: never, body: never, response: unknown }
 	},
@@ -3645,6 +3639,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-tft-troves/v1/roll": {
 		post: { path: never, params: never, body: LCUTypes.LolTftTrovesTrovesRollRequest, response: LCUTypes.LolTftTrovesCapOrdersResponseDTO }
+	},
+	"/lol-tft-troves/v2/roll": {
+		post: { path: never, params: never, body: LCUTypes.LolTftTrovesPurchaseRequest, response: void }
 	},
 	"/lol-tft/v1/tft/homeHub/redirect": {
 		post: { path: never, params: never, body: never, response: void }
