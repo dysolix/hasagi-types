@@ -674,6 +674,12 @@ export interface LCUEndpoints {
 	"/lol-chat/v1/friends": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChatFriendResource[] }
 	},
+	"/lol-chat/v1/is-discord-link-available": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
+	"/lol-chat/v1/is-discord-linked": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
 	"/lol-chat/v1/me": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChatUserResource }
 		put: { path: never, params: never, body: LCUTypes.LolChatUserResource, response: LCUTypes.LolChatUserResource }
@@ -1434,7 +1440,7 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby/v1/lobby/invitations": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyLobbyInvitation[] }
-		post: { path: never, params: never, body: LCUTypes.LolLobbyLobbyInvitation, response: LCUTypes.LolLobbyLobbyInvitation }
+		post: { path: never, params: never, body: never, response: LCUTypes.LolLobbyLobbyInvitation }
 	},
 	"/lol-lobby/v1/lobby/invitations/{id}": {
 		get: { path: [id: string], params: never, body: never, response: LCUTypes.LolLobbyLobbyInvitation }
@@ -2217,6 +2223,9 @@ export interface LCUEndpoints {
 	"/lol-spectator/v1/spectate/config": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolSpectatorSpectatorConfig }
 	},
+	"/lol-spectator/v3/buddy/can-spectate/{puuid}/{spectatorKey}": {
+		get: { path: [puuid: string, spectatorKey: string], params: never, body: never, response: LCUTypes.LolSpectatorSpectatorKeySpectateResource }
+	},
 	"/lol-statstones/v1/eog-notifications/{gameId}": {
 		get: { path: [gameId: number], params: never, body: never, response: LCUTypes.LolStatstonesEogNotificationEnvelope }
 	},
@@ -2943,6 +2952,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-chat/v1/conversations/eog-chat-toggle": {
 		post: { path: never, params: never, body: boolean, response: unknown }
+	},
+	"/lol-chat/v1/discord-link": {
+		post: { path: never, params: never, body: void, response: unknown }
 	},
 	"/lol-chat/v1/system-mutes": {
 		post: { path: never, params: never, body: LCUTypes.LolChatPlayerMuteUpdate, response: unknown }

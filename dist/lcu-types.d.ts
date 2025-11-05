@@ -3455,6 +3455,7 @@ export interface LolChampionsGameDataChampion {
 export interface LolChampionsGameDataChampionChroma {
 	/** @format int32 */
 	id: number
+	name: string
 	colors: string[]
 	chromaPath: string
 	skinAugments: LolChampionsCollectionsChampionSkinAugments
@@ -3854,6 +3855,13 @@ export interface LolChatDebugResource {
 	silenceChatWhileInGame?: boolean
 }
 
+export interface LolChatDiscordLink {
+	available: boolean
+	linked: boolean
+	visible: boolean
+	error: string
+}
+
 export interface LolChatEndOfGamePlayer {
 	puuid: string
 	/** @format uint64 */
@@ -4029,6 +4037,7 @@ export interface LolChatFriendResource {
 	groupName: string
 	displayGroupName: string
 	lol: Record<string, string>
+	discordInfo?: LolChatSocialV4DiscordInfo
 }
 
 export type LolChatFriendSubscriptionType = "pending_in" | "pending_out"
@@ -6745,6 +6754,7 @@ export interface LolCosmeticsTFTRotationalShopConfig {
 	refund: LolCosmeticsTFTRotationalShopRefundConfig
 	littleLegendsUpgradeEnabled: boolean
 	eventsStoreEnabled: boolean
+	eventsStoreData: unknown
 }
 
 export interface LolCosmeticsTFTRotationalShopNavConfig {
@@ -9941,6 +9951,7 @@ export interface LolGameflowSpectateGameInfoResource {
 	gameQueueType: string
 	allowObserveMode: string
 	puuid: string
+	spectatorKey: string
 }
 
 export interface LolHeartbeatLcdsConnection {
@@ -13917,6 +13928,7 @@ export interface LolMarketplaceTFTRotationalShopConfig {
 	refund: LolMarketplaceTFTRotationalShopRefundConfig
 	littleLegendsUpgradeEnabled: boolean
 	eventsStoreEnabled: boolean
+	eventsStoreData: unknown
 }
 
 export interface LolMarketplaceTFTRotationalShopNavConfig {
@@ -18605,7 +18617,6 @@ export interface LolRankedRankedStats {
 	/** @format int32 */
 	previousSeasonSplitPoints: number
 	seasons: Record<string, LolRankedSeasonDTO>
-	shouldShowIndicator: boolean
 }
 
 export interface LolRankedRankedStatsDTO {
@@ -20562,6 +20573,7 @@ export interface LolSpectatorSpectateGameInfo {
 	gameQueueType: string
 	allowObserveMode: string
 	puuid: string
+	spectatorKey: string
 }
 
 export interface LolSpectatorSpectateResource {
@@ -20580,6 +20592,11 @@ export interface LolSpectatorSpectatorDynamicConfiguration {
 	isEnabled: boolean
 	isSpectatorDelayConfigurable: boolean
 	isUsingOperationalConfig: boolean
+}
+
+export interface LolSpectatorSpectatorKeySpectateResource {
+	availableForWatching: boolean
+	reason: string
 }
 
 export interface LolSpectatorSpectatorOperationalConfiguration {
@@ -25301,6 +25318,7 @@ export interface LolTftTrovesTFTRotationalShopConfig {
 	refund: LolTftTrovesTFTRotationalShopRefundConfig
 	littleLegendsUpgradeEnabled: boolean
 	eventsStoreEnabled: boolean
+	eventsStoreData: unknown
 }
 
 export interface LolTftTrovesTFTRotationalShopNavConfig {
@@ -27670,6 +27688,7 @@ export interface TeamBuilderDirect_Cell {
 	/** @format int64 */
 	obfuscatedSummonerId: number
 	obfuscatedPuuid: string
+	isAutofilled: boolean
 }
 
 export interface TeamBuilderDirect_Cells {
@@ -27832,6 +27851,7 @@ export interface TeamBuilderDirect_ChampSelectPlayerSelection {
 	/** @format uint64 */
 	obfuscatedSummonerId: number
 	obfuscatedPuuid: string
+	isAutofilled: boolean
 	internalName: string
 	/** @format int32 */
 	pickMode: number
@@ -27955,6 +27975,7 @@ export interface TeamBuilderDirect_ChampSelectSummoner {
 	showSwaps: boolean
 	showPositionSwaps: boolean
 	showMuted: boolean
+	isAutofilled: boolean
 }
 
 export interface TeamBuilderDirect_ChampSelectSwapContract {
@@ -28767,6 +28788,7 @@ export interface TeambuilderEdge_CellV1 {
 	/** @format int32 */
 	skinId: number
 	nameVisibilityType: string
+	isAutofilled: boolean
 }
 
 export interface TeambuilderEdge_CellsV1 {
