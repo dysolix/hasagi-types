@@ -420,6 +420,9 @@ export interface LCUEndpoints {
 	"/lol-catalog/v1/items": {
 		get: { path: never, params: { "inventoryType": string, "itemIds": number[] }, body: never, response: LCUTypes.LolCatalogItemChoiceDetails[] }
 	},
+	"/lol-catalog/v1/items/{bundleId}/related-items": {
+		get: { path: [bundleId: number], params: never, body: never, response: LCUTypes.LolCatalogCatalogPluginItemWithDetails[] }
+	},
 	"/lol-catalog/v1/items/{inventoryType}": {
 		get: { path: [inventoryType: string], params: never, body: never, response: LCUTypes.LolCatalogCatalogPluginItem[] }
 	},
@@ -1969,8 +1972,8 @@ export interface LCUEndpoints {
 	"/lol-purchase-widget/v1/configuration": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPurchaseWidgetPurchaseWidgetConfig }
 	},
-	"/lol-purchase-widget/v1/items/{skinId}/related-bundles": {
-		get: { path: [skinId: number], params: never, body: never, response: LCUTypes.LolPurchaseWidgetCatalogPluginItemWithDetails[] }
+	"/lol-purchase-widget/v1/items/{itemId}/related-bundles": {
+		get: { path: [itemId: number], params: { "inventoryType": string }, body: never, response: LCUTypes.LolPurchaseWidgetCatalogPluginItemWithDetails[] }
 	},
 	"/lol-purchase-widget/v1/order-notifications": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPurchaseWidgetOrderNotificationResource[] }
