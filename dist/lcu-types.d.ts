@@ -3904,8 +3904,7 @@ export interface LolChatErrorList {
 }
 
 export interface LolChatErrorResource {
-	/** @format uint64 */
-	id: number
+	id: string
 	from: string
 	/** @format uint64 */
 	code: number
@@ -4046,6 +4045,7 @@ export interface LolChatFriendResource {
 	displayGroupName: string
 	lol: Record<string, string>
 	discordInfo?: LolChatSocialV4DiscordInfo
+	discordOnlineStatus?: string
 }
 
 export type LolChatFriendSubscriptionType = "pending_in" | "pending_out"
@@ -10320,6 +10320,7 @@ export interface LolHovercardFriendResult {
 	productName: string
 	statusMessage: string
 	lol: Record<string, string>
+	discordOnlineStatus?: string
 }
 
 export interface LolHovercardHovercardUserInfo {
@@ -10355,6 +10356,7 @@ export interface LolHovercardHovercardUserInfo {
 	remoteProductBackdropUrl: string
 	partySummoners: string[]
 	lol: Record<string, string>
+	discordOnlineStatus?: string
 }
 
 export interface LolHovercardPartyInfo {
@@ -11906,6 +11908,14 @@ export interface LolLobbyMucJwtDto {
 	targetRegion: string
 }
 
+export interface LolLobbyMultiProductRegistrationDto {
+	simpleInventoryToken?: string
+	inventoryTokens?: string[]
+	playerTokens?: Record<string, string>
+	experiments?: Record<string, string>
+	productRegistrations: Record<string, LolLobbyProductRegistration>
+}
+
 export interface LolLobbyOpenPartyToggleAnalytics {
 	partyId: string
 	platformId: string
@@ -12077,6 +12087,7 @@ export interface LolLobbyPlayerDto {
 	parties?: LolLobbyPartyMemberDto[]
 	currentParty?: LolLobbyPartyDto
 	registration: LolLobbyRegistrationCredentials
+	multiProductRegistration?: LolLobbyMultiProductRegistrationDto
 	/** @format uint64 */
 	createdAt: number
 	/** @format uint64 */
@@ -12119,6 +12130,11 @@ export interface LolLobbyPremadeRelationshipAnalytics {
 	eventTimestamp: number
 	premadePlayers: string[]
 	friendPlayers: string[]
+}
+
+export interface LolLobbyProductRegistration {
+	gameClientVersion?: string
+	meetsMinSpec?: boolean
 }
 
 export interface LolLobbyProductStateDto {
