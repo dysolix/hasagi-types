@@ -365,6 +365,9 @@ export interface LCUEndpoints {
 	"/deep-links/v1/settings": {
 		get: { path: never, params: never, body: never, response: LCUTypes.DeepLinksDeepLinksSettings }
 	},
+	"/entitlements/v1/entitlements": {
+		get: { path: never, params: never, body: never, response: string[] }
+	},
 	"/entitlements/v1/token": {
 		get: { path: never, params: never, body: never, response: LCUTypes.EntitlementsToken }
 	},
@@ -696,6 +699,9 @@ export interface LCUEndpoints {
 	"/lol-chat/v1/settings": {
 		get: { path: never, params: never, body: never, response: unknown }
 		put: { path: never, params: { "data": unknown, "doAsync"?: boolean }, body: never, response: unknown }
+	},
+	"/lol-chat/v2/friend-exists/{puuid}": {
+		get: { path: [puuid: string], params: never, body: never, response: boolean }
 	},
 	"/lol-chat/v2/friend-requests": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChatFriendRequestResource[] }
@@ -3357,6 +3363,18 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby/v2/received-invitations/{invitationId}/decline": {
 		post: { path: [invitationId: string], params: never, body: never, response: void }
+	},
+	"/lol-lobby/v3/lobby/members/{puuid}/grant-invite": {
+		post: { path: [puuid: string], params: never, body: never, response: string }
+	},
+	"/lol-lobby/v3/lobby/members/{puuid}/kick": {
+		post: { path: [puuid: string], params: never, body: never, response: string }
+	},
+	"/lol-lobby/v3/lobby/members/{puuid}/promote": {
+		post: { path: [puuid: string], params: never, body: never, response: string }
+	},
+	"/lol-lobby/v3/lobby/members/{puuid}/revoke-invite": {
+		post: { path: [puuid: string], params: never, body: never, response: string }
 	},
 	"/lol-login/v1/change-summoner-name": {
 		post: { path: never, params: never, body: string, response: unknown }
