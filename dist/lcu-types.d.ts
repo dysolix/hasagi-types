@@ -716,6 +716,394 @@ export interface ChemtechShoppe_VelocityLimitDeltaDto {
 	remaining: number
 }
 
+export interface ChemtechShoppeV2_BulkPurchaseRequestDto {
+	bulkPurchaseId: string
+	purchaserId: string
+	source: string
+	subPurchaseRequests: ChemtechShoppeV2_SubPurchaseRequestDto[]
+}
+
+export interface ChemtechShoppeV2_BulkPurchaseResponseDto {
+	bulkPurchaseId: string
+	purchases: ChemtechShoppeV2_PurchaseDto[]
+}
+
+export interface ChemtechShoppeV2_CatalogEntryDto {
+	id: string
+	name: string
+	productId: string
+	purchaseUnits: ChemtechShoppeV2_PurchaseUnitDto[]
+	displayMetadata: unknown
+	prerequisites: ChemtechShoppeV2_PrerequisiteDto[]
+	purchaseVisibility: string
+	refundRule: string
+	giftRule: string
+	purchaseLimits: ChemtechShoppeV2_VelocityLimitDeltaDto[]
+	refundLimits: ChemtechShoppeV2_VelocityLimitDeltaDto[]
+	endTime: string
+}
+
+export interface ChemtechShoppeV2_DropTableOddsTreeDto {
+	nodeHierarchy: Record<string, ChemtechShoppeV2_DropTableOddsTreeHierarchyDto>
+	nodes: Record<string, ChemtechShoppeV2_DropTableOddsTreeNodeDto>
+	nodeTraKeys: Record<string, ChemtechShoppeV2_NodeTraKeyDto>
+	rootNodeId: string
+	templateName: string
+}
+
+export interface ChemtechShoppeV2_DropTableOddsTreeHierarchyDto {
+	edges: ChemtechShoppeV2_DropTableOddsTreeHierarchyEdgeDto[]
+}
+
+export interface ChemtechShoppeV2_DropTableOddsTreeHierarchyEdgeDto {
+	targetNodeId: string
+	/** @format double */
+	odds: number
+	type: string
+}
+
+export interface ChemtechShoppeV2_DropTableOddsTreeNodeDto {
+	id: string
+	name: string
+	/** @format int32 */
+	displayPriority: number
+	sourceId: string
+	/** @format int32 */
+	rewardQuantity: number
+	type: string
+}
+
+export interface ChemtechShoppeV2_DropTableOddsTreeResponseDto {
+	data: ChemtechShoppeV2_DropTableOddsTreeDto
+	paging: ChemtechShoppeV2_PagingDto
+	stats: ChemtechShoppeV2_StatsDto
+	notes: string[]
+}
+
+export interface ChemtechShoppeV2_DropsMultiRollResultsDto {
+	rolls: ChemtechShoppeV2_DropsRollResultsDto[]
+}
+
+export interface ChemtechShoppeV2_DropsRollResultsDto {
+	fulfillments: unknown[]
+	rolledFulfillments: ChemtechShoppeV2_RolledFulfillmentWrapperDto[]
+}
+
+export interface ChemtechShoppeV2_FinalPurchaseUnitDto {
+	payments: ChemtechShoppeV2_PaymentDto[]
+	fulfillment: ChemtechShoppeV2_FulfillmentDto
+}
+
+export interface ChemtechShoppeV2_FulfillmentDto {
+	/** @format int64 */
+	delta: number
+	/** @format int64 */
+	finalDelta: number
+	name: string
+	ownershipCompensationMode: string
+	/** @format int64 */
+	maxQuantity: number
+	/** @format int64 */
+	ownedQuantity: number
+	counterId: string
+	displayMetadata: unknown
+	dropTableId: string
+	results: ChemtechShoppeV2_DropsMultiRollResultsDto
+	itemTypeId: string
+	itemId: string
+	itemPayload: Record<string, unknown>
+	itemInstanceId: string
+	tierTypeId: string
+	progressionCounterId: string
+	currencyId: string
+	subCurrencyDeltas: Record<string, number>
+	location: string
+	payload: unknown
+	target: string
+}
+
+export interface ChemtechShoppeV2_GiftDto {
+	id: string
+	idempotencyId: string
+	productId: string
+	purchaserId: string
+	recipientId: string
+	storeId: string
+	storeName: string
+	catalogEntryId: string
+	catalogEntryName: string
+	purchaseUnits: ChemtechShoppeV2_FinalPurchaseUnitDto[]
+	purchaserTransactionId: string
+	createdTime: string
+	state: string
+	source: string
+	refundRule: string
+	messageToRecipient: string
+	catalogEntry: ChemtechShoppeV2_CatalogEntryDto
+	recipientTransactionId: string
+	expiryTime: string
+	completedTime: string
+	refund: ChemtechShoppeV2_GiftRefundDto
+	recipientMailId: string
+	purchaserMailId: string
+	/** @format int32 */
+	quantity: number
+}
+
+export interface ChemtechShoppeV2_GiftPurchaserEligibilityV2ResponseDto {
+	validationFailures: string[]
+}
+
+export interface ChemtechShoppeV2_GiftPurchaserRecipientEligibilityRequestV2Dto {
+	catalogEntryIds: unknown
+}
+
+export interface ChemtechShoppeV2_GiftPurchaserRecipientEligibilityResponseV2Dto {
+	purchaserValidationFailures: string[]
+	recipientValidationFailures: string[]
+	catalogEntryValidationFailures: unknown
+	finalizedCatalogEntries: unknown
+}
+
+export interface ChemtechShoppeV2_GiftRecipientsEligibilityV2ResponseDto {
+	validRecipientIds: string[]
+	invalidRecipients: ChemtechShoppeV2_InvalidGiftRecipientDto[]
+}
+
+export interface ChemtechShoppeV2_GiftRefundDto {
+	id: string
+	giftId: string
+	createdTime: string
+	state: string
+	source: string
+	refundReason: string
+	completedTime: string
+}
+
+export interface ChemtechShoppeV2_GiftRequestDto {
+	storeId: string
+	catalogEntryId: string
+	paymentOptionsKeys: string[]
+	purchaserId: string
+	recipientId: string
+	idempotencyId: string
+	/** @format int64 */
+	quantity: number
+	messageToRecipient: string
+	source: string
+	customInventoryLocation: string
+}
+
+export interface ChemtechShoppeV2_InvalidGiftRecipientDto {
+	puuid: string
+	validationFailures: string[]
+}
+
+export interface ChemtechShoppeV2_NodeTraKeyDto {
+	nameTraKey: string
+}
+
+export interface ChemtechShoppeV2_PagingDto {
+	/** @format int32 */
+	offset: number
+	/** @format int32 */
+	limit: number
+	/** @format int32 */
+	maxLimit: number
+	/** @format int32 */
+	total: number
+	previous: string
+	next: string
+}
+
+export interface ChemtechShoppeV2_PaymentDto {
+	/** @format int64 */
+	delta: number
+	/** @format int64 */
+	finalDelta: number
+	name: string
+	/** @format int64 */
+	discountedDelta: number
+	itemTypeId: string
+	itemId: string
+	currencyId: string
+	/** @format double */
+	discountPercent: number
+}
+
+export interface ChemtechShoppeV2_PaymentOptionDto {
+	key: string
+	payments: ChemtechShoppeV2_PaymentDto[]
+}
+
+export interface ChemtechShoppeV2_PrerequisiteDto {
+	status: string
+	itemTypeId: string
+	itemId: string
+	/** @format int64 */
+	requiredQuantity: number
+	/** @format int64 */
+	ownedQuantity: number
+	catalogEntry: unknown
+	milestoneId: string
+}
+
+export interface ChemtechShoppeV2_PurchaseDto {
+	id: string
+	idempotencyId: string
+	productId: string
+	purchaserId: string
+	recipientId: string
+	storeId: string
+	storeName: string
+	catalogEntryId: string
+	catalogEntryName: string
+	purchaseUnits: ChemtechShoppeV2_FinalPurchaseUnitDto[]
+	createdTime: string
+	purchaseState: string
+	source: string
+	purchaseVisibility: string
+	refundRule: string
+	completedTime: string
+	refund: ChemtechShoppeV2_RefundDto
+	/** @format int32 */
+	quantity: number
+}
+
+export interface ChemtechShoppeV2_PurchaseRequestDto {
+	storeId: string
+	catalogEntryId: string
+	paymentOptionsKeys: string[]
+	idempotencyId: string
+	/** @format int64 */
+	quantity: number
+	customInventoryLocation: string
+	purchaserId: string
+	source: string
+}
+
+export interface ChemtechShoppeV2_PurchaseResponseDto {
+	data: ChemtechShoppeV2_PurchaseDto
+	paging: ChemtechShoppeV2_PagingDto
+	stats: ChemtechShoppeV2_StatsDto
+	notes: string[]
+}
+
+export interface ChemtechShoppeV2_PurchaseUnitDto {
+	paymentOptions: ChemtechShoppeV2_PaymentOptionDto[]
+	fulfillment: ChemtechShoppeV2_FulfillmentDto
+}
+
+export interface ChemtechShoppeV2_PurchasesResponseDto {
+	data: ChemtechShoppeV2_PurchaseDto[]
+	paging: ChemtechShoppeV2_PagingDto
+	stats: ChemtechShoppeV2_StatsDto
+	notes: string[]
+}
+
+export interface ChemtechShoppeV2_RefundDto {
+	id: string
+	purchaseId: string
+	createdTime: string
+	state: string
+	completedTime: string
+	source: string
+}
+
+export interface ChemtechShoppeV2_RefundRequestDto {
+	purchaseId: string
+	source: string
+}
+
+export interface ChemtechShoppeV2_RefundResponseDto {
+	data: ChemtechShoppeV2_RefundDto
+	paging: ChemtechShoppeV2_PagingDto
+	stats: ChemtechShoppeV2_StatsDto
+	notes: string[]
+}
+
+export interface ChemtechShoppeV2_RolledFulfillmentWrapperDto {
+	nodeId: string
+	nodeName: string
+	fulfillment: unknown
+}
+
+export interface ChemtechShoppeV2_RotatingStoreMetadataDto {
+	slots: ChemtechShoppeV2_RotatingStoreSlotMetadataDto[]
+	currRotationStartTime: string
+	nextRotationStartTime: string
+	rotationCadence: string
+}
+
+export interface ChemtechShoppeV2_RotatingStoreSlotMetadataDto {
+	/** @format int64 */
+	selectionCount: number
+	catalogEntryIds: string[]
+}
+
+export interface ChemtechShoppeV2_StatsDto {
+	/** @format int64 */
+	durationMs: number
+}
+
+export interface ChemtechShoppeV2_StoreDigestDto {
+	id: string
+	productId: string
+	name: string
+	displayMetaData: unknown
+	startTime: string
+	endTime: string
+	rotatingStoreMetadata: ChemtechShoppeV2_RotatingStoreMetadataDto
+}
+
+export interface ChemtechShoppeV2_StoreDigestsDto {
+	digests: ChemtechShoppeV2_StoreDigestDto[]
+}
+
+export interface ChemtechShoppeV2_StoreDigestsResponseDto {
+	data: ChemtechShoppeV2_StoreDigestsDto
+	paging: ChemtechShoppeV2_PagingDto
+	stats: ChemtechShoppeV2_StatsDto
+	notes: string[]
+}
+
+export interface ChemtechShoppeV2_StoreDto {
+	id: string
+	type: string
+	productId: string
+	name: string
+	catalogEntries: ChemtechShoppeV2_CatalogEntryDto[]
+	displayMetadata: unknown
+	startTime: string
+	endTime: string
+	rotatingStoreMetadata: ChemtechShoppeV2_RotatingStoreMetadataDto
+}
+
+export interface ChemtechShoppeV2_StoresResponseDto {
+	data: ChemtechShoppeV2_StoreDto[]
+	paging: ChemtechShoppeV2_PagingDto
+	stats: ChemtechShoppeV2_StatsDto
+	notes: string[]
+}
+
+export interface ChemtechShoppeV2_SubPurchaseRequestDto {
+	storeId: string
+	catalogEntryId: string
+	paymentOptionsKeys: string[]
+	idempotencyId: string
+	/** @format int64 */
+	quantity: number
+	customInventoryLocation: string
+}
+
+export interface ChemtechShoppeV2_VelocityLimitDeltaDto {
+	ruleId: string
+	/** @format int64 */
+	delta: number
+	/** @format int64 */
+	remaining: number
+}
+
 export interface ClashEventData {
 	earnedDate: string
 	rewardType: string
@@ -3579,6 +3967,12 @@ export interface LolChampionsLoyaltyStatusNotification {
 	reloadInventory: boolean
 }
 
+export interface LolChampionsMatchmakingQueue {
+	/** @format int64 */
+	id: number
+	viableChampionRoster: number[]
+}
+
 export interface LolChampionsPlayerNotification {
 	backgroundUrl: string
 	critical: boolean
@@ -3606,12 +4000,6 @@ export interface LolChampionsSummoner {
 	summonerId: number
 	/** @format uint32 */
 	summonerLevel: number
-}
-
-export interface LolChampionsTeamBuilderDirect_MatchmakingQueue {
-	/** @format int64 */
-	id: number
-	viableChampionRoster: number[]
 }
 
 export type LolChatAccountState = "dnd" | "chat" | "away" | "mobile" | "offline"
@@ -3812,10 +4200,12 @@ export interface LolChatConversationMessageResource {
 	type: string
 	/** @format uint64 */
 	fromSummonerId: number
+	fromPuuid: string
 	fromId: string
 	fromPid: string
 	/** @format uint64 */
 	fromObfuscatedSummonerId: number
+	fromObfuscatedPuuid: string
 	body: string
 	timestamp: string
 	isHistorical: boolean
@@ -4046,6 +4436,7 @@ export interface LolChatFriendResource {
 	lol: Record<string, string>
 	discordInfo?: LolChatSocialV4DiscordInfo
 	discordOnlineStatus?: string
+	discordId?: string
 }
 
 export type LolChatFriendSubscriptionType = "pending_in" | "pending_out"
@@ -4479,6 +4870,7 @@ export interface LolChatSocialV4DiscordInfo {
 	onlineStatus: string
 	isPlayingSameTitle: boolean
 	relationship: string
+	discordId: string
 }
 
 export interface LolChatSocialV4Friend {
@@ -7272,7 +7664,7 @@ export interface LolEndOfGameGameDataTftTrait {
 
 export interface LolEndOfGameGameStateUpdate {
 	/** @format uint64 */
-	gameId: number
+	id: number
 	gameState: string
 	gameType: string
 	errorMessage: string
@@ -7343,6 +7735,7 @@ export interface LolEndOfGameQueue {
 	/** @format int32 */
 	id: number
 	type: string
+	gameMode: string
 	isRanked: boolean
 }
 
@@ -9459,6 +9852,7 @@ export interface LolGameClientChatConversationMessageResource {
 	type: string
 	/** @format uint64 */
 	fromSummonerId: number
+	fromPuuid: string
 	fromId: string
 	body: string
 	timestamp: string
@@ -9578,6 +9972,7 @@ export interface LolGameQueuesQueue {
 	areFreeChampionsAllowed: boolean
 	isTeamBuilderManaged: boolean
 	queueAvailability: LolGameQueuesQueueAvailability
+	isEnabled: boolean
 	isVisible: boolean
 	queueRewards: LolGameQueuesQueueReward
 	spectatorEnabled: boolean
@@ -9695,6 +10090,7 @@ export interface LolGameQueuesQueueTranslation {
 	isSkillTreeQueue: boolean
 	isBotHonoringAllowed: boolean
 	hidePlayerPosition: boolean
+	viableChampionRoster: number[]
 }
 
 export interface LolGameSettingsLoginSession {
@@ -10321,6 +10717,7 @@ export interface LolHovercardFriendResult {
 	statusMessage: string
 	lol: Record<string, string>
 	discordOnlineStatus?: string
+	discordId?: string
 }
 
 export interface LolHovercardHovercardUserInfo {
@@ -10357,6 +10754,7 @@ export interface LolHovercardHovercardUserInfo {
 	partySummoners: string[]
 	lol: Record<string, string>
 	discordOnlineStatus?: string
+	discordId?: string
 }
 
 export interface LolHovercardPartyInfo {
@@ -11134,6 +11532,7 @@ export interface LolLoadoutsItemKey {
 	contentId: string
 	/** @format int32 */
 	itemId: number
+	data: Record<string, string>
 }
 
 export interface LolLoadoutsLoadout {
@@ -11211,6 +11610,7 @@ export interface LolLobbyAutoFillQueueDto {
 	autoFillEligible: boolean
 	autoFillProtectedForStreaking: boolean
 	autoFillProtectedForPromos: boolean
+	overridePositionSelectionsWithFill: boolean
 	autoFillProtectedForRemedy: boolean
 }
 
@@ -11473,6 +11873,8 @@ export interface LolLobbyInventoryItem {
 
 export type LolLobbyInvitationType = "party" | "lobby" | "invalid"
 
+export type LolLobbyInviteContext = "RIOT" | "DISCORD" | "LOL"
+
 export interface LolLobbyJoinPartyAnalytics {
 	partyId: string
 	platformId: string
@@ -11567,7 +11969,6 @@ export interface LolLobbyLobbyBotParams {
 export interface LolLobbyLobbyChangeGameDto {
 	/** @format int32 */
 	queueId: number
-	isCustom: boolean
 	customGameLobby?: LolLobbyLobbyCustomGameLobby
 	gameCustomization?: Record<string, string>
 }
@@ -12087,11 +12488,15 @@ export interface LolLobbyPlayerDto {
 	parties?: LolLobbyPartyMemberDto[]
 	currentParty?: LolLobbyPartyDto
 	registration: LolLobbyRegistrationCredentials
-	multiProductRegistration?: LolLobbyMultiProductRegistrationDto
 	/** @format uint64 */
 	createdAt: number
 	/** @format uint64 */
 	version: number
+}
+
+export interface LolLobbyPlayerInviteDto {
+	puuid: string
+	inviteContext: LolLobbyInviteContext
 }
 
 export interface LolLobbyPlayerStatus {
@@ -14392,6 +14797,8 @@ export interface LolMatchHistoryMatchHistoryParticipantStatistics {
 	playerSubteamId: number
 	/** @format int32 */
 	subteamPlacement: number
+	/** @format int32 */
+	roleBoundItem: number
 }
 
 export interface LolMatchHistoryMatchHistoryPosition {
@@ -14615,6 +15022,360 @@ export interface LolMatchmakingQueue {
 }
 
 export type LolMatchmakingQueueCustomGameSpectatorPolicy = "AllAllowed" | "FriendsAllowed" | "LobbyAllowed" | "NotAllowed"
+
+export interface LolMetagamesAccessTokenResource {
+	token: string
+	scopes: string[]
+	/** @format uint64 */
+	expiry: number
+}
+
+export interface LolMetagamesBulkPurchaseRequest {
+	purchaseItems: LolMetagamesPurchaseRequest[]
+	/** @format uint32 */
+	purchaseTimeOut: number
+}
+
+export interface LolMetagamesCatalogItem {
+	/** @format int32 */
+	itemId: number
+	inventoryType: string
+	itemInstanceId?: string
+}
+
+export interface LolMetagamesClientCacheClearMessageDTO {
+	regions: string[]
+	clearAll: boolean
+	inventoryTypes: string[]
+}
+
+export interface LolMetagamesCurrencyDTO {
+	/** @format int32 */
+	amount: number
+	subCurrencies: Record<string, number>
+}
+
+export interface LolMetagamesEndOfGameXp {
+	/** @format uint32 */
+	PER_WIN: number
+}
+
+export interface LolMetagamesEndOfGameXpNotification {
+	xp: LolMetagamesEndOfGameXp
+}
+
+export interface LolMetagamesInventoryCacheEntry {
+	signedInventoryJwt: string
+	/** @format uint64 */
+	expirationMS: number
+	/** @format uint64 */
+	issuedAtMS: number
+	/** @format uint64 */
+	receivedAtMS: number
+	valid: boolean
+}
+
+export interface LolMetagamesInventoryDTO {
+	puuid: string
+	/** @format uint64 */
+	accountId: number
+	/** @format uint64 */
+	summonerId: number
+	items: Record<string, unknown>
+	expires: string
+	itemsJwt: string
+}
+
+export interface LolMetagamesInventoryItem {
+	uuid: string
+	/** @format int32 */
+	itemId: number
+	inventoryType: string
+	purchaseDate: string
+	/** @format uint64 */
+	quantity: number
+	ownershipType: LolMetagamesItemOwnershipType
+	usedInGameDate: string
+	expirationDate: string
+	/** @format uint64 */
+	wins: number
+}
+
+export interface LolMetagamesInventoryItemDTO {
+	/** @format int32 */
+	itemId: number
+	inventoryType: string
+	expirationDate: string
+	purchaseDate: string
+	/** @format uint64 */
+	quantity: number
+	/** @format uint64 */
+	ownedQuantity: number
+	usedInGameDate: string
+	entitlementId: string
+	entitlementTypeId: string
+	instanceId: string
+	instanceTypeId: string
+	payload: unknown
+	"f2p": boolean
+	rental: boolean
+	loyalty: boolean
+	loyaltySources: string[]
+	lsb: boolean
+	/** @format uint64 */
+	wins: number
+}
+
+export interface LolMetagamesInventoryItemWithPayload {
+	uuid: string
+	/** @format int32 */
+	itemId: number
+	inventoryType: string
+	purchaseDate: string
+	/** @format uint64 */
+	quantity: number
+	ownershipType: LolMetagamesItemOwnershipType
+	usedInGameDate: string
+	expirationDate: string
+	"f2p": boolean
+	rental: boolean
+	loyalty: boolean
+	loyaltySources: string[]
+	owned: boolean
+	/** @format uint64 */
+	wins: number
+	payload: unknown
+}
+
+export interface LolMetagamesInventoryNotification {
+	/** @format int64 */
+	id: number
+	/** @format int32 */
+	itemId: number
+	inventoryType: string
+	type: string
+	acknowledged: boolean
+}
+
+export interface LolMetagamesInventoryResponseDTO {
+	data: LolMetagamesInventoryDTO
+}
+
+export interface LolMetagamesItemKey {
+	inventoryType: string
+	/** @format int32 */
+	itemId: number
+}
+
+export type LolMetagamesItemOwnershipType = "F2P" | "LOYALTY" | "RENTED" | "OWNED"
+
+export interface LolMetagamesLoginSession {
+	state: LolMetagamesLoginSessionStates
+	/** @format uint64 */
+	summonerId: number
+	puuid: string
+	connected: boolean
+}
+
+export type LolMetagamesLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
+
+export interface LolMetagamesLolInventoryType {
+	inventoryTypeId: string
+	capInventoryTypeId: string
+}
+
+export interface LolMetagamesLoyaltyRewards {
+	/** @format int32 */
+	freeRewardedChampionsCount: number
+	championIds: number[]
+	/** @format int32 */
+	freeRewardedSkinsCount: number
+	skinIds: number[]
+	/** @format int32 */
+	ipBoost: number
+	xpBoost: Record<string, number>
+	/** @format int32 */
+	loyaltyTFTMapSkinCount: number
+	/** @format int32 */
+	loyaltyTFTCompanionCount: number
+	/** @format int32 */
+	loyaltyTFTDamageSkinCount: number
+	loyaltySources: Record<string, boolean>
+}
+
+export interface LolMetagamesLoyaltyRewardsSimplified {
+	/** @format int32 */
+	freeRewardedChampionsCount: number
+	championIds: number[]
+	/** @format int32 */
+	freeRewardedSkinsCount: number
+	skinIds: number[]
+	/** @format int32 */
+	ipBoost: number
+	/** @format int32 */
+	xpBoost: number
+	/** @format int32 */
+	loyaltyTFTMapSkinCount: number
+	/** @format int32 */
+	loyaltyTFTCompanionCount: number
+	/** @format int32 */
+	loyaltyTFTDamageSkinCount: number
+	loyaltySources: Record<string, boolean>
+}
+
+export type LolMetagamesLoyaltyStatus = "DISABLED" | "REVOKE" | "CHANGE" | "EXPIRY" | "REWARDS_GRANT" | "LEGACY"
+
+export interface LolMetagamesLoyaltyStatusNotification {
+	status: LolMetagamesLoyaltyStatus
+	rewards: LolMetagamesLoyaltyRewardsSimplified
+	reloadInventory: boolean
+}
+
+export interface LolMetagamesMetagamePurchaseCatalogItemRequest {
+	storeId: string
+	catalogEntryId: string
+	/** @format uint32 */
+	quantity: number
+	paymentOptions: string[]
+	customInventoryLocation: string
+}
+
+export interface LolMetagamesPlayerNotification {
+	critical: boolean
+	detailKey: string
+	source: string
+	state: string
+	titleKey: string
+	type: string
+	iconUrl: string
+}
+
+export interface LolMetagamesPurchaseRequest {
+	storeId: string
+	catalogEntryId: string
+	/** @format uint32 */
+	quantity: number
+	paymentOptions: string[]
+	/** @format uint32 */
+	purchaseTimeOut: number
+}
+
+export interface LolMetagamesPurchaseResponse {
+	idempotencyId: string
+	status: LolMetagamesPurchaseResponseStatus
+	/** @format uint8 */
+	numberOfPendingPurchases: number
+	errorMessage: string
+}
+
+export type LolMetagamesPurchaseResponseStatus = "Failure" | "Success" | "Pending" | "None"
+
+export interface LolMetagamesRiotMessagingServiceMessage {
+	resource: string
+	service: string
+	version: string
+	/** @format int64 */
+	timestamp: number
+	payload: string
+}
+
+export interface LolMetagamesRmsEntitlementPayload {
+	itemId: string
+	itemTypeId: string
+	tiers: string
+	entitlementTypeId: string
+	resourceOperation: string
+}
+
+export interface LolMetagamesRmsStoreEntitlementItem {
+	inventoryType: string
+	itemId: string
+}
+
+export interface LolMetagamesRmsStoreEntitlementPayload {
+	transactionId: string
+	items: LolMetagamesRmsStoreEntitlementItem[]
+}
+
+export interface LolMetagamesRmsWalletPayload {
+	[key: string | number]: any
+}
+
+export interface LolMetagamesRmsXboxSubscriptionChange {
+	puuid: string
+	subscriptionId: string
+	active: string
+	identityProvider: string[]
+}
+
+export interface LolMetagamesSimpleInventoryDTO {
+	items: Record<string, unknown>
+	itemsJwt: string
+	expires: string
+}
+
+export interface LolMetagamesSimpleInventoryResponseDTO {
+	data: LolMetagamesSimpleInventoryDTO
+}
+
+export interface LolMetagamesSummonerIcon {
+	/** @format int32 */
+	itemId: number
+}
+
+export interface LolMetagamesWallet {
+	/** @format int64 */
+	ip: number
+	/** @format int64 */
+	rp: number
+}
+
+export interface LolMetagamesWalletCacheEntry {
+	signedBalancesJwt: string
+	/** @format uint64 */
+	expirationMS: number
+	/** @format uint64 */
+	issuedAtMS: number
+	/** @format uint64 */
+	receivedAtMS: number
+	valid: boolean
+}
+
+export interface LolMetagamesWalletDTO {
+	puuid: string
+	/** @format int64 */
+	accountId: number
+	expires: string
+	balances: Record<string, number>
+	balancesJwt: string
+}
+
+export interface LolMetagamesWalletResponseDTO {
+	data: LolMetagamesWalletDTO
+}
+
+export interface LolMetagamesXboxSubscriptionStatus {
+	active: string
+	subscriptionId: string
+}
+
+export interface LolMetagamesplayerEventDTO {
+	playerGameData: unknown
+}
+
+export interface LolMetagamesplayerEventPayload {
+	playerGameData: unknown
+	inventoryTypes: string[]
+	currencyTypes: string[]
+	storeId: string
+	paymentOption: string
+}
+
+export interface LolMetagamesplayerEventResponseDTO {
+	playerGameData: unknown
+	attemptedPurchase: boolean
+	purchaseIdToObserve: string
+}
 
 export interface LolMissionsCAPMission {
 	missionId: string
@@ -18335,6 +19096,7 @@ export interface LolRankedLcuLeagueNotification {
 	wins: number
 	/** @format int32 */
 	losses: number
+	lpBonusAppliedReason: string
 	leaguePointDeltaBreakdown: Record<string, number>
 }
 
@@ -18581,6 +19343,7 @@ export interface LolRankedRankedQueueStats {
 	previousSeasonEndDivision: LolRankedLeagueDivision
 	previousSeasonHighestTier: string
 	previousSeasonHighestDivision: LolRankedLeagueDivision
+	climbingIndicatorActive: boolean
 	warnings?: LolRankedRankedQueueWarnings
 }
 
@@ -18612,6 +19375,7 @@ export interface LolRankedRankedQueueStatsDTO {
 	previousSeasonEndRank: string
 	previousSeasonHighestTier: string
 	previousSeasonHighestRank: string
+	climbingIndicatorActive: boolean
 	warnings?: LolRankedRankedQueueWarningsDTO
 }
 
@@ -18989,6 +19753,11 @@ export interface LolRegaliaSummonerProfile {
 export interface LolRegaliaSummonerProfileUpdate {
 	key: string
 	value: string
+}
+
+export interface LolRemedyHostageDetectedNotification {
+	offenderPuuid: string
+	wasGameTerminated: boolean
 }
 
 export interface LolRemedyMail {
@@ -20234,6 +21003,181 @@ export interface LolRsoAuthSessionResponse {
 
 export interface LolRsoAuthUserInfo {
 	userInfo: string
+}
+
+export interface LolSanctumBannerOddsInfo {
+	bannerId: string
+	sTierRewards: LolSanctumSanctumTierDrops
+	aTierRewards: LolSanctumSanctumTierDrops
+	bTierRewards: LolSanctumSanctumTierDrops
+	nodeIdToDropDetailsMap: Record<string, LolSanctumSanctumDropDetails>
+}
+
+export interface LolSanctumBannerStoreDisplayMetadata {
+	startDate: string
+	endDate: string
+	sanctum: LolSanctumSanctumMetadataDetails
+}
+
+export interface LolSanctumCapCounterData {
+	/** @format uint32 */
+	amount: number
+	/** @format uint32 */
+	version: number
+	active: boolean
+	lastModifiedDate: string
+}
+
+export interface LolSanctumGameDataBannerSkin {
+	/** @format uint32 */
+	id: number
+	name: string
+	rarity: string
+}
+
+export interface LolSanctumGameDataPityCounter {
+	id: string
+	name: string
+}
+
+export interface LolSanctumGameDataSanctumBanner {
+	id: string
+	chasePityCounter: LolSanctumGameDataPityCounter
+	/** @format uint32 */
+	chasePityThreshold: number
+	/** @format uint32 */
+	highlightPityThreshold: number
+	bannerBackgroundTexture: string
+	bannerBackgroundParallax: string
+	bannerChaseAnimationWebmPath: string
+	bannerChaseAnimationParallax: string
+	rollVignetteSkinIntroWebmPath: string
+	rollVignetteSkinIntroSfxPath: string
+	chaseCelebrationIntroWebmPath: string
+	chaseCelebrationVo: LolSanctumGameDataSanctumBannerVo
+	hubIntroVo: LolSanctumGameDataSanctumBannerVo
+	rollVignette: LolSanctumSanctumVignette
+	bannerSkin: LolSanctumGameDataBannerSkin
+	bannerCurrency: LolSanctumGameDataSanctumCurrency
+}
+
+export interface LolSanctumGameDataSanctumBannerVo {
+	path: string
+	/** @format uint32 */
+	defaultDelayMillis: number
+	localeOverrides: LolSanctumGameDataSanctumBannerVoOverrideOptions[]
+}
+
+export interface LolSanctumGameDataSanctumBannerVoOverrideOptions {
+	locale: string
+	/** @format uint32 */
+	delayMillis: number
+}
+
+export interface LolSanctumGameDataSanctumCurrency {
+	id: string
+	name: string
+	currencyId: string
+	capCatalogEntryId: string
+}
+
+export interface LolSanctumGipItem {
+	/** @format uint32 */
+	gipItemId: number
+}
+
+export interface LolSanctumSanctumBannerResponse {
+	id: string
+	bannerBackgroundTexture: string
+	bannerBackgroundParallax: string
+	bannerChaseAnimationWebmPath: string
+	bannerChaseAnimationParallax: string
+	chasePityCounter: LolSanctumGameDataPityCounter
+	/** @format uint32 */
+	chasePityThreshold: number
+	/** @format uint32 */
+	highlightPityThreshold: number
+	skinIntroAnimationPath: string
+	skinIntroSfxPath: string
+	chaseCelebrationIntroAnimationPath: string
+	chaseCelebrationVo: LolSanctumGameDataSanctumBannerVo
+	hubIntroVo: LolSanctumGameDataSanctumBannerVo
+	sanctumRollVideos: LolSanctumSanctumVignette
+	bannerSkin: LolSanctumGameDataBannerSkin
+	bannerCurrency: LolSanctumGameDataSanctumCurrency
+	capCatalogStoreId: string
+	dropTableCatalogEntryId: string
+	pityCounter: LolSanctumCapCounterData
+	/** @format int64 */
+	startDate: number
+	/** @format int64 */
+	endDate: number
+}
+
+export interface LolSanctumSanctumCatalogPurchaseRequest {
+	bannerId: string
+	storeId: string
+	catalogEntryId: string
+	/** @format uint32 */
+	quantity: number
+	paymentOptions: string[]
+	customInventoryLocation: string
+}
+
+export interface LolSanctumSanctumDropDetails {
+	/** @format double */
+	odds: number
+	itemInstanceId: string
+	nodeId: string
+	type: string
+	parentId: string
+	/** @format uint32 */
+	tier: number
+	isChaseItem: boolean
+	/** @format uint32 */
+	quantity: number
+	bundledCurrencyNodeIds: string[]
+	bundleParentNodeId: string
+}
+
+export interface LolSanctumSanctumMetadataDetails {
+	bannerId: string
+}
+
+export interface LolSanctumSanctumPurchaseRequest {
+	bannerId: string
+	/** @format uint32 */
+	quantity: number
+}
+
+export interface LolSanctumSanctumPurchaseResponse {
+	id: string
+	status: LolSanctumSanctumPurchaseResponseStatus
+	rollResultNodeIds: string[]
+}
+
+export type LolSanctumSanctumPurchaseResponseStatus = "Failure" | "Success" | "Pending" | "None"
+
+export interface LolSanctumSanctumTierDrops {
+	/** @format uint32 */
+	tier: number
+	/** @format double */
+	odds: number
+	mainDrops: LolSanctumSanctumDropDetails[]
+	fallbackDrops: LolSanctumSanctumDropDetails[]
+}
+
+export interface LolSanctumSanctumVignette {
+	introTierOneWebmPath: string
+	introTierOneMultiWebmPath: string
+	introTierTwoWebmPath: string
+	introTierTwoMultiWebmPath: string
+	introTierThreeWebmPath: string
+	introTierThreeMultiWebmPath: string
+}
+
+export interface LolSanctumSetSelectedBannerIdRequest {
+	bannerId: string
 }
 
 export interface LolSeasonsAllProductSeasonQuery {
@@ -21496,6 +22440,7 @@ export interface LolSummonerAutoFillQueueDto {
 	autoFillEligible: boolean
 	autoFillProtectedForStreaking: boolean
 	autoFillProtectedForPromos: boolean
+	overridePositionSelectionsWithFill: boolean
 	autoFillProtectedForRemedy: boolean
 }
 
@@ -21614,6 +22559,30 @@ export interface LolSummonerProfilesRedemption {
 	/** @format int32 */
 	remaining: number
 	eventType: string
+}
+
+export interface LolSummonerProfilesRestriction {
+	restrictionType: string
+	restrictionReason: string
+	expirationData: LolSummonerProfilesRestrictionExpiration
+}
+
+export interface LolSummonerProfilesRestrictionExpiration {
+	/** @format int64 */
+	expirationMillis: number
+	redemptions: LolSummonerProfilesRestrictionRedemption[]
+}
+
+export interface LolSummonerProfilesRestrictionRedemption {
+	redemptionEventType: string
+	/** @format int32 */
+	redemptionCountRemaining: number
+	/** @format int32 */
+	redemptionCountRequired: number
+}
+
+export interface LolSummonerProfilesRestrictionsView {
+	restrictions: LolSummonerProfilesRestriction[]
 }
 
 export interface LolSummonerProfilesRewardsEligibility {
@@ -22330,6 +23299,7 @@ export interface LolTftEventPveItemKey {
 	contentId: string
 	/** @format int32 */
 	itemId: number
+	data: Record<string, string>
 }
 
 export type LolTftEventPveItemOwnershipType = "F2P" | "LOYALTY" | "RENTED" | "OWNED"
@@ -24414,6 +25384,7 @@ export interface LolTftSkillTreeItemKey {
 	contentId: string
 	/** @format int32 */
 	itemId: number
+	data: Record<string, string>
 }
 
 export interface LolTftSkillTreeLoadout {
@@ -25418,6 +26389,7 @@ export interface LolTftTrovesTrovePurchaseResponse {
 export interface LolTftTrovesTroves {
 	enabled: boolean
 	capCatalogEnabled: boolean
+	shoppeOddsTreeEnabled: boolean
 	bannerList?: LolTftTrovesTrovesActiveBanner[]
 }
 
@@ -28812,6 +29784,7 @@ export interface TeambuilderEdge_AutoFillDataBagForClientV1 {
 	autoFillProtectedForStreaking: boolean
 	autoFillProtectedForPromos: boolean
 	autoFillProtectedForRemedy: boolean
+	overridePositionSelectionsWithFill: boolean
 }
 
 export interface TeambuilderEdge_BattleBoostStateV1 {
@@ -28836,6 +29809,7 @@ export interface TeambuilderEdge_CellV1 {
 	gameName: string
 	tagLine: string
 	isHumanoid: boolean
+	isAutofilled: boolean
 	/** @format int64 */
 	summonerId: number
 	/** @format int32 */
@@ -28850,7 +29824,6 @@ export interface TeambuilderEdge_CellV1 {
 	/** @format int32 */
 	skinId: number
 	nameVisibilityType: string
-	isAutofilled: boolean
 }
 
 export interface TeambuilderEdge_CellsV1 {
@@ -29025,9 +29998,9 @@ export interface TeambuilderEdge_RerollDataBagForClientV1 {
 	/** @format int32 */
 	totalPoints: number
 	/** @format int32 */
-	pointCostOfReroll: number
-	/** @format int32 */
 	maximumRerolls: number
+	/** @format int32 */
+	pointCostOfReroll: number
 }
 
 export interface TeambuilderEdge_RerollStateV1 {
