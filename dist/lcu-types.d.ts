@@ -7155,6 +7155,7 @@ export interface LolCosmeticsTFTRotationalShopConfig {
 	littleLegendsUpgradeEnabled: boolean
 	eventsStoreEnabled: boolean
 	eventsStoreData: unknown
+	eventsMusicDisabled: boolean
 }
 
 export interface LolCosmeticsTFTRotationalShopNavConfig {
@@ -8358,6 +8359,7 @@ export interface LolEventHubEndOfGameXpNotification {
 }
 
 export interface LolEventHubEntityInstance {
+	schemaVersion: string
 	groupId: string
 	counters: LolEventHubCounterInstance[]
 	milestones: LolEventHubMilestoneInstance[]
@@ -8403,6 +8405,7 @@ export interface LolEventHubEventInfoUIData {
 	startDate: string
 	progressEndDate: string
 	endDate: string
+	seasonPassSubType: LolEventHubSeasonPassSubType
 	localizedLogo: string
 	localizedEventSubtitle: string
 	localizedHelpUrl: string
@@ -9435,11 +9438,14 @@ export interface LolEventHubSeasonPass {
 	upsellBackgroundImageUrl: string
 	upsellTooltipBackgroundImageUrl: string
 	objectiveBannerImage: string
+	seasonPassSubType: string
 	localizedSeasonLogo: string
 	localizedShortName: string
 	chapters: LolEventHubChapter[]
 	actBackgroundImage: string
 }
+
+export type LolEventHubSeasonPassSubType = "Mayhem" | "Default"
 
 export type LolEventHubSelectGrantStatusResponse = "FAILED" | "SELECTED"
 
@@ -10759,6 +10765,7 @@ export interface LolHovercardHovercardUserInfo {
 
 export interface LolHovercardPartyInfo {
 	summoners?: number[]
+	summonerPuuids?: string[]
 }
 
 export interface LolHovercardPatchlineMetadata {
@@ -10800,6 +10807,7 @@ export interface LolHovercardSummonerIdAndName {
 	/** @format uint64 */
 	summonerId: number
 	displayName: string
+	puuid: string
 }
 
 export interface LolHovercardTopChampionMastery {
@@ -13124,6 +13132,7 @@ export interface LolLootCurrencyConfiguration {
 }
 
 export interface LolLootEntityInstance {
+	schemaVersion: string
 	groupId: string
 	counters: LolLootCounterInstance[]
 	milestones: LolLootMilestoneInstance[]
@@ -14369,6 +14378,7 @@ export interface LolMarketplaceTFTRotationalShopConfig {
 	littleLegendsUpgradeEnabled: boolean
 	eventsStoreEnabled: boolean
 	eventsStoreData: unknown
+	eventsMusicDisabled: boolean
 }
 
 export interface LolMarketplaceTFTRotationalShopNavConfig {
@@ -18029,8 +18039,6 @@ export interface LolPlayerReportSenderPlayerReport {
 	categories: string[]
 	/** @format uint64 */
 	gameId: number
-	/** @format uint64 */
-	offenderSummonerId: number
 	comment: string
 }
 
@@ -18282,6 +18290,7 @@ export interface LolProgressionCounterInstance {
 }
 
 export interface LolProgressionEntityInstance {
+	schemaVersion: string
 	groupId: string
 	counters: LolProgressionCounterInstance[]
 	milestones: LolProgressionMilestoneInstance[]
@@ -20284,6 +20293,7 @@ export interface LolRewardTrackCounterInstance {
 }
 
 export interface LolRewardTrackEntityInstance {
+	schemaVersion: string
 	groupId: string
 	counters: LolRewardTrackCounterInstance[]
 	milestones: LolRewardTrackMilestoneInstance[]
@@ -24153,6 +24163,7 @@ export interface LolTftPassEndOfGameXpNotification {
 }
 
 export interface LolTftPassEntityInstance {
+	schemaVersion: string
 	groupId: string
 	counters: LolTftPassCounterInstance[]
 	milestones: LolTftPassMilestoneInstance[]
@@ -24193,6 +24204,7 @@ export interface LolTftPassEventInfoUIData {
 	startDate: string
 	progressEndDate: string
 	endDate: string
+	seasonPassSubType: LolTftPassSeasonPassSubType
 	localizedLogo: string
 	localizedEventSubtitle: string
 	localizedHelpUrl: string
@@ -24923,11 +24935,14 @@ export interface LolTftPassSeasonPass {
 	upsellBackgroundImageUrl: string
 	upsellTooltipBackgroundImageUrl: string
 	objectiveBannerImage: string
+	seasonPassSubType: string
 	localizedSeasonLogo: string
 	localizedShortName: string
 	chapters: LolTftPassChapter[]
 	actBackgroundImage: string
 }
+
+export type LolTftPassSeasonPassSubType = "Mayhem" | "Default"
 
 export type LolTftPassSelectGrantStatusResponse = "FAILED" | "SELECTED"
 
@@ -25906,6 +25921,7 @@ export interface LolTftTrovesEntitlementsResponse {
 }
 
 export interface LolTftTrovesEntityInstance {
+	schemaVersion: string
 	groupId: string
 	counters: LolTftTrovesCounterInstance[]
 	milestones: LolTftTrovesMilestoneInstance[]
@@ -26351,6 +26367,7 @@ export interface LolTftTrovesTFTRotationalShopConfig {
 	littleLegendsUpgradeEnabled: boolean
 	eventsStoreEnabled: boolean
 	eventsStoreData: unknown
+	eventsMusicDisabled: boolean
 }
 
 export interface LolTftTrovesTFTRotationalShopNavConfig {
@@ -28586,45 +28603,6 @@ export interface SimpleDialogMessageResponse {
 	command: string
 }
 
-export interface StoreLcdsChampionDTO {
-	/** @format uint64 */
-	endDate: number
-	/** @format uint64 */
-	purchaseDate: number
-	/** @format uint32 */
-	winCountRemaining: number
-	sources: string[]
-	active: boolean
-	botEnabled: boolean
-	/** @format int32 */
-	championId: number
-	championSkins: StoreLcdsChampionSkinDTO[]
-	freeToPlay: boolean
-	freeToPlayReward: boolean
-	"f2pRewardSources": string[]
-	owned: boolean
-	rankedPlayEnabled: boolean
-}
-
-export interface StoreLcdsChampionSkinDTO {
-	/** @format uint64 */
-	endDate: number
-	/** @format uint64 */
-	purchaseDate: number
-	/** @format int32 */
-	winCountRemaining: number
-	sources: string[]
-	/** @format int32 */
-	championId: number
-	freeToPlayReward: boolean
-	"f2pRewardSources": string[]
-	lastSelected: boolean
-	owned: boolean
-	/** @format int32 */
-	skinId: number
-	stillObtainable: boolean
-}
-
 export interface StoreLcdsSimpleDialogMessage {
 	/** @format uint64 */
 	accountId: number
@@ -28638,22 +28616,6 @@ export interface StoreLcdsSimpleDialogMessageResponse {
 	accountId: number
 	msgId: string
 	command: string
-}
-
-export interface StoreLcdsStoreAccountBalanceNotification {
-	/** @format int64 */
-	ip: number
-	/** @format int64 */
-	rp: number
-}
-
-export interface StoreLcdsStoreFulfillmentNotification {
-	inventoryType: string
-	/** @format int64 */
-	rp: number
-	/** @format int64 */
-	ip: number
-	data: unknown
 }
 
 export interface TeamBuilderDirect_Action {

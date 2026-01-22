@@ -599,9 +599,6 @@ export interface LCUEndpoints {
 	"/lol-champion-mastery/v1/{puuid}/champion-mastery": {
 		get: { path: [puuid: string], params: never, body: never, response: LCUTypes.LolChampionMasteryChampionMastery[] }
 	},
-	"/lol-champion-mastery/v1/champion-mastery-view-enabled": {
-		get: { path: never, params: never, body: never, response: boolean }
-	},
 	"/lol-champion-mastery/v1/local-player/champion-mastery": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChampionMasteryChampionMastery[] }
 	},
@@ -2447,8 +2444,14 @@ export interface LCUEndpoints {
 	"/lol-summoner/v2/summoner-icons": {
 		get: { path: never, params: { "ids": number[] }, body: never, response: LCUTypes.LolSummonerSummonerIdAndIcon[] }
 	},
+	"/lol-summoner/v2/summoner-icons-by-puuids": {
+		get: { path: never, params: { "puuids": string[] }, body: never, response: LCUTypes.LolSummonerSummonerIdAndIcon[] }
+	},
 	"/lol-summoner/v2/summoner-names": {
 		get: { path: never, params: { "ids": number[] }, body: never, response: LCUTypes.LolSummonerSummonerIdAndName[] }
+	},
+	"/lol-summoner/v2/summoner-names-by-puuids": {
+		get: { path: never, params: { "puuids": string[] }, body: never, response: LCUTypes.LolSummonerSummonerIdAndName[] }
 	},
 	"/lol-summoner/v2/summoners": {
 		get: { path: never, params: { "ids"?: number[] }, body: never, response: LCUTypes.LolSummonerSummoner[] }
@@ -3620,10 +3623,10 @@ export interface LCUEndpoints {
 	"/lol-rso-auth/v1/external-session-config": {
 		post: { path: never, params: never, body: unknown, response: unknown }
 	},
-	"/lol-sanctum/v1/purchase/ancient-spark": {
+	"/lol-sanctum/v1/purchase/roll": {
 		post: { path: never, params: never, body: LCUTypes.LolSanctumSanctumPurchaseRequest, response: string }
 	},
-	"/lol-sanctum/v1/purchase/roll": {
+	"/lol-sanctum/v1/purchase/token": {
 		post: { path: never, params: never, body: LCUTypes.LolSanctumSanctumPurchaseRequest, response: string }
 	},
 	"/lol-seasons/v1/allSeasons/product/{product}": {
