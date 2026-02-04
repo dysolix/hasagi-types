@@ -132,6 +132,11 @@ export interface LCUEndpoints {
 	"/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}/{botUuidToDelete}/{teamId}": {
 		delete: { path: [summonerInternalName: string, botUuidToDelete: string, teamId: string], params: never, body: never, response: unknown }
 	},
+	"/lol-lobby/v2/ags/{activityId}/joinCode": {
+		get: { path: [activityId: string], params: never, body: never, response: string }
+		post: { path: [activityId: string], params: never, body: never, response: void }
+		delete: { path: [activityId: string], params: never, body: never, response: void }
+	},
 	"/lol-lobby/v2/lobby": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyLobbyDto }
 		post: { path: never, params: never, body: LCUTypes.LolLobbyLobbyChangeGameDto, response: LCUTypes.LolLobbyLobbyDto }
@@ -1469,6 +1474,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby/v1/party-rewards": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyLobbyPartyRewards }
+	},
+	"/lol-lobby/v2/ags/agsActivityId": {
+		get: { path: never, params: never, body: never, response: string }
 	},
 	"/lol-lobby/v2/comms/members": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLobbyPremadePartyDto }
