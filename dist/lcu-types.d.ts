@@ -4105,6 +4105,7 @@ export interface LolChatChatServiceDynamicClientConfig {
 export type LolChatChatSessionState = "connected" | "connecting" | "disconnected"
 
 export interface LolChatChatSettings {
+	chatGroupDiscord: boolean
 	chatGroupMobile: boolean
 	chatGroupOffline: boolean
 	chatGBG: boolean
@@ -4638,6 +4639,17 @@ export interface LolChatParticipantList {
 	participants: LolChatParticipant[]
 }
 
+export interface LolChatPartyPresenceData {
+	agsActivityId: string
+	partyId: string
+	/** @format int32 */
+	queueId: number
+	summoners: number[]
+	summonerPuuids: string[]
+	/** @format uint64 */
+	maxPlayers: number
+}
+
 export interface LolChatPatchlineMetadata {
 	product_id: string
 	id: string
@@ -4801,8 +4813,11 @@ export interface LolChatSocialPresencesSession {
 
 export interface LolChatSocialPresencesSessionActivity {
 	actors: string[]
+	actorsKeys: string[]
 	location: string
+	locationKey: string
 	mode: string
+	modeKey: string
 	progress: LolChatSocialPresencesSessionActivityProgress
 	spectate: string
 }
@@ -4820,10 +4835,10 @@ export interface LolChatSocialPresencesSessionCrossPlayPermissions {
 }
 
 export interface LolChatSocialPresencesSessionParty {
+	actions: string[]
 	/** @format uint64 */
 	currentSize: number
 	id: string
-	join: string
 	/** @format uint64 */
 	maxSize: number
 }
@@ -4874,7 +4889,7 @@ export interface LolChatSocialV4DiscordInfo {
 }
 
 export interface LolChatSocialV4Friend {
-	activity?: string
+	activity?: LolChatSocialPresencesSessionActivity
 	crossPlayPermissions: LolChatSocialV4CrossPlayPermissions
 	displayGroup: string
 	gameName: string
@@ -8597,6 +8612,7 @@ export interface LolEventHubGrantorDescription {
 
 export interface LolEventHubGroup {
 	id: string
+	schemaVersion: string
 	productId: string
 	name: string
 	repeat: LolEventHubRepeat
@@ -8925,6 +8941,8 @@ export interface LolEventHubMilestone {
 	/** @format int64 */
 	triggerValue: number
 	properties: Record<string, string>
+	triggers: LolEventHubTrigger[]
+	triggerRequirement: string
 }
 
 export interface LolEventHubMilestoneInstance {
@@ -12449,6 +12467,7 @@ export interface LolLobbyPartyNotificationEnvelopeDto {
 }
 
 export interface LolLobbyPartyPresenceData {
+	agsActivityId: string
 	partyId: string
 	/** @format int32 */
 	queueId: number
@@ -13213,6 +13232,7 @@ export interface LolLootGrantorDescription {
 
 export interface LolLootGroup {
 	id: string
+	schemaVersion: string
 	productId: string
 	name: string
 	repeat: LolLootRepeat
@@ -13468,6 +13488,8 @@ export interface LolLootMilestone {
 	/** @format int64 */
 	triggerValue: number
 	properties: Record<string, string>
+	triggers: LolLootTrigger[]
+	triggerRequirement: string
 }
 
 export interface LolLootMilestoneInstance {
@@ -18298,6 +18320,7 @@ export interface LolProgressionEntityInstance {
 
 export interface LolProgressionGroup {
 	id: string
+	schemaVersion: string
 	productId: string
 	name: string
 	repeat: LolProgressionRepeat
@@ -18313,6 +18336,8 @@ export interface LolProgressionMilestone {
 	/** @format int64 */
 	triggerValue: number
 	properties: Record<string, string>
+	triggers: LolProgressionTrigger[]
+	triggerRequirement: string
 }
 
 export interface LolProgressionMilestoneInstance {
@@ -20343,6 +20368,7 @@ export interface LolRewardTrackGrantorDescription {
 
 export interface LolRewardTrackGroup {
 	id: string
+	schemaVersion: string
 	productId: string
 	name: string
 	repeat: LolRewardTrackRepeat
@@ -20363,6 +20389,8 @@ export interface LolRewardTrackMilestone {
 	/** @format int64 */
 	triggerValue: number
 	properties: Record<string, string>
+	triggers: LolRewardTrackTrigger[]
+	triggerRequirement: string
 }
 
 export interface LolRewardTrackMilestoneInstance {
@@ -24296,6 +24324,7 @@ export interface LolTftPassGrantorDescription {
 
 export interface LolTftPassGroup {
 	id: string
+	schemaVersion: string
 	productId: string
 	name: string
 	repeat: LolTftPassRepeat
@@ -24530,6 +24559,8 @@ export interface LolTftPassMilestone {
 	/** @format int64 */
 	triggerValue: number
 	properties: Record<string, string>
+	triggers: LolTftPassTrigger[]
+	triggerRequirement: string
 }
 
 export interface LolTftPassMilestoneInstance {
@@ -26011,6 +26042,7 @@ export interface LolTftTrovesGameDataTrovesBannerTableEntry {
 
 export interface LolTftTrovesGroup {
 	id: string
+	schemaVersion: string
 	productId: string
 	name: string
 	repeat: LolTftTrovesRepeat
@@ -26068,6 +26100,8 @@ export interface LolTftTrovesMilestone {
 	/** @format int64 */
 	triggerValue: number
 	properties: Record<string, string>
+	triggers: LolTftTrovesTrigger[]
+	triggerRequirement: string
 }
 
 export interface LolTftTrovesMilestoneInstance {
