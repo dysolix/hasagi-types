@@ -1035,6 +1035,9 @@ export interface LCUEndpoints {
 	"/lol-game-client-chat/v2/muted-players": {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
+	"/lol-game-client-chat/v3/muted-players": {
+		get: { path: never, params: never, body: never, response: string[] }
+	},
 	"/lol-game-data-inventory/v1/items/contentIds": {
 		get: { path: never, params: never, body: never, response: Record<string, unknown> }
 	},
