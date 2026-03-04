@@ -559,7 +559,6 @@ export interface ChemtechShoppe_PrerequisiteDto {
 	requiredQuantity: number
 	/** @format int64 */
 	ownedQuantity: number
-	catalogEntry: unknown
 	milestoneId: string
 }
 
@@ -944,7 +943,6 @@ export interface ChemtechShoppeV2_PrerequisiteDto {
 	requiredQuantity: number
 	/** @format int64 */
 	ownedQuantity: number
-	catalogEntry: unknown
 	milestoneId: string
 }
 
@@ -4652,6 +4650,7 @@ export interface LolChatParticipantList {
 }
 
 export interface LolChatPartyPresenceData {
+	isPartyOpen: boolean
 	agsActivityId: string
 	partyId: string
 	/** @format int32 */
@@ -5544,6 +5543,11 @@ export interface LolClashReadyCheckInfo {
 	isAcceptSuccessful: boolean
 	acceptError: string
 	readyCheckResource: LolClashMatchmakingReadyCheckResource
+}
+
+export interface LolClashRegionLocale {
+	region: string
+	locale: string
 }
 
 export interface LolClashRegisteredRosterNotification {
@@ -9673,6 +9677,7 @@ export interface LolEventHubTransactionResponseDTO {
 export interface LolEventHubTrigger {
 	type: string
 	counterId: string
+	entitlementItemId: string
 	/** @format uint64 */
 	triggerValue: number
 }
@@ -10798,6 +10803,7 @@ export interface LolHovercardHovercardUserInfo {
 }
 
 export interface LolHovercardPartyInfo {
+	isPartyOpen: boolean
 	summoners?: number[]
 	summonerPuuids?: string[]
 }
@@ -12484,6 +12490,7 @@ export interface LolLobbyPartyNotificationEnvelopeDto {
 }
 
 export interface LolLobbyPartyPresenceData {
+	isPartyOpen: boolean
 	agsActivityId: string
 	partyId: string
 	/** @format int32 */
@@ -13937,6 +13944,7 @@ export interface LolLootTFTMapSkinGroupedViewModel {
 export interface LolLootTrigger {
 	type: string
 	counterId: string
+	entitlementItemId: string
 	/** @format uint64 */
 	triggerValue: number
 }
@@ -17480,6 +17488,11 @@ export interface LolPerksRecommendedPositionsMapResource {
 	recommendedPositions: string[]
 }
 
+export interface LolPerksRegionLocale {
+	region: string
+	locale: string
+}
+
 export interface LolPerksRuneRecommendationGDSResource {
 	position: string
 	/** @format int32 */
@@ -18081,6 +18094,22 @@ export interface LolPlayerReportSenderPlayerReport {
 	comment: string
 }
 
+export interface LolPlayerReportSenderPlayerReportingUnsignedConversationContext {
+	conversationId: string
+	conversationType: string
+}
+
+export interface LolPlayerReportSenderPlayerReportingUnsignedPlayerReportV1 {
+	offenderId: string
+	categories: string[]
+	location: string
+	comment: string
+	conversationContext?: LolPlayerReportSenderPlayerReportingUnsignedConversationContext
+	unstructuredContext?: unknown
+	/** @format uint64 */
+	incidentTimestampMillis?: number
+}
+
 export interface LolPlayerReportSenderSummoner {
 	/** @format uint64 */
 	summonerId: number
@@ -18103,9 +18132,11 @@ export interface LolPreEndOfGameSequenceEvent {
 
 export interface LolPremadeVoiceAccountSettingsCategoryDataResource {
 	autoJoin: boolean
+	teamVoiceEnabled: boolean
 	muteOnConnect: boolean
 	inputMode: LolPremadeVoiceInputMode
 	pushToTalkKey: string
+	pushToTalkTeamKey: string
 	showFirstExperienceInLCU: boolean
 	showFirstExperienceInGame: boolean
 }
@@ -18261,6 +18292,11 @@ export interface LolPremadeVoicePushToTalkResource {
 	pttKeyBinding?: string
 }
 
+export interface LolPremadeVoiceRegionLocale {
+	region: string
+	locale: string
+}
+
 export interface LolPremadeVoiceSessionResource {
 	id: string
 	status: LolPremadeVoiceSessionStatus
@@ -18284,11 +18320,13 @@ export interface LolPremadeVoiceSettingsResource {
 	localMicMuted: boolean
 	loopbackEnabled: boolean
 	autoJoin: boolean
+	teamVoiceEnabled: boolean
 	muteOnConnect: boolean
 	vadActive: boolean
 	pttActive: boolean
 	inputMode: LolPremadeVoiceInputMode
 	pttKey?: string
+	pushToTalkTeamKey: string
 }
 
 export interface LolPremadeVoiceStateResource {
@@ -18398,6 +18436,7 @@ export interface LolProgressionRepeatGroupTrigger {
 export interface LolProgressionTrigger {
 	type: string
 	counterId: string
+	entitlementItemId: string
 	/** @format uint64 */
 	triggerValue: number
 }
@@ -20253,6 +20292,11 @@ export interface LolReplaysInstallPaths {
 
 export type LolReplaysMetadataState = "error" | "unsupported" | "lost" | "retryDownload" | "missingOrExpired" | "incompatible" | "downloading" | "download" | "watch" | "found" | "checking"
 
+export interface LolReplaysRegionLocale {
+	region: string
+	locale: string
+}
+
 export interface LolReplaysReplayContextData {
 	componentType: string
 }
@@ -20708,6 +20752,7 @@ export interface LolRewardTrackTrackProgressNextReward {
 export interface LolRewardTrackTrigger {
 	type: string
 	counterId: string
+	entitlementItemId: string
 	/** @format uint64 */
 	triggerValue: number
 }
@@ -25233,6 +25278,7 @@ export interface LolTftPassTransactionResponseDTO {
 export interface LolTftPassTrigger {
 	type: string
 	counterId: string
+	entitlementItemId: string
 	/** @format uint64 */
 	triggerValue: number
 }
@@ -26442,6 +26488,7 @@ export interface LolTftTrovesTraKeyName {
 export interface LolTftTrovesTrigger {
 	type: string
 	counterId: string
+	entitlementItemId: string
 	/** @format uint64 */
 	triggerValue: number
 }
@@ -29524,6 +29571,8 @@ export interface TeamBuilderDirect_Queue {
 	removalFromGameAllowed: boolean
 	/** @format int32 */
 	removalFromGameDelayMinutes: number
+	isCustom: boolean
+	isBotHonoringAllowed: boolean
 }
 
 export type TeamBuilderDirect_QueueAvailability = "DoesntMeetRequirements" | "PlatformDisabled" | "Available"

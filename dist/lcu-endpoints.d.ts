@@ -216,6 +216,7 @@ export interface LCUEndpoints {
 		delete: { path: never, params: never, body: never, response: unknown }
 	},
 	"/lol-premade-voice/v1/session": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolPremadeVoiceSessionResource }
 		post: { path: never, params: never, body: never, response: void }
 		delete: { path: never, params: never, body: never, response: void }
 	},
@@ -685,6 +686,9 @@ export interface LCUEndpoints {
 	"/lol-chat/v1/friends": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChatFriendResource[] }
 	},
+	"/lol-chat/v1/is-discord-integration-enabled": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
 	"/lol-chat/v1/is-discord-link-available": {
 		get: { path: never, params: never, body: never, response: boolean }
 	},
@@ -1017,20 +1021,8 @@ export interface LCUEndpoints {
 	"/lol-event-mission/v1/event-mission": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftEventTFTEventMissionChains[] }
 	},
-	"/lol-game-client-chat/v1/buddies": {
-		get: { path: never, params: never, body: never, response: string[] }
-	},
-	"/lol-game-client-chat/v1/ignored-summoners": {
-		get: { path: never, params: never, body: never, response: number[] }
-	},
-	"/lol-game-client-chat/v1/muted-summoners": {
-		get: { path: never, params: never, body: never, response: number[] }
-	},
 	"/lol-game-client-chat/v2/buddies": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolGameClientChatBuddy[] }
-	},
-	"/lol-game-client-chat/v2/ignored-players": {
-		get: { path: never, params: never, body: never, response: number[] }
 	},
 	"/lol-game-client-chat/v2/muted-players": {
 		get: { path: never, params: never, body: never, response: number[] }
@@ -1933,6 +1925,10 @@ export interface LCUEndpoints {
 	"/lol-player-preferences/v1/preference/{type}": {
 		get: { path: [type: string], params: never, body: never, response: unknown }
 	},
+	"/lol-player-report-sender/v1/direct-message-reports": {
+		get: { path: never, params: never, body: never, response: string[] }
+		post: { path: never, params: never, body: LCUTypes.LolPlayerReportSenderPlayerReport, response: unknown }
+	},
 	"/lol-player-report-sender/v1/game-ids-with-verbal-abuse-report": {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
@@ -1966,6 +1962,9 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPremadeVoiceSettingsResource }
 	},
 	"/lol-progression/v1/groups/{groupId}/configuration": {
+		get: { path: [groupId: string], params: never, body: never, response: LCUTypes.LolProgressionGroup }
+	},
+	"/lol-progression/v1/groups/{groupId}/configuration-v1-schema": {
 		get: { path: [groupId: string], params: never, body: never, response: LCUTypes.LolProgressionGroup }
 	},
 	"/lol-progression/v1/groups/{groupId}/instanceData": {
@@ -2689,6 +2688,9 @@ export interface LCUEndpoints {
 	"/performance/v1/memory": {
 		get: { path: never, params: never, body: never, response: unknown }
 	},
+	"/performance/v1/quickstats": {
+		get: { path: never, params: never, body: never, response: unknown }
+	},
 	"/performance/v1/report": {
 		get: { path: never, params: never, body: never, response: unknown[] }
 	},
@@ -3165,9 +3167,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-event-hub/v1/purchase-item": {
 		post: { path: never, params: never, body: LCUTypes.LolEventHubItemOrderDTO, response: LCUTypes.LolEventHubPurchaseOrderResponseDTO }
-	},
-	"/lol-game-client-chat/v1/instant-messages": {
-		post: { path: never, params: { "summonerName": string, "message": string }, body: never, response: void }
 	},
 	"/lol-game-client-chat/v2/instant-messages": {
 		post: { path: never, params: never, body: LCUTypes.LolGameClientChatMessageToPlayer, response: void }
