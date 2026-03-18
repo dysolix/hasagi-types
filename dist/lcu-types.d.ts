@@ -560,6 +560,7 @@ export interface ChemtechShoppe_PrerequisiteDto {
 	/** @format int64 */
 	ownedQuantity: number
 	milestoneId: string
+	catalogEntryId: string
 }
 
 export interface ChemtechShoppe_PurchaseDto {
@@ -691,6 +692,7 @@ export interface ChemtechShoppe_StoreDto {
 	startTime: string
 	endTime: string
 	rotatingStoreMetadata: ChemtechShoppe_RotatingStoreMetadataDto
+	prerequisiteCatalogEntries: ChemtechShoppe_CatalogEntryDto[]
 }
 
 export interface ChemtechShoppe_StoreResponseDto {
@@ -944,6 +946,7 @@ export interface ChemtechShoppeV2_PrerequisiteDto {
 	/** @format int64 */
 	ownedQuantity: number
 	milestoneId: string
+	catalogEntryId: string
 }
 
 export interface ChemtechShoppeV2_PurchaseDto {
@@ -1075,6 +1078,7 @@ export interface ChemtechShoppeV2_StoreDto {
 	startTime: string
 	endTime: string
 	rotatingStoreMetadata: ChemtechShoppeV2_RotatingStoreMetadataDto
+	prerequisiteCatalogEntries: ChemtechShoppeV2_CatalogEntryDto[]
 }
 
 export interface ChemtechShoppeV2_StoresResponseDto {
@@ -4852,6 +4856,7 @@ export interface LolChatSocialPresencesSessionParty {
 	id: string
 	/** @format uint64 */
 	maxSize: number
+	platforms: string[]
 }
 
 export interface LolChatSocialPresencesSessionPlayer {
@@ -11643,6 +11648,14 @@ export interface LolLobbyAccountIdAndSummonerId {
 	summonerId: number
 }
 
+export interface LolLobbyAgsSharedJoinCodeDto {
+	/** @format int64 */
+	expiresAt: number
+	isActive: boolean
+	joinCode: string
+	smartUrl: string
+}
+
 export interface LolLobbyAmbassadorMessage {
 	/** @format int32 */
 	httpStatus: number
@@ -15789,215 +15802,6 @@ export interface LolModeProgressionLoadoutsSlot {
 	inventoryType: string
 	/** @format int32 */
 	itemId: number
-}
-
-export interface LolNachoBannerOddsInfo {
-	id: string
-	name: string
-	productId: string
-	rewardTables: LolNachoNachoRollRewardsTable[]
-	endDateMilis: string
-	bundledMythicEssence: boolean
-}
-
-export interface LolNachoBlessingTokenPurchaseRequest {
-	/** @format uint32 */
-	quantity: number
-}
-
-export interface LolNachoCapCounterData {
-	/** @format uint32 */
-	amount: number
-	/** @format uint32 */
-	version: number
-	active: boolean
-	lastModifiedDate: string
-}
-
-export interface LolNachoCapDropsDropTableDisplayMetadata {
-	/** @format uint8 */
-	version: number
-	oddsTree: LolNachoDropsOddsTreeNodeDTO
-	endDateMilis: string
-	bundledMythicEssence: boolean
-}
-
-export interface LolNachoCatalogItemPurchaseRequest {
-	storeId: string
-	catalogEntryId: string
-	/** @format uint32 */
-	quantity: number
-	paymentOptions: string[]
-	customInventoryLocation: string
-}
-
-export interface LolNachoDropsOddsTreeNodeDTO {
-	nodeId: string
-	/** @format float */
-	odds: number
-	children: LolNachoDropsOddsTreeNodeDTO[]
-	fallbackChildren: LolNachoDropsOddsTreeNodeDTO[]
-	itemInstanceId: string
-	type: string
-	parentItemInstanceId: string
-	capWalletCurrencyId: string
-	/** @format uint32 */
-	priority: number
-	/** @format uint32 */
-	quantity: number
-}
-
-export interface LolNachoGameDataBannerSkin {
-	/** @format uint32 */
-	id: number
-	name: string
-	rarity: string
-}
-
-export interface LolNachoGameDataNachoBanner {
-	id: string
-	chasePityCounter: LolNachoGameDataPityCounter
-	/** @format uint32 */
-	chasePityThreshold: number
-	/** @format uint32 */
-	highlightPityThreshold: number
-	bannerBackgroundTexture: string
-	bannerBackgroundParallax: string
-	bannerChaseAnimationWebmPath: string
-	bannerChaseAnimationParallax: string
-	rollVignetteSkinIntroWebmPath: string
-	rollVignetteSkinIntroSfxPath: string
-	chaseCelebrationIntroWebmPath: string
-	chaseCelebrationVo: LolNachoGameDataNachoBannerVo
-	hubIntroVo: LolNachoGameDataNachoBannerVo
-	rollVignette: LolNachoNachoVignette
-	bannerSkin: LolNachoGameDataBannerSkin
-	bannerCurrency: LolNachoGameDataNachoCurrency
-}
-
-export interface LolNachoGameDataNachoBannerVo {
-	path: string
-	/** @format uint32 */
-	defaultDelayMillis: number
-	localeOverrides: LolNachoGameDataNachoBannerVoOverrideOptions[]
-}
-
-export interface LolNachoGameDataNachoBannerVoOverrideOptions {
-	locale: string
-	/** @format uint32 */
-	delayMillis: number
-}
-
-export interface LolNachoGameDataNachoCurrency {
-	id: string
-	name: string
-	currencyId: string
-	capCatalogEntryId: string
-}
-
-export interface LolNachoGameDataNachoReward {
-	itemInstanceId: string
-	translatedName: string
-	/** @format uint32 */
-	id: number
-	/** @format uint32 */
-	quantity: number
-}
-
-export interface LolNachoGameDataPityCounter {
-	id: string
-	name: string
-}
-
-export interface LolNachoGipItem {
-	/** @format uint32 */
-	gipItemId: number
-}
-
-export interface LolNachoNachoBannersResponse {
-	id: string
-	bannerBackgroundTexture: string
-	bannerBackgroundParallax: string
-	bannerChaseAnimationWebmPath: string
-	bannerChaseAnimationParallax: string
-	chasePityCounter: LolNachoGameDataPityCounter
-	/** @format uint32 */
-	chasePityThreshold: number
-	/** @format uint32 */
-	highlightPityThreshold: number
-	rollVignetteSkinIntroWebmPath: string
-	rollVignetteSkinIntroSfxPath: string
-	chaseCelebrationIntroWebmPath: string
-	chaseCelebrationVo: LolNachoGameDataNachoBannerVo
-	hubIntroVo: LolNachoGameDataNachoBannerVo
-	rollVignette: LolNachoNachoVignette
-	bannerSkin: LolNachoGameDataBannerSkin
-	bannerCurrency: LolNachoGameDataNachoCurrency
-	capCatalogStoreId: string
-	capCatalogEntryId: string
-	pityCounter: LolNachoCapCounterData
-	/** @format int64 */
-	startDate: number
-	/** @format int64 */
-	endDate: number
-}
-
-export interface LolNachoNachoPurchaseResponse {
-	id: string
-	status: LolNachoNachoPurchaseResponseStatus
-	rollResults: LolNachoNachoRewardData[]
-}
-
-export type LolNachoNachoPurchaseResponseStatus = "Failure" | "Success" | "Pending" | "None"
-
-export interface LolNachoNachoRewardData {
-	/** @format float */
-	odds: number
-	itemInstanceId: string
-	translatedName: string
-	/** @format uint32 */
-	id: number
-	type: string
-	/** @format uint32 */
-	parentId: number
-	/** @format uint32 */
-	priority: number
-	isChaseItem: boolean
-	/** @format uint32 */
-	quantity: number
-}
-
-export interface LolNachoNachoRollRewardsTable {
-	/** @format float */
-	odds: number
-	translatedName: string
-	/** @format uint32 */
-	priority: number
-	children: LolNachoNachoRewardData[]
-	fallbackChildren: LolNachoNachoRewardData[]
-}
-
-export interface LolNachoNachoVignette {
-	introTierOneWebmPath: string
-	introTierOneMultiWebmPath: string
-	introTierTwoWebmPath: string
-	introTierTwoMultiWebmPath: string
-	introTierThreeWebmPath: string
-	introTierThreeMultiWebmPath: string
-}
-
-export interface LolNachoSanctumDisplayMetaData {
-	bannerId: string
-}
-
-export interface LolNachoSetActiveStoresRequest {
-	storeIds: string[]
-}
-
-export interface LolNachoStoreSanctumDisplayMetaData {
-	startDate: string
-	endDate: string
-	sanctum: LolNachoSanctumDisplayMetaData
 }
 
 export interface LolNpeRewardsAccountSettingsData {
@@ -22428,6 +22232,8 @@ export interface LolSuggestedPlayersSuggestedPlayersFriend {
 	summonerId: number
 	name: string
 	availability: string
+	product: string
+	relationshipOnRiot: string
 }
 
 export interface LolSuggestedPlayersSuggestedPlayersKudoedPlayer {
