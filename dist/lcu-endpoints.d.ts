@@ -133,8 +133,8 @@ export interface LCUEndpoints {
 		delete: { path: [summonerInternalName: string, botUuidToDelete: string, teamId: string], params: never, body: never, response: unknown }
 	},
 	"/lol-lobby/v2/ags/{activityId}/joinCode": {
-		get: { path: [activityId: string], params: never, body: never, response: string }
-		post: { path: [activityId: string], params: never, body: never, response: void }
+		get: { path: [activityId: string], params: never, body: never, response: LCUTypes.LolLobbyAgsSharedJoinCodeDto }
+		post: { path: [activityId: string], params: never, body: never, response: LCUTypes.LolLobbyAgsSharedJoinCodeDto }
 		delete: { path: [activityId: string], params: never, body: never, response: void }
 	},
 	"/lol-lobby/v2/lobby": {
@@ -1733,34 +1733,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-missions/v1/series": {
 		get: { path: never, params: never, body: never, response: LCUTypes.SeriesDTO[] }
-	},
-	"/lol-nacho/v1/banner/active": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoNachoBannersResponse }
-		post: { path: never, params: never, body: LCUTypes.LolNachoNachoBannersResponse, response: LCUTypes.LolNachoNachoBannersResponse }
-	},
-	"/lol-nacho/v1/banner-odds": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoBannerOddsInfo }
-	},
-	"/lol-nacho/v1/banners": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolNachoNachoBannersResponse[] }
-	},
-	"/lol-nacho/v1/counters/{counterId}": {
-		get: { path: [counterId: string], params: never, body: never, response: LCUTypes.LolNachoCapCounterData }
-	},
-	"/lol-nacho/v1/get-active-store-catalog": {
-		get: { path: never, params: never, body: never, response: LCUTypes.ChemtechShoppe_CatalogEntryDto[] }
-	},
-	"/lol-nacho/v1/get-current-catalog-item": {
-		get: { path: never, params: never, body: never, response: LCUTypes.ChemtechShoppe_CatalogEntryDto }
-	},
-	"/lol-nacho/v1/purchases/{purchaseId}": {
-		get: { path: [purchaseId: string], params: never, body: never, response: LCUTypes.LolNachoNachoPurchaseResponse }
-	},
-	"/lol-nacho/v1/ready": {
-		get: { path: never, params: never, body: never, response: boolean }
-	},
-	"/lol-nacho/v1/roll-purchase-enabled": {
-		get: { path: never, params: never, body: never, response: boolean }
 	},
 	"/lol-npe-rewards/v1/challenges/progress": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolNpeRewardsChallengesProgress }
@@ -3489,15 +3461,6 @@ export interface LCUEndpoints {
 	"/lol-missions/v1/force": {
 		post: { path: never, params: never, body: never, response: void }
 	},
-	"/lol-nacho/v1/purchase/blessing-token": {
-		post: { path: never, params: never, body: LCUTypes.LolNachoBlessingTokenPurchaseRequest, response: string }
-	},
-	"/lol-nacho/v1/purchase/roll": {
-		post: { path: never, params: never, body: LCUTypes.LolNachoBlessingTokenPurchaseRequest, response: string }
-	},
-	"/lol-nacho/v1/set-product-id": {
-		post: { path: never, params: never, body: never, response: void }
-	},
 	"/lol-npe-rewards/v1/challenges/opt": {
 		post: { path: never, params: never, body: never, response: void }
 	},
@@ -3562,6 +3525,9 @@ export interface LCUEndpoints {
 		post: { path: never, params: never, body: never, response: void }
 	},
 	"/lol-premade-voice/v1/gameClientUpdatedPTTKey": {
+		post: { path: never, params: never, body: string, response: void }
+	},
+	"/lol-premade-voice/v1/gameClientUpdatedTeamPTTKey": {
 		post: { path: never, params: never, body: string, response: void }
 	},
 	"/lol-premade-voice/v1/push-to-talk/check-available": {

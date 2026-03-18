@@ -1,7 +1,7 @@
 {
   "name": "@hasagi/types",
-  "version": "16.5.1",
-  "_clientVersion": "16.5.750.9519",
+  "version": "16.6.1",
+  "_clientVersion": "16.6.753.8272",
   "description": "This package contains auto-generated LCU types and endpoints.",
   "scripts": {
     "update-deps": "npm i @hasagi/core@latest @hasagi/schema@latest @hasagi/cli@latest axios@latest -d",
