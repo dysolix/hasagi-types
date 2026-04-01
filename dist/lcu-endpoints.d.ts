@@ -670,6 +670,9 @@ export interface LCUEndpoints {
 	"/lol-chat/v1/conversations/notify": {
 		get: { path: never, params: never, body: never, response: string }
 	},
+	"/lol-chat/v1/discord-link-status": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolChatDiscordLink }
+	},
 	"/lol-chat/v1/errors": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChatErrorResource[] }
 	},

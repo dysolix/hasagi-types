@@ -4269,9 +4269,9 @@ export interface LolChatDebugResource {
 
 export interface LolChatDiscordLink {
 	available: boolean
-	linked: boolean
 	visible: boolean
-	error: string
+	linked: boolean
+	error?: string
 }
 
 export interface LolChatEndOfGamePlayer {
@@ -7732,6 +7732,11 @@ export interface LolEndOfGameGameflowSession {
 	gameData: LolEndOfGameGameflowGameData
 }
 
+export interface LolEndOfGameInstallPaths {
+	gameInstallRoot: string
+	gameExecutablePath: string
+}
+
 export interface LolEndOfGameLobbyInvitation {
 	state: string
 }
@@ -8923,6 +8928,8 @@ export interface LolEventHubLoyaltyRewards {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -8943,6 +8950,8 @@ export interface LolEventHubLoyaltyRewardsSimplified {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -9090,6 +9099,10 @@ export interface LolEventHubPlayerSettingsData {
 
 export interface LolEventHubPlayerSettingsDataMap {
 	playerSettingsDataMap: Record<string, LolEventHubPlayerSettingsData>
+}
+
+export interface LolEventHubPremiumEntitlement {
+	contentId: string
 }
 
 export interface LolEventHubPriceDetail {
@@ -9297,7 +9310,7 @@ export interface LolEventHubRewardTrack {
 
 export interface LolEventHubRewardTrackConfiguration {
 	id: string
-	premiumEntitlementId: string
+	premiumEntitlement: LolEventHubPremiumEntitlement
 }
 
 export interface LolEventHubRewardTrackError {
@@ -11038,6 +11051,8 @@ export interface LolInventoryLoyaltyRewards {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -11058,6 +11073,8 @@ export interface LolInventoryLoyaltyRewardsSimplified {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -11934,7 +11951,7 @@ export interface LolLobbyInventoryItem {
 
 export type LolLobbyInvitationType = "party" | "lobby" | "invalid"
 
-export type LolLobbyInviteContext = "RIOT" | "DISCORD" | "LOL"
+export type LolLobbyInviteContext = "SELF_INVITE" | "RIOT" | "DISCORD" | "LOL"
 
 export interface LolLobbyJoinPartyAnalytics {
 	partyId: string
@@ -12479,6 +12496,8 @@ export interface LolLobbyPartyMemberDto {
 	gameMode?: LolLobbyGameModeDto
 	ready?: boolean
 	metadata: LolLobbyPartyMemberMetadataDto
+	inviteContext: LolLobbyInviteContext
+	invitedByPuuid?: string
 	/** @format uint64 */
 	invitedBySummonerId?: number
 	/** @format uint64 */
@@ -14020,6 +14039,8 @@ export interface LolLoyaltyLoyaltyRewards {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -14041,6 +14062,8 @@ export interface LolLoyaltyLoyaltyRewardsSimplified {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -15270,6 +15293,8 @@ export interface LolMetagamesLoyaltyRewards {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -15290,6 +15315,8 @@ export interface LolMetagamesLoyaltyRewardsSimplified {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -23254,6 +23281,8 @@ export interface LolTftEventPveLoyaltyRewards {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -23274,6 +23303,8 @@ export interface LolTftEventPveLoyaltyRewardsSimplified {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -24388,6 +24419,8 @@ export interface LolTftPassLoyaltyRewards {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -24408,6 +24441,8 @@ export interface LolTftPassLoyaltyRewardsSimplified {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -24512,6 +24547,10 @@ export interface LolTftPassPlayerNotification {
 	titleKey: string
 	type: string
 	iconUrl: string
+}
+
+export interface LolTftPassPremiumEntitlement {
+	contentId: string
 }
 
 export interface LolTftPassProgressInfoUIData {
@@ -24660,7 +24699,7 @@ export interface LolTftPassRewardTrack {
 
 export interface LolTftPassRewardTrackConfiguration {
 	id: string
-	premiumEntitlementId: string
+	premiumEntitlement: LolTftPassPremiumEntitlement
 }
 
 export interface LolTftPassRewardTrackError {
@@ -26863,6 +26902,8 @@ export interface LolYourshopLoyaltyRewards {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
@@ -26883,6 +26924,8 @@ export interface LolYourshopLoyaltyRewardsSimplified {
 	loyaltyTFTCompanionCount: number
 	/** @format int32 */
 	loyaltyTFTDamageSkinCount: number
+	/** @format int32 */
+	loyaltyTFTZoomSkinCount: number
 	loyaltySources: Record<string, boolean>
 }
 
