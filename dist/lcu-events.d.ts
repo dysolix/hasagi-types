@@ -56,7 +56,6 @@ export interface LCUWebSocketEvents {
 	"OnJsonApiEvent_lol-chat_v1_blocked-players": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-chat_v1_config": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-chat_v1_conversations": LCUTypes.PluginResourceEvent,
-	"OnJsonApiEvent_lol-chat_v1_errors": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-chat_v1_friend-counts": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-chat_v1_friend-groups": LCUTypes.PluginResourceEvent,
 	"OnJsonApiEvent_lol-chat_v1_friend-requests": LCUTypes.PluginResourceEvent,
