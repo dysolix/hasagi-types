@@ -1057,12 +1057,6 @@ export interface LCUEndpoints {
 	"/lol-game-queues/v1/custom-non-default": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolGameQueuesQueueCustomGame }
 	},
-	"/lol-game-queues/v1/game-type-config/{gameTypeConfigId}": {
-		get: { path: [gameTypeConfigId: number], params: never, body: never, response: LCUTypes.LolGameQueuesQueueGameTypeConfig }
-	},
-	"/lol-game-queues/v1/game-type-config/{gameTypeConfigId}/map/{mapId}": {
-		get: { path: [gameTypeConfigId: number, mapId: number], params: never, body: never, response: LCUTypes.LolGameQueuesQueueGameTypeConfig }
-	},
 	"/lol-game-queues/v1/matchmaking-queues": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolGameQueuesQueueTranslation[] }
 	},
@@ -3135,7 +3129,7 @@ export interface LCUEndpoints {
 		post: { path: never, params: { "eventType": string, "matchId": string }, body: never, response: void }
 	},
 	"/lol-event-hub/v1/events/{eventId}/purchase-offer": {
-		post: { path: [eventId: string], params: never, body: LCUTypes.LolEventHubPurchaseOfferRequest, response: LCUTypes.LolEventHubPurchaseOfferResponseV3 }
+		post: { path: [eventId: string], params: never, body: LCUTypes.LolEventHubPurchaseOfferRequest, response: void }
 	},
 	"/lol-event-hub/v1/events/{eventId}/reward-track/claim-all": {
 		post: { path: [eventId: string], params: never, body: never, response: void }

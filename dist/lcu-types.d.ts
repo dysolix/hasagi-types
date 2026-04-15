@@ -4725,16 +4725,9 @@ export interface LolChatQueue {
 	type: string
 	gameMode: string
 	isCustom: boolean
-	gameTypeConfig: LolChatQueueGameTypeConfig
 }
 
 export type LolChatQueueCustomGameSpectatorPolicy = "AllAllowed" | "FriendsAllowed" | "LobbyAllowed" | "NotAllowed"
-
-export interface LolChatQueueGameTypeConfig {
-	/** @format int64 */
-	id: number
-	name: string
-}
 
 export interface LolChatRankedQueueStats {
 	queueType: LolChatLeagueQueueType
@@ -5474,6 +5467,7 @@ export interface LolClashQueue {
 	queueAvailability: LolClashQueueAvailability
 	queueRewards: LolClashQueueReward
 	spectatorEnabled: boolean
+	pickMode: string
 }
 
 export type LolClashQueueAvailability = "DoesntMeetRequirements" | "PlatformDisabled" | "Available"
@@ -8379,6 +8373,22 @@ export interface LolEventHubCurrencyDTO {
 	subCurrencies: Record<string, number>
 }
 
+export interface LolEventHubDemaciaPass {
+	eventId: string
+	eventHubType: string
+	localizedName: string
+	navbarIconImage: string
+	startDate: string
+	progressEndDate: string
+	endDate: string
+	helpModalImage: string
+	objectiveBannerImage: string
+	eventPassBundlesCatalogEntry: LolEventHubCatalogEntry[]
+	rewardTrack: LolEventHubRewardTrack
+	tokenBankTrack: LolEventHubRewardTrack
+	tokenCurrency: LolEventHubLolCurrency
+}
+
 export interface LolEventHubDiscountPricingInfo {
 	/** @format int32 */
 	cost: number
@@ -8432,7 +8442,7 @@ export interface LolEventHubEventHubError {
 	errorId: string
 }
 
-export type LolEventHubEventHubType = "ActivityCenterMilestones" | "SeasonPass" | "HallOfLegends" | "EventShop"
+export type LolEventHubEventHubType = "DemaciaPass" | "ActivityCenterMilestones" | "SeasonPass" | "HallOfLegends" | "EventShop"
 
 export interface LolEventHubEventInfoUIData {
 	eventId: string
@@ -8907,6 +8917,10 @@ export interface LolEventHubLoginSession {
 
 export type LolEventHubLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
 
+export interface LolEventHubLolCurrency {
+	capCurrencyId: string
+}
+
 export interface LolEventHubLolInventoryType {
 	inventoryTypeId: string
 	capInventoryTypeId: string
@@ -9131,6 +9145,9 @@ export interface LolEventHubProgressionPurchaseUIData {
 	pricePerLevel: number
 	/** @format int64 */
 	rpBalance: number
+	/** @format int32 */
+	itemId: number
+	inventoryType: string
 }
 
 export interface LolEventHubPurchasableItem {
@@ -9165,6 +9182,11 @@ export interface LolEventHubPurchaseOfferRequest {
 	offerId: string
 	/** @format uint32 */
 	purchaseQuantity: number
+	/** @format int32 */
+	itemId: number
+	inventoryType: string
+	/** @format uint32 */
+	rpPrice: number
 }
 
 export interface LolEventHubPurchaseOfferRequestV3 {
@@ -10060,6 +10082,7 @@ export interface LolGameQueuesQueue {
 	numberOfTeamsInLobby: number
 	/** @format uint32 */
 	maxLobbySpectatorCount: number
+	pickMode: string
 }
 
 export type LolGameQueuesQueueAvailability = "DoesntMeetRequirements" | "PlatformDisabled" | "Available"
@@ -10150,6 +10173,7 @@ export interface LolGameQueuesQueueTranslation {
 	isBotHonoringAllowed: boolean
 	hidePlayerPosition: boolean
 	viableChampionRoster: number[]
+	pickMode: string
 }
 
 export interface LolGameSettingsLoginSession {
@@ -10359,6 +10383,7 @@ export interface LolGameflowQueue {
 	removalFromGameDelayMinutes: number
 	isCustom: boolean
 	isBotHonoringAllowed: boolean
+	pickMode: string
 }
 
 export type LolGameflowQueueAvailability = "DoesntMeetRequirements" | "PlatformDisabled" | "Available"
@@ -10781,6 +10806,7 @@ export interface LolHovercardFriendResult {
 	lol: Record<string, string>
 	discordOnlineStatus?: string
 	discordId?: string
+	relationshipOnRiot: string
 }
 
 export interface LolHovercardHovercardUserInfo {
@@ -10818,6 +10844,7 @@ export interface LolHovercardHovercardUserInfo {
 	lol: Record<string, string>
 	discordOnlineStatus?: string
 	discordId?: string
+	relationshipOnRiot: string
 }
 
 export interface LolHovercardPartyInfo {
@@ -12684,6 +12711,7 @@ export interface LolLobbyQueue {
 	numberOfTeamsInLobby: number
 	/** @format uint32 */
 	maxLobbySpectatorCount: number
+	pickMode: string
 }
 
 export type LolLobbyQueueAvailability = "DoesntMeetRequirements" | "PlatformDisabled" | "Available"
@@ -12776,6 +12804,7 @@ export interface LolLobbyReadyDto {
 
 export interface LolLobbyReceivedInvitationDto {
 	invitationId: string
+	fromPuuid: string
 	/** @format uint64 */
 	fromSummonerId: number
 	state: LolLobbyLobbyInvitationState
@@ -12784,6 +12813,7 @@ export interface LolLobbyReceivedInvitationDto {
 	canAcceptInvitation: boolean
 	restrictions: LolLobbyEligibilityRestriction[]
 	gameConfig: LolLobbyReceivedInvitationGameConfigDto
+	isSelfInvite: boolean
 	invitationType: LolLobbyInvitationType
 }
 
@@ -21252,7 +21282,6 @@ export interface LolSettingsLCUGameSettingsConfig {
 	SoundEnabled: boolean
 	InterfaceEnabled: boolean
 	GameplayEnabled: boolean
-	ReplaysEnabled: boolean
 }
 
 export interface LolSettingsLoginSession {
@@ -21270,10 +21299,6 @@ export type LolSettingsPublisher = "vng" | "twm" | "tencent" | "garena" | "riot"
 export interface LolSettingsRegionLocale {
 	region: string
 	locale: string
-}
-
-export interface LolSettingsReplaysConfig {
-	replayServiceEnabled: boolean
 }
 
 export interface LolSettingsSettingCategory {
@@ -24080,6 +24105,22 @@ export interface LolTftPassCurrencyDTO {
 	subCurrencies: Record<string, number>
 }
 
+export interface LolTftPassDemaciaPass {
+	eventId: string
+	eventHubType: string
+	localizedName: string
+	navbarIconImage: string
+	startDate: string
+	progressEndDate: string
+	endDate: string
+	helpModalImage: string
+	objectiveBannerImage: string
+	eventPassBundlesCatalogEntry: LolTftPassCatalogEntry[]
+	rewardTrack: LolTftPassRewardTrack
+	tokenBankTrack: LolTftPassRewardTrack
+	tokenCurrency: LolTftPassLolCurrency
+}
+
 export interface LolTftPassEndOfGameXp {
 	/** @format uint32 */
 	PER_WIN: number
@@ -24117,7 +24158,7 @@ export interface LolTftPassEventDetailsUIData {
 	actBackgroundImage: string
 }
 
-export type LolTftPassEventHubType = "ActivityCenterMilestones" | "SeasonPass" | "HallOfLegends" | "EventShop"
+export type LolTftPassEventHubType = "DemaciaPass" | "ActivityCenterMilestones" | "SeasonPass" | "HallOfLegends" | "EventShop"
 
 export interface LolTftPassEventInfoUIData {
 	eventId: string
@@ -24398,6 +24439,10 @@ export interface LolTftPassLoginSession {
 
 export type LolTftPassLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED" | "IN_PROGRESS"
 
+export interface LolTftPassLolCurrency {
+	capCurrencyId: string
+}
+
 export interface LolTftPassLolInventoryType {
 	inventoryTypeId: string
 	capInventoryTypeId: string
@@ -24565,12 +24610,20 @@ export interface LolTftPassProgressionPurchaseUIData {
 	pricePerLevel: number
 	/** @format int64 */
 	rpBalance: number
+	/** @format int32 */
+	itemId: number
+	inventoryType: string
 }
 
 export interface LolTftPassPurchaseOfferRequest {
 	offerId: string
 	/** @format uint32 */
 	purchaseQuantity: number
+	/** @format int32 */
+	itemId: number
+	inventoryType: string
+	/** @format uint32 */
+	rpPrice: number
 }
 
 export interface LolTftPassPurchaseOrderResponseDTO {
