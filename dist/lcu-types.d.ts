@@ -1656,6 +1656,7 @@ export interface GameQueuesLcdsGameQueueConfig {
 	numberOfTeamsInLobby: number
 	/** @format uint32 */
 	maxLobbySpectatorCount: number
+	teamVoiceEnabled: boolean
 }
 
 export interface GameflowLcdsGameDTO {
@@ -2233,11 +2234,6 @@ export interface LolActiveBoostsInventoryItemWithPayload {
 
 export type LolActiveBoostsItemOwnershipType = "F2P" | "LOYALTY" | "RENTED" | "OWNED"
 
-export interface LolActiveBoostsLoginDataPacket {
-	/** @format uint64 */
-	timeUntilFirstWinOfDay: number
-}
-
 export interface LolActiveBoostsLoyaltyRewardsSimplified {
 	/** @format int32 */
 	xpBoost: number
@@ -2512,6 +2508,8 @@ export interface LolCatalogCatalogItem {
 	prices: LolCatalogItemCost[]
 	releaseDate: string
 	sale?: LolCatalogSale
+	/** @format int32 */
+	duration?: number
 	subInventoryType?: string
 	tags?: string[]
 	iconUrl: string
@@ -2551,6 +2549,8 @@ export interface LolCatalogCatalogPluginItem {
 	metadata?: LolCatalogItemMetadataEntry[]
 	active: boolean
 	sale?: LolCatalogSale
+	/** @format int32 */
+	duration: number
 	questSkinInfo?: LolCatalogSkinLineInfo
 	offerId?: string
 }
@@ -8236,6 +8236,8 @@ export interface LolEventHubCatalogPluginItem {
 	/** @format uint64 */
 	inactiveDate: number
 	/** @format int32 */
+	duration: number
+	/** @format int32 */
 	maxQuantity: number
 	prices: LolEventHubCatalogPluginPrice[]
 	tags?: string[]
@@ -8836,6 +8838,8 @@ export interface LolEventHubItemDefinition {
 	assets: LolEventHubCatalogPluginItemAssets
 	tags: string[]
 	metadata: LolEventHubItemMetadataEntry[]
+	/** @format int32 */
+	duration: number
 	bundledItemPrice?: LolEventHubBundledItemPricingInfo
 	loyaltyUnlocked: boolean
 	hasVisibleLootOdds: boolean
@@ -8919,6 +8923,7 @@ export type LolEventHubLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED
 
 export interface LolEventHubLolCurrency {
 	capCurrencyId: string
+	lolCurrencyId: string
 }
 
 export interface LolEventHubLolInventoryType {
@@ -9050,7 +9055,12 @@ export interface LolEventHubObjectivesBanner {
 	eventName: string
 	promotionBannerImage: string
 	objectiveBannerImage: string
+	eventEndDate: string
+	eventProgressEndDate: string
 	isPassPurchased: boolean
+	/** @format int32 */
+	tokenBalance: number
+	token: LolEventHubLolCurrency
 	currentChapter: LolEventHubChapter
 	trackProgressNextReward: LolEventHubTrackProgressNextReward
 	trackProgress: LolEventHubTrackProgressNextReward
@@ -9989,10 +9999,6 @@ export interface LolGameDataInventoryLolInventoryType {
 	gipImage: string
 }
 
-export interface LolGameQueuesLoginDataPacket {
-	gameTypeConfigs: LolGameQueuesQueueGameTypeConfig[]
-}
-
 export interface LolGameQueuesLoginSession {
 	state: LolGameQueuesLoginSessionStates
 	/** @format uint64 */
@@ -10083,6 +10089,7 @@ export interface LolGameQueuesQueue {
 	/** @format uint32 */
 	maxLobbySpectatorCount: number
 	pickMode: string
+	teamVoiceEnabled: boolean
 }
 
 export type LolGameQueuesQueueAvailability = "DoesntMeetRequirements" | "PlatformDisabled" | "Available"
@@ -11407,10 +11414,6 @@ export interface LolLeagueSessionLeagueSessionTokenEnvelope {
 	logoutOnFailure: boolean
 }
 
-export interface LolLeaverBusterAllSummonerData {
-	summoner: LolLeaverBusterSummoner
-}
-
 export interface LolLeaverBusterLeaverBusterEntryDto {
 	puuid: string
 	tainted: boolean
@@ -11452,11 +11455,6 @@ export interface LolLeaverBusterLeaverBusterPenaltyResponse {
 }
 
 export type LolLeaverBusterLeaverPenaltyType = "QUEUE_LOCKOUT_TIMER" | "QUEUE_DELAY_TIMER" | "NO_PENALTY"
-
-export interface LolLeaverBusterLoginDataPacket {
-	allSummonerData: LolLeaverBusterAllSummonerData
-	simpleMessages: LolLeaverBusterSimpleMessage[]
-}
 
 export interface LolLeaverBusterMatchmakingSearchErrorResource {
 	/** @format int32 */
@@ -11520,21 +11518,6 @@ export interface LolLeaverBusterRestrictionInfoDto {
 	puuid: string
 	leaverBusterEntryDto: LolLeaverBusterLeaverBusterEntryDto
 	rankedRestrictionEntryDto: LolLeaverBusterRankedRestrictionEntryDto
-}
-
-export interface LolLeaverBusterSimpleMessage {
-	/** @format uint64 */
-	accountId: number
-	msgId: string
-	type: string
-	params: string[]
-}
-
-export interface LolLeaverBusterSummoner {
-	/** @format uint64 */
-	acctId: number
-	/** @format uint64 */
-	sumId: number
 }
 
 export type LolLicenseAgreementLicenseAgreementType = "TermsOfUse" | "PrivacyNotice"
@@ -12060,7 +12043,7 @@ export interface LolLobbyLobbyBotChampion {
 	botDifficulties: LolLobbyLobbyBotDifficulty[]
 }
 
-export type LolLobbyLobbyBotDifficulty = "RSWARMINTRO" | "RSINTERMEDIATE" | "RSBEGINNER" | "RSINTRO" | "INTRO" | "TUTORIAL" | "UBER" | "HARD" | "MEDIUM" | "EASY" | "NONE"
+export type LolLobbyLobbyBotDifficulty = "MLINTRO" | "RSDOOMBOTS" | "RSWARMINTRO" | "RSINTERMEDIATE" | "RSBEGINNER" | "RSINTRO" | "INTRO" | "TUTORIAL" | "UBER" | "HARD" | "MEDIUM" | "EASY" | "NONE"
 
 export interface LolLobbyLobbyBotParams {
 	/** @format int32 */
@@ -17678,6 +17661,12 @@ export interface LolPftPftEntitlementsIdToken {
 	token: string
 }
 
+export interface LolPftRsoIdToken {
+	token: string
+	/** @format uint64 */
+	expiry: number
+}
+
 export interface LolPftSummoner {
 	puuid: string
 	/** @format uint64 */
@@ -18055,6 +18044,7 @@ export interface LolPremadeVoiceFirstExperience {
 
 export interface LolPremadeVoiceGameEventHotkeys {
 	evtPushToTalk?: string
+	evtPushToTalkTeam?: string
 }
 
 export interface LolPremadeVoiceGameInputSettings {
@@ -18198,6 +18188,11 @@ export interface LolPremadeVoiceSummoner {
 	/** @format uint64 */
 	accountId: number
 	puuid: string
+}
+
+export interface LolPremadeVoiceVoiceAuthenticationRequest {
+	jwt: string
+	logoutAfterAllSessionsLeft: boolean
 }
 
 export interface LolPremadeVoiceVoiceAvailability {
@@ -18498,6 +18493,8 @@ export interface LolPurchaseWidgetCatalogPluginItem {
 	/** @format uint64 */
 	inactiveDate: number
 	/** @format int32 */
+	duration: number
+	/** @format int32 */
 	maxQuantity: number
 	prices: LolPurchaseWidgetCatalogPluginPrice[]
 	tags?: string[]
@@ -18614,6 +18611,8 @@ export interface LolPurchaseWidgetItemDefinition {
 	assets: LolPurchaseWidgetCatalogPluginItemAssets
 	tags: string[]
 	metadata: LolPurchaseWidgetItemMetadataEntry[]
+	/** @format int32 */
+	duration: number
 	bundledItemPrice?: LolPurchaseWidgetBundledItemPricingInfo
 	loyaltyUnlocked: boolean
 	hasVisibleLootOdds: boolean
@@ -21913,11 +21912,6 @@ export interface LolStoreAliasDetail {
 	new_value: string
 }
 
-export interface LolStoreAllSummonerData {
-	summoner: LolStoreSummoner
-	summonerLevelAndPoints: LolStoreSummonerLevelAndPoints
-}
-
 export interface LolStoreBundleItemDTO {
 	inventoryType: string
 	/** @format int32 */
@@ -21990,6 +21984,8 @@ export interface LolStoreCatalogItem {
 	prices?: LolStoreItemCost[]
 	releaseDate?: string
 	sale?: LolStoreSale
+	/** @format int32 */
+	duration?: number
 	subInventoryType?: string
 	tags?: string[]
 	itemRequirements?: LolStoreItemKey[]
@@ -22088,7 +22084,6 @@ export interface LolStoreItemSale {
 }
 
 export interface LolStoreLoginDataPacket {
-	allSummonerData: LolStoreAllSummonerData
 	simpleMessages: LolStoreSimpleDialogMessage[]
 }
 
@@ -22203,18 +22198,6 @@ export interface LolStoreSimpleDialogMessage {
 
 export interface LolStoreStoreStatus {
 	storefrontIsRunning: boolean
-}
-
-export interface LolStoreSummoner {
-	/** @format uint64 */
-	acctId: number
-	/** @format uint64 */
-	sumId: number
-}
-
-export interface LolStoreSummonerLevelAndPoints {
-	/** @format uint32 */
-	summonerLevel: number
 }
 
 export interface LolStoreTransactionResponseDTO {
@@ -24441,6 +24424,7 @@ export type LolTftPassLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED"
 
 export interface LolTftPassLolCurrency {
 	capCurrencyId: string
+	lolCurrencyId: string
 }
 
 export interface LolTftPassLolInventoryType {
@@ -24563,7 +24547,12 @@ export interface LolTftPassObjectivesBanner {
 	eventName: string
 	promotionBannerImage: string
 	objectiveBannerImage: string
+	eventEndDate: string
+	eventProgressEndDate: string
 	isPassPurchased: boolean
+	/** @format int32 */
+	tokenBalance: number
+	token: LolTftPassLolCurrency
 	currentChapter: LolTftPassChapter
 	trackProgressNextReward: LolTftPassTrackProgressNextReward
 	trackProgress: LolTftPassTrackProgressNextReward

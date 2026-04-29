@@ -1,7 +1,7 @@
 {
   "name": "@hasagi/types",
-  "version": "16.8.1",
-  "_clientVersion": "16.8.765.5537",
+  "version": "16.9.1",
+  "_clientVersion": "16.9.769.5709",
   "description": "This package contains auto-generated LCU types and endpoints.",
   "scripts": {
     "update-deps": "npm i @hasagi/core@latest @hasagi/schema@latest @hasagi/cli@latest axios@latest -d",
@@ -15,9 +15,9 @@
   "license": "MIT",
   "devDependencies": {
     "@hasagi/cli": "^0.9.9",
-    "@hasagi/core": "^0.6.9",
+    "@hasagi/core": "^0.6.11",
     "@hasagi/schema": "^0.7.0",
-    "axios": "^1.15.0"
+    "axios": "^1.15.2"
   },
   "types": "./dist/index.d.ts",
   "repository": {
