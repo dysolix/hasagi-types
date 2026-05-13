@@ -53,9 +53,9 @@ export interface LCUEndpoints {
 		post: { path: never, params: never, body: LCUTypes.LolChatPlayerMuteUpdate, response: unknown }
 		delete: { path: never, params: never, body: never, response: unknown }
 	},
-	"/lol-chat/v2/friend-requests/{id}": {
-		put: { path: [id: string], params: never, body: LCUTypes.LolChatFriendRequestResource, response: unknown }
-		delete: { path: [id: string], params: never, body: never, response: unknown }
+	"/lol-chat/v2/friend-requests/{puuid}": {
+		put: { path: [puuid: string], params: never, body: LCUTypes.LolChatFriendRequestResource, response: unknown }
+		delete: { path: [puuid: string], params: never, body: never, response: unknown }
 	},
 	"/lol-clash/v1/voice": {
 		post: { path: never, params: never, body: never, response: unknown }
@@ -529,6 +529,9 @@ export interface LCUEndpoints {
 	"/lol-champ-select/v1/all-grid-champions": {
 		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_ChampGridChampion[] }
 	},
+	"/lol-champ-select/v1/aw-set": {
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_AwSet }
+	},
 	"/lol-champ-select/v1/bannable-champion-ids": {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
@@ -661,11 +664,15 @@ export interface LCUEndpoints {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChatConversationResource[] }
 		post: { path: never, params: never, body: LCUTypes.LolChatConversationResource, response: LCUTypes.LolChatConversationResource }
 	},
-	"/lol-chat/v1/conversations/{id}/participants": {
-		get: { path: [id: string], params: never, body: never, response: LCUTypes.LolChatUserResource[] }
+	"/lol-chat/v1/conversations/{cid}/participants": {
+		get: { path: [cid: string], params: never, body: never, response: LCUTypes.LolChatUserResource[] }
+		post: { path: [cid: string], params: never, body: LCUTypes.LolChatUserResource, response: unknown }
 	},
-	"/lol-chat/v1/conversations/{id}/participants/{pid}": {
-		get: { path: [id: string, pid: string], params: never, body: never, response: LCUTypes.LolChatUserResource }
+	"/lol-chat/v1/conversations/{cid}/participants/{pid}": {
+		get: { path: [cid: string, pid: string], params: never, body: never, response: LCUTypes.LolChatUserResource }
+	},
+	"/lol-chat/v1/conversations/{id}/messages/{mid}": {
+		get: { path: [id: string, mid: string], params: never, body: never, response: LCUTypes.LolChatConversationMessageResource }
 	},
 	"/lol-chat/v1/conversations/notify": {
 		get: { path: never, params: never, body: never, response: string }
@@ -701,6 +708,12 @@ export interface LCUEndpoints {
 	"/lol-chat/v1/me": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChatUserResource }
 		put: { path: never, params: never, body: LCUTypes.LolChatUserResource, response: LCUTypes.LolChatUserResource }
+	},
+	"/lol-chat/v1/obfuscated-puuids": {
+		get: { path: never, params: never, body: never, response: string[] }
+	},
+	"/lol-chat/v1/obfuscated-summoner-ids": {
+		get: { path: never, params: never, body: never, response: number[] }
 	},
 	"/lol-chat/v1/resources": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolChatProductMetadataMap }
@@ -926,6 +939,9 @@ export interface LCUEndpoints {
 	"/lol-email-verification/v1/email": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolEmailVerificationEmailVerificationSession }
 		put: { path: never, params: never, body: LCUTypes.LolEmailVerificationEmailUpdate, response: unknown }
+	},
+	"/lol-email-verification/v1/email/email-verification-status": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolEmailVerificationUserInfoEmailStatus }
 	},
 	"/lol-end-of-game/v1/champion-mastery-updates": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolEndOfGameChampionMasteryUpdate }
@@ -1358,6 +1374,9 @@ export interface LCUEndpoints {
 	"/lol-loadouts/v4/loadouts/scope/{scope}/{scopeItemId}": {
 		get: { path: [scope: string, scopeItemId: number], params: never, body: never, response: LCUTypes.LolLoadoutsScopedLoadout[] }
 	},
+	"/lol-lobby-team-builder/champ-select/v1/aw-set": {
+		get: { path: never, params: never, body: never, response: LCUTypes.TeamBuilderDirect_AwSet }
+	},
 	"/lol-lobby-team-builder/champ-select/v1/bannable-champion-ids": {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
@@ -1541,9 +1560,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-login/v1/login-queue-state": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLoginLoginQueue }
-	},
-	"/lol-login/v1/wallet": {
-		get: { path: never, params: never, body: never, response: LCUTypes.LolLoginLoginSessionWallet }
 	},
 	"/lol-login/v2/league-session-init-token": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolLoginLeagueSessionTokenEnvelope }
@@ -1767,6 +1783,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-objectives/v1/ready": {
 		get: { path: never, params: never, body: never, response: boolean }
+	},
+	"/lol-parental-controls/v1/status": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolParentalControlsParentalControlsStatus }
 	},
 	"/lol-patch/v1/checking-enabled": {
 		get: { path: never, params: never, body: never, response: boolean }
@@ -3398,9 +3417,6 @@ export interface LCUEndpoints {
 	"/lol-lobby/v3/lobby/members/{puuid}/revoke-invite": {
 		post: { path: [puuid: string], params: never, body: never, response: string }
 	},
-	"/lol-login/v1/change-summoner-name": {
-		post: { path: never, params: never, body: string, response: unknown }
-	},
 	"/lol-login/v1/delete-rso-on-close": {
 		post: { path: never, params: never, body: never, response: unknown }
 	},
@@ -3937,6 +3953,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-perks/v1/perks/ack-gameplay-updated": {
 		put: { path: never, params: never, body: number[], response: unknown }
+	},
+	"/lol-perks/v1/validate-page-name/{pageName}": {
+		put: { path: [pageName: string], params: never, body: never, response: LCUTypes.LolPerksValidateItemSetNameResponse }
 	},
 	"/lol-player-behavior/v1/ack-credibility-behavior-warning/{mailId}": {
 		put: { path: [mailId: string], params: never, body: never, response: void }
