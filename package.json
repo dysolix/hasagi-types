@@ -13,10 +13,9 @@
   "author": "dysolix",
   "license": "MIT",
   "devDependencies": {
-    "@hasagi/cli": "^0.9.9",
-    "@hasagi/core": "^0.6.11",
-    "@hasagi/schema": "^0.7.0",
-    "axios": "^1.16.0"
+    "@hasagi/cli": "0.9.9",
+    "@hasagi/core": "0.6.11",
+    "@hasagi/schema": "0.7.0"
   },
   "types": "./dist/index.d.ts",
   "repository": {
