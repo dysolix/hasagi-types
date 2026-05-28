@@ -1787,23 +1787,6 @@ export interface LCDSLoyaltyStateChangeNotification {
 
 export type LCDSLoyaltyStateChangeNotificationCategory = "disabled" | "revoke" | "change" | "expiry" | "grant" | "legacy"
 
-export interface LCDSPlayerMessagingSimpleMessage {
-	/** @format uint64 */
-	accountId: number
-	msgId: string
-	type: string
-	titleCode: string
-	bodyCode: string
-	params: string[]
-}
-
-export interface LCDSPlayerMessagingSimpleMessageResponse {
-	/** @format uint64 */
-	accountId: number
-	msgId: string
-	command: string
-}
-
 export interface LcdsAcceptGameInvitationRequestDto {
 	invitationId: string
 	gameVersion: string
@@ -4563,7 +4546,7 @@ export interface LolChatLcuSocialConfig {
 
 export type LolChatLeagueDivision = "NA" | "V" | "IV" | "III" | "II" | "I"
 
-export type LolChatLeagueQueueType = "RANKED_TFT" | "RANKED_FLEX_TT" | "RANKED_FLEX_SR" | "RANKED_SOLO_5x5" | "NONE"
+export type LolChatLeagueQueueType = "RANKED_TFT_DOUBLE_UP" | "RANKED_TFT_PAIRS" | "RANKED_TFT_TURBO" | "RANKED_TFT" | "RANKED_FLEX_TT" | "CHERRY" | "RANKED_FLEX_SR" | "RANKED_SOLO_5x5" | "NONE"
 
 export interface LolChatLobbyMember {
 	/** @format uint64 */
@@ -4790,6 +4773,7 @@ export interface LolChatRankedQueueStats {
 }
 
 export interface LolChatRankedStats {
+	queues: LolChatRankedQueueStats[]
 	highestRankedEntry?: LolChatRankedQueueStats
 	/** @format int32 */
 	rankedRegaliaLevel: number
@@ -7494,6 +7478,7 @@ export interface LolEndOfGameEndOfGamePlayer {
 	/** @format uint64 */
 	gameId: number
 	leaver: boolean
+	severeTransgressor: boolean
 	/** @format int32 */
 	leaves: number
 	/** @format int32 */
@@ -9879,6 +9864,14 @@ export interface LolEventHubWalletResponseDTO {
 	data: LolEventHubWalletDTO
 }
 
+export interface LolEventHubWalletUpdateNotification {
+	/** @format int64 */
+	receivedAtMs: number
+	/** @format int32 */
+	amount: number
+	currencyType: string
+}
+
 export interface LolEventHubXboxSubscriptionStatus {
 	active: string
 	subscriptionId: string
@@ -10041,6 +10034,13 @@ export interface LolGameClientChatMutedPlayerInfo {
 	obfuscatedPuuid: string
 	/** @format uint64 */
 	obfuscatedSummonerId: number
+}
+
+export interface LolGameClientChatParentalControlsStatus {
+	enabled: boolean
+	isTextChatRestricted: boolean
+	isVoiceChatRestricted: boolean
+	isFriendingRestricted: boolean
 }
 
 export interface LolGameDataInventoryLolInventoryType {
@@ -10619,6 +10619,7 @@ export interface LolHonorV2EndOfGamePlayer {
 	/** @format uint64 */
 	gameId: number
 	leaver: boolean
+	severeTransgressor: boolean
 	summonerName: string
 	/** @format uint64 */
 	summonerId: number
@@ -11268,6 +11269,14 @@ export interface LolInventoryWalletDTO {
 
 export interface LolInventoryWalletResponseDTO {
 	data: LolInventoryWalletDTO
+}
+
+export interface LolInventoryWalletUpdateNotification {
+	/** @format int64 */
+	receivedAtMs: number
+	/** @format int32 */
+	amount: number
+	currencyType: string
 }
 
 export interface LolInventoryXboxSubscriptionStatus {
@@ -15513,6 +15522,14 @@ export interface LolMetagamesWalletResponseDTO {
 	data: LolMetagamesWalletDTO
 }
 
+export interface LolMetagamesWalletUpdateNotification {
+	/** @format int64 */
+	receivedAtMs: number
+	/** @format int32 */
+	amount: number
+	currencyType: string
+}
+
 export interface LolMetagamesXboxSubscriptionStatus {
 	active: string
 	subscriptionId: string
@@ -16877,6 +16894,7 @@ export interface LolParentalControlsParentalControlsPermissionBatchEntry {
 }
 
 export interface LolParentalControlsParentalControlsStatus {
+	enabled: boolean
 	isTextChatRestricted: boolean
 	isVoiceChatRestricted: boolean
 	isFriendingRestricted: boolean
@@ -18159,6 +18177,13 @@ export interface LolPremadeVoiceLocalSettingsCategoryResource {
 
 export interface LolPremadeVoiceLoginSession {
 	connected: boolean
+}
+
+export interface LolPremadeVoiceParentalControlsStatus {
+	enabled: boolean
+	isTextChatRestricted: boolean
+	isVoiceChatRestricted: boolean
+	isFriendingRestricted: boolean
 }
 
 export interface LolPremadeVoiceParticipantResource {
@@ -22575,6 +22600,8 @@ export interface LolSummonerProfilesRestriction {
 	restrictionType: string
 	restrictionReason: string
 	expirationData: LolSummonerProfilesRestrictionExpiration
+	/** @format int64 */
+	restrictionsMillis: number
 }
 
 export interface LolSummonerProfilesRestrictionExpiration {
@@ -23770,6 +23797,14 @@ export interface LolTftEventPveWalletDTO {
 
 export interface LolTftEventPveWalletResponseDTO {
 	data: LolTftEventPveWalletDTO
+}
+
+export interface LolTftEventPveWalletUpdateNotification {
+	/** @format int64 */
+	receivedAtMs: number
+	/** @format int32 */
+	amount: number
+	currencyType: string
 }
 
 export interface LolTftEventPveXboxSubscriptionStatus {
@@ -25280,6 +25315,14 @@ export interface LolTftPassWalletDTO {
 
 export interface LolTftPassWalletResponseDTO {
 	data: LolTftPassWalletDTO
+}
+
+export interface LolTftPassWalletUpdateNotification {
+	/** @format int64 */
+	receivedAtMs: number
+	/** @format int32 */
+	amount: number
+	currencyType: string
 }
 
 export interface LolTftPassXboxSubscriptionStatus {
@@ -27242,6 +27285,14 @@ export interface LolYourshopWalletResponseDTO {
 	data: LolYourshopWalletDTO
 }
 
+export interface LolYourshopWalletUpdateNotification {
+	/** @format int64 */
+	receivedAtMs: number
+	/** @format int32 */
+	amount: number
+	currencyType: string
+}
+
 export interface LolYourshopXboxSubscriptionStatus {
 	active: string
 	subscriptionId: string
@@ -27764,13 +27815,13 @@ export interface PaymentsFrontEndRequest {
 	summonerLevel: number
 	gifteeAccountId: string
 	gifteeMessage: string
-	rsoToken: string
 	usePmcSessions: boolean
 	game: string
 	openedFrom: string
 	/** @format int32 */
 	minVirtualAmount: number
 	orderDetailsJSON: string
+	pricePointId: string
 }
 
 export interface PaymentsFrontEndResult {
@@ -27790,6 +27841,7 @@ export interface PaymentsPMCStartUrlRequest {
 	minVirtualAmount: number
 	orderDetailsJSON: string
 	machineId: string
+	pricePointId: string
 }
 
 export interface PaymentsPMCStartUrlResult {
@@ -27814,6 +27866,14 @@ export interface PaymentsRiotMessagingServiceMessage {
 	/** @format int64 */
 	timestamp: number
 	payload: string
+}
+
+export interface PaymentsSkuPricePoint {
+	id: string
+	/** @format int32 */
+	realAmountCents: number
+	realCurrencyCode: string
+	riotSku: string
 }
 
 export interface PendingOpenedTeamDTO {
@@ -27913,26 +27973,6 @@ export interface PhaseRosterDTO {
 }
 
 export type PickModes = "DONE" | "IN_PROGRESS" | "NOT_PICKING"
-
-export interface PlayerBehaviorLcdsForcedClientShutdown {
-	reason: string
-	additionalInfo: string
-}
-
-export interface PlayerBehaviorLcdsSimpleMessage {
-	/** @format uint64 */
-	accountId: number
-	msgId: string
-	type: string
-	params: string[]
-}
-
-export interface PlayerBehaviorSimpleMessageResponse {
-	/** @format uint64 */
-	accountId: number
-	msgId: string
-	command: string
-}
 
 export interface PlayerDTO {
 	banned: boolean
@@ -28232,21 +28272,6 @@ export interface PublicRosterDTO {
 	/** @format int32 */
 	logoColor: number
 	memberIds: number[]
-}
-
-export interface Punishment {
-	punishedForChatLogs: string[]
-	punishedForGameIds: number[]
-	punishmentReason: string
-	punishmentType: string
-	/** @format uint64 */
-	punishedUntilDateMillis: number
-	/** @format uint64 */
-	punishmentLengthMillis: number
-	permaBan: boolean
-	/** @format int64 */
-	punishmentLengthGames: number
-	playerFacingMessage: string
 }
 
 export interface QueryEvaluationRequestDTO {
@@ -28648,13 +28673,6 @@ export interface SimpleDialogMessage {
 	msgId: string
 	type: string
 	params: string[]
-}
-
-export interface SimpleDialogMessageResponse {
-	/** @format uint64 */
-	accountId: number
-	msgId: string
-	command: string
 }
 
 export interface StoreLcdsSimpleDialogMessage {
@@ -29962,6 +29980,7 @@ export interface TeambuilderEdge_InventoryDraftV1 {
 	disabledChampionIds: number[]
 	crowdFavoriteChampionIds: number[]
 	subsetChampionIds: number[]
+	awSet?: unknown
 }
 
 export interface TeambuilderEdge_LeaveV1 {
@@ -30071,7 +30090,6 @@ export interface TeambuilderEdge_TbdGameDtoV1 {
 	afkCheckState?: TeambuilderEdge_AfkCheckStateV1
 	"afkCheckStateV2"?: TeambuilderEdge_AfkCheckStateV2
 	championSelectState?: TeambuilderEdge_ChampionSelectStateV1
-	awSet?: unknown
 	requestGuid?: string
 }
 
