@@ -1046,6 +1046,9 @@ export interface LCUEndpoints {
 	"/lol-game-client-chat/v2/muted-players": {
 		get: { path: never, params: never, body: never, response: number[] }
 	},
+	"/lol-game-client-chat/v2/parental-controls-status": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolGameClientChatParentalControlsStatus }
+	},
 	"/lol-game-client-chat/v3/muted-players": {
 		get: { path: never, params: never, body: never, response: string[] }
 	},
@@ -1281,6 +1284,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-inventory/v1/wallet/{currencyType}": {
 		get: { path: [currencyType: string], params: never, body: never, response: Record<string, number> }
+	},
+	"/lol-inventory/v1/wallet/{currencyType}/notifications": {
+		get: { path: [currencyType: string], params: never, body: never, response: LCUTypes.LolInventoryWalletUpdateNotification[] }
 	},
 	"/lol-inventory/v1/xbox-subscription-status": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolInventoryXboxSubscriptionStatus }
@@ -1939,6 +1945,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-premade-voice/v1/first-experience": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPremadeVoiceFirstExperience }
+	},
+	"/lol-premade-voice/v1/parental-controls-status": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolPremadeVoiceParentalControlsStatus }
 	},
 	"/lol-premade-voice/v1/participant-records": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPremadeVoicePremadeVoiceParticipantDto[] }
@@ -2672,6 +2681,9 @@ export interface LCUEndpoints {
 	},
 	"/patcher/v1/status": {
 		get: { path: never, params: never, body: never, response: LCUTypes.PatcherStatus }
+	},
+	"/payments/v1/sku-price-points": {
+		get: { path: never, params: never, body: never, response: LCUTypes.PaymentsSkuPricePoint[] }
 	},
 	"/performance/v1/memory": {
 		get: { path: never, params: never, body: never, response: unknown }
