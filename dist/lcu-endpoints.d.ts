@@ -2747,6 +2747,9 @@ export interface LCUEndpoints {
 	"/riot-messaging-service/v1/message/{a}/{b}/{c}/{d}/{e}/{f}": {
 		get: { path: [a: string, b: string, c: string, d: string, e: string, f: string], params: never, body: never, response: LCUTypes.RmsMessage }
 	},
+	"/riot-messaging-service/v1/message/{a}/{b}/{c}/{d}/{e}/{f}/{g}": {
+		get: { path: [a: string, b: string, c: string, d: string, e: string, f: string, g: string], params: never, body: never, response: LCUTypes.RmsMessage }
+	},
 	"/riot-messaging-service/v1/state": {
 		get: { path: never, params: never, body: never, response: LCUTypes.RiotMessagingServiceState }
 	},
