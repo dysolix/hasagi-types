@@ -5,7 +5,8 @@
   "description": "This package contains auto-generated LCU types and endpoints.",
   "scripts": {
     "update-types": "node scripts/update-types.mjs",
-    "generate": "hasagi schema --swagger ./ --typescript ./dist"
+    "generate": "hasagi schema --swagger ./ --typescript ./dist",
+    "check:package": "publint && attw --pack"
   },
   "keywords": [
     "hasagi"
@@ -13,9 +14,11 @@
   "author": "dysolix",
   "license": "MIT",
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.3",
     "@hasagi/cli": "0.9.9",
     "@hasagi/core": "0.6.11",
-    "@hasagi/schema": "0.7.0"
+    "@hasagi/schema": "0.7.0",
+    "publint": "^0.3.21"
   },
   "types": "./dist/index.d.ts",
   "repository": {
