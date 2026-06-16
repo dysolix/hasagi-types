@@ -40,7 +40,8 @@ async function main() {
     const swagger = JSON.stringify(_swagger, null, 4);
 
     // Barrel so the generated types can be imported by name from a single entry point.
-    const lcuIndex = `export * from "./lcu-types";\nexport * from "./lcu-endpoints";\nexport * from "./lcu-events";\n`;
+    // The `LCUTypes` namespace re-export preserves backwards compatibility with older @hasagi/types versions.
+    const lcuIndex = `export * from "./lcu-types";\nexport * from "./lcu-endpoints";\nexport * from "./lcu-events";\nexport * as LCUTypes from "./lcu-types";\n`;
 
     const [endpointsChanged, typesChanged, eventsChanged, indexChanged, swaggerChanged] = await Promise.all([
         writeIfChanged("./dist/lcu-endpoints.d.ts", lcuEndpoints),
