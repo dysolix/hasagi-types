@@ -76,8 +76,13 @@ async function main() {
         const shortVersion = clientVersion.split(".").slice(0, 2).join(".");
         console.log(`Client version: ${packageObj._clientVersion} -> ${clientVersion}`);
         packageObj._clientVersion = clientVersion;
-        if (!packageObj.version.startsWith(shortVersion))
+        if (packageObj.version.startsWith(shortVersion + ".")) {
+            // Same client minor — bump the patch so the republish doesn't collide with the published version.
+            const patch = Number(packageObj.version.slice(shortVersion.length + 1)) || 0;
+            packageObj.version = `${shortVersion}.${patch + 1}`;
+        } else {
             packageObj.version = shortVersion + ".1";
+        }
 
         await fs.writeFile("./package.json", JSON.stringify(packageObj, null, 2));
     } else {
