@@ -15,9 +15,9 @@
   "license": "MIT",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.3",
-    "@hasagi/cli": "0.9.9",
-    "@hasagi/core": "0.6.11",
-    "@hasagi/schema": "0.7.0",
+    "@hasagi/cli": "0.9.10",
+    "@hasagi/core": "0.7.0",
+    "@hasagi/schema": "0.7.1",
     "publint": "^0.3.21"
   },
   "types": "./dist/index.d.ts",
