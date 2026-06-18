@@ -77,9 +77,8 @@ async function main() {
         console.log(`Client version: ${packageObj._clientVersion} -> ${clientVersion}`);
         packageObj._clientVersion = clientVersion;
         if (packageObj.version.startsWith(shortVersion + ".")) {
-            // Same client minor — bump the patch so the republish doesn't collide with the published version.
-            const patch = Number(packageObj.version.slice(shortVersion.length + 1)) || 0;
-            packageObj.version = `${shortVersion}.${patch + 1}`;
+            const patch = Number(packageObj.version.slice(shortVersion.length + 1)) || 1;
+            packageObj.version = `${shortVersion}.${patch}`;
         } else {
             packageObj.version = shortVersion + ".1";
         }
