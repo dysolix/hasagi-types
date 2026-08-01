@@ -3,7 +3,7 @@
     "info": {
         "title": "LCU SCHEMA",
         "description": "Schema of the League Client Update (LCU) Rest API. Auto-generated using LCU's /help endpoint\n\n### Rules\n\n1.  No interacting with shop\n2.  No interacting with chat\n3.  No interacting with anything authentication related\n4.  Don't automate anything Riot doesn't want you to (e.g. ready check, picks and bans)\n5.  If you can do it using the official Riot API, then don't do it using LCU. Don't spam requests\n6.  Don't try to expose data that Riot wants to hide (e.g. names in ranked champ select)\n7.  Just because something is not listed here does not mean it is allowed\n8.  Register your application with Riot (https://developer.riotgames.com/)\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
-        "version": "16.14.794.5912"
+        "version": "16.15.801.3452"
     },
     "paths": {
         "/AsyncDelete": {
@@ -5269,6 +5269,73 @@
                                 "schema": {
                                     "type": "object",
                                     "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-activity-center/v1/jade-home-tencent": {
+            "get": {
+                "operationId": "GetLolActivityCenterV1JadeHomeTencent",
+                "description": "",
+                "tags": [
+                    "Plugin lol-activity-center"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-activity-center/v1/jade-home-tencent-ready": {
+            "get": {
+                "operationId": "GetLolActivityCenterV1JadeHomeTencentReady",
+                "description": "",
+                "tags": [
+                    "Plugin lol-activity-center"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-activity-center/v1/jade-ready": {
+            "get": {
+                "operationId": "GetLolActivityCenterV1JadeReady",
+                "description": "",
+                "tags": [
+                    "Plugin lol-activity-center"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
                                 }
                             }
                         },
@@ -16363,29 +16430,6 @@
                 }
             }
         },
-        "/lol-login/v1/login-data-packet": {
-            "get": {
-                "operationId": "GetLolLoginV1LoginDataPacket",
-                "description": "",
-                "tags": [
-                    "Plugin lol-login"
-                ],
-                "parameters": [],
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "additionalProperties": true
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
         "/lol-login/v1/login-in-game-creds": {
             "get": {
                 "operationId": "GetLolLoginV1LoginInGameCreds",
@@ -19510,6 +19554,28 @@
                                 "schema": {
                                     "type": "object",
                                     "additionalProperties": true
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-player-behavior/v1/active-ban": {
+            "get": {
+                "operationId": "GetLolPlayerBehaviorV1ActiveBan",
+                "description": "",
+                "tags": [
+                    "Plugin lol-player-behavior"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
                                 }
                             }
                         },
@@ -23057,6 +23123,37 @@
                 }
             }
         },
+        "/lol-shoppefront/v1/drop-tables/{dropTableId}/odds": {
+            "get": {
+                "operationId": "GetLolShoppefrontV1DropTablesByDropTableIdOdds",
+                "description": "",
+                "tags": [
+                    "Plugin lol-shoppefront"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "dropTableId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ChemtechShoppeV2-DropTableOddsTreeDto"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/lol-shoppefront/v1/purchases/{purchaseId}": {
             "get": {
                 "operationId": "GetLolShoppefrontV1PurchasesByPurchaseId",
@@ -23846,6 +23943,49 @@
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/components/schemas/LolStoreCatalogItem"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-store/v1/catalog/{inventoryType}/{itemId}/tags": {
+            "get": {
+                "operationId": "GetLolStoreV1CatalogByInventoryTypeByItemIdTags",
+                "description": "",
+                "tags": [
+                    "Plugin lol-store"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "inventoryType",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "itemId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -38556,6 +38696,36 @@
                 }
             }
         },
+        "/riotclient/system-resume": {
+            "post": {
+                "operationId": "PostRiotclientSystemResume",
+                "description": "Notifies the backend that the system has resumed from sleep/hibernation.",
+                "tags": [
+                    "riotclient"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/riotclient/system-suspend": {
+            "post": {
+                "operationId": "PostRiotclientSystemSuspend",
+                "description": "Notifies the backend that the system is entering sleep/hibernation.",
+                "tags": [
+                    "riotclient"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/riotclient/unload": {
             "post": {
                 "operationId": "PostRiotclientUnload",
@@ -39503,6 +39673,30 @@
                             "schema": {
                                 "type": "integer",
                                 "format": "int32"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-lobby/v2/lobby/lpOptOut": {
+            "put": {
+                "operationId": "PutLolLobbyV2LobbyLpOptOut",
+                "description": "",
+                "tags": [
+                    "Plugin lol-lobby"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "boolean"
                             }
                         }
                     }
@@ -57164,6 +57358,7 @@
                 "type": "string",
                 "description": "",
                 "enum": [
+                    "JADE_RANKED_SOLO_5x5",
                     "RANKED_PREMADE_5x5",
                     "RANKED_TFT_DOUBLE_UP",
                     "RANKED_TFT_PAIRS",
@@ -66804,6 +66999,68 @@
                     "schemaVersion"
                 ]
             },
+            "LolCosmeticsTFTUCosmeticsSettings": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "tacticians": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "arenas": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "booms": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "portals": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "schemaVersion": {
+                        "type": "integer",
+                        "format": "uint16",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "tacticians",
+                    "arenas",
+                    "booms",
+                    "portals",
+                    "schemaVersion"
+                ]
+            },
+            "LolCosmeticsTFTUSettingsStorageContainer": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/LolCosmeticsTFTUCosmeticsSettings"
+                    },
+                    "schemaVersion": {
+                        "type": "integer",
+                        "format": "uint16",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "data",
+                    "schemaVersion"
+                ]
+            },
             "LolCosmeticsTFTZoomSkinFavoritesViewModel": {
                 "type": "object",
                 "description": "",
@@ -66995,61 +67252,6 @@
                 "required": [
                     "data",
                     "schemaVersion"
-                ]
-            },
-            "LolDiscordRpGameDataChampionSummary": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "id": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "alias": {
-                        "type": "string"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "id",
-                    "name",
-                    "alias"
-                ]
-            },
-            "LolDiscordRpPartyPresenceData": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "partyId": {
-                        "type": "string"
-                    },
-                    "queueId": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "summoners": {
-                        "type": "array",
-                        "items": {
-                            "type": "integer",
-                            "format": "uint64",
-                            "minimum": 0
-                        }
-                    },
-                    "maxPlayers": {
-                        "type": "integer",
-                        "format": "uint64",
-                        "minimum": 0
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "partyId",
-                    "queueId",
-                    "summoners",
-                    "maxPlayers"
                 ]
             },
             "LolDropsCapDropTableCounterDTO": {
@@ -102709,6 +102911,8 @@
                 "type": "string",
                 "description": "",
                 "enum": [
+                    "JADE_RUNE_PAGE",
+                    "JADE_MASTERY_PAGE",
                     "TFT_PLANNER",
                     "RUNE_PAGE",
                     "ITEM_PAGE"
@@ -110030,6 +110234,7 @@
                 "type": "string",
                 "description": "",
                 "enum": [
+                    "JADE_RANKED_SOLO_5x5",
                     "RANKED_PREMADE_5x5",
                     "RANKED_TFT_DOUBLE_UP",
                     "RANKED_TFT_PAIRS",
@@ -111459,6 +111664,7 @@
                 "type": "string",
                 "description": "",
                 "enum": [
+                    "JADE_RANKED_SOLO_5x5",
                     "RANKED_PREMADE_5x5",
                     "RANKED_TFT_DOUBLE_UP",
                     "RANKED_TFT_PAIRS",
@@ -117890,6 +118096,7 @@
                 "type": "string",
                 "description": "",
                 "enum": [
+                    "JADE_RANKED_SOLO_5x5",
                     "RANKED_PREMADE_5x5",
                     "RANKED_TFT_DOUBLE_UP",
                     "RANKED_TFT_PAIRS",
@@ -143972,6 +144179,11 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "relatedPrimeItemId": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -144026,6 +144238,7 @@
                 "additionalProperties": false,
                 "required": [
                     "id",
+                    "relatedPrimeItemId",
                     "name",
                     "squarePortraitPath",
                     "freeToPlay",
@@ -145450,6 +145663,11 @@
                     "name": {
                         "type": "string"
                     },
+                    "relatedPrimeItemId": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
                     "ownership": {
                         "$ref": "#/components/schemas/TeamBuilderDirect-CollectionsOwnership"
                     },
@@ -145479,6 +145697,7 @@
                     "disabledQueues",
                     "id",
                     "name",
+                    "relatedPrimeItemId",
                     "ownership",
                     "roles",
                     "squarePortraitPath",

@@ -4526,7 +4526,7 @@ export interface LolChatLcuSocialConfig {
 
 export type LolChatLeagueDivision = "NA" | "V" | "IV" | "III" | "II" | "I"
 
-export type LolChatLeagueQueueType = "RANKED_PREMADE_5x5" | "RANKED_TFT_DOUBLE_UP" | "RANKED_TFT_PAIRS" | "RANKED_TFT_TURBO" | "RANKED_TFT" | "RANKED_FLEX_TT" | "CHERRY" | "RANKED_FLEX_SR" | "RANKED_SOLO_5x5" | "NONE"
+export type LolChatLeagueQueueType = "JADE_RANKED_SOLO_5x5" | "RANKED_PREMADE_5x5" | "RANKED_TFT_DOUBLE_UP" | "RANKED_TFT_PAIRS" | "RANKED_TFT_TURBO" | "RANKED_TFT" | "RANKED_FLEX_TT" | "CHERRY" | "RANKED_FLEX_SR" | "RANKED_SOLO_5x5" | "NONE"
 
 export interface LolChatLobbyMember {
 	/** @format uint64 */
@@ -7245,6 +7245,21 @@ export interface LolCosmeticsTFTSettingsResource {
 	schemaVersion: number
 }
 
+export interface LolCosmeticsTFTUCosmeticsSettings {
+	tacticians: string[]
+	arenas: string[]
+	booms: string[]
+	portals: string[]
+	/** @format uint16 */
+	schemaVersion: number
+}
+
+export interface LolCosmeticsTFTUSettingsStorageContainer {
+	data: LolCosmeticsTFTUCosmeticsSettings
+	/** @format uint16 */
+	schemaVersion: number
+}
+
 export interface LolCosmeticsTFTZoomSkinFavoritesViewModel {
 	favoriteItems: LolCosmeticsCosmeticsTFTZoomSkinViewModel[]
 }
@@ -7300,22 +7315,6 @@ export interface LolDirectxUpgradeLocalSettingsCategory {
 	data: unknown
 	/** @format int32 */
 	schemaVersion: number
-}
-
-export interface LolDiscordRpGameDataChampionSummary {
-	/** @format int32 */
-	id: number
-	name: string
-	alias: string
-}
-
-export interface LolDiscordRpPartyPresenceData {
-	partyId: string
-	/** @format int32 */
-	queueId: number
-	summoners: number[]
-	/** @format uint64 */
-	maxPlayers: number
 }
 
 export interface LolDropsCapDropTableCounterDTO {
@@ -17260,7 +17259,7 @@ export interface LolPerksNamecheckResponse {
 	errors: string[]
 }
 
-export type LolPerksNamecheckValidationContext = "TFT_PLANNER" | "RUNE_PAGE" | "ITEM_PAGE"
+export type LolPerksNamecheckValidationContext = "JADE_RUNE_PAGE" | "JADE_MASTERY_PAGE" | "TFT_PLANNER" | "RUNE_PAGE" | "ITEM_PAGE"
 
 export interface LolPerksPerkBook {
 	/** @format int32 */
@@ -19315,7 +19314,7 @@ export interface LolRankedLeagueNotifications {
 	rewardNotifications: LolRankedRewardNotification[]
 }
 
-export type LolRankedLeagueQueueType = "RANKED_PREMADE_5x5" | "RANKED_TFT_DOUBLE_UP" | "RANKED_TFT_PAIRS" | "RANKED_TFT_TURBO" | "RANKED_TFT" | "RANKED_FLEX_TT" | "CHERRY" | "RANKED_FLEX_SR" | "RANKED_SOLO_5x5" | "NONE"
+export type LolRankedLeagueQueueType = "JADE_RANKED_SOLO_5x5" | "RANKED_PREMADE_5x5" | "RANKED_TFT_DOUBLE_UP" | "RANKED_TFT_PAIRS" | "RANKED_TFT_TURBO" | "RANKED_TFT" | "RANKED_FLEX_TT" | "CHERRY" | "RANKED_FLEX_SR" | "RANKED_SOLO_5x5" | "NONE"
 
 export interface LolRankedLeagueStanding {
 	/** @format uint64 */
@@ -19726,7 +19725,7 @@ export interface LolRegaliaItemKey {
 
 export type LolRegaliaLeagueDivision = "NA" | "V" | "IV" | "III" | "II" | "I"
 
-export type LolRegaliaLeagueQueueType = "RANKED_PREMADE_5x5" | "RANKED_TFT_DOUBLE_UP" | "RANKED_TFT_PAIRS" | "RANKED_TFT_TURBO" | "RANKED_TFT" | "RANKED_FLEX_TT" | "CHERRY" | "RANKED_FLEX_SR" | "RANKED_SOLO_5x5" | "NONE"
+export type LolRegaliaLeagueQueueType = "JADE_RANKED_SOLO_5x5" | "RANKED_PREMADE_5x5" | "RANKED_TFT_DOUBLE_UP" | "RANKED_TFT_PAIRS" | "RANKED_TFT_TURBO" | "RANKED_TFT" | "RANKED_FLEX_TT" | "CHERRY" | "RANKED_FLEX_SR" | "RANKED_SOLO_5x5" | "NONE"
 
 export interface LolRegaliaLoadout {
 	id: string
@@ -21562,7 +21561,7 @@ export interface LolSocialLeaderboardGiftingFriend {
 
 export type LolSocialLeaderboardLeagueDivision = "NA" | "V" | "IV" | "III" | "II" | "I"
 
-export type LolSocialLeaderboardLeagueQueueType = "RANKED_PREMADE_5x5" | "RANKED_TFT_DOUBLE_UP" | "RANKED_TFT_PAIRS" | "RANKED_TFT_TURBO" | "RANKED_TFT" | "RANKED_FLEX_TT" | "RANKED_FLEX_SR" | "RANKED_SOLO_5x5" | "NONE"
+export type LolSocialLeaderboardLeagueQueueType = "JADE_RANKED_SOLO_5x5" | "RANKED_PREMADE_5x5" | "RANKED_TFT_DOUBLE_UP" | "RANKED_TFT_PAIRS" | "RANKED_TFT_TURBO" | "RANKED_TFT" | "RANKED_FLEX_TT" | "RANKED_FLEX_SR" | "RANKED_SOLO_5x5" | "NONE"
 
 export type LolSocialLeaderboardLeagueTierNumValue = "CHALLENGER" | "GRANDMASTER" | "MASTER" | "DIAMOND" | "EMERALD" | "PLATINUM" | "GOLD" | "SILVER" | "BRONZE" | "IRON" | "NONE"
 
@@ -28824,6 +28823,8 @@ export interface TeamBuilderDirect_Ceremony {
 export interface TeamBuilderDirect_ChampGridChampion {
 	/** @format int32 */
 	id: number
+	/** @format uint32 */
+	relatedPrimeItemId: number
 	name: string
 	squarePortraitPath: string
 	freeToPlay: boolean
@@ -29244,6 +29245,8 @@ export interface TeamBuilderDirect_CollectionsChampionMinimal {
 	/** @format int32 */
 	id: number
 	name: string
+	/** @format uint32 */
+	relatedPrimeItemId: number
 	ownership: TeamBuilderDirect_CollectionsOwnership
 	roles: string[]
 	squarePortraitPath: string
