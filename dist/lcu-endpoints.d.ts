@@ -1735,12 +1735,6 @@ export interface LCUEndpoints {
 	"/lol-matchmaking/v1/search/errors/{id}": {
 		get: { path: [id: number], params: never, body: never, response: LCUTypes.LolMatchmakingMatchmakingSearchErrorResource }
 	},
-	"/lol-metagames/v1/purchases/{purchaseId}": {
-		get: { path: [purchaseId: string], params: never, body: never, response: LCUTypes.LolMetagamesPurchaseResponse }
-	},
-	"/lol-metagames/v1/ready": {
-		get: { path: never, params: never, body: never, response: boolean }
-	},
 	"/lol-missions/v1/data": {
 		get: { path: never, params: never, body: never, response: LCUTypes.PlayerMissionEligibilityData }
 	},
@@ -3507,9 +3501,6 @@ export interface LCUEndpoints {
 	"/lol-matchmaking/v1/ready-check/decline": {
 		post: { path: never, params: never, body: never, response: unknown }
 	},
-	"/lol-metagames/v1/player-events/{metagameId}/{eventName}": {
-		post: { path: [metagameId: string, eventName: string], params: never, body: LCUTypes.LolMetagamesplayerEventPayload, response: LCUTypes.LolMetagamesplayerEventResponseDTO }
-	},
 	"/lol-missions/v1/force": {
 		post: { path: never, params: never, body: never, response: void }
 	},
@@ -3983,9 +3974,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-loot/v1/loot-odds/evaluateQuery": {
 		put: { path: never, params: never, body: LCUTypes.QueryEvaluationRequestDTO, response: LCUTypes.LolLootQueryEvaluatedLootItem[] }
-	},
-	"/lol-metagames/v1/{metagameId}/player-data": {
-		put: { path: [metagameId: string], params: never, body: unknown, response: unknown }
 	},
 	"/lol-missions/v1/player": {
 		put: { path: never, params: never, body: LCUTypes.IdsDTO, response: void }
