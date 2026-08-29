@@ -2385,6 +2385,9 @@ export interface LCUEndpoints {
 	"/lol-summoner-profiles/v1/get-honor-view": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolSummonerProfilesHonorView }
 	},
+	"/lol-summoner-profiles/v1/get-jade-voting-view": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolSummonerProfilesJadeVotingView }
+	},
 	"/lol-summoner-profiles/v1/get-lol-eos-rewards-view": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolSummonerProfilesLolEosRewardView }
 	},
@@ -2858,6 +2861,10 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby-team-builder/champ-select/v1/session/actions/{id}": {
 		patch: { path: [id: number], params: never, body: LCUTypes.TeamBuilderDirect_ChampSelectAction, response: unknown }
+	},
+	"/lol-lobby/v2/lobby/memberData": {
+		put: { path: never, params: never, body: Record<string, string>, response: void }
+		patch: { path: never, params: never, body: Record<string, string>, response: void }
 	},
 	"/lol-npe-tutorial-path/v1/tutorials/init": {
 		patch: { path: never, params: never, body: never, response: void }
@@ -3699,6 +3706,9 @@ export interface LCUEndpoints {
 	"/lol-summoner-profiles/v1/pco/{category}": {
 		post: { path: [category: string], params: never, body: string, response: void }
 	},
+	"/lol-summoner-profiles/v1/ranked-scouting-view/request": {
+		post: { path: never, params: never, body: string[], response: void }
+	},
 	"/lol-summoner/v1/current-summoner/name": {
 		post: { path: never, params: never, body: string, response: LCUTypes.LolSummonerSummoner }
 	},
@@ -3953,9 +3963,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-lobby/v2/lobby/lpOptOut": {
 		put: { path: never, params: never, body: boolean, response: void }
-	},
-	"/lol-lobby/v2/lobby/memberData": {
-		put: { path: never, params: never, body: Record<string, string>, response: void }
 	},
 	"/lol-lobby/v2/lobby/members/localMember/position-preferences": {
 		put: { path: never, params: never, body: LCUTypes.LolLobbyLobbyPositionPreferences, response: unknown }

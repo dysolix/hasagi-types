@@ -3,7 +3,7 @@
     "info": {
         "title": "LCU SCHEMA",
         "description": "Schema of the League Client Update (LCU) Rest API. Auto-generated using LCU's /help endpoint\n\n### Rules\n\n1.  No interacting with shop\n2.  No interacting with chat\n3.  No interacting with anything authentication related\n4.  Don't automate anything Riot doesn't want you to (e.g. ready check, picks and bans)\n5.  If you can do it using the official Riot API, then don't do it using LCU. Don't spam requests\n6.  Don't try to expose data that Riot wants to hide (e.g. names in ranked champ select)\n7.  Just because something is not listed here does not mean it is allowed\n8.  Register your application with Riot (https://developer.riotgames.com/)\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
-        "version": "16.16.805.0442"
+        "version": "16.17.812.4632"
     },
     "paths": {
         "/AsyncDelete": {
@@ -24524,6 +24524,28 @@
                 }
             }
         },
+        "/lol-summoner-profiles/v1/get-jade-voting-view": {
+            "get": {
+                "operationId": "GetLolSummonerProfilesV1GetJadeVotingView",
+                "description": "",
+                "tags": [
+                    "Plugin lol-summoner-profiles"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolSummonerProfilesJadeVotingView"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/lol-summoner-profiles/v1/get-lol-eos-rewards-view": {
             "get": {
                 "operationId": "GetLolSummonerProfilesV1GetLolEosRewardsView",
@@ -29007,6 +29029,58 @@
                                 }
                             }
                         },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-lobby/v2/lobby/memberData": {
+            "patch": {
+                "operationId": "PatchLolLobbyV2LobbyMemberData",
+                "description": "",
+                "tags": [
+                    "Plugin lol-lobby"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            },
+            "put": {
+                "operationId": "PutLolLobbyV2LobbyMemberData",
+                "description": "",
+                "tags": [
+                    "Plugin lol-lobby"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
                         "description": "Success response"
                     }
                 }
@@ -37238,6 +37312,33 @@
                 }
             }
         },
+        "/lol-summoner-profiles/v1/ranked-scouting-view/request": {
+            "post": {
+                "operationId": "PostLolSummonerProfilesV1RankedScoutingViewRequest",
+                "description": "",
+                "tags": [
+                    "Plugin lol-summoner-profiles"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/lol-summoner/v1/current-summoner/name": {
             "post": {
                 "operationId": "PostLolSummonerV1CurrentSummonerName",
@@ -39596,33 +39697,6 @@
                         "application/json": {
                             "schema": {
                                 "type": "boolean"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/lol-lobby/v2/lobby/memberData": {
-            "put": {
-                "operationId": "PutLolLobbyV2LobbyMemberData",
-                "description": "",
-                "tags": [
-                    "Plugin lol-lobby"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "additionalProperties": {
-                                    "type": "string"
-                                }
                             }
                         }
                     }
@@ -63780,13 +63854,21 @@
                         "items": {
                             "$ref": "#/components/schemas/LolCosmeticsCompanionsGroupViewModel"
                         }
+                    },
+                    "resetLoadoutItem": {
+                        "$ref": "#/components/schemas/LolCosmeticsCosmeticsCompanionViewModel"
+                    },
+                    "didResetSelection": {
+                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false,
                 "required": [
                     "selectedLoadoutItem",
                     "defaultItemId",
-                    "groups"
+                    "groups",
+                    "resetLoadoutItem",
+                    "didResetSelection"
                 ]
             },
             "LolCosmeticsCosmeticSettingsResource": {
@@ -63948,6 +64030,12 @@
                     "isRecentItem": {
                         "type": "boolean"
                     },
+                    "loyaltySources": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "species": {
                         "type": "string"
                     },
@@ -64001,6 +64089,7 @@
                     "rarityValue",
                     "purchaseDate",
                     "isRecentItem",
+                    "loyaltySources",
                     "species",
                     "groupId",
                     "color",
@@ -64329,6 +64418,12 @@
                     "isRecentItem": {
                         "type": "boolean"
                     },
+                    "loyaltySources": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "level": {
                         "type": "integer",
                         "format": "uint32",
@@ -64370,6 +64465,7 @@
                     "rarityValue",
                     "purchaseDate",
                     "isRecentItem",
+                    "loyaltySources",
                     "level",
                     "groupId",
                     "groupName",
@@ -64498,6 +64594,12 @@
                     "isRecentItem": {
                         "type": "boolean"
                     },
+                    "loyaltySources": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "groupId": {
                         "type": "integer",
                         "format": "uint32",
@@ -64528,6 +64630,7 @@
                     "rarityValue",
                     "purchaseDate",
                     "isRecentItem",
+                    "loyaltySources",
                     "groupId",
                     "groupName",
                     "TFTRarity",
@@ -64894,6 +64997,12 @@
                     "isRecentItem": {
                         "type": "boolean"
                     },
+                    "loyaltySources": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "groupId": {
                         "type": "integer",
                         "format": "uint32",
@@ -64924,6 +65033,7 @@
                     "rarityValue",
                     "purchaseDate",
                     "isRecentItem",
+                    "loyaltySources",
                     "groupId",
                     "groupName",
                     "TFTRarity",
@@ -66569,13 +66679,21 @@
                         "items": {
                             "$ref": "#/components/schemas/LolCosmeticsTFTDamageSkinGroupViewModel"
                         }
+                    },
+                    "resetLoadoutItem": {
+                        "$ref": "#/components/schemas/LolCosmeticsCosmeticsTFTDamageSkinViewModel"
+                    },
+                    "didResetSelection": {
+                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false,
                 "required": [
                     "selectedLoadoutItem",
                     "defaultItemId",
-                    "groups"
+                    "groups",
+                    "resetLoadoutItem",
+                    "didResetSelection"
                 ]
             },
             "LolCosmeticsTFTMapSkinFavoritesViewModel": {
@@ -66653,13 +66771,21 @@
                         "items": {
                             "$ref": "#/components/schemas/LolCosmeticsTFTMapSkinGroupViewModel"
                         }
+                    },
+                    "resetLoadoutItem": {
+                        "$ref": "#/components/schemas/LolCosmeticsCosmeticsTFTMapSkinViewModel"
+                    },
+                    "didResetSelection": {
+                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false,
                 "required": [
                     "selectedLoadoutItem",
                     "defaultItemId",
-                    "groups"
+                    "groups",
+                    "resetLoadoutItem",
+                    "didResetSelection"
                 ]
             },
             "LolCosmeticsTFTPlaybookGroupViewModel": {
@@ -66993,13 +67119,21 @@
                         "items": {
                             "$ref": "#/components/schemas/LolCosmeticsTFTZoomSkinGroupViewModel"
                         }
+                    },
+                    "resetLoadoutItem": {
+                        "$ref": "#/components/schemas/LolCosmeticsCosmeticsTFTZoomSkinViewModel"
+                    },
+                    "didResetSelection": {
+                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false,
                 "required": [
                     "selectedLoadoutItem",
                     "defaultItemId",
-                    "groups"
+                    "groups",
+                    "resetLoadoutItem",
+                    "didResetSelection"
                 ]
             },
             "LolCosmeticsTraKeyName": {
@@ -73139,6 +73273,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -73153,7 +73293,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolEventHubLoyaltyRewardsSimplified": {
@@ -73211,6 +73352,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -73225,7 +73372,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolEventHubLoyaltyStatus": {
@@ -80963,6 +81111,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -80977,7 +81131,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolInventoryLoyaltyRewardsSimplified": {
@@ -81035,6 +81190,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -81049,7 +81210,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolInventoryLoyaltyStatus": {
@@ -87644,6 +87806,7 @@
                 "type": "string",
                 "description": "",
                 "enum": [
+                    "TRANSFER_FAILED",
                     "GENERATING",
                     "TRANSFERRED_OUT",
                     "TRANSFERRING_IN",
@@ -88021,6 +88184,36 @@
                     "platformId"
                 ]
             },
+            "LolLoginRiotMessagingServiceMessage": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "resource": {
+                        "type": "string"
+                    },
+                    "service": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "payload": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "resource",
+                    "service",
+                    "version",
+                    "timestamp",
+                    "payload"
+                ]
+            },
             "LolLoginSummonerCreatedResource": {
                 "type": "object",
                 "description": "",
@@ -88057,6 +88250,31 @@
                     "summonerId",
                     "displayName",
                     "isNewPlayer"
+                ]
+            },
+            "LolLoginTransferNotification": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "transactionId": {
+                        "type": "string"
+                    },
+                    "sourcePlatform": {
+                        "type": "string"
+                    },
+                    "destinationPlatform": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "transactionId",
+                    "sourcePlatform",
+                    "destinationPlatform",
+                    "state"
                 ]
             },
             "LolLoginUsernameAndPassword": {
@@ -91657,6 +91875,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -91672,7 +91896,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolLoyaltyLoyaltyRewardsSimplified": {
@@ -91733,6 +91958,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -91748,7 +91979,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolLoyaltyLoyaltyStatus": {
@@ -120395,6 +120627,48 @@
                     "redemptions"
                 ]
             },
+            "LolSummonerProfilesJadeVotingSelection": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "questionId": {
+                        "type": "string"
+                    },
+                    "votingOptionId": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "questionId",
+                    "votingOptionId"
+                ]
+            },
+            "LolSummonerProfilesJadeVotingView": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "votingEventId": {
+                        "type": "string"
+                    },
+                    "votingPower": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "votingSelections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LolSummonerProfilesJadeVotingSelection"
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "votingEventId",
+                    "votingSelections"
+                ]
+            },
             "LolSummonerProfilesLolEosRewardView": {
                 "type": "object",
                 "description": "",
@@ -120425,6 +120699,24 @@
                     "rewardIds",
                     "highestRankPerQueueId",
                     "eligibility"
+                ]
+            },
+            "LolSummonerProfilesPositionCount": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "position": {
+                        "type": "string"
+                    },
+                    "games": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "position",
+                    "games"
                 ]
             },
             "LolSummonerProfilesPrivacyView": {
@@ -120460,6 +120752,28 @@
                     "payload"
                 ]
             },
+            "LolSummonerProfilesQueueRank": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "tier": {
+                        "type": "string"
+                    },
+                    "division": {
+                        "type": "string"
+                    },
+                    "leaguePoints": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "tier",
+                    "division",
+                    "leaguePoints"
+                ]
+            },
             "LolSummonerProfilesRank": {
                 "type": "object",
                 "description": "",
@@ -120475,6 +120789,117 @@
                 "required": [
                     "tier",
                     "division"
+                ]
+            },
+            "LolSummonerProfilesRankedChampion": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "championId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "gameCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "winCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "championId",
+                    "gameCount",
+                    "winCount"
+                ]
+            },
+            "LolSummonerProfilesRankedMatch": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "championId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "win": {
+                        "type": "boolean"
+                    },
+                    "kills": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "deaths": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "assists": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "championId",
+                    "win",
+                    "kills",
+                    "deaths",
+                    "assists"
+                ]
+            },
+            "LolSummonerProfilesRankedScoutingView": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "puuid": {
+                        "type": "string"
+                    },
+                    "summonerIconId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "soloRank": {
+                        "$ref": "#/components/schemas/LolSummonerProfilesQueueRank"
+                    },
+                    "flexRank": {
+                        "$ref": "#/components/schemas/LolSummonerProfilesQueueRank"
+                    },
+                    "topChampions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LolSummonerProfilesRankedChampion"
+                        }
+                    },
+                    "topMasteries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LolSummonerProfilesChampionMasteryData"
+                        }
+                    },
+                    "recentMatches": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LolSummonerProfilesRankedMatch"
+                        }
+                    },
+                    "positionStats": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LolSummonerProfilesPositionCount"
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "puuid",
+                    "summonerIconId",
+                    "soloRank",
+                    "flexRank",
+                    "topChampions",
+                    "topMasteries",
+                    "recentMatches",
+                    "positionStats"
                 ]
             },
             "LolSummonerProfilesRedemption": {
@@ -123334,6 +123759,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -123348,7 +123779,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolTftEventPveLoyaltyRewardsSimplified": {
@@ -123406,6 +123838,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -123420,7 +123858,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolTftEventPveLoyaltyStatus": {
@@ -127640,6 +128079,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -127654,7 +128099,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolTftPassLoyaltyRewardsSimplified": {
@@ -127712,6 +128158,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -127726,7 +128178,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolTftPassLoyaltyStatus": {
@@ -136748,6 +137201,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -136762,7 +137221,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolYourshopLoyaltyRewardsSimplified": {
@@ -136820,6 +137280,12 @@
                         "additionalProperties": {
                             "type": "boolean"
                         }
+                    },
+                    "tftCompensationRewards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -136834,7 +137300,8 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
-                    "loyaltySources"
+                    "loyaltySources",
+                    "tftCompensationRewards"
                 ]
             },
             "LolYourshopLoyaltyStatus": {
@@ -142955,10 +143422,16 @@
                     "responderChampionName": {
                         "type": "string"
                     },
+                    "responderChampionSquarePortrait": {
+                        "type": "string"
+                    },
                     "requesterChampionName": {
                         "type": "string"
                     },
                     "requesterChampionSplashPath": {
+                        "type": "string"
+                    },
+                    "requesterChampionSquarePortrait": {
                         "type": "string"
                     },
                     "initiatedByLocalPlayer": {
@@ -142979,8 +143452,10 @@
                     "state",
                     "otherSummonerIndex",
                     "responderChampionName",
+                    "responderChampionSquarePortrait",
                     "requesterChampionName",
                     "requesterChampionSplashPath",
+                    "requesterChampionSquarePortrait",
                     "initiatedByLocalPlayer",
                     "type",
                     "requesterChampionId"
