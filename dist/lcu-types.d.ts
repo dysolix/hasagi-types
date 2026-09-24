@@ -1744,34 +1744,6 @@ export interface IdsDTO {
 
 export type InviteType = "NONE" | "SELFJOIN" | "SUGGEST" | "FRIEND" | "FREEAGENT"
 
-export interface LCDSChampionReward {
-	/** @format int32 */
-	championId: number
-	skins: number[]
-}
-
-export interface LCDSGlobalRewards {
-	allChampions: boolean
-}
-
-export interface LCDSLoyaltyRewards {
-	champions: LCDSChampionReward[]
-	global: LCDSGlobalRewards
-	/** @format int32 */
-	ipBoost: number
-	/** @format int32 */
-	xpBoost: number
-}
-
-export interface LCDSLoyaltyStateChangeNotification {
-	/** @format uint64 */
-	accountId: number
-	notificationCategory: LCDSLoyaltyStateChangeNotificationCategory
-	rewards: LCDSLoyaltyRewards
-}
-
-export type LCDSLoyaltyStateChangeNotificationCategory = "disabled" | "revoke" | "change" | "expiry" | "grant" | "legacy"
-
 export interface LcdsAcceptGameInvitationRequestDto {
 	invitationId: string
 	gameVersion: string
@@ -7819,10 +7791,6 @@ export interface LolEndOfGameLobbyInvitation {
 	state: string
 }
 
-export interface LolEndOfGameLoginDataPacket {
-	simpleMessages: LolEndOfGameSimpleMessage[]
-}
-
 export interface LolEndOfGameLoginSession {
 	state: LolEndOfGameLoginSessionStates
 	/** @format uint64 */
@@ -7871,14 +7839,6 @@ export interface LolEndOfGameRerollDataBagForClientV1 {
 	maximumRerolls: number
 	/** @format int32 */
 	pointCostOfReroll: number
-}
-
-export interface LolEndOfGameSimpleMessage {
-	/** @format uint64 */
-	accountId: number
-	msgId: string
-	type: string
-	params: string[]
 }
 
 export interface LolEndOfGameSummoner {
@@ -9021,9 +8981,13 @@ export interface LolEventHubLolInventoryType {
 export interface LolEventHubLoyaltyRewards {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	/** @format int32 */
 	ipBoost: number
@@ -9036,6 +9000,8 @@ export interface LolEventHubLoyaltyRewards {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }
@@ -9043,9 +9009,13 @@ export interface LolEventHubLoyaltyRewards {
 export interface LolEventHubLoyaltyRewardsSimplified {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	/** @format int32 */
 	ipBoost: number
@@ -9059,6 +9029,8 @@ export interface LolEventHubLoyaltyRewardsSimplified {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }
@@ -11186,9 +11158,13 @@ export interface LolInventoryLolInventoryType {
 export interface LolInventoryLoyaltyRewards {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	/** @format int32 */
 	ipBoost: number
@@ -11201,6 +11177,8 @@ export interface LolInventoryLoyaltyRewards {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }
@@ -11208,9 +11186,13 @@ export interface LolInventoryLoyaltyRewards {
 export interface LolInventoryLoyaltyRewardsSimplified {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	/** @format int32 */
 	ipBoost: number
@@ -11224,6 +11206,8 @@ export interface LolInventoryLoyaltyRewardsSimplified {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }
@@ -14164,9 +14148,13 @@ export type LolLoyaltyLoginSessionStates = "ERROR" | "LOGGING_OUT" | "SUCCEEDED"
 export interface LolLoyaltyLoyaltyRewards {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	global: LolLoyaltyGlobalRewards
 	/** @format int32 */
@@ -14180,6 +14168,8 @@ export interface LolLoyaltyLoyaltyRewards {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }
@@ -14187,9 +14177,13 @@ export interface LolLoyaltyLoyaltyRewards {
 export interface LolLoyaltyLoyaltyRewardsSimplified {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	global: LolLoyaltyGlobalRewards
 	/** @format int32 */
@@ -14204,6 +14198,8 @@ export interface LolLoyaltyLoyaltyRewardsSimplified {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }
@@ -17665,10 +17661,6 @@ export interface LolPlayerMessagingDynamicCelebrationMessagingNotificationResour
 	status: number
 }
 
-export interface LolPlayerMessagingLoginDataPacket {
-	simpleMessages: LolPlayerMessagingSimpleMessage[]
-}
-
 export interface LolPlayerMessagingPlayerMessagingNotificationResource {
 	/** @format int32 */
 	id: number
@@ -17790,6 +17782,8 @@ export interface LolPremadeVoiceAccountSettingsCategoryDataResource {
 	inputMode: LolPremadeVoiceInputMode
 	pushToTalkKey: string
 	pushToTalkTeamKey: string
+	voiceFontEnabledForParty: boolean
+	voiceFontEnabledForTeam: boolean
 	showFirstExperienceInLCU: boolean
 	showFirstExperienceInGame: boolean
 }
@@ -17891,6 +17885,7 @@ export interface LolPremadeVoiceLocalSettingsCategoryDataResource {
 	/** @format uint32 */
 	vadSensitivity: number
 	vadAuto: boolean
+	noiseSuppressionEnabled: boolean
 }
 
 export interface LolPremadeVoiceLocalSettingsCategoryResource {
@@ -17980,6 +17975,7 @@ export interface LolPremadeVoiceSessionResource {
 	volume: number
 	isMuted: boolean
 	isTransmitEnabled: boolean
+	isVoiceFontEnabled: boolean
 }
 
 export type LolPremadeVoiceSessionStatus = "onHold" | "active"
@@ -18003,6 +17999,11 @@ export interface LolPremadeVoiceSettingsResource {
 	inputMode: LolPremadeVoiceInputMode
 	pttKey?: string
 	pushToTalkTeamKey: string
+	voiceFontId?: string
+	voiceFontEnabledForParty: boolean
+	voiceFontEnabledForTeam: boolean
+	noiseSuppressionAlgorithm: string
+	noiseSuppressionLevel: string
 }
 
 export interface LolPremadeVoiceStateResource {
@@ -19062,7 +19063,7 @@ export interface LolRankedLolEosRewardGroupGameData {
 
 export type LolRankedLolEosRewardTier = "kChallenger" | "kGrandmaster" | "kMaster" | "kDiamond" | "kEmerald" | "kPlatinum" | "kGold" | "kSilver" | "kBronze" | "kIron" | "kNone"
 
-export type LolRankedLolEosRewardType = "kEmote" | "kSummonerIcon" | "kVictoriousSkinBorder" | "kVictoriousChroma" | "kVictoriousSkin" | "kChampion" | "kEternalsCapsule" | "kNone"
+export type LolRankedLolEosRewardType = "kRegaliaBanner" | "kEmote" | "kSummonerIcon" | "kVictoriousSkinBorder" | "kVictoriousChroma" | "kVictoriousSkin" | "kChampion" | "kEternalsCapsule" | "kNone"
 
 export interface LolRankedLolEosRewardsConfigGameData {
 	/** @format int64 */
@@ -21198,10 +21199,6 @@ export interface LolSimpleDialogMessagesLocalMessageRequest {
 	msgBody: string[]
 }
 
-export interface LolSimpleDialogMessagesLoginDataPacket {
-	simpleMessages: LolSimpleDialogMessagesSimpleMessage[]
-}
-
 export interface LolSimpleDialogMessagesMessage {
 	/** @format int64 */
 	id: number
@@ -21820,7 +21817,6 @@ export interface LolStoreFeaturedPageDTO {
 export interface LolStoreGameDataChampionSkinInfo {
 	/** @format int32 */
 	id: number
-	relatedPrimeContentId: string
 }
 
 export interface LolStoreGetPlatformIdsFromInstanceIdsRequest {
@@ -23162,9 +23158,13 @@ export interface LolTftEventPveLolInventoryType {
 export interface LolTftEventPveLoyaltyRewards {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	/** @format int32 */
 	ipBoost: number
@@ -23177,6 +23177,8 @@ export interface LolTftEventPveLoyaltyRewards {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }
@@ -23184,9 +23186,13 @@ export interface LolTftEventPveLoyaltyRewards {
 export interface LolTftEventPveLoyaltyRewardsSimplified {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	/** @format int32 */
 	ipBoost: number
@@ -23200,6 +23206,8 @@ export interface LolTftEventPveLoyaltyRewardsSimplified {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }
@@ -24334,9 +24342,13 @@ export interface LolTftPassLolInventoryType {
 export interface LolTftPassLoyaltyRewards {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	/** @format int32 */
 	ipBoost: number
@@ -24349,6 +24361,8 @@ export interface LolTftPassLoyaltyRewards {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }
@@ -24356,9 +24370,13 @@ export interface LolTftPassLoyaltyRewards {
 export interface LolTftPassLoyaltyRewardsSimplified {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	/** @format int32 */
 	ipBoost: number
@@ -24372,6 +24390,8 @@ export interface LolTftPassLoyaltyRewardsSimplified {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }
@@ -26845,9 +26865,13 @@ export interface LolYourshopLolInventoryType {
 export interface LolYourshopLoyaltyRewards {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	/** @format int32 */
 	ipBoost: number
@@ -26860,6 +26884,8 @@ export interface LolYourshopLoyaltyRewards {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }
@@ -26867,9 +26893,13 @@ export interface LolYourshopLoyaltyRewards {
 export interface LolYourshopLoyaltyRewardsSimplified {
 	/** @format int32 */
 	freeRewardedChampionsCount: number
+	/** @format int32 */
+	classicFreeRewardedChampionsCount: number
 	championIds: number[]
 	/** @format int32 */
 	freeRewardedSkinsCount: number
+	/** @format int32 */
+	classicFreeRewardedSkinsCount: number
 	skinIds: number[]
 	/** @format int32 */
 	ipBoost: number
@@ -26883,6 +26913,8 @@ export interface LolYourshopLoyaltyRewardsSimplified {
 	loyaltyTFTDamageSkinCount: number
 	/** @format int32 */
 	loyaltyTFTZoomSkinCount: number
+	/** @format int32 */
+	loyaltyMayhemBPAugmentsCount: number
 	loyaltySources: Record<string, boolean>
 	tftCompensationRewards: string[]
 }

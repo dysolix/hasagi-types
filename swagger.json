@@ -3,7 +3,7 @@
     "info": {
         "title": "LCU SCHEMA",
         "description": "Schema of the League Client Update (LCU) Rest API. Auto-generated using LCU's /help endpoint\n\n### Rules\n\n1.  No interacting with shop\n2.  No interacting with chat\n3.  No interacting with anything authentication related\n4.  Don't automate anything Riot doesn't want you to (e.g. ready check, picks and bans)\n5.  If you can do it using the official Riot API, then don't do it using LCU. Don't spam requests\n6.  Don't try to expose data that Riot wants to hide (e.g. names in ranked champ select)\n7.  Just because something is not listed here does not mean it is allowed\n8.  Register your application with Riot (https://developer.riotgames.com/)\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
-        "version": "16.17.812.4632"
+        "version": "16.19.820.7193"
     },
     "paths": {
         "/AsyncDelete": {
@@ -3090,6 +3090,28 @@
                     "Plugin lol-premade-voice"
                 ],
                 "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            },
+            "put": {
+                "operationId": "PutLolPremadeVoiceV1Session",
+                "description": "",
+                "tags": [
+                    "Plugin lol-premade-voice"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "2XX": {
                         "description": "Success response"
@@ -13881,6 +13903,38 @@
                                 }
                             }
                         },
+                        "description": "Success response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "PostLolInventoryV1WalletByCurrencyTypeNotifications",
+                "description": "",
+                "tags": [
+                    "Plugin lol-inventory"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "currencyType",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "integer",
+                                "format": "int32"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
                         "description": "Success response"
                     }
                 }
@@ -26598,6 +26652,38 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/LolTftLolTftEvents"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-tft/v1/tft/home/content": {
+            "get": {
+                "operationId": "GetLolTftV1TftHomeContent",
+                "description": "",
+                "tags": [
+                    "Plugin lol-tft"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": false,
+                        "name": "pageName",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
                                 }
                             }
                         },
@@ -40387,6 +40473,55 @@
                 }
             }
         },
+        "/lol-premade-voice/v1/self/noiseSuppression": {
+            "put": {
+                "operationId": "PutLolPremadeVoiceV1SelfNoiseSuppression",
+                "description": "",
+                "tags": [
+                    "Plugin lol-premade-voice"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "integer",
+                                "format": "int32"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-premade-voice/v1/self/voiceFont": {
+            "put": {
+                "operationId": "PutLolPremadeVoiceV1SelfVoiceFont",
+                "description": "",
+                "tags": [
+                    "Plugin lol-premade-voice"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/lol-remedy/v1/ack-remedy-notification/{mailId}": {
             "put": {
                 "operationId": "PutLolRemedyV1AckRemedyNotificationByMailId",
@@ -47329,107 +47464,6 @@
                     "SUGGEST",
                     "FRIEND",
                     "FREEAGENT"
-                ],
-                "additionalProperties": false
-            },
-            "LCDSChampionReward": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "championId": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "skins": {
-                        "type": "array",
-                        "items": {
-                            "type": "integer",
-                            "format": "int32"
-                        }
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "championId",
-                    "skins"
-                ]
-            },
-            "LCDSGlobalRewards": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "allChampions": {
-                        "type": "boolean"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "allChampions"
-                ]
-            },
-            "LCDSLoyaltyRewards": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "champions": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/LCDSChampionReward"
-                        }
-                    },
-                    "global": {
-                        "$ref": "#/components/schemas/LCDSGlobalRewards"
-                    },
-                    "ipBoost": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "xpBoost": {
-                        "type": "integer",
-                        "format": "int32"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "champions",
-                    "global",
-                    "ipBoost",
-                    "xpBoost"
-                ]
-            },
-            "LCDSLoyaltyStateChangeNotification": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "accountId": {
-                        "type": "integer",
-                        "format": "uint64",
-                        "minimum": 0
-                    },
-                    "notificationCategory": {
-                        "$ref": "#/components/schemas/LCDSLoyaltyStateChangeNotificationCategory"
-                    },
-                    "rewards": {
-                        "$ref": "#/components/schemas/LCDSLoyaltyRewards"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "accountId",
-                    "notificationCategory",
-                    "rewards"
-                ]
-            },
-            "LCDSLoyaltyStateChangeNotificationCategory": {
-                "type": "string",
-                "description": "",
-                "enum": [
-                    "disabled",
-                    "revoke",
-                    "change",
-                    "expiry",
-                    "grant",
-                    "legacy"
                 ],
                 "additionalProperties": false
             },
@@ -68887,22 +68921,6 @@
                     "state"
                 ]
             },
-            "LolEndOfGameLoginDataPacket": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "simpleMessages": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/LolEndOfGameSimpleMessage"
-                        }
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "simpleMessages"
-                ]
-            },
             "LolEndOfGameLoginSession": {
                 "type": "object",
                 "description": "",
@@ -69063,36 +69081,6 @@
                     "totalPoints",
                     "maximumRerolls",
                     "pointCostOfReroll"
-                ]
-            },
-            "LolEndOfGameSimpleMessage": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "accountId": {
-                        "type": "integer",
-                        "format": "uint64",
-                        "minimum": 0
-                    },
-                    "msgId": {
-                        "type": "string"
-                    },
-                    "type": {
-                        "type": "string"
-                    },
-                    "params": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "accountId",
-                    "msgId",
-                    "type",
-                    "params"
                 ]
             },
             "LolEndOfGameSummoner": {
@@ -73223,6 +73211,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -73231,6 +73223,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -73268,6 +73264,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -73284,8 +73284,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "ipBoost",
                     "xpBoost",
@@ -73293,6 +73295,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]
@@ -73305,6 +73308,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -73313,6 +73320,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -73347,6 +73358,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -73363,8 +73378,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "ipBoost",
                     "xpBoost",
@@ -73372,6 +73389,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]
@@ -81061,6 +81079,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -81069,6 +81091,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -81106,6 +81132,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -81122,8 +81152,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "ipBoost",
                     "xpBoost",
@@ -81131,6 +81163,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]
@@ -81143,6 +81176,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -81151,6 +81188,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -81185,6 +81226,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -81201,8 +81246,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "ipBoost",
                     "xpBoost",
@@ -81210,6 +81257,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]
@@ -91822,6 +91870,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -91830,6 +91882,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -91870,6 +91926,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -91886,8 +91946,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "global",
                     "ipBoost",
@@ -91896,6 +91958,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]
@@ -91908,6 +91971,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -91916,6 +91983,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -91953,6 +92024,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -91969,8 +92044,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "global",
                     "ipBoost",
@@ -91979,6 +92056,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]
@@ -104350,22 +104428,6 @@
                     "status"
                 ]
             },
-            "LolPlayerMessagingLoginDataPacket": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "simpleMessages": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/LolPlayerMessagingSimpleMessage"
-                        }
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "simpleMessages"
-                ]
-            },
             "LolPlayerMessagingPlayerMessagingNotificationResource": {
                 "type": "object",
                 "description": "",
@@ -104810,6 +104872,12 @@
                     "pushToTalkTeamKey": {
                         "type": "string"
                     },
+                    "voiceFontEnabledForParty": {
+                        "type": "boolean"
+                    },
+                    "voiceFontEnabledForTeam": {
+                        "type": "boolean"
+                    },
                     "showFirstExperienceInLCU": {
                         "type": "boolean"
                     },
@@ -104825,6 +104893,8 @@
                     "inputMode",
                     "pushToTalkKey",
                     "pushToTalkTeamKey",
+                    "voiceFontEnabledForParty",
+                    "voiceFontEnabledForTeam",
                     "showFirstExperienceInLCU",
                     "showFirstExperienceInGame"
                 ]
@@ -105176,6 +105246,9 @@
                     },
                     "vadAuto": {
                         "type": "boolean"
+                    },
+                    "noiseSuppressionEnabled": {
+                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false,
@@ -105183,7 +105256,8 @@
                     "currentCaptureDeviceHandle",
                     "inputVolume",
                     "vadSensitivity",
-                    "vadAuto"
+                    "vadAuto",
+                    "noiseSuppressionEnabled"
                 ]
             },
             "LolPremadeVoiceLocalSettingsCategoryResource": {
@@ -105482,6 +105556,9 @@
                     },
                     "isTransmitEnabled": {
                         "type": "boolean"
+                    },
+                    "isVoiceFontEnabled": {
+                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false,
@@ -105491,7 +105568,8 @@
                     "participants",
                     "volume",
                     "isMuted",
-                    "isTransmitEnabled"
+                    "isTransmitEnabled",
+                    "isVoiceFontEnabled"
                 ]
             },
             "LolPremadeVoiceSessionStatus": {
@@ -105557,6 +105635,21 @@
                     },
                     "pushToTalkTeamKey": {
                         "type": "string"
+                    },
+                    "voiceFontId": {
+                        "type": "string"
+                    },
+                    "voiceFontEnabledForParty": {
+                        "type": "boolean"
+                    },
+                    "voiceFontEnabledForTeam": {
+                        "type": "boolean"
+                    },
+                    "noiseSuppressionAlgorithm": {
+                        "type": "string"
+                    },
+                    "noiseSuppressionLevel": {
+                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
@@ -105574,7 +105667,11 @@
                     "pttActive",
                     "vadAuto",
                     "inputMode",
-                    "pushToTalkTeamKey"
+                    "pushToTalkTeamKey",
+                    "voiceFontEnabledForParty",
+                    "voiceFontEnabledForTeam",
+                    "noiseSuppressionAlgorithm",
+                    "noiseSuppressionLevel"
                 ]
             },
             "LolPremadeVoiceStateResource": {
@@ -109329,6 +109426,7 @@
                 "type": "string",
                 "description": "",
                 "enum": [
+                    "kRegaliaBanner",
                     "kEmote",
                     "kSummonerIcon",
                     "kVictoriousSkinBorder",
@@ -116772,22 +116870,6 @@
                     "msgBody"
                 ]
             },
-            "LolSimpleDialogMessagesLoginDataPacket": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "simpleMessages": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/LolSimpleDialogMessagesSimpleMessage"
-                        }
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "simpleMessages"
-                ]
-            },
             "LolSimpleDialogMessagesMessage": {
                 "type": "object",
                 "description": "",
@@ -118994,15 +119076,11 @@
                     "id": {
                         "type": "integer",
                         "format": "int32"
-                    },
-                    "relatedPrimeContentId": {
-                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
                 "required": [
-                    "id",
-                    "relatedPrimeContentId"
+                    "id"
                 ]
             },
             "LolStoreGetPlatformIdsFromInstanceIdsRequest": {
@@ -123709,6 +123787,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -123717,6 +123799,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -123754,6 +123840,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -123770,8 +123860,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "ipBoost",
                     "xpBoost",
@@ -123779,6 +123871,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]
@@ -123791,6 +123884,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -123799,6 +123896,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -123833,6 +123934,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -123849,8 +123954,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "ipBoost",
                     "xpBoost",
@@ -123858,6 +123965,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]
@@ -128029,6 +128137,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -128037,6 +128149,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -128074,6 +128190,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -128090,8 +128210,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "ipBoost",
                     "xpBoost",
@@ -128099,6 +128221,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]
@@ -128111,6 +128234,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -128119,6 +128246,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -128153,6 +128284,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -128169,8 +128304,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "ipBoost",
                     "xpBoost",
@@ -128178,6 +128315,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]
@@ -137151,6 +137289,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -137159,6 +137301,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -137196,6 +137342,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -137212,8 +137362,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "ipBoost",
                     "xpBoost",
@@ -137221,6 +137373,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]
@@ -137233,6 +137386,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "classicFreeRewardedChampionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "championIds": {
                         "type": "array",
                         "items": {
@@ -137241,6 +137398,10 @@
                         }
                     },
                     "freeRewardedSkinsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classicFreeRewardedSkinsCount": {
                         "type": "integer",
                         "format": "int32"
                     },
@@ -137275,6 +137436,10 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "loyaltyMayhemBPAugmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "loyaltySources": {
                         "type": "object",
                         "additionalProperties": {
@@ -137291,8 +137456,10 @@
                 "additionalProperties": false,
                 "required": [
                     "freeRewardedChampionsCount",
+                    "classicFreeRewardedChampionsCount",
                     "championIds",
                     "freeRewardedSkinsCount",
+                    "classicFreeRewardedSkinsCount",
                     "skinIds",
                     "ipBoost",
                     "xpBoost",
@@ -137300,6 +137467,7 @@
                     "loyaltyTFTCompanionCount",
                     "loyaltyTFTDamageSkinCount",
                     "loyaltyTFTZoomSkinCount",
+                    "loyaltyMayhemBPAugmentsCount",
                     "loyaltySources",
                     "tftCompensationRewards"
                 ]

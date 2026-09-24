@@ -218,6 +218,7 @@ export interface LCUEndpoints {
 	"/lol-premade-voice/v1/session": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolPremadeVoiceSessionResource }
 		post: { path: never, params: never, body: never, response: void }
+		put: { path: never, params: never, body: boolean, response: void }
 		delete: { path: never, params: never, body: never, response: void }
 	},
 	"/lol-rms/v1/champion-mastery-leaveup-update/{id}": {
@@ -1299,6 +1300,7 @@ export interface LCUEndpoints {
 	},
 	"/lol-inventory/v1/wallet/{currencyType}/notifications": {
 		get: { path: [currencyType: string], params: never, body: never, response: LCUTypes.LolInventoryWalletUpdateNotification[] }
+		post: { path: [currencyType: string], params: never, body: number, response: void }
 	},
 	"/lol-inventory/v1/xbox-subscription-status": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolInventoryXboxSubscriptionStatus }
@@ -2618,6 +2620,9 @@ export interface LCUEndpoints {
 	},
 	"/lol-tft/v1/tft/events": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftLolTftEvents }
+	},
+	"/lol-tft/v1/tft/home/content": {
+		get: { path: never, params: { "pageName"?: string }, body: never, response: unknown }
 	},
 	"/lol-tft/v1/tft/homeHub": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftLolTftHomeHub }
@@ -4035,6 +4040,12 @@ export interface LCUEndpoints {
 	},
 	"/lol-premade-voice/v1/self/mute": {
 		put: { path: never, params: never, body: number, response: void }
+	},
+	"/lol-premade-voice/v1/self/noiseSuppression": {
+		put: { path: never, params: never, body: number, response: void }
+	},
+	"/lol-premade-voice/v1/self/voiceFont": {
+		put: { path: never, params: never, body: string, response: void }
 	},
 	"/lol-remedy/v1/ack-remedy-notification/{mailId}": {
 		put: { path: [mailId: string], params: never, body: never, response: void }
