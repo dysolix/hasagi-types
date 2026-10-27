@@ -10140,6 +10140,14 @@ export interface LolGameflowPlayerStatus {
 	canInviteOthersAtEog: boolean
 }
 
+export interface LolGameflowPostGameRmsMessage {
+	/** @format int64 */
+	gameId: number
+	messageType: string
+	/** @format uint64 */
+	timestampUtcMillis: number
+}
+
 export interface LolGameflowQueue {
 	/** @format int32 */
 	id: number
@@ -12768,11 +12776,6 @@ export interface LolLoginIdToken {
 	token: string
 	/** @format uint64 */
 	expiry: number
-}
-
-export interface LolLoginLcdsResponse {
-	typeName: string
-	body: unknown
 }
 
 export interface LolLoginLcdsServiceProxyResponse {
@@ -22265,6 +22268,209 @@ export interface LolTastesDataModelResponse {
 	modelData: unknown
 }
 
+export interface LolTeamVoiceAccountSettingsData {
+	autoJoin: boolean
+	autoJoinTeamVoice: boolean
+	muteOnConnect: boolean
+	inputMode: LolTeamVoiceInputMode
+	pushToTalkKey: string
+	pushToTalkTeamKey: string
+	voiceFontEnabledForParty: boolean
+	voiceFontEnabledForTeam: boolean
+	showFirstExperienceInLCU: boolean
+	showFirstExperienceInGame: boolean
+}
+
+export interface LolTeamVoiceAccountSettingsResource {
+	data?: LolTeamVoiceAccountSettingsData
+	/** @format uint32 */
+	schemaVersion: number
+}
+
+export interface LolTeamVoiceExternalSession {
+	patchlineFullName: string
+	patchlineId: string
+	productId: string
+}
+
+export interface LolTeamVoiceGameData {
+	/** @format int64 */
+	gameId: number
+	queue: LolTeamVoiceQueue
+}
+
+export type LolTeamVoiceGameflowPhase = "TerminatedInError" | "EndOfGame" | "PreEndOfGame" | "WaitingForStats" | "Reconnect" | "InProgress" | "FailedToLaunch" | "GameStart" | "ChampSelect" | "ReadyCheck" | "CheckedIntoTournament" | "Matchmaking" | "Lobby" | "None"
+
+export interface LolTeamVoiceGameflowSession {
+	phase: LolTeamVoiceGameflowPhase
+	gameData: LolTeamVoiceGameData
+}
+
+export interface LolTeamVoiceHonorView {
+	/** @format int32 */
+	honorLevel: number
+}
+
+export type LolTeamVoiceInputMode = "pushToTalk" | "voiceActivity"
+
+export interface LolTeamVoiceKeyCombo {
+	keyBindings: LolTeamVoicePushToTalkKey[]
+	sessionId: string
+}
+
+export interface LolTeamVoiceKeycodePushToTalkResource {
+	enabled: boolean
+	keyCombos?: LolTeamVoiceKeyCombo[]
+}
+
+export interface LolTeamVoiceLobbyDto {
+	gameConfig: LolTeamVoiceLobbyGameConfigDto
+}
+
+export interface LolTeamVoiceLobbyGameConfigDto {
+	/** @format int32 */
+	queueId: number
+}
+
+export interface LolTeamVoiceNavigationSettingsData {
+	voiceComplianceAgreementAuthorized: boolean
+}
+
+export interface LolTeamVoiceNavigationSettingsResource {
+	data?: LolTeamVoiceNavigationSettingsData
+	/** @format uint32 */
+	schemaVersion: number
+}
+
+export interface LolTeamVoiceParentalControlsStatus {
+	enabled: boolean
+	isTextChatRestricted: boolean
+	isVoiceChatRestricted: boolean
+	isFriendingRestricted: boolean
+}
+
+export interface LolTeamVoiceParticipantResource {
+	id: string
+	name: string
+	/** @format uint32 */
+	volume: number
+	/** @format uint32 */
+	energy: number
+	isMuted: boolean
+	isSpeaking: boolean
+}
+
+export interface LolTeamVoicePartyDto {
+	partyId: string
+	commsEnabled: boolean
+	players: Record<string, LolTeamVoicePlayerDto>
+}
+
+export interface LolTeamVoicePlayerCredentialsDto {
+	tvJwt: string
+}
+
+export interface LolTeamVoicePlayerDto {
+	puuid: string
+	partyId: string
+}
+
+export interface LolTeamVoicePushToTalkKey {
+	/** @format uint32 */
+	key: number
+}
+
+export interface LolTeamVoiceQueue {
+	/** @format int32 */
+	id: number
+}
+
+export interface LolTeamVoiceQueueDto {
+	/** @format int32 */
+	id: number
+	teamVoiceEnabled: boolean
+}
+
+export interface LolTeamVoiceSessionResource {
+	id: string
+	handle: string
+	status: LolTeamVoiceSessionStatus
+	participants: LolTeamVoiceParticipantResource[]
+	/** @format uint32 */
+	volume: number
+	isMuted: boolean
+	isTransmitEnabled: boolean
+	isVoiceFontEnabled: boolean
+}
+
+export type LolTeamVoiceSessionStatus = "OnHold" | "active"
+
+export interface LolTeamVoiceTeamVoiceAvailabilityDto {
+	available: boolean
+	reason: string
+}
+
+export interface LolTeamVoiceVoiceFontResource {
+	id: string
+	name: string
+	nameLocalizationKey: string
+	fetchStatus: string
+}
+
+export interface LolTeamVoiceVoiceModLicenseConfig {
+	clientKey: string
+	appVersion: string
+	bundleId: string
+}
+
+export interface LolTeamVoiceVoiceParticipant {
+	id: string
+	puuid: string
+	/** @format uint32 */
+	volume: number
+	/** @format uint32 */
+	energy: number
+	isMuted: boolean
+	isSpeaking: boolean
+}
+
+export interface LolTeamVoiceVoiceParticipantDto {
+	id: string
+	name: string
+	/** @format uint32 */
+	volume: number
+	/** @format uint32 */
+	energy: number
+	isMuted: boolean
+	isSpeaking: boolean
+}
+
+export interface LolTeamVoiceVoiceSession {
+	id: string
+	handle: string
+	status: LolTeamVoiceSessionStatus
+	participants: LolTeamVoiceVoiceParticipant[]
+	/** @format uint32 */
+	volume: number
+	isMuted: boolean
+	isTransmitEnabled: boolean
+	isRestricted: boolean
+	isVoiceFontEnabled: boolean
+}
+
+export interface LolTeamVoiceVoiceSessionDto {
+	id: string
+	handle: string
+	status: LolTeamVoiceSessionStatus
+	participants: LolTeamVoiceVoiceParticipantDto[]
+	/** @format uint32 */
+	volume: number
+	isMuted: boolean
+	isTransmitEnabled: boolean
+	isRestricted: boolean
+	isVoiceFontEnabled: boolean
+}
+
 export interface LolTftDataModelResponse {
 	/** @format int64 */
 	responseCode: number
@@ -27173,15 +27379,6 @@ export interface NonTimingEventV1 {
 	unit: string
 }
 
-export interface NotifyFailureRequest {
-	availabilityItemName: string
-	failureInfo: string
-}
-
-export interface NotifySuccessRequest {
-	availabilityItemName: string
-}
-
 export interface NpeReward {
 	renderer: string
 	data: unknown
@@ -28051,51 +28248,6 @@ export interface RosterWithdraw {
 	gameStartBufferMs: number
 	voteWithdrawMembers: number[]
 	declineWithdrawMembers: number[]
-}
-
-export interface SLIBoolDiagnostic {
-	key: string
-	value: boolean
-}
-
-export interface SLICount {
-	sliName: string
-	idempotencyKey: string
-	/** @format double */
-	successes: number
-	/** @format double */
-	failures: number
-	/** @format int64 */
-	startTimeEpochMs: number
-	/** @format int64 */
-	endTimeEpochMs: number
-	labels: Record<string, string>
-	boolDiagnostics: Record<string, boolean>
-	doubleDiagnostics: Record<string, number>
-	intDiagnostics: Record<string, number>
-	stringDiagnostics: Record<string, string>
-}
-
-export interface SLIDoubleDiagnostic {
-	key: string
-	/** @format double */
-	value: number
-}
-
-export interface SLIIntDiagnostic {
-	key: string
-	/** @format int64 */
-	value: number
-}
-
-export interface SLILabel {
-	key: string
-	value: string
-}
-
-export interface SLIStringDiagnostic {
-	key: string
-	value: string
 }
 
 export interface SanitizerContainsSanitizedRequest {

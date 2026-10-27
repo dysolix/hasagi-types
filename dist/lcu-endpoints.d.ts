@@ -248,6 +248,16 @@ export interface LCUEndpoints {
 	"/lol-suggested-players/v1/suggested-players/{summonerId}": {
 		delete: { path: [summonerId: number], params: never, body: never, response: unknown }
 	},
+	"/lol-team-voice/v1/internal/prepare-party-voice-session": {
+		post: { path: never, params: never, body: string, response: void }
+		delete: { path: never, params: never, body: never, response: void }
+	},
+	"/lol-team-voice/v1/session": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolTeamVoiceVoiceSession }
+		post: { path: never, params: never, body: never, response: LCUTypes.LolTeamVoiceVoiceSession }
+		put: { path: never, params: never, body: boolean, response: void }
+		delete: { path: never, params: never, body: never, response: void }
+	},
 	"/lol-tft-team-planner/v1/sets/{set}/reminders/{team}": {
 		patch: { path: [set: string, team: string], params: never, body: never, response: unknown }
 		delete: { path: [set: string, team: string], params: never, body: never, response: unknown }
@@ -2461,6 +2471,18 @@ export interface LCUEndpoints {
 	"/lol-tastes/v1/tft-overview-model": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTastesDataModelResponse }
 	},
+	"/lol-team-voice/v1/voice-fonts": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolTeamVoiceVoiceFontResource[] }
+	},
+	"/lol-team-voice/v1/voice-fonts/hardware-supported": {
+		get: { path: never, params: never, body: never, response: boolean }
+	},
+	"/lol-team-voice/v1/voice-fonts/status": {
+		get: { path: never, params: never, body: never, response: string }
+	},
+	"/lol-team-voice/v2/availability": {
+		get: { path: never, params: never, body: never, response: LCUTypes.LolTeamVoiceTeamVoiceAvailabilityDto }
+	},
 	"/lol-tft-event-pve/v1/buddies": {
 		get: { path: never, params: never, body: never, response: LCUTypes.LolTftEventPveTFTEventBuddy[] }
 	},
@@ -2849,21 +2871,6 @@ export interface LCUEndpoints {
 	"/lol-tft-team-planner/v1/sets/{set}/teams/{team}/{name}": {
 		patch: { path: [set: string, team: string, name: string], params: never, body: never, response: unknown }
 	},
-	"/telemetry/v3/slis/add-bool-diagnostic": {
-		patch: { path: never, params: never, body: LCUTypes.SLIBoolDiagnostic, response: void }
-	},
-	"/telemetry/v3/slis/add-double-diagnostic": {
-		patch: { path: never, params: never, body: LCUTypes.SLIDoubleDiagnostic, response: void }
-	},
-	"/telemetry/v3/slis/add-int-diagnostic": {
-		patch: { path: never, params: never, body: LCUTypes.SLIIntDiagnostic, response: void }
-	},
-	"/telemetry/v3/slis/add-label": {
-		patch: { path: never, params: never, body: LCUTypes.SLILabel, response: void }
-	},
-	"/telemetry/v3/slis/add-string-diagnostic": {
-		patch: { path: never, params: never, body: LCUTypes.SLIStringDiagnostic, response: void }
-	},
 	"/deep-links/v1/launch-lor-link": {
 		post: { path: never, params: never, body: never, response: string }
 	},
@@ -3158,6 +3165,9 @@ export interface LCUEndpoints {
 	"/lol-gameflow/v1/launch-tft": {
 		post: { path: never, params: never, body: never, response: unknown }
 	},
+	"/lol-gameflow/v1/postgame/rms-message": {
+		post: { path: never, params: never, body: LCUTypes.LolGameflowPostGameRmsMessage, response: void }
+	},
 	"/lol-gameflow/v1/pre-end-game-transition": {
 		post: { path: never, params: never, body: boolean, response: void }
 	},
@@ -3171,7 +3181,7 @@ export interface LCUEndpoints {
 		post: { path: never, params: never, body: LCUTypes.LolGameflowGameflowGameDodge, response: void }
 	},
 	"/lol-gameflow/v1/session/event": {
-		post: { path: never, params: never, body: string, response: void }
+		post: { path: never, params: { "session": string, "gameId"?: number, "gameEndUtcTimestampMillis"?: number }, body: never, response: void }
 	},
 	"/lol-gameflow/v1/session/game-configuration": {
 		post: { path: never, params: never, body: LCUTypes.LolGameflowQueue, response: void }
@@ -3391,12 +3401,6 @@ export interface LCUEndpoints {
 	},
 	"/lol-login/v1/leagueSessionStatus": {
 		post: { path: never, params: never, body: LCUTypes.LolLoginLeagueSessionStatus, response: void }
-	},
-	"/lol-login/v1/service-proxy-uuid-requests": {
-		post: { path: never, params: { "serviceName": string, "methodName": string, "pluginId": number, "timeoutMillis": number, "payload": string }, body: never, response: string }
-	},
-	"/lol-login/v1/session/invoke": {
-		post: { path: never, params: { "destination": string, "method": string, "args": unknown[] }, body: never, response: LCUTypes.LolLoginLcdsResponse }
 	},
 	"/lol-login/v1/summoner-session": {
 		post: { path: never, params: never, body: LCUTypes.LolLoginSummonerSessionResource, response: unknown }
@@ -3824,15 +3828,6 @@ export interface LCUEndpoints {
 	"/telemetry/v1/events-with-perf-info/{eventType}": {
 		post: { path: [eventType: string], params: never, body: Record<string, unknown>, response: void }
 	},
-	"/telemetry/v3/slis/counts": {
-		post: { path: never, params: never, body: LCUTypes.SLICount, response: void }
-	},
-	"/telemetry/v3/uptime-tracking/notify-failure": {
-		post: { path: never, params: never, body: LCUTypes.NotifyFailureRequest, response: void }
-	},
-	"/telemetry/v3/uptime-tracking/notify-success": {
-		post: { path: never, params: never, body: LCUTypes.NotifySuccessRequest, response: void }
-	},
 	"/tracing/v1/trace/critical-flow": {
 		post: { path: never, params: never, body: LCUTypes.TracingCriticalFlowEventV1, response: void }
 	},
@@ -3976,6 +3971,12 @@ export interface LCUEndpoints {
 	},
 	"/lol-summoner/v1/current-summoner/icon": {
 		put: { path: never, params: never, body: LCUTypes.LolSummonerSummonerIcon, response: LCUTypes.LolSummonerSummoner }
+	},
+	"/lol-team-voice/v1/participants/{participantId}/mute/{isMuted}": {
+		put: { path: [participantId: string, isMuted: boolean], params: never, body: never, response: void }
+	},
+	"/lol-team-voice/v1/participants/{participantId}/volume/{volume}": {
+		put: { path: [participantId: string, volume: number], params: never, body: never, response: void }
 	},
 	"/lol-tft-event-pve/v1/buddy/{id}/equip": {
 		put: { path: [id: number], params: never, body: never, response: void }

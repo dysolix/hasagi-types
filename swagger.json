@@ -3,7 +3,7 @@
     "info": {
         "title": "LCU SCHEMA",
         "description": "Schema of the League Client Update (LCU) Rest API. Auto-generated using LCU's /help endpoint\n\n### Rules\n\n1.  No interacting with shop\n2.  No interacting with chat\n3.  No interacting with anything authentication related\n4.  Don't automate anything Riot doesn't want you to (e.g. ready check, picks and bans)\n5.  If you can do it using the official Riot API, then don't do it using LCU. Don't spam requests\n6.  Don't try to expose data that Riot wants to hide (e.g. names in ranked champ select)\n7.  Just because something is not listed here does not mean it is allowed\n8.  Register your application with Riot (https://developer.riotgames.com/)\n\n### Disclaimer\n\ndysolix.dev is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. \nRiot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc",
-        "version": "16.20.827.0198"
+        "version": "16.21.829.8620"
     },
     "paths": {
         "/AsyncDelete": {
@@ -3364,6 +3364,120 @@
                                 }
                             }
                         },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-team-voice/v1/internal/prepare-party-voice-session": {
+            "delete": {
+                "operationId": "DeleteLolTeamVoiceV1InternalPreparePartyVoiceSession",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "PostLolTeamVoiceV1InternalPreparePartyVoiceSession",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-team-voice/v1/session": {
+            "delete": {
+                "operationId": "DeleteLolTeamVoiceV1Session",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            },
+            "get": {
+                "operationId": "GetLolTeamVoiceV1Session",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolTeamVoiceVoiceSession"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "PostLolTeamVoiceV1Session",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolTeamVoiceVoiceSession"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            },
+            "put": {
+                "operationId": "PutLolTeamVoiceV1Session",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
                         "description": "Success response"
                     }
                 }
@@ -25301,6 +25415,97 @@
                 }
             }
         },
+        "/lol-team-voice/v1/voice-fonts": {
+            "get": {
+                "operationId": "GetLolTeamVoiceV1VoiceFonts",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LolTeamVoiceVoiceFontResource"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-team-voice/v1/voice-fonts/hardware-supported": {
+            "get": {
+                "operationId": "GetLolTeamVoiceV1VoiceFontsHardwareSupported",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-team-voice/v1/voice-fonts/status": {
+            "get": {
+                "operationId": "GetLolTeamVoiceV1VoiceFontsStatus",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-team-voice/v2/availability": {
+            "get": {
+                "operationId": "GetLolTeamVoiceV2Availability",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [],
+                "responses": {
+                    "2XX": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LolTeamVoiceTeamVoiceAvailabilityDto"
+                                }
+                            }
+                        },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/lol-tft-event-pve/v1/buddies": {
             "get": {
                 "operationId": "GetLolTftEventPveV1Buddies",
@@ -28970,126 +29175,6 @@
                 }
             }
         },
-        "/telemetry/v3/slis/add-bool-diagnostic": {
-            "patch": {
-                "operationId": "PatchTelemetryV3SlisAddBoolDiagnostic",
-                "description": "Add bool diagnostic to be sent with SLIs.",
-                "tags": [
-                    "telemetry"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SLIBoolDiagnostic"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/telemetry/v3/slis/add-double-diagnostic": {
-            "patch": {
-                "operationId": "PatchTelemetryV3SlisAddDoubleDiagnostic",
-                "description": "Add double diagnostic to be sent with SLIs.",
-                "tags": [
-                    "telemetry"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SLIDoubleDiagnostic"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/telemetry/v3/slis/add-int-diagnostic": {
-            "patch": {
-                "operationId": "PatchTelemetryV3SlisAddIntDiagnostic",
-                "description": "Add int diagnostic to be sent with SLIs.",
-                "tags": [
-                    "telemetry"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SLIIntDiagnostic"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/telemetry/v3/slis/add-label": {
-            "patch": {
-                "operationId": "PatchTelemetryV3SlisAddLabel",
-                "description": "Add label to be sent with SLIs.",
-                "tags": [
-                    "telemetry"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SLILabel"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/telemetry/v3/slis/add-string-diagnostic": {
-            "patch": {
-                "operationId": "PatchTelemetryV3SlisAddStringDiagnostic",
-                "description": "Add string diagnostic to be sent with SLIs.",
-                "tags": [
-                    "telemetry"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SLIStringDiagnostic"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
         "/deep-links/v1/launch-lor-link": {
             "post": {
                 "operationId": "PostDeepLinksV1LaunchLorLink",
@@ -32162,6 +32247,30 @@
                 }
             }
         },
+        "/lol-gameflow/v1/postgame/rms-message": {
+            "post": {
+                "operationId": "PostLolGameflowV1PostgameRmsMessage",
+                "description": "",
+                "tags": [
+                    "Plugin lol-gameflow"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LolGameflowPostGameRmsMessage"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
         "/lol-gameflow/v1/pre-end-game-transition": {
             "post": {
                 "operationId": "PostLolGameflowV1PreEndGameTransition",
@@ -32266,16 +32375,35 @@
                 "tags": [
                     "Plugin lol-gameflow"
                 ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "string"
-                            }
-                        }
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "session",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "gameId",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "gameEndUtcTimestampMillis",
+                        "schema": {
+                            "type": "integer",
+                            "format": "uint64",
+                            "minimum": 0
+                        },
+                        "required": false
                     }
-                },
+                ],
                 "responses": {
                     "2XX": {
                         "description": "Success response"
@@ -34295,124 +34423,6 @@
                 },
                 "responses": {
                     "2XX": {
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/lol-login/v1/service-proxy-uuid-requests": {
-            "post": {
-                "operationId": "PostLolLoginV1ServiceProxyUuidRequests",
-                "description": "",
-                "tags": [
-                    "Plugin lol-login"
-                ],
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "serviceName",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "required": true
-                    },
-                    {
-                        "in": "query",
-                        "name": "methodName",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "required": true
-                    },
-                    {
-                        "in": "query",
-                        "name": "pluginId",
-                        "schema": {
-                            "type": "integer",
-                            "format": "uint32",
-                            "minimum": 0
-                        },
-                        "required": true
-                    },
-                    {
-                        "in": "query",
-                        "name": "timeoutMillis",
-                        "schema": {
-                            "type": "integer",
-                            "format": "uint64",
-                            "minimum": 0
-                        },
-                        "required": true
-                    },
-                    {
-                        "in": "query",
-                        "name": "payload",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/lol-login/v1/session/invoke": {
-            "post": {
-                "operationId": "PostLolLoginV1SessionInvoke",
-                "description": "",
-                "tags": [
-                    "Plugin lol-login"
-                ],
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "destination",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "required": true
-                    },
-                    {
-                        "in": "query",
-                        "name": "method",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "required": true
-                    },
-                    {
-                        "in": "query",
-                        "name": "args",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "additionalProperties": true
-                            }
-                        },
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "2XX": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LolLoginLcdsResponse"
-                                }
-                            }
-                        },
                         "description": "Success response"
                     }
                 }
@@ -38457,78 +38467,6 @@
                 }
             }
         },
-        "/telemetry/v3/slis/counts": {
-            "post": {
-                "operationId": "PostTelemetryV3SlisCounts",
-                "description": "Report an SLI to the collector",
-                "tags": [
-                    "telemetry"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SLICount"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/telemetry/v3/uptime-tracking/notify-failure": {
-            "post": {
-                "operationId": "PostTelemetryV3UptimeTrackingNotifyFailure",
-                "description": "Mark an availability item's operation as failure on uptime tracking mechanism.",
-                "tags": [
-                    "telemetry"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/NotifyFailureRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
-        "/telemetry/v3/uptime-tracking/notify-success": {
-            "post": {
-                "operationId": "PostTelemetryV3UptimeTrackingNotifySuccess",
-                "description": "Mark an availability item's operation as success on uptime tracking mechanism.",
-                "tags": [
-                    "telemetry"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/NotifySuccessRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "2XX": {
-                        "description": "Success response"
-                    }
-                }
-            }
-        },
         "/tracing/v1/trace/critical-flow": {
             "post": {
                 "operationId": "PostTracingV1TraceCriticalFlow",
@@ -39858,6 +39796,72 @@
                                 }
                             }
                         },
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-team-voice/v1/participants/{participantId}/mute/{isMuted}": {
+            "put": {
+                "operationId": "PutLolTeamVoiceV1ParticipantsByParticipantIdMuteByIsMuted",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "participantId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "isMuted",
+                        "required": true,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "2XX": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/lol-team-voice/v1/participants/{participantId}/volume/{volume}": {
+            "put": {
+                "operationId": "PutLolTeamVoiceV1ParticipantsByParticipantIdVolumeByVolume",
+                "description": "",
+                "tags": [
+                    "Plugin lol-team-voice"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "participantId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "volume",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "uint32",
+                            "minimum": 0
+                        }
+                    }
+                ],
+                "responses": {
+                    "2XX": {
                         "description": "Success response"
                     }
                 }
@@ -76854,6 +76858,30 @@
                     "canInviteOthersAtEog"
                 ]
             },
+            "LolGameflowPostGameRmsMessage": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "gameId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "messageType": {
+                        "type": "string"
+                    },
+                    "timestampUtcMillis": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "gameId",
+                    "messageType",
+                    "timestampUtcMillis"
+                ]
+            },
             "LolGameflowQueue": {
                 "type": "object",
                 "description": "",
@@ -86220,24 +86248,6 @@
                 "required": [
                     "token",
                     "expiry"
-                ]
-            },
-            "LolLoginLcdsResponse": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "typeName": {
-                        "type": "string"
-                    },
-                    "body": {
-                        "type": "object",
-                        "additionalProperties": true
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "typeName",
-                    "body"
                 ]
             },
             "LolLoginLcdsServiceProxyResponse": {
@@ -119872,6 +119882,725 @@
                     "modelData"
                 ]
             },
+            "LolTeamVoiceAccountSettingsData": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "autoJoin": {
+                        "type": "boolean"
+                    },
+                    "autoJoinTeamVoice": {
+                        "type": "boolean"
+                    },
+                    "muteOnConnect": {
+                        "type": "boolean"
+                    },
+                    "inputMode": {
+                        "$ref": "#/components/schemas/LolTeamVoiceInputMode"
+                    },
+                    "pushToTalkKey": {
+                        "type": "string"
+                    },
+                    "pushToTalkTeamKey": {
+                        "type": "string"
+                    },
+                    "voiceFontEnabledForParty": {
+                        "type": "boolean"
+                    },
+                    "voiceFontEnabledForTeam": {
+                        "type": "boolean"
+                    },
+                    "showFirstExperienceInLCU": {
+                        "type": "boolean"
+                    },
+                    "showFirstExperienceInGame": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "autoJoin",
+                    "autoJoinTeamVoice",
+                    "muteOnConnect",
+                    "inputMode",
+                    "pushToTalkKey",
+                    "pushToTalkTeamKey",
+                    "voiceFontEnabledForParty",
+                    "voiceFontEnabledForTeam",
+                    "showFirstExperienceInLCU",
+                    "showFirstExperienceInGame"
+                ]
+            },
+            "LolTeamVoiceAccountSettingsResource": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/LolTeamVoiceAccountSettingsData"
+                    },
+                    "schemaVersion": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "schemaVersion"
+                ]
+            },
+            "LolTeamVoiceExternalSession": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "patchlineFullName": {
+                        "type": "string"
+                    },
+                    "patchlineId": {
+                        "type": "string"
+                    },
+                    "productId": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "patchlineFullName",
+                    "patchlineId",
+                    "productId"
+                ]
+            },
+            "LolTeamVoiceGameData": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "gameId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "queue": {
+                        "$ref": "#/components/schemas/LolTeamVoiceQueue"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "gameId",
+                    "queue"
+                ]
+            },
+            "LolTeamVoiceGameflowPhase": {
+                "type": "string",
+                "description": "",
+                "enum": [
+                    "TerminatedInError",
+                    "EndOfGame",
+                    "PreEndOfGame",
+                    "WaitingForStats",
+                    "Reconnect",
+                    "InProgress",
+                    "FailedToLaunch",
+                    "GameStart",
+                    "ChampSelect",
+                    "ReadyCheck",
+                    "CheckedIntoTournament",
+                    "Matchmaking",
+                    "Lobby",
+                    "None"
+                ],
+                "additionalProperties": false
+            },
+            "LolTeamVoiceGameflowSession": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "phase": {
+                        "$ref": "#/components/schemas/LolTeamVoiceGameflowPhase"
+                    },
+                    "gameData": {
+                        "$ref": "#/components/schemas/LolTeamVoiceGameData"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "phase",
+                    "gameData"
+                ]
+            },
+            "LolTeamVoiceHonorView": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "honorLevel": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "honorLevel"
+                ]
+            },
+            "LolTeamVoiceInputMode": {
+                "type": "string",
+                "description": "",
+                "enum": [
+                    "pushToTalk",
+                    "voiceActivity"
+                ],
+                "additionalProperties": false
+            },
+            "LolTeamVoiceKeyCombo": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "keyBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LolTeamVoicePushToTalkKey"
+                        }
+                    },
+                    "sessionId": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "keyBindings",
+                    "sessionId"
+                ]
+            },
+            "LolTeamVoiceKeycodePushToTalkResource": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "keyCombos": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LolTeamVoiceKeyCombo"
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "enabled"
+                ]
+            },
+            "LolTeamVoiceLobbyDto": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "gameConfig": {
+                        "$ref": "#/components/schemas/LolTeamVoiceLobbyGameConfigDto"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "gameConfig"
+                ]
+            },
+            "LolTeamVoiceLobbyGameConfigDto": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "queueId": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "queueId"
+                ]
+            },
+            "LolTeamVoiceNavigationSettingsData": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "voiceComplianceAgreementAuthorized": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "voiceComplianceAgreementAuthorized"
+                ]
+            },
+            "LolTeamVoiceNavigationSettingsResource": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/LolTeamVoiceNavigationSettingsData"
+                    },
+                    "schemaVersion": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "schemaVersion"
+                ]
+            },
+            "LolTeamVoiceParentalControlsStatus": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "isTextChatRestricted": {
+                        "type": "boolean"
+                    },
+                    "isVoiceChatRestricted": {
+                        "type": "boolean"
+                    },
+                    "isFriendingRestricted": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "enabled",
+                    "isTextChatRestricted",
+                    "isVoiceChatRestricted",
+                    "isFriendingRestricted"
+                ]
+            },
+            "LolTeamVoiceParticipantResource": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "volume": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
+                    "energy": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
+                    "isMuted": {
+                        "type": "boolean"
+                    },
+                    "isSpeaking": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "name",
+                    "volume",
+                    "energy",
+                    "isMuted",
+                    "isSpeaking"
+                ]
+            },
+            "LolTeamVoicePartyDto": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "partyId": {
+                        "type": "string"
+                    },
+                    "commsEnabled": {
+                        "type": "boolean"
+                    },
+                    "players": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/LolTeamVoicePlayerDto"
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "partyId",
+                    "commsEnabled",
+                    "players"
+                ]
+            },
+            "LolTeamVoicePlayerCredentialsDto": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "tvJwt": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "tvJwt"
+                ]
+            },
+            "LolTeamVoicePlayerDto": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "puuid": {
+                        "type": "string"
+                    },
+                    "partyId": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "puuid",
+                    "partyId"
+                ]
+            },
+            "LolTeamVoicePushToTalkKey": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "key": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "key"
+                ]
+            },
+            "LolTeamVoiceQueue": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id"
+                ]
+            },
+            "LolTeamVoiceQueueDto": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "teamVoiceEnabled": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "teamVoiceEnabled"
+                ]
+            },
+            "LolTeamVoiceSessionResource": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "handle": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/LolTeamVoiceSessionStatus"
+                    },
+                    "participants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LolTeamVoiceParticipantResource"
+                        }
+                    },
+                    "volume": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
+                    "isMuted": {
+                        "type": "boolean"
+                    },
+                    "isTransmitEnabled": {
+                        "type": "boolean"
+                    },
+                    "isVoiceFontEnabled": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "handle",
+                    "status",
+                    "participants",
+                    "volume",
+                    "isMuted",
+                    "isTransmitEnabled",
+                    "isVoiceFontEnabled"
+                ]
+            },
+            "LolTeamVoiceSessionStatus": {
+                "type": "string",
+                "description": "",
+                "enum": [
+                    "OnHold",
+                    "active"
+                ],
+                "additionalProperties": false
+            },
+            "LolTeamVoiceTeamVoiceAvailabilityDto": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "available": {
+                        "type": "boolean"
+                    },
+                    "reason": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "available",
+                    "reason"
+                ]
+            },
+            "LolTeamVoiceVoiceFontResource": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "nameLocalizationKey": {
+                        "type": "string"
+                    },
+                    "fetchStatus": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "name",
+                    "nameLocalizationKey",
+                    "fetchStatus"
+                ]
+            },
+            "LolTeamVoiceVoiceModLicenseConfig": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "clientKey": {
+                        "type": "string"
+                    },
+                    "appVersion": {
+                        "type": "string"
+                    },
+                    "bundleId": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "clientKey",
+                    "appVersion",
+                    "bundleId"
+                ]
+            },
+            "LolTeamVoiceVoiceParticipant": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "puuid": {
+                        "type": "string"
+                    },
+                    "volume": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
+                    "energy": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
+                    "isMuted": {
+                        "type": "boolean"
+                    },
+                    "isSpeaking": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "puuid",
+                    "volume",
+                    "energy",
+                    "isMuted",
+                    "isSpeaking"
+                ]
+            },
+            "LolTeamVoiceVoiceParticipantDto": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "volume": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
+                    "energy": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
+                    "isMuted": {
+                        "type": "boolean"
+                    },
+                    "isSpeaking": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "name",
+                    "volume",
+                    "energy",
+                    "isMuted",
+                    "isSpeaking"
+                ]
+            },
+            "LolTeamVoiceVoiceSession": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "handle": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/LolTeamVoiceSessionStatus"
+                    },
+                    "participants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LolTeamVoiceVoiceParticipant"
+                        }
+                    },
+                    "volume": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
+                    "isMuted": {
+                        "type": "boolean"
+                    },
+                    "isTransmitEnabled": {
+                        "type": "boolean"
+                    },
+                    "isRestricted": {
+                        "type": "boolean"
+                    },
+                    "isVoiceFontEnabled": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "handle",
+                    "status",
+                    "participants",
+                    "volume",
+                    "isMuted",
+                    "isTransmitEnabled",
+                    "isRestricted",
+                    "isVoiceFontEnabled"
+                ]
+            },
+            "LolTeamVoiceVoiceSessionDto": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "handle": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/LolTeamVoiceSessionStatus"
+                    },
+                    "participants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LolTeamVoiceVoiceParticipantDto"
+                        }
+                    },
+                    "volume": {
+                        "type": "integer",
+                        "format": "uint32",
+                        "minimum": 0
+                    },
+                    "isMuted": {
+                        "type": "boolean"
+                    },
+                    "isTransmitEnabled": {
+                        "type": "boolean"
+                    },
+                    "isRestricted": {
+                        "type": "boolean"
+                    },
+                    "isVoiceFontEnabled": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "handle",
+                    "status",
+                    "participants",
+                    "volume",
+                    "isMuted",
+                    "isTransmitEnabled",
+                    "isRestricted",
+                    "isVoiceFontEnabled"
+                ]
+            },
             "LolTftDataModelResponse": {
                 "type": "object",
                 "description": "",
@@ -137724,36 +138453,6 @@
                     "unit"
                 ]
             },
-            "NotifyFailureRequest": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "availabilityItemName": {
-                        "type": "string"
-                    },
-                    "failureInfo": {
-                        "type": "string"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "availabilityItemName",
-                    "failureInfo"
-                ]
-            },
-            "NotifySuccessRequest": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "availabilityItemName": {
-                        "type": "string"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "availabilityItemName"
-                ]
-            },
             "NpeReward": {
                 "type": "object",
                 "description": "",
@@ -140845,167 +141544,6 @@
                     "gameStartBufferMs",
                     "voteWithdrawMembers",
                     "declineWithdrawMembers"
-                ]
-            },
-            "SLIBoolDiagnostic": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "key": {
-                        "type": "string"
-                    },
-                    "value": {
-                        "type": "boolean"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "key",
-                    "value"
-                ]
-            },
-            "SLICount": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "sliName": {
-                        "type": "string"
-                    },
-                    "idempotencyKey": {
-                        "type": "string"
-                    },
-                    "successes": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "failures": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "startTimeEpochMs": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "endTimeEpochMs": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "labels": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
-                    },
-                    "boolDiagnostics": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "boolean"
-                        }
-                    },
-                    "doubleDiagnostics": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "number",
-                            "format": "double"
-                        }
-                    },
-                    "intDiagnostics": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    },
-                    "stringDiagnostics": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "sliName",
-                    "idempotencyKey",
-                    "successes",
-                    "failures",
-                    "startTimeEpochMs",
-                    "endTimeEpochMs",
-                    "labels",
-                    "boolDiagnostics",
-                    "doubleDiagnostics",
-                    "intDiagnostics",
-                    "stringDiagnostics"
-                ]
-            },
-            "SLIDoubleDiagnostic": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "key": {
-                        "type": "string"
-                    },
-                    "value": {
-                        "type": "number",
-                        "format": "double"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "key",
-                    "value"
-                ]
-            },
-            "SLIIntDiagnostic": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "key": {
-                        "type": "string"
-                    },
-                    "value": {
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "key",
-                    "value"
-                ]
-            },
-            "SLILabel": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "key": {
-                        "type": "string"
-                    },
-                    "value": {
-                        "type": "string"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "key",
-                    "value"
-                ]
-            },
-            "SLIStringDiagnostic": {
-                "type": "object",
-                "description": "",
-                "properties": {
-                    "key": {
-                        "type": "string"
-                    },
-                    "value": {
-                        "type": "string"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "key",
-                    "value"
                 ]
             },
             "SanitizerContainsSanitizedRequest": {
@@ -147605,6 +148143,9 @@
         },
         {
             "name": "Plugin lol-tastes"
+        },
+        {
+            "name": "Plugin lol-team-voice"
         },
         {
             "name": "Plugin lol-tft"
